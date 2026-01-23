@@ -443,6 +443,7 @@ const selectedSize = ref(25);
 const selectedEdge = ref(null);
 const cart = ref([]);
 const categoryFilter = ref("TODAS");
+const isCartOpen = ref(false);
 
 const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
@@ -538,34 +539,71 @@ const getFilteredPizzas = () => {
           />
         </section>
       </div>
+    </div>
 
-      <aside class="cart-section">
-        <h2>Carrinho</h2>
-        <div class="cart-items">
+    <!-- Carrinho Flutuante Fixo no Canto Inferior -->
+    <div
+      v-if="cart.length > 0"
+      class="floating-cart"
+      @click="isCartOpen = true"
+    >
+      <div class="cart-total-display">
+        <span class="cart-count">{{ cart.length }}</span>
+        <span class="cart-price">R$ {{ getTotalPrice().toFixed(2) }}</span>
+      </div>
+      <span class="cart-icon">🛒</span>
+    </div>
+
+    <!-- Modal do Carrinho Completo -->
+    <div
+      v-if="isCartOpen"
+      class="cart-modal-overlay"
+      @click="isCartOpen = false"
+    >
+      <div class="cart-modal" @click.stop>
+        <button class="modal-close" @click="isCartOpen = false">✕</button>
+
+        <h1>Seu Carrinho</h1>
+
+        <div class="modal-cart-items">
           <div v-if="cart.length === 0" class="empty-cart">
             <p>Carrinho vazio</p>
           </div>
           <div v-else>
-            <div v-for="item in cart" :key="item.id" class="cart-item">
-              <div class="item-info">
-                <p class="item-name">{{ item.pizza.name }}</p>
-                <p v-if="item.size" class="item-size">{{ item.size }}cm</p>
-                <p v-else class="item-size">1L</p>
-                <p v-if="item.edge" class="item-edge">{{ item.edge.name }}</p>
+            <div v-for="item in cart" :key="item.id" class="modal-cart-item">
+              <div class="item-details">
+                <h3>{{ item.pizza.name }}</h3>
+                <p v-if="item.size" class="item-info">
+                  Tamanho: {{ item.size }}cm
+                </p>
+                <p v-else class="item-info">Bebida: 1L</p>
+                <p v-if="item.edge" class="item-info">{{ item.edge.name }}</p>
               </div>
-              <div class="item-price">
-                <p>R$ {{ item.price.toFixed(2) }}</p>
-                <button @click="removeFromCart(item.id)" class="remove-btn">
-                  ✕
+              <div class="item-actions">
+                <span class="price">R$ {{ item.price.toFixed(2) }}</span>
+                <button
+                  @click="removeFromCart(item.id)"
+                  class="remove-btn-modal"
+                >
+                  Remover
                 </button>
               </div>
             </div>
-            <div class="cart-total">
-              <h3>Total: R$ {{ getTotalPrice().toFixed(2) }}</h3>
+
+            <div class="modal-cart-summary">
+              <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>R$ {{ getTotalPrice().toFixed(2) }}</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total:</span>
+                <span>R$ {{ getTotalPrice().toFixed(2) }}</span>
+              </div>
+              <button class="checkout-btn">Finalizar Pedido</button>
             </div>
           </div>
         </div>
-      </aside>
+      </div>
     </div>
   </div>
 </template>
@@ -662,106 +700,249 @@ const getFilteredPizzas = () => {
   margin-top: 2rem;
 }
 
-.cart-section {
-  width: 320px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 1.5rem;
-  height: fit-content;
-  position: sticky;
-  top: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+/* Carrinho Flutuante */
+.floating-cart {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(198, 24, 24, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  z-index: 99;
+  backdrop-filter: blur(8px);
 }
 
-.cart-items {
-  max-height: 500px;
+.floating-cart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(198, 24, 24, 0.5);
+}
+
+.floating-cart:active {
+  transform: translateY(-2px);
+}
+
+.cart-total-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.cart-count {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.cart-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.cart-icon {
+  font-size: 1.5rem;
+  animation: bounce 0.6s ease infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Modal do Carrinho */
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cart-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.3s ease;
+  padding: 2rem;
 }
 
-.empty-cart {
-  text-align: center;
-  color: #999;
-  padding: 2rem 1rem;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.cart-item {
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.modal-close:hover {
+  background: #c61818;
+  color: white;
+}
+
+.cart-modal h1 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.modal-cart-items {
+  margin-bottom: 2rem;
+}
+
+.modal-cart-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 1rem;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 1rem;
   gap: 1rem;
 }
 
-.item-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.item-name {
-  font-size: 0.9rem;
-  font-weight: 600;
+.item-details h3 {
   color: #333;
-  margin-bottom: 0.3rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.item-size {
-  font-size: 0.8rem;
+.item-details .item-info {
   color: #666;
+  font-size: 0.85rem;
+  margin: 0.2rem 0;
 }
 
-.item-edge {
-  font-size: 0.75rem;
-  color: #c61818;
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-
-.item-price {
+.item-actions {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
+  min-width: 100px;
 }
 
-.item-price p {
-  font-weight: 600;
+.item-actions .price {
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #c61818;
 }
 
-.remove-btn {
+.remove-btn-modal {
+  background: #f5f5f5;
+  color: #c61818;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.remove-btn-modal:hover {
   background: #c61818;
   color: white;
-  border: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s;
+  border-color: #c61818;
 }
 
-.remove-btn:hover {
-  background: #8b0e0e;
-}
-
-.cart-total {
-  padding: 1rem;
+.modal-cart-summary {
   background: #f8f8f8;
+  padding: 1.5rem;
   border-radius: 8px;
-  margin-top: 1rem;
-  border-top: 2px solid #c61818;
+  margin-top: 2rem;
 }
 
-.cart-total h3 {
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.summary-row.total {
+  border-top: 2px solid #c61818;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #333;
-  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(198, 24, 24, 0.4);
+}
+
+.checkout-btn:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 1024px) {
@@ -769,9 +950,14 @@ const getFilteredPizzas = () => {
     flex-direction: column;
   }
 
-  .cart-section {
-    width: 100%;
-    position: static;
+  .floating-cart {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .cart-price {
+    font-size: 1rem;
   }
 
   .header h1 {
@@ -793,12 +979,39 @@ const getFilteredPizzas = () => {
     padding: 0 1rem;
   }
 
+  .floating-cart {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .cart-total-display {
+    gap: 0.2rem;
+  }
+
+  .cart-count {
+    font-size: 0.7rem;
+  }
+
+  .cart-price {
+    font-size: 0.95rem;
+  }
+
+  .cart-icon {
+    font-size: 1.2rem;
+  }
+
+  .cart-modal {
+    max-height: 95vh;
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
   .header h1 {
     font-size: 1.5rem;
   }
 
-  .pizzas-section h2,
-  .cart-section h2 {
+  .pizzas-section h2 {
     font-size: 1.3rem;
   }
 
