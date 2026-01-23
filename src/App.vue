@@ -637,7 +637,6 @@ const getFilteredPizzas = () => {
 
 .pizzaria-app {
   min-height: 100vh;
-  background: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -665,7 +664,6 @@ const getFilteredPizzas = () => {
   margin: 2rem auto;
   gap: 2rem;
   padding: 0 2rem;
-  background: white;
 }
 
 .main-content {
@@ -804,7 +802,7 @@ const getFilteredPizzas = () => {
 }
 
 .cart-modal {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   max-width: 600px;
   width: 100%;
