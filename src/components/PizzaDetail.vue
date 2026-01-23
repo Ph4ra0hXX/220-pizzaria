@@ -142,7 +142,7 @@ const isFlavorSelected = (flavorPizza) => {
             </span>
           </h3>
           <p v-if="getMaxFlavors() === 1" class="flavor-hint">
-            🎯 Tamanho G: escolha 1 sabor adicional
+            Escolher + um sabor
           </p>
           <div class="flavors-list">
             <button
