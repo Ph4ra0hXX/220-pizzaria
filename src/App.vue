@@ -583,17 +583,23 @@ const getFilteredPizzas = () => {
           <div v-else>
             <div v-for="item in cart" :key="item.id" class="modal-cart-item">
               <div class="item-details">
-                <h3>{{ item.pizza.name }}</h3>
                 <p v-if="item.size" class="item-info">
                   Tamanho: {{ item.size }}
                 </p>
                 <p v-else class="item-info">Bebida: 1L</p>
-                <p
-                  v-if="item.flavors && item.flavors.length > 0"
-                  class="item-info"
-                >
-                  Sabores: {{ item.flavors.map((f) => f.name).join(" + ") }}
+                
+                <p class="item-info" v-if="!item.flavors || item.flavors.length === 0">{{ item.pizza.name }}</p>
+                
+                <p v-if="item.size === 'G' && item.flavors && item.flavors.length > 0" class="item-info">
+                  <div>1/2 {{ item.pizza.name }}</div>
+                  <div v-for="flavor in item.flavors" :key="flavor.id">
+                    1/2 {{ flavor.name }}
+                  </div>
                 </p>
+                <p v-else-if="item.flavors && item.flavors.length > 0" class="item-info">
+                  Sabor: {{ item.flavors.map((f) => f.name).join(" + ") }}
+                </p>
+                
                 <p v-if="item.edge" class="item-info">{{ item.edge.name }}</p>
                 <p v-if="item.comment" class="item-comment">
                   💬 {{ item.comment }}
