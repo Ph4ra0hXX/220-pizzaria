@@ -4,12 +4,16 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  pizzas: {
+    type: Array,
+    required: true,
+  },
   sizes: {
     type: Array,
     default: () => ["P", "G"],
   },
   selectedSize: {
-    type: Number,
+    type: String,
     required: true,
   },
   edges: {
@@ -24,12 +28,17 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  selectedFlavors: {
+    type: Array,
+    default: () => [],
+  },
 });
 
-defineEmits([
+const emit = defineEmits([
   "update:selectedSize",
   "update:selectedEdge",
   "update:selectedComment",
+  "update:selectedFlavors",
   "add-to-cart",
   "close",
 ]);
@@ -54,6 +63,43 @@ const getDisplayPrice = (pizza, edge) => {
     price += edge.price;
   }
   return price.toFixed(2);
+};
+
+const getMaxFlavors = () => {
+  return 1;
+};
+
+const getAvailableFlavors = () => {
+  // Retorna todas as pizzas EXCETO a selecionada e bebidas
+  return props.pizzas.filter(
+    (p) => p.id !== props.pizza.id && p.category !== "BEBIDA",
+  );
+};
+
+const toggleFlavor = (flavorPizza) => {
+  const maxFlavors = getMaxFlavors();
+  let newFlavors = [...(props.selectedFlavors || [])];
+
+  const index = newFlavors.findIndex((f) => f.id === flavorPizza.id);
+  if (index > -1) {
+    // Remove flavor
+    newFlavors.splice(index, 1);
+  } else {
+    // Add flavor if limit not reached
+    if (newFlavors.length < maxFlavors) {
+      newFlavors.push(flavorPizza);
+    }
+  }
+
+  emit("update:selectedFlavors", newFlavors);
+};
+
+const isFlavorsAllowed = () => {
+  return !isBeverage(props.pizza);
+};
+
+const isFlavorSelected = (flavorPizza) => {
+  return (props.selectedFlavors || []).some((f) => f.id === flavorPizza.id);
 };
 </script>
 
@@ -81,6 +127,46 @@ const getDisplayPrice = (pizza, edge) => {
             >
               <span class="size-value">{{ size }}</span>
               <span class="size-price">R$ {{ getPrice(pizza, size) }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          v-if="isFlavorsAllowed() && selectedSize === 'G'"
+          class="flavors-section"
+        >
+          <h3>
+            Sabores:
+            <span class="flavors-limit">
+              ({{ (selectedFlavors || []).length }}/{{ getMaxFlavors() }})
+            </span>
+          </h3>
+          <p v-if="getMaxFlavors() === 1" class="flavor-hint">
+            🎯 Tamanho G: escolha 1 sabor adicional
+          </p>
+          <div class="flavors-list">
+            <button
+              v-for="flavorPizza in getAvailableFlavors()"
+              :key="flavorPizza.id"
+              :class="[
+                'flavor-btn',
+                {
+                  active: isFlavorSelected(flavorPizza),
+                  disabled:
+                    (selectedFlavors || []).length >= getMaxFlavors() &&
+                    !isFlavorSelected(flavorPizza),
+                },
+              ]"
+              @click="toggleFlavor(flavorPizza)"
+              :disabled="
+                (selectedFlavors || []).length >= getMaxFlavors() &&
+                !isFlavorSelected(flavorPizza)
+              "
+            >
+              <span v-if="isFlavorSelected(flavorPizza)" class="check-mark"
+                >✓</span
+              >
+              {{ flavorPizza.name }}
             </button>
           </div>
         </div>
@@ -422,6 +508,78 @@ const getDisplayPrice = (pizza, edge) => {
 
 .add-btn:active {
   transform: translateY(0);
+}
+
+.flavors-section {
+  margin-bottom: 2rem;
+}
+
+.flavors-section h3 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flavors-limit {
+  font-size: 0.85rem;
+  color: #c61818;
+  font-weight: 700;
+}
+
+.flavor-hint {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.8rem;
+  background: #f9f9f9;
+  border-left: 3px solid #c61818;
+  border-radius: 4px;
+}
+
+.flavors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.flavor-btn {
+  padding: 0.8rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.flavor-btn:hover:not(.disabled) {
+  border-color: #c61818;
+  background: #fff8f4;
+}
+
+.flavor-btn.active {
+  background: #c61818;
+  border-color: #c61818;
+  color: white;
+}
+
+.flavor-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f5f5f5;
+}
+
+.flavor-btn .check-mark {
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 600px) {

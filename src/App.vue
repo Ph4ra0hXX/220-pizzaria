@@ -439,9 +439,10 @@ const edges = ref([
 ]);
 
 const selectedPizza = ref(null);
-const selectedSize = ref(25);
+const selectedSize = ref("P");
 const selectedEdge = ref(null);
 const selectedComment = ref("");
+const selectedFlavors = ref([]);
 const cart = ref([]);
 const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
@@ -451,6 +452,7 @@ const selectPizza = (pizza) => {
   selectedSize.value = pizza.category === "BEBIDA" ? null : "P";
   selectedEdge.value = null;
   selectedComment.value = "";
+  selectedFlavors.value = [];
 };
 
 const addToCart = () => {
@@ -471,10 +473,13 @@ const addToCart = () => {
       edge: selectedEdge.value,
       price: itemPrice,
       comment: selectedComment.value,
+      flavors:
+        selectedFlavors.value.length > 0 ? [...selectedFlavors.value] : null,
     });
     selectedPizza.value = null;
     selectedEdge.value = null;
     selectedComment.value = "";
+    selectedFlavors.value = [];
   }
 };
 
@@ -534,11 +539,13 @@ const getFilteredPizzas = () => {
         <section class="detail-section" v-if="selectedPizza">
           <PizzaDetail
             :pizza="selectedPizza"
+            :pizzas="pizzas"
             :sizes="['P', 'G']"
             :edges="edges"
             v-model:selectedSize="selectedSize"
             v-model:selectedEdge="selectedEdge"
             v-model:selectedComment="selectedComment"
+            v-model:selectedFlavors="selectedFlavors"
             @add-to-cart="addToCart"
             @close="selectedPizza = null"
           />
@@ -581,6 +588,12 @@ const getFilteredPizzas = () => {
                   Tamanho: {{ item.size }}
                 </p>
                 <p v-else class="item-info">Bebida: 1L</p>
+                <p
+                  v-if="item.flavors && item.flavors.length > 0"
+                  class="item-info"
+                >
+                  Sabores: {{ item.flavors.map((f) => f.name).join(" + ") }}
+                </p>
                 <p v-if="item.edge" class="item-info">{{ item.edge.name }}</p>
                 <p v-if="item.comment" class="item-comment">
                   💬 {{ item.comment }}
