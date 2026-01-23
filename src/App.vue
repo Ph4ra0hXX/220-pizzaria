@@ -656,7 +656,7 @@ const getFilteredPizzas = () => {
 }
 
 .pizzaria-app img {
-  width: 300px;
+  width: 200px;
   display: block;
   margin: 0 auto;
 }
