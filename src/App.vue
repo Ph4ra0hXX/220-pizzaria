@@ -503,11 +503,7 @@ const getFilteredPizzas = () => {
 
 <template>
   <div class="pizzaria-app">
-    <header class="header">
-      <h1>🍕 PIZZARIA</h1>
-      <p class="subtitle">Cardápio Completo</p>
-    </header>
-
+    <img src="/logo.png" alt="" />
     <div class="container">
       <div class="main-content">
         <section class="pizzas-section">
@@ -657,6 +653,12 @@ const getFilteredPizzas = () => {
 .pizzaria-app {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pizzaria-app img {
+  width: 300px;
+  display: block;
+  margin: 0 auto;
 }
 
 .header {
