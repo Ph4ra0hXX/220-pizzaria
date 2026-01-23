@@ -770,7 +770,7 @@ const getFilteredPizzas = () => {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1rem;
+  padding: 5px;
   animation: fadeIn 0.3s ease;
 }
 
@@ -842,7 +842,6 @@ const getFilteredPizzas = () => {
 
 .modal-cart-items {
   margin-bottom: 2rem;
-  padding: 0 1.5rem;
 }
 
 .modal-cart-item {
@@ -904,7 +903,6 @@ const getFilteredPizzas = () => {
 
 .modal-cart-summary {
   background: linear-gradient(135deg, #fff8f8 0%, #ffecec 100%);
-  padding: 1.5rem;
   border-radius: 8px;
   margin: 1.5rem;
   border-top: 2px solid #c61818;
@@ -1009,7 +1007,6 @@ const getFilteredPizzas = () => {
   .cart-modal {
     max-height: 95vh;
     padding: 1.5rem;
-    margin: 0 1rem;
   }
 
   .header h1 {
