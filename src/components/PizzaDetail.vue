@@ -6,7 +6,7 @@ const props = defineProps({
   },
   sizes: {
     type: Array,
-    default: () => [25, 35],
+    default: () => ["P", "G"],
   },
   selectedSize: {
     type: Number,
@@ -20,11 +20,16 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  selectedComment: {
+    type: String,
+    default: "",
+  },
 });
 
 defineEmits([
   "update:selectedSize",
   "update:selectedEdge",
+  "update:selectedComment",
   "add-to-cart",
   "close",
 ]);
@@ -74,7 +79,7 @@ const getDisplayPrice = (pizza, edge) => {
               :class="['size-btn', { active: selectedSize === size }]"
               @click="$emit('update:selectedSize', size)"
             >
-              <span class="size-value">{{ size }}cm</span>
+              <span class="size-value">{{ size }}</span>
               <span class="size-price">R$ {{ getPrice(pizza, size) }}</span>
             </button>
           </div>
@@ -117,6 +122,18 @@ const getDisplayPrice = (pizza, edge) => {
               <span class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
             </button>
           </div>
+        </div>
+
+        <div class="comment-section">
+          <h3>Comentários (Opcional):</h3>
+          <textarea
+            class="comment-input"
+            placeholder="Ex: Sem cebola..."
+            :value="selectedComment"
+            @input="$emit('update:selectedComment', $event.target.value)"
+            maxlength="150"
+          ></textarea>
+          <p class="char-count">{{ selectedComment.length }}/150</p>
         </div>
 
         <div class="action-section">
@@ -341,6 +358,41 @@ const getDisplayPrice = (pizza, edge) => {
 .edge-price {
   font-size: 0.9rem;
   opacity: 0.8;
+}
+
+.comment-section {
+  margin-bottom: 2rem;
+}
+
+.comment-section h3 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.3s;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #c61818;
+  background: #fff8f4;
+}
+
+.char-count {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 0.4rem;
+  text-align: right;
 }
 
 .action-section {

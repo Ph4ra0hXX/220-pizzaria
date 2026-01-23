@@ -22,7 +22,7 @@ const getPriceDisplay = (pizza) => {
   if (isBeverage(pizza)) {
     return `R$ ${pizza.prices.unit.toFixed(2)}`;
   }
-  return `25cm: R$ ${pizza.prices[25].toFixed(2)} | 35cm: R$ ${pizza.prices[35].toFixed(2)}`;
+  return `P: R$ ${pizza.prices.P.toFixed(2)} | G: R$ ${pizza.prices.G.toFixed(2)}`;
 };
 </script>
 

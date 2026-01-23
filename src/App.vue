@@ -14,7 +14,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 39.0, 35: 50.0 },
+    prices: { P: 39.0, G: 50.0 },
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 7,
@@ -101,7 +101,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 8,
@@ -115,7 +115,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 9,
@@ -130,7 +130,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 10,
@@ -144,7 +144,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 11,
@@ -158,7 +158,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 40.0, 35: 50.0 },
+    prices: { P: 40.0, G: 50.0 },
   },
   {
     id: 12,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 40.0, 35: 50.0 },
+    prices: { P: 40.0, G: 50.0 },
   },
   {
     id: 13,
@@ -185,7 +185,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 42.0, 35: 52.0 },
+    prices: { P: 42.0, G: 52.0 },
   },
   {
     id: 14,
@@ -200,7 +200,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 44.0, 35: 54.0 },
+    prices: { P: 44.0, G: 54.0 },
   },
   {
     id: 15,
@@ -215,7 +215,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 39.0, 35: 50.0 },
+    prices: { P: 39.0, G: 50.0 },
   },
   {
     id: 16,
@@ -230,7 +230,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 41.0, 35: 54.0 },
+    prices: { P: 41.0, G: 54.0 },
   },
   {
     id: 17,
@@ -246,7 +246,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 43.0, 35: 56.0 },
+    prices: { P: 43.0, G: 56.0 },
   },
   {
     id: 18,
@@ -262,7 +262,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 41.0, 35: 54.0 },
+    prices: { P: 41.0, G: 54.0 },
   },
   {
     id: 19,
@@ -281,7 +281,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 43.0, 35: 56.0 },
+    prices: { P: 43.0, G: 56.0 },
   },
   {
     id: 20,
@@ -296,7 +296,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 44.0, 35: 60.0 },
+    prices: { P: 44.0, G: 60.0 },
   },
   {
     id: 21,
@@ -312,7 +312,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 46.0, 35: 62.0 },
+    prices: { P: 46.0, G: 62.0 },
   },
   {
     id: 22,
@@ -328,7 +328,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 44.0, 35: 60.0 },
+    prices: { P: 44.0, G: 60.0 },
   },
   {
     id: 23,
@@ -345,7 +345,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 44.0, 35: 60.0 },
+    prices: { P: 44.0, G: 60.0 },
   },
   {
     id: 24,
@@ -359,7 +359,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 48.0, 35: 68.0 },
+    prices: { P: 48.0, G: 68.0 },
   },
   {
     id: 25,
@@ -373,14 +373,14 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { 25: 46.0, 35: 62.0 },
+    prices: { P: 46.0, G: 62.0 },
   },
   {
     id: 26,
     name: "DISQUETE",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 27,
@@ -391,7 +391,7 @@ const pizzas = ref([
       "CHOCOLATE CHARGE",
       "AMENDOIM TRITURADO",
     ],
-    prices: { 25: 37.0, 35: 48.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 28,
@@ -441,14 +441,16 @@ const edges = ref([
 const selectedPizza = ref(null);
 const selectedSize = ref(25);
 const selectedEdge = ref(null);
+const selectedComment = ref("");
 const cart = ref([]);
 const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 
 const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
-  selectedSize.value = pizza.category === "BEBIDA" ? null : 25;
+  selectedSize.value = pizza.category === "BEBIDA" ? null : "P";
   selectedEdge.value = null;
+  selectedComment.value = "";
 };
 
 const addToCart = () => {
@@ -468,9 +470,11 @@ const addToCart = () => {
       size: isBeverage ? null : selectedSize.value,
       edge: selectedEdge.value,
       price: itemPrice,
+      comment: selectedComment.value,
     });
     selectedPizza.value = null;
     selectedEdge.value = null;
+    selectedComment.value = "";
   }
 };
 
@@ -530,10 +534,11 @@ const getFilteredPizzas = () => {
         <section class="detail-section" v-if="selectedPizza">
           <PizzaDetail
             :pizza="selectedPizza"
-            :sizes="[25, 35]"
+            :sizes="['P', 'G']"
             :edges="edges"
             v-model:selectedSize="selectedSize"
             v-model:selectedEdge="selectedEdge"
+            v-model:selectedComment="selectedComment"
             @add-to-cart="addToCart"
             @close="selectedPizza = null"
           />
@@ -548,7 +553,6 @@ const getFilteredPizzas = () => {
       @click="isCartOpen = true"
     >
       <div class="cart-total-display">
-        <span class="cart-count">{{ cart.length }}</span>
         <span class="cart-price">R$ {{ getTotalPrice().toFixed(2) }}</span>
       </div>
       <span class="cart-icon">🛒</span>
@@ -574,10 +578,13 @@ const getFilteredPizzas = () => {
               <div class="item-details">
                 <h3>{{ item.pizza.name }}</h3>
                 <p v-if="item.size" class="item-info">
-                  Tamanho: {{ item.size }}cm
+                  Tamanho: {{ item.size }}
                 </p>
                 <p v-else class="item-info">Bebida: 1L</p>
                 <p v-if="item.edge" class="item-info">{{ item.edge.name }}</p>
+                <p v-if="item.comment" class="item-comment">
+                  💬 {{ item.comment }}
+                </p>
               </div>
               <div class="item-actions">
                 <span class="price">R$ {{ item.price.toFixed(2) }}</span>
@@ -623,7 +630,7 @@ const getFilteredPizzas = () => {
 
 .header {
   background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 2rem;
   text-align: center;
   border-bottom: 6px solid #8b0e0e;
@@ -832,7 +839,7 @@ const getFilteredPizzas = () => {
 
 .cart-modal h1 {
   background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
-  color: black;
+  color: rgb(255, 255, 255);
   margin: 0;
   padding: 2rem;
   font-size: 1.8rem;
@@ -867,6 +874,17 @@ const getFilteredPizzas = () => {
   color: #333;
   font-size: 0.85rem;
   margin: 0.2rem 0;
+}
+
+.item-details .item-comment {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 0.8rem;
+  background: #f9f9f9;
+  border-left: 3px solid #c61818;
+  border-radius: 4px;
+  font-style: italic;
 }
 
 .item-actions {
