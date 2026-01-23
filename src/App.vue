@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import PizzaList from "./components/PizzaList.vue";
 import PizzaDetail from "./components/PizzaDetail.vue";
+import CheckoutForm from "./components/CheckoutForm.vue";
 
 const pizzas = ref([
   {
@@ -446,6 +447,7 @@ const selectedFlavors = ref([]);
 const cart = ref([]);
 const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
+const isCheckoutOpen = ref(false);
 
 const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
@@ -498,6 +500,26 @@ const getFilteredPizzas = () => {
   return pizzas.value.filter(
     (p) => (p.category || "TRADICIONAL") === categoryFilter.value,
   );
+};
+
+const handleCompleteOrder = (order) => {
+  console.log("Pedido finalizado:", order);
+  alert(
+    `Pedido confirmado!\n\nCliente: ${order.deliveryInfo.name}\nValor: R$ ${order.total.toFixed(2)}\nMétodo: ${getPaymentMethodLabel(order.paymentMethod)}`,
+  );
+  cart.value = [];
+  isCheckoutOpen.value = false;
+  isCartOpen.value = false;
+};
+
+const getPaymentMethodLabel = (method) => {
+  const labels = {
+    pix: "PIX",
+    credit: "Cartão de Crédito",
+    debit: "Cartão de Débito",
+    cash: "Dinheiro",
+  };
+  return labels[method] || method;
 };
 </script>
 
@@ -634,10 +656,38 @@ const getFilteredPizzas = () => {
                 <span>Total:</span>
                 <span>R$ {{ getTotalPrice().toFixed(2) }}</span>
               </div>
-              <button class="checkout-btn">Finalizar Pedido</button>
+              <button
+                class="checkout-btn"
+                @click="
+                  isCheckoutOpen = true;
+                  isCartOpen = false;
+                "
+              >
+                Finalizar Pedido
+              </button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Modal de Checkout -->
+    <div
+      v-if="isCheckoutOpen"
+      class="checkout-modal-overlay"
+      @click="isCheckoutOpen = false"
+    >
+      <div class="checkout-modal" @click.stop>
+        <button class="modal-close" @click="isCheckoutOpen = false">✕</button>
+        <CheckoutForm
+          :totalPrice="getTotalPrice()"
+          :cartItems="cart"
+          @complete-order="handleCompleteOrder"
+          @back-to-cart="
+            isCheckoutOpen = false;
+            isCartOpen = true;
+          "
+        />
       </div>
     </div>
   </div>
@@ -1074,6 +1124,68 @@ const getFilteredPizzas = () => {
   .filter-btn {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
+  }
+}
+
+/* Checkout Modal Styles */
+.checkout-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.checkout-modal {
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  color: #c61818;
+}
+
+@media (max-width: 768px) {
+  .checkout-modal {
+    max-height: 95vh;
+    border-radius: 16px 16px 0 0;
   }
 }
 </style>
