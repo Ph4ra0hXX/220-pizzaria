@@ -617,16 +617,16 @@ const getFilteredPizzas = () => {
 
 .pizzaria-app {
   min-height: 100vh;
-  background: #2e2e32;
+  background: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
-  background: #2e2e32;
-  color: #fff;
+  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  color: black;
   padding: 2rem;
   text-align: center;
-  border-bottom: 4px solid #c61818;
+  border-bottom: 6px solid #8b0e0e;
 }
 
 .header h1 {
@@ -645,6 +645,7 @@ const getFilteredPizzas = () => {
   margin: 2rem auto;
   gap: 2rem;
   padding: 0 2rem;
+  background: white;
 }
 
 .main-content {
@@ -662,7 +663,7 @@ const getFilteredPizzas = () => {
 }
 
 .pizzas-section h2 {
-  color: #fff;
+  color: black;
   font-size: 1.8rem;
   margin: 0;
 }
@@ -674,9 +675,9 @@ const getFilteredPizzas = () => {
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: white;
+  color: black;
+  border: 2px solid #c61818;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
   cursor: pointer;
@@ -686,13 +687,9 @@ const getFilteredPizzas = () => {
 }
 
 .filter-btn.active {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.filter-btn.active {
   background: #c61818;
   border-color: #c61818;
+  color: white;
   box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
 }
 
@@ -834,13 +831,18 @@ const getFilteredPizzas = () => {
 }
 
 .cart-modal h1 {
-  color: #333;
-  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  color: black;
+  margin: 0;
+  padding: 2rem;
   font-size: 1.8rem;
+  border-bottom: 4px solid #8b0e0e;
+  margin-bottom: 1.5rem;
 }
 
 .modal-cart-items {
   margin-bottom: 2rem;
+  padding: 0 1.5rem;
 }
 
 .modal-cart-item {
@@ -848,20 +850,22 @@ const getFilteredPizzas = () => {
   justify-content: space-between;
   align-items: flex-start;
   padding: 1rem;
-  border: 1px solid #eee;
+  border: 2px solid #ffcccc;
+  border-left: 4px solid #c61818;
   border-radius: 8px;
   margin-bottom: 1rem;
   gap: 1rem;
+  background: #fef5f5;
 }
 
 .item-details h3 {
-  color: #333;
+  color: black;
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .item-details .item-info {
-  color: #666;
+  color: #333;
   font-size: 0.85rem;
   margin: 0.2rem 0;
 }
@@ -899,17 +903,18 @@ const getFilteredPizzas = () => {
 }
 
 .modal-cart-summary {
-  background: #f8f8f8;
+  background: linear-gradient(135deg, #fff8f8 0%, #ffecec 100%);
   padding: 1.5rem;
   border-radius: 8px;
-  margin-top: 2rem;
+  margin: 1.5rem;
+  border-top: 2px solid #c61818;
 }
 
 .summary-row {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 0;
-  color: #666;
+  color: black;
   font-size: 0.95rem;
 }
 
@@ -918,7 +923,7 @@ const getFilteredPizzas = () => {
   padding-top: 1rem;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #333;
+  color: black;
   margin-bottom: 1rem;
 }
 
