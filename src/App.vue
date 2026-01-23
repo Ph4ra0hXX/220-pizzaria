@@ -904,7 +904,6 @@ const getFilteredPizzas = () => {
 .modal-cart-summary {
   background: linear-gradient(135deg, #fff8f8 0%, #ffecec 100%);
   border-radius: 8px;
-  margin: 1.5rem;
   border-top: 2px solid #c61818;
 }
 
