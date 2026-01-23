@@ -579,16 +579,16 @@ const getFilteredPizzas = () => {
 
 .pizzaria-app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #2e2e32;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
-  background: rgba(0, 0, 0, 0.7);
+  background: #2e2e32;
   color: #fff;
   padding: 2rem;
   text-align: center;
-  border-bottom: 4px solid #ff6b35;
+  border-bottom: 4px solid #c61818;
 }
 
 .header h1 {
@@ -647,15 +647,15 @@ const getFilteredPizzas = () => {
   font-size: 0.9rem;
 }
 
-.filter-btn:hover {
+.filter-btn.active {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.6);
 }
 
 .filter-btn.active {
-  background: #ff6b35;
-  border-color: #ff6b35;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  background: #c61818;
+  border-color: #c61818;
+  box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
 }
 
 .detail-section {
@@ -715,7 +715,7 @@ const getFilteredPizzas = () => {
 
 .item-edge {
   font-size: 0.75rem;
-  color: #ff6b35;
+  color: #c61818;
   font-weight: 600;
   margin-top: 0.2rem;
 }
@@ -729,11 +729,11 @@ const getFilteredPizzas = () => {
 
 .item-price p {
   font-weight: 600;
-  color: #ff6b35;
+  color: #c61818;
 }
 
 .remove-btn {
-  background: #ff6b35;
+  background: #c61818;
   color: white;
   border: none;
   width: 24px;
@@ -748,7 +748,7 @@ const getFilteredPizzas = () => {
 }
 
 .remove-btn:hover {
-  background: #e55100;
+  background: #8b0e0e;
 }
 
 .cart-total {
@@ -756,7 +756,7 @@ const getFilteredPizzas = () => {
   background: #f8f8f8;
   border-radius: 8px;
   margin-top: 1rem;
-  border-top: 2px solid #ff6b35;
+  border-top: 2px solid #c61818;
 }
 
 .cart-total h3 {

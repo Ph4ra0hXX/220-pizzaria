@@ -67,7 +67,7 @@ const getPriceDisplay = (pizza) => {
 .pizza-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  border-color: #ff6b35;
+  border-color: #c61818;
 }
 
 .pizza-icon {

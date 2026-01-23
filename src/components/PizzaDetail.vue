@@ -172,12 +172,9 @@ const getDisplayPrice = (pizza, edge) => {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #ff6b35;
+  background: #c61818;
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
   cursor: pointer;
   font-size: 1.2rem;
   display: flex;
@@ -188,11 +185,11 @@ const getDisplayPrice = (pizza, edge) => {
 }
 
 .close-btn:hover {
-  background: #e55100;
+  background: #8b0e0e;
 }
 
 .detail-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #c61818 0%, #8b0e0e 100%);
   padding: 2rem 1.5rem;
   text-align: center;
   color: white;
@@ -259,13 +256,13 @@ const getDisplayPrice = (pizza, edge) => {
 }
 
 .size-btn:hover {
-  border-color: #ff6b35;
+  border-color: #c61818;
   background: #fff8f4;
 }
 
 .size-btn.active {
-  background: #ff6b35;
-  border-color: #ff6b35;
+  background: #c61818;
+  border-color: #c61818;
   color: white;
 }
 
@@ -326,13 +323,13 @@ const getDisplayPrice = (pizza, edge) => {
 }
 
 .edge-btn:hover {
-  border-color: #ff6b35;
+  border-color: #c61818;
   background: #fff8f4;
 }
 
 .edge-btn.active {
-  background: #ff6b35;
-  border-color: #ff6b35;
+  background: #c61818;
+  border-color: #c61818;
   color: white;
 }
 
@@ -355,7 +352,7 @@ const getDisplayPrice = (pizza, edge) => {
 .add-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -363,7 +360,7 @@ const getDisplayPrice = (pizza, edge) => {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
 }
 
 .add-btn:hover {
@@ -383,6 +380,8 @@ const getDisplayPrice = (pizza, edge) => {
   .detail-card {
     border-radius: 16px 16px 0 0;
     max-height: 95vh;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .pizza-icon {
