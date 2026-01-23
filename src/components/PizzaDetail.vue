@@ -292,7 +292,7 @@ const isFlavorSelected = (flavorPizza) => {
 }
 
 .detail-header {
-  background: linear-gradient(135deg, #c61818 0%, #8b0e0e 100%);
+  background: #c61818;
   padding: 2rem 1.5rem;
   text-align: center;
   color: white;
@@ -490,7 +490,7 @@ const isFlavorSelected = (flavorPizza) => {
 .add-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: white;
   border: none;
   border-radius: 8px;

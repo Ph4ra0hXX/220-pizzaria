@@ -712,7 +712,7 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .header {
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: rgb(255, 255, 255);
   padding: 2rem;
   text-align: center;
@@ -791,7 +791,7 @@ const getPaymentMethodLabel = (method) => {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 50px;
@@ -920,7 +920,7 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .cart-modal h1 {
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: rgb(255, 255, 255);
   margin: 0;
   padding: 2rem;
@@ -1002,7 +1002,7 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .modal-cart-summary {
-  background: linear-gradient(135deg, #fff8f8 0%, #ffecec 100%);
+  background: #ffecec;
   border-radius: 8px;
   border-top: 2px solid #c61818;
 }
@@ -1027,7 +1027,7 @@ const getPaymentMethodLabel = (method) => {
 .checkout-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: white;
   border: none;
   border-radius: 8px;

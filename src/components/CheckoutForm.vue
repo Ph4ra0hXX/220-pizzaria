@@ -419,7 +419,7 @@ const completeOrder = () => {
 }
 
 .payment-summary {
-  background: linear-gradient(135deg, #fff8f8 0%, #ffecec 100%);
+  background: #ffecec;
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
@@ -463,7 +463,7 @@ const completeOrder = () => {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #c61818 0%, #e8383f 100%);
+  background: #e8383f;
   color: white;
   box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
 }
