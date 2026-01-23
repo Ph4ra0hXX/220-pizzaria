@@ -287,10 +287,6 @@ const isFlavorSelected = (flavorPizza) => {
   z-index: 10;
 }
 
-.close-btn:hover {
-  background: #8b0e0e;
-}
-
 .detail-header {
   background: #c61818;
   padding: 2rem 1.5rem;

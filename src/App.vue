@@ -915,7 +915,6 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .modal-close:hover {
-  background: #c61818;
   color: white;
 }
 

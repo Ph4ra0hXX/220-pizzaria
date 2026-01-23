@@ -26,6 +26,14 @@ const deliveryInfo = ref({
   neighborhood: "",
 });
 
+// Erros de validação
+const errors = ref({
+  name: "",
+  street: "",
+  number: "",
+  neighborhood: "",
+});
+
 const goToPayment = () => {
   if (validateDeliveryInfo()) {
     currentStep.value = "payment";
@@ -38,23 +46,33 @@ const goBackToDelivery = () => {
 
 const validateDeliveryInfo = () => {
   const info = deliveryInfo.value;
+  let isValid = true;
+
+  // Limpar erros anteriores
+  errors.value = {
+    name: "",
+    street: "",
+    number: "",
+    neighborhood: "",
+  };
+
   if (!info.name.trim()) {
-    alert("Por favor, informe seu nome");
-    return false;
+    errors.value.name = "Por favor, informe seu nome";
+    isValid = false;
   }
   if (!info.street.trim()) {
-    alert("Por favor, informe a rua");
-    return false;
+    errors.value.street = "Por favor, informe a rua";
+    isValid = false;
   }
   if (!info.number.trim()) {
-    alert("Por favor, informe o número da casa");
-    return false;
+    errors.value.number = "Por favor, informe o número da casa";
+    isValid = false;
   }
   if (!info.neighborhood.trim()) {
-    alert("Por favor, informe o bairro");
-    return false;
+    errors.value.neighborhood = "Por favor, informe o bairro";
+    isValid = false;
   }
-  return true;
+  return isValid;
 };
 
 const validatePaymentInfo = () => {
@@ -102,7 +120,9 @@ const completeOrder = () => {
           v-model="deliveryInfo.name"
           type="text"
           placeholder="Seu nome completo"
+          :class="{ 'input-error': errors.name }"
         />
+        <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
       <div class="address-section">
@@ -115,7 +135,11 @@ const completeOrder = () => {
             v-model="deliveryInfo.street"
             type="text"
             placeholder="Nome da rua"
+            :class="{ 'input-error': errors.street }"
           />
+          <span v-if="errors.street" class="error-message">{{
+            errors.street
+          }}</span>
         </div>
 
         <div class="form-row">
@@ -126,7 +150,11 @@ const completeOrder = () => {
               v-model="deliveryInfo.number"
               type="text"
               placeholder="000"
+              :class="{ 'input-error': errors.number }"
             />
+            <span v-if="errors.number" class="error-message">{{
+              errors.number
+            }}</span>
           </div>
 
           <div class="form-group">
@@ -136,7 +164,11 @@ const completeOrder = () => {
               v-model="deliveryInfo.neighborhood"
               type="text"
               placeholder="Nome do bairro"
+              :class="{ 'input-error': errors.neighborhood }"
             />
+            <span v-if="errors.neighborhood" class="error-message">{{
+              errors.neighborhood
+            }}</span>
           </div>
         </div>
 
@@ -351,6 +383,19 @@ const completeOrder = () => {
   border-color: #c61818;
   background: white;
   box-shadow: 0 0 0 3px rgba(198, 24, 24, 0.1);
+}
+
+.input-error {
+  border-color: #dc3545 !important;
+  background-color: #fff5f5 !important;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  display: block;
+  font-weight: 500;
 }
 
 .form-row {
