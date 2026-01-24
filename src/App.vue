@@ -44,7 +44,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 39.0, G: 50.0 },
+    prices: { P: 42.0, G: 58.0 },
   },
   {
     id: 4,
@@ -103,7 +103,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 37.0, G: 48.0 },
+    prices: { P: 37.0, G: 54.0 },
   },
   {
     id: 8,
@@ -132,7 +132,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 40.0, G: 50.0 },
+    prices: { P: 39.0, G: 53.0 },
   },
   {
     id: 10,
@@ -146,7 +146,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 46.0, G: 62.0 },
+    prices: { P: 42.0, G: 63.0 },
   },
   {
     id: 11,
@@ -160,7 +160,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 42.0, G: 52.0 },
+    prices: { P: 42.0, G: 54.0 },
   },
   {
     id: 12,
@@ -175,28 +175,28 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 44.0, G: 54.0 },
+    prices: { P: 44.0, G: 68.0 },
   },
   {
     id: 13,
     name: "DISQUETE",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 37.0, G: 48.0 },
+    prices: { P: 39.0, G: 58.0 },
   },
   {
     id: 14,
     name: "BIS",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
-    prices: { P: 37.0, G: 48.0 },
+    prices: { P: 39.0, G: 58.0 },
   },
   {
     id: 15,
     name: "OURO BRANCO",
     category: "DOCE",
     ingredients: ["CHOCOLATE BRANCO", "BOMBONS OURO BRANCO"],
-    prices: { P: 37.0, G: 48.0 },
+    prices: { P: 42.0, G: 62.0 },
   },
   {
     id: 16,
