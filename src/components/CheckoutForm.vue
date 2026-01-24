@@ -308,7 +308,7 @@ const completeOrder = () => {
           <strong>{{ pixKey }}</strong>
         </div>
         <button @click="copyPix" class="btn-secondary pix-copy-btn">
-          {{ copyingPix ? 'Copiado!' : 'Copiar PIX' }}
+          {{ copyingPix ? "Copiado!" : "Copiar PIX" }}
         </button>
       </div>
 
