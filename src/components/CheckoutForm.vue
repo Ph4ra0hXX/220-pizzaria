@@ -203,7 +203,7 @@ const completeOrder = () => {
             <input
               id="number"
               v-model="deliveryInfo.number"
-              type="text"
+              type="number"
               placeholder="000"
               :class="{ 'input-error': errors.number }"
             />
