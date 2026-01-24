@@ -16,7 +16,7 @@ const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
 const paymentMethod = ref("pix");
-const pixKey = "96439068334";
+const pixKey = "996954495";
 const copyingPix = ref(false);
 
 const copyPix = async () => {
