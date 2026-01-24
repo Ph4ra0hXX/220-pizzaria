@@ -117,13 +117,37 @@ const formatOrderForWhatsApp = () => {
 
   message += "*ITENS DO PEDIDO:*\n";
   props.cartItems.forEach((item) => {
-    const itemName = item.pizza.name;
     const itemSize = item.size ? ` (${item.size})` : "";
     const itemPrice = item.price.toFixed(2);
-    message += `- ${itemName}${itemSize} - R$ ${itemPrice}\n`;
+
+    // Mostra "PIZZA" seguido do tamanho e preço
+    message += `- PIZZA${itemSize} - R$ ${itemPrice}\n`;
+
+    // Se tem sabores adicionais (flavors), adiciona a pizza principal como 1/2
     if (item.flavors && item.flavors.length > 0) {
-      message += `  + Com: ${item.flavors.map((f) => f.name).join(", ")}\n`;
+      if (item.size === "G") {
+        message += `  + 1/2 ${item.pizza.name}\n`;
+      } else if (item.size === "P") {
+        message += `  + 1 ${item.pizza.name}\n`;
+      }
+
+      // Adiciona os sabores adicionais
+      if (item.size === "G") {
+        item.flavors.forEach((flavor) => {
+          message += `  + 1/2 ${flavor.name}\n`;
+        });
+      } else if (item.size === "P") {
+        item.flavors.forEach((flavor) => {
+          message += `  + 1 ${flavor.name}\n`;
+        });
+      } else {
+        message += `  + Com: ${item.flavors.map((f) => f.name).join(", ")}\n`;
+      }
+    } else {
+      // Se NÃO tem sabores adicionais, adiciona a pizza principal como 1
+      message += `  + 1 ${item.pizza.name}\n`;
     }
+
     if (item.edge) {
       message += `  + Borda: ${item.edge.name}\n`;
     }
@@ -132,7 +156,8 @@ const formatOrderForWhatsApp = () => {
     }
   });
 
-  message += `\n*TOTAL: R$ ${props.totalPrice.toFixed(2)}*\n`;
+  message += `\n*TAXA DE ENTREGA:* R$ 5.00\n`;
+  message += `*TOTAL: R$ ${(props.totalPrice + 5).toFixed(2)}*\n`;
   message += `*METODO DE PAGAMENTO:* ${getPaymentMethodName(paymentMethod.value)}\n`;
 
   return message;

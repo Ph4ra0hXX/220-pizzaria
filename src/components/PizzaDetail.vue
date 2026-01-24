@@ -59,6 +59,21 @@ const getDisplayPrice = (pizza, edge) => {
     return pizza.prices.unit.toFixed(2);
   }
   let price = parseFloat(getPrice(pizza, props.selectedSize));
+
+  // Se tamanho G e há sabores selecionados, usar o preço do sabor mais caro
+  if (
+    props.selectedSize === "G" &&
+    props.selectedFlavors &&
+    props.selectedFlavors.length > 0
+  ) {
+    const maxFlavorPrice = Math.max(
+      ...props.selectedFlavors.map(
+        (flavor) => flavor.prices[props.selectedSize],
+      ),
+    );
+    price = maxFlavorPrice;
+  }
+
   if (edge) {
     price += edge.price;
   }

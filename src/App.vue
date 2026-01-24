@@ -254,6 +254,20 @@ const addToCart = () => {
       ? selectedPizza.value.prices.unit
       : selectedPizza.value.prices[selectedSize.value];
 
+    // Se tamanho G e há sabores selecionados, usar o preço do sabor mais caro
+    if (
+      selectedSize.value === "G" &&
+      selectedFlavors.value.length > 0 &&
+      !isBeverage
+    ) {
+      const maxFlavorPrice = Math.max(
+        ...selectedFlavors.value.map(
+          (flavor) => flavor.prices[selectedSize.value],
+        ),
+      );
+      itemPrice = maxFlavorPrice;
+    }
+
     if (selectedEdge.value && !isBeverage) {
       itemPrice += selectedEdge.value.price;
     }
