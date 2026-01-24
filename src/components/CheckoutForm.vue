@@ -16,6 +16,30 @@ const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
 const paymentMethod = ref("pix");
+const pixKey = "96439068334";
+const copyingPix = ref(false);
+
+const copyPix = async () => {
+  try {
+    await navigator.clipboard.writeText(pixKey);
+    copyingPix.value = true;
+    setTimeout(() => (copyingPix.value = false), 1500);
+  } catch (err) {
+    const textarea = document.createElement("textarea");
+    textarea.value = pixKey;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      copyingPix.value = true;
+      setTimeout(() => (copyingPix.value = false), 1500);
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  }
+};
 
 // Informações de retirada
 const deliveryInfo = ref({
@@ -125,7 +149,7 @@ const getPaymentMethodName = (method) => {
 };
 
 const sendToWhatsApp = () => {
-  const whatsappNumber = "5588997542121";
+  const whatsappNumber = "558896954495";
   const message = formatOrderForWhatsApp();
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
@@ -276,6 +300,16 @@ const completeOrder = () => {
           <span class="method-icon">💵</span>
           <span class="method-name">Dinheiro</span>
         </label>
+      </div>
+
+      <div v-if="paymentMethod === 'pix'" class="pix-section">
+        <div class="pix-line">
+          <span>Chave PIX:</span>
+          <strong>{{ pixKey }}</strong>
+        </div>
+        <button @click="copyPix" class="btn-secondary pix-copy-btn">
+          {{ copyingPix ? 'Copiado!' : 'Copiar PIX' }}
+        </button>
       </div>
 
       <div class="payment-summary">
@@ -524,6 +558,25 @@ const completeOrder = () => {
   border-radius: 8px;
   margin-bottom: 1.5rem;
   border-top: 2px solid #c61818;
+}
+
+.pix-section {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px dashed #c61818;
+  margin-bottom: 1.5rem;
+}
+
+.pix-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.pix-copy-btn {
+  text-transform: none;
 }
 
 .summary-line {
