@@ -56,19 +56,19 @@ const validateDeliveryInfo = () => {
     neighborhood: "",
   };
 
-  if (!info.name.trim()) {
+  if (!String(info.name ?? "").trim()) {
     errors.value.name = "Por favor, informe seu nome";
     isValid = false;
   }
-  if (!info.street.trim()) {
+  if (!String(info.street ?? "").trim()) {
     errors.value.street = "Por favor, informe a rua";
     isValid = false;
   }
-  if (!info.number.trim()) {
+  if (!String(info.number ?? "").trim()) {
     errors.value.number = "Por favor, informe o número da casa";
     isValid = false;
   }
-  if (!info.neighborhood.trim()) {
+  if (!String(info.neighborhood ?? "").trim()) {
     errors.value.neighborhood = "Por favor, informe o bairro";
     isValid = false;
   }
@@ -80,7 +80,7 @@ const validatePaymentInfo = () => {
 };
 
 const formatOrderForWhatsApp = () => {
-  let message = "*NOVO PEDIDO*\n\n";
+  let message = "";
 
   message += "*CLIENTE:*\n";
   message += `Nome: ${deliveryInfo.value.name}\n`;
