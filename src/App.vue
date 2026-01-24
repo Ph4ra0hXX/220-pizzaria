@@ -504,9 +504,6 @@ const getFilteredPizzas = () => {
 
 const handleCompleteOrder = (order) => {
   console.log("Pedido finalizado:", order);
-  alert(
-    `Pedido confirmado!\n\nCliente: ${order.deliveryInfo.name}\nValor: R$ ${order.total.toFixed(2)}\nMétodo: ${getPaymentMethodLabel(order.paymentMethod)}`,
-  );
   cart.value = [];
   isCheckoutOpen.value = false;
   isCartOpen.value = false;

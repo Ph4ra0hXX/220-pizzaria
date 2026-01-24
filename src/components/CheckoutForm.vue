@@ -79,6 +79,60 @@ const validatePaymentInfo = () => {
   return true;
 };
 
+const formatOrderForWhatsApp = () => {
+  let message = "*NOVO PEDIDO*\n\n";
+
+  message += "*CLIENTE:*\n";
+  message += `Nome: ${deliveryInfo.value.name}\n`;
+  message += `Rua: ${deliveryInfo.value.street}\n`;
+  message += `Número: ${deliveryInfo.value.number}\n`;
+  if (deliveryInfo.value.complement) {
+    message += `Complemento: ${deliveryInfo.value.complement}\n`;
+  }
+  message += `Bairro: ${deliveryInfo.value.neighborhood}\n\n`;
+
+  message += "*ITENS DO PEDIDO:*\n";
+  props.cartItems.forEach((item) => {
+    const itemName = item.pizza.name;
+    const itemSize = item.size ? ` (${item.size})` : "";
+    const itemPrice = item.price.toFixed(2);
+    message += `- ${itemName}${itemSize} - R$ ${itemPrice}\n`;
+    if (item.flavors && item.flavors.length > 0) {
+      message += `  + Com: ${item.flavors.map((f) => f.name).join(", ")}\n`;
+    }
+    if (item.edge) {
+      message += `  + Borda: ${item.edge.name}\n`;
+    }
+    if (item.comment) {
+      message += `  + Obs: ${item.comment}\n`;
+    }
+  });
+
+  message += `\n*TOTAL: R$ ${props.totalPrice.toFixed(2)}*\n`;
+  message += `*METODO DE PAGAMENTO:* ${getPaymentMethodName(paymentMethod.value)}\n`;
+
+  return message;
+};
+
+const getPaymentMethodName = (method) => {
+  const methods = {
+    pix: "PIX",
+    credit: "Cartão de Crédito",
+    debit: "Cartão de Débito",
+    cash: "Dinheiro",
+  };
+  return methods[method] || method;
+};
+
+const sendToWhatsApp = () => {
+  const whatsappNumber = "5588997542121";
+  const message = formatOrderForWhatsApp();
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  window.open(whatsappUrl, "_blank");
+};
+
 const completeOrder = () => {
   const order = {
     deliveryInfo: deliveryInfo.value,
@@ -88,6 +142,7 @@ const completeOrder = () => {
     timestamp: new Date(),
   };
 
+  sendToWhatsApp();
   emit("complete-order", order);
 };
 </script>
