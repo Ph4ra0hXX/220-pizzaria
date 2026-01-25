@@ -591,6 +591,15 @@ const getPaymentMethodLabel = (method) => {
         />
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="pizzaria-footer">
+      <div class="footer-content">
+        <p class="footer-title">Horário de Funcionamento</p>
+        <p class="footer-text">SÁBADOS E DOMINGOS</p>
+        <p class="footer-text">DE 18HS ÀS 22:30HS</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -1087,5 +1096,33 @@ const getPaymentMethodLabel = (method) => {
     max-height: 95vh;
     border-radius: 16px 16px 0 0;
   }
+}
+
+/* Footer Styles */
+.pizzaria-footer {
+  background: #e8383f;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-top: 6px solid #8b0e0e;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.footer-text {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
 }
 </style>
