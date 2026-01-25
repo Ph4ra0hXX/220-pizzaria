@@ -16,7 +16,7 @@ const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
 const paymentMethod = ref("pix");
-const pixKey = "996954495";
+const pixKey = "88994812041";
 const copyingPix = ref(false);
 
 const copyPix = async () => {
@@ -328,9 +328,15 @@ const completeOrder = () => {
       </div>
 
       <div v-if="paymentMethod === 'pix'" class="pix-section">
-        <div class="pix-line">
-          <span>Chave PIX:</span>
-          <strong>{{ pixKey }}</strong>
+        <div class="pix-info">
+          <div class="pix-line">
+            <span>Chave PIX:</span>
+            <strong>{{ pixKey }}</strong>
+          </div>
+          <div class="pix-beneficiary">
+            <p><strong>Beneficiário:</strong> Herbene Carneiro Girão</p>
+            <p><strong>Banco:</strong> Banco Inter</p>
+          </div>
         </div>
         <button @click="copyPix" class="btn-secondary pix-copy-btn">
           {{ copyingPix ? "Copiado!" : "Copiar PIX" }}
@@ -593,11 +599,34 @@ const completeOrder = () => {
   margin-bottom: 1.5rem;
 }
 
+.pix-info {
+  margin-bottom: 1rem;
+}
+
 .pix-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.pix-beneficiary {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #c61818;
+}
+
+.pix-beneficiary p {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.pix-beneficiary strong {
+  color: #c61818;
 }
 
 .pix-copy-btn {
