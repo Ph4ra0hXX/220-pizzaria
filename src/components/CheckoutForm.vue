@@ -15,6 +15,7 @@ const props = defineProps({
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
+const deliveryType = ref("delivery"); // 'delivery' ou 'pickup'
 const paymentMethod = ref("pix");
 const pixKey = "88994812041";
 const copyingPix = ref(false);
@@ -84,18 +85,23 @@ const validateDeliveryInfo = () => {
     errors.value.name = "Por favor, informe seu nome";
     isValid = false;
   }
-  if (!String(info.street ?? "").trim()) {
-    errors.value.street = "Por favor, informe a rua";
-    isValid = false;
+
+  // Se for entrega, validar endereço completo
+  if (deliveryType.value === "delivery") {
+    if (!String(info.street ?? "").trim()) {
+      errors.value.street = "Por favor, informe a rua";
+      isValid = false;
+    }
+    if (!String(info.number ?? "").trim()) {
+      errors.value.number = "Por favor, informe o número da casa";
+      isValid = false;
+    }
+    if (!String(info.neighborhood ?? "").trim()) {
+      errors.value.neighborhood = "Por favor, informe o bairro";
+      isValid = false;
+    }
   }
-  if (!String(info.number ?? "").trim()) {
-    errors.value.number = "Por favor, informe o número da casa";
-    isValid = false;
-  }
-  if (!String(info.neighborhood ?? "").trim()) {
-    errors.value.neighborhood = "Por favor, informe o bairro";
-    isValid = false;
-  }
+
   return isValid;
 };
 
@@ -108,12 +114,18 @@ const formatOrderForWhatsApp = () => {
 
   message += "*CLIENTE:*\n";
   message += `Nome: ${deliveryInfo.value.name}\n`;
-  message += `Rua: ${deliveryInfo.value.street}\n`;
-  message += `Número: ${deliveryInfo.value.number}\n`;
-  if (deliveryInfo.value.complement) {
-    message += `Complemento: ${deliveryInfo.value.complement}\n`;
+
+  if (deliveryType.value === "delivery") {
+    message += `Rua: ${deliveryInfo.value.street}\n`;
+    message += `Número: ${deliveryInfo.value.number}\n`;
+    if (deliveryInfo.value.complement) {
+      message += `Complemento: ${deliveryInfo.value.complement}\n`;
+    }
+    message += `Bairro: ${deliveryInfo.value.neighborhood}\n`;
+  } else {
+    message += `Tipo: IR BUSCAR (SEM TAXA)\n`;
   }
-  message += `Bairro: ${deliveryInfo.value.neighborhood}\n\n`;
+  message += "\n";
 
   message += "*ITENS DO PEDIDO:*\n";
   props.cartItems.forEach((item) => {
@@ -156,8 +168,13 @@ const formatOrderForWhatsApp = () => {
     }
   });
 
-  message += `\n*TAXA DE ENTREGA:* R$ 5.00\n`;
-  message += `*TOTAL: R$ ${(props.totalPrice + 5).toFixed(2)}*\n`;
+  const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
+  if (deliveryType.value === "delivery") {
+    message += `\n*TAXA DE ENTREGA:* R$ 5.00\n`;
+  } else {
+    message += `\n*TAXA DE ENTREGA:* GRÁTIS (IR BUSCAR)\n`;
+  }
+  message += `*TOTAL: R$ ${(props.totalPrice + deliveryFee).toFixed(2)}*\n`;
   message += `*METODO DE PAGAMENTO:* ${getPaymentMethodName(paymentMethod.value)}\n`;
 
   return message;
@@ -183,16 +200,24 @@ const sendToWhatsApp = () => {
 };
 
 const completeOrder = () => {
+  const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
   const order = {
     deliveryInfo: deliveryInfo.value,
+    deliveryType: deliveryType.value,
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
-    total: props.totalPrice,
+    total: props.totalPrice + deliveryFee,
     timestamp: new Date(),
   };
 
   sendToWhatsApp();
   emit("complete-order", order);
+};
+
+const getTotalWithDelivery = () => {
+  return deliveryType.value === "delivery"
+    ? props.totalPrice + 5
+    : props.totalPrice;
 };
 </script>
 
@@ -217,6 +242,27 @@ const completeOrder = () => {
     <div v-if="currentStep === 'delivery'" class="form-section">
       <h3>Informações de Retirada</h3>
 
+      <!-- Seletor de Tipo de Entrega -->
+      <div class="delivery-type-selector">
+        <label class="delivery-type-option">
+          <input type="radio" v-model="deliveryType" value="delivery" />
+          <span class="type-icon">🏍️</span>
+          <span class="type-info">
+            <span class="type-name">Entrega</span>
+            <span class="type-price">R$ 5,00</span>
+          </span>
+        </label>
+
+        <label class="delivery-type-option">
+          <input type="radio" v-model="deliveryType" value="pickup" />
+          <span class="type-icon">🏪</span>
+          <span class="type-info">
+            <span class="type-name">Ir Buscar</span>
+            <span class="type-price">Grátis</span>
+          </span>
+        </label>
+      </div>
+
       <div class="form-group">
         <label for="name">Nome Completo *</label>
         <input
@@ -229,8 +275,8 @@ const completeOrder = () => {
         <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
-      <div class="address-section">
-        <h4>Endereço para Retirada</h4>
+      <div v-if="deliveryType === 'delivery'" class="address-section">
+        <h4>Endereço para Entrega</h4>
 
         <div class="form-group">
           <label for="street">Rua *</label>
@@ -348,9 +394,17 @@ const completeOrder = () => {
           <span>Subtotal:</span>
           <span>R$ {{ totalPrice.toFixed(2) }}</span>
         </div>
+        <div v-if="deliveryType === 'delivery'" class="summary-line">
+          <span>Taxa de entrega:</span>
+          <span>R$ 5,00</span>
+        </div>
+        <div v-else class="summary-line delivery-free">
+          <span>Taxa de entrega:</span>
+          <span>GRÁTIS (Ir Buscar)</span>
+        </div>
         <div class="summary-line total">
           <span>Total a pagar:</span>
-          <span>R$ {{ totalPrice.toFixed(2) }}</span>
+          <span>R$ {{ getTotalWithDelivery().toFixed(2) }}</span>
         </div>
       </div>
 
@@ -524,6 +578,80 @@ const completeOrder = () => {
   gap: 1rem;
 }
 
+.delivery-type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.delivery-type-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #f9f9f9;
+}
+
+.delivery-type-option:hover {
+  border-color: #c61818;
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-type-option input[type="radio"] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: #c61818;
+}
+
+.delivery-type-option input[type="radio"]:checked {
+  transform: scale(1.1);
+}
+
+.delivery-type-option:has(input[type="radio"]:checked) {
+  border-color: #c61818;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(198, 24, 24, 0.2);
+}
+
+.type-icon {
+  font-size: 2rem;
+}
+
+.type-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.type-name {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.type-price {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.delivery-type-option:has(input[type="radio"]:checked) .type-name {
+  color: #c61818;
+}
+
+.delivery-type-option:has(input[type="radio"]:checked) .type-price {
+  color: #c61818;
+  font-weight: 600;
+}
+
 .address-section {
   background: #f9f9f9;
   padding: 1.5rem;
@@ -641,6 +769,11 @@ const completeOrder = () => {
   font-size: 1rem;
 }
 
+.summary-line.delivery-free {
+  color: #28a745;
+  font-weight: 600;
+}
+
 .summary-line.total {
   border-top: 2px solid #c61818;
   padding-top: 1rem;
@@ -697,6 +830,10 @@ const completeOrder = () => {
 @media (max-width: 768px) {
   .checkout-container {
     padding: 1.5rem;
+  }
+
+  .delivery-type-selector {
+    grid-template-columns: 1fr;
   }
 
   .form-row {
