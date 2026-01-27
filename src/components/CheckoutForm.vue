@@ -141,15 +141,18 @@ const formatOrderForWhatsApp = () => {
     // Se tem sabores adicionais (flavors), adiciona a pizza principal como 1/2
     if (item.flavors && item.flavors.length > 0) {
       if (item.size === "G") {
-        message += `  + 1/2 ${item.pizza.name}\n`;
+        // Calcula o preço de cada metade para pizza G
+        const halfPrice = (item.price / 2).toFixed(2);
+        message += `  + 1/2 ${item.pizza.name} ${halfPrice}\n`;
       } else if (item.size === "P") {
         message += `  + 1 ${item.pizza.name}\n`;
       }
 
       // Adiciona os sabores adicionais
       if (item.size === "G") {
+        const halfPrice = (item.price / 2).toFixed(2);
         item.flavors.forEach((flavor) => {
-          message += `  + 1/2 ${flavor.name}\n`;
+          message += `  + 1/2 ${flavor.name} ${halfPrice}\n`;
         });
       } else if (item.size === "P") {
         item.flavors.forEach((flavor) => {
