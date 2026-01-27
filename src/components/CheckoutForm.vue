@@ -166,6 +166,11 @@ const formatOrderForWhatsApp = () => {
       message += `  + 1 ${item.pizza.name}\n`;
     }
 
+    // Adiciona bebida se existir
+    if (item.drink) {
+      message += `  + ${item.drink.name} - R$ ${item.drink.price.toFixed(2)}\n`;
+    }
+
     if (item.edge) {
       message += `  + Borda: ${item.edge.name}\n`;
     }
