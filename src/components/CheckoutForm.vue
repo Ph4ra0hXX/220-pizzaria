@@ -128,11 +128,27 @@ const formatOrderForWhatsApp = () => {
   message += "\n";
 
   message += "*ITENS DO PEDIDO:*\n";
+
+  // Separar pizzas e bebidas
+  const pizzaItems = [];
+  const drinkItems = [];
+
   props.cartItems.forEach((item) => {
+    // Se for uma bebida (verifica pela categoria ou pelo objeto drink)
+    if (item.drink || (item.pizza && item.pizza.category === "BEBIDA")) {
+      drinkItems.push(item);
+      return;
+    }
+    pizzaItems.push(item);
+  });
+
+  // Processa pizzas
+  pizzaItems.forEach((item) => {
     const itemSize = item.size ? ` (${item.size})` : "";
     const itemPrice = item.price.toFixed(2);
+    // Pizza G com 1 flavor adicional = 2 metades (principal + flavor)
     const hasTwoFlavors =
-      item.flavors && item.flavors.length > 0 && item.size === "G";
+      item.flavors && item.flavors.length === 1 && item.size === "G";
     const sumNote = hasTwoFlavors ? " (SOMA DAS DUAS METADES)" : "";
 
     // Mostra "PIZZA" seguido do tamanho e preço
@@ -140,21 +156,16 @@ const formatOrderForWhatsApp = () => {
 
     // Se tem sabores adicionais (flavors), adiciona a pizza principal como 1/2
     if (item.flavors && item.flavors.length > 0) {
-      if (item.size === "G") {
-        // Calcula o preço de cada metade para pizza G
-        const halfPrice = (item.price / 2).toFixed(2);
-        message += `  + 1/2 ${item.pizza.name} ${halfPrice}\n`;
-      } else if (item.size === "P") {
-        message += `  + 1 ${item.pizza.name}\n`;
-      }
-
-      // Adiciona os sabores adicionais
-      if (item.size === "G") {
-        const halfPrice = (item.price / 2).toFixed(2);
+      if (item.size === "G" && item.flavors.length === 1) {
+        // Pizza G com 1 flavor adicional = 2 metades
+        const mainHalfPrice = (item.pizza.prices[item.size] / 2).toFixed(2);
+        message += `  + 1/2 ${item.pizza.name} ${mainHalfPrice}\n`;
         item.flavors.forEach((flavor) => {
-          message += `  + 1/2 ${flavor.name} ${halfPrice}\n`;
+          const flavorHalfPrice = (flavor.prices[item.size] / 2).toFixed(2);
+          message += `  + 1/2 ${flavor.name} ${flavorHalfPrice}\n`;
         });
       } else if (item.size === "P") {
+        message += `  + 1 ${item.pizza.name}\n`;
         item.flavors.forEach((flavor) => {
           message += `  + 1 ${flavor.name}\n`;
         });
@@ -166,11 +177,6 @@ const formatOrderForWhatsApp = () => {
       message += `  + 1 ${item.pizza.name}\n`;
     }
 
-    // Adiciona bebida se existir
-    if (item.drink) {
-      message += `  + ${item.drink.name} - R$ ${item.drink.price.toFixed(2)}\n`;
-    }
-
     if (item.edge) {
       message += `  + Borda: ${item.edge.name}\n`;
     }
@@ -178,6 +184,17 @@ const formatOrderForWhatsApp = () => {
       message += `  + Obs: ${item.comment}\n`;
     }
   });
+
+  // Processa bebidas separadamente
+  if (drinkItems.length > 0) {
+    message += `* Bebidas *\n`;
+    drinkItems.forEach((item) => {
+      // Verifica se a bebida está em item.drink ou item.pizza
+      const drinkName = item.drink ? item.drink.name : item.pizza.name;
+      const drinkPrice = item.drink ? item.drink.price : item.price;
+      message += `  + 1 ${drinkName} - R$ ${drinkPrice.toFixed(2)}\n`;
+    });
+  }
 
   const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
   if (deliveryType.value === "delivery") {

@@ -72,10 +72,8 @@ const getDisplayPrice = (pizza, edge) => {
       0,
     );
     price = basePrice + totalFlavorPrice;
-  } else if (props.selectedSize === "G") {
-    // Se tamanho G sem sabores adicionais, aplicar desconto de 50%
-    price = price / 2;
   }
+  // Se tamanho G sem sabores adicionais, manter o preço original (não divide mais)
 
   if (edge) {
     price += edge.price;
