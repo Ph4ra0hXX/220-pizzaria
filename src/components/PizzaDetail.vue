@@ -60,18 +60,21 @@ const getDisplayPrice = (pizza, edge) => {
   }
   let price = parseFloat(getPrice(pizza, props.selectedSize));
 
-  // Se tamanho G e há sabores selecionados, usar o preço do sabor mais caro
+  // Se tamanho G e há sabores selecionados, somar metade da pizza base + metade de cada sabor
   if (
     props.selectedSize === "G" &&
     props.selectedFlavors &&
     props.selectedFlavors.length > 0
   ) {
-    const maxFlavorPrice = Math.max(
-      ...props.selectedFlavors.map(
-        (flavor) => flavor.prices[props.selectedSize],
-      ),
+    const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
+    const totalFlavorPrice = props.selectedFlavors.reduce(
+      (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
+      0,
     );
-    price = maxFlavorPrice;
+    price = basePrice + totalFlavorPrice;
+  } else if (props.selectedSize === "G") {
+    // Se tamanho G sem sabores adicionais, aplicar desconto de 50%
+    price = price / 2;
   }
 
   if (edge) {

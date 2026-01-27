@@ -131,9 +131,12 @@ const formatOrderForWhatsApp = () => {
   props.cartItems.forEach((item) => {
     const itemSize = item.size ? ` (${item.size})` : "";
     const itemPrice = item.price.toFixed(2);
+    const hasTwoFlavors =
+      item.flavors && item.flavors.length > 0 && item.size === "G";
+    const sumNote = hasTwoFlavors ? " (SOMA DAS DUAS METADES)" : "";
 
     // Mostra "PIZZA" seguido do tamanho e preço
-    message += `- PIZZA${itemSize} - R$ ${itemPrice}\n`;
+    message += `- PIZZA${itemSize} - R$ ${itemPrice}${sumNote}\n`;
 
     // Se tem sabores adicionais (flavors), adiciona a pizza principal como 1/2
     if (item.flavors && item.flavors.length > 0) {

@@ -354,18 +354,21 @@ const addToCart = () => {
       ? selectedPizza.value.prices.unit
       : selectedPizza.value.prices[selectedSize.value];
 
-    // Se tamanho G e há sabores selecionados, usar o preço do sabor mais caro
+    // Se tamanho G e há sabores selecionados, somar metade da pizza base + metade de cada sabor
     if (
       selectedSize.value === "G" &&
       selectedFlavors.value.length > 0 &&
       !isBeverage
     ) {
-      const maxFlavorPrice = Math.max(
-        ...selectedFlavors.value.map(
-          (flavor) => flavor.prices[selectedSize.value],
-        ),
+      const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
+      const totalFlavorPrice = selectedFlavors.value.reduce(
+        (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
+        0,
       );
-      itemPrice = maxFlavorPrice;
+      itemPrice = basePrice + totalFlavorPrice;
+    } else if (selectedSize.value === "G" && !isBeverage) {
+      // Se tamanho G sem sabores adicionais, aplicar desconto de 50%
+      itemPrice = itemPrice / 2;
     }
 
     if (selectedEdge.value && !isBeverage) {
