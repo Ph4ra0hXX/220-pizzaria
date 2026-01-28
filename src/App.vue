@@ -89,7 +89,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 39.0, G: 50.0 },
+    prices: { P: 42.0, G: 56.0 },
   },
   {
     id: 7,
@@ -535,7 +535,9 @@ const getPaymentMethodLabel = (method) => {
                   Sabor: {{ item.flavors.map((f) => f.name).join(" + ") }}
                 </p>
 
-                <p v-if="item.edge" class="item-info">{{ item.edge.name }}</p>
+                <p v-if="item.edge" class="item-info">
+                  {{ item.edge.name }} (+R$ {{ item.edge.price.toFixed(2) }})
+                </p>
                 <p v-if="item.comment" class="item-comment">
                   💬 {{ item.comment }}
                 </p>

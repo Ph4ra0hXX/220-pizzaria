@@ -149,7 +149,7 @@ const formatOrderForWhatsApp = () => {
     // Pizza G com 1 flavor adicional = 2 metades (principal + flavor)
     const hasTwoFlavors =
       item.flavors && item.flavors.length === 1 && item.size === "G";
-    const sumNote = hasTwoFlavors ? " (SOMA DAS DUAS METADES)" : "";
+    const sumNote = hasTwoFlavors ? "" : "";
 
     // Mostra "PIZZA" seguido do tamanho e preço
     message += `- PIZZA${itemSize} - R$ ${itemPrice}${sumNote}\n`;
@@ -178,7 +178,7 @@ const formatOrderForWhatsApp = () => {
     }
 
     if (item.edge) {
-      message += `  + Borda: ${item.edge.name}\n`;
+      message += `  + Borda: ${item.edge.name} (+R$ ${item.edge.price.toFixed(2)})\n`;
     }
     if (item.comment) {
       message += `  + Obs: ${item.comment}\n`;
@@ -204,6 +204,10 @@ const formatOrderForWhatsApp = () => {
   }
   message += `*TOTAL: R$ ${(props.totalPrice + deliveryFee).toFixed(2)}*\n`;
   message += `*METODO DE PAGAMENTO:* ${getPaymentMethodName(paymentMethod.value)}\n`;
+
+  // Adiciona data e hora do pedido
+  const now = new Date();
+  message += `\n${now.toLocaleDateString("pt-BR")} às ${now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}`;
 
   return message;
 };
