@@ -322,7 +322,7 @@ const pizzas = ref([
 ]);
 
 const edges = ref([
-  { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 13.0 },
+  { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 15.0 },
   { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 15.0 },
   { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
