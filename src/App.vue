@@ -828,7 +828,7 @@ const getPaymentMethodLabel = (method) => {
 
 .filter-btn.promo {
   background: linear-gradient(135deg, #ff4500 0%, #ff6347 100%);
-  color: #ffeb3b;
+  color: #ffffff;
   border: 2px solid #ff4500;
   padding: 0.6rem 1.2rem 0.6rem 2.5rem;
   font-weight: 700;
