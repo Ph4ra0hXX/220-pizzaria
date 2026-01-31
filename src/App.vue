@@ -7,6 +7,21 @@ import CheckoutForm from "./components/CheckoutForm.vue";
 const pizzas = ref([
   {
     id: 1,
+    name: "PIZZA MARGUERITA",
+    category: "TRADICIONAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 38.0, G: 46.0 },
+  },
+  {
+    id: 2,
     name: "PIZZA DE MUSSARELA",
     category: "TRADICIONAL",
     ingredients: [
@@ -18,7 +33,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 2,
+    id: 3,
     name: "PIZZA DE CALABRESA",
     category: "TRADICIONAL",
     ingredients: [
@@ -32,7 +47,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 3,
+    id: 4,
     name: "PIZZA DE CALABRESA COM CATUPIRY",
     category: "TRADICIONAL",
     ingredients: [
@@ -47,7 +62,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 58.0 },
   },
   {
-    id: 4,
+    id: 5,
     name: "PIZZA DE PORTUGUESA",
     category: "TRADICIONAL",
     ingredients: [
@@ -64,7 +79,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 5,
+    id: 6,
     name: "PIZZA DE FRANGO",
     category: "TRADICIONAL",
     ingredients: [
@@ -78,7 +93,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 6,
+    id: 7,
     name: "PIZZA DE FRANGO COM CATUPIRY",
     category: "TRADICIONAL",
     ingredients: [
@@ -92,7 +107,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 7,
+    id: 8,
     name: "PIZZA BACON",
     category: "TRADICIONAL",
     ingredients: [
@@ -106,7 +121,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 54.0 },
   },
   {
-    id: 8,
+    id: 9,
     name: "PIZZA DE CAMARÃO",
     category: "ESPECIAL",
     ingredients: [
@@ -121,7 +136,7 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
-    id: 9,
+    id: 10,
     name: "PIZZA DE LOMBO",
     category: "TRADICIONAL",
     ingredients: [
@@ -135,7 +150,7 @@ const pizzas = ref([
     prices: { P: 39.0, G: 53.0 },
   },
   {
-    id: 10,
+    id: 11,
     name: "PIZZA DE LOMBO COM ABACAXI",
     category: "ESPECIAL",
     ingredients: [
@@ -149,7 +164,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 11,
+    id: 12,
     name: "PIZZA DE CARNE DE SOL",
     category: "TRADICIONAL",
     ingredients: [
@@ -163,7 +178,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 12,
+    id: 13,
     name: "PIZZA DE CARNE DE SOL COM CATUPIRY",
     category: "TRADICIONAL",
     ingredients: [
@@ -178,21 +193,21 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
-    id: 13,
+    id: 14,
     name: "DISQUETE",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 39.0, G: 52.0 },
   },
   {
-    id: 14,
+    id: 15,
     name: "BIS",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
     prices: { P: 39.0, G: 52.0 },
   },
   {
-    id: 15,
+    id: 16,
     name: "OURO BRANCO",
     category: "DOCE",
     ingredients: [
@@ -203,28 +218,28 @@ const pizzas = ref([
     prices: { P: 45.0, G: 66.0 },
   },
   {
-    id: 16,
+    id: 17,
     name: "COCA COLA 1L",
     category: "BEBIDA",
     ingredients: [],
     prices: { unit: 11.0 },
   },
   {
-    id: 17,
+    id: 18,
     name: "COCA ZERO 1L",
     category: "BEBIDA",
     ingredients: [],
     prices: { unit: 11.0 },
   },
   {
-    id: 18,
+    id: 19,
     name: "GUARANA ANTARTICA 1L",
     category: "BEBIDA",
     ingredients: [],
     prices: { unit: 11.0 },
   },
   {
-    id: 19,
+    id: 20,
     name: "FRANBACON",
     category: "ESPECIAL",
     ingredients: [
@@ -239,7 +254,7 @@ const pizzas = ref([
     prices: { P: 39.0, G: 52.0 },
   },
   {
-    id: 20,
+    id: 21,
     name: "FRANBACON COM CATUPIRY",
     category: "ESPECIAL",
     ingredients: [
@@ -255,7 +270,7 @@ const pizzas = ref([
     prices: { P: 44.0, G: 58.0 },
   },
   {
-    id: 21,
+    id: 22,
     name: "PORTUGUESA DA CASA",
     category: "ESPECIAL",
     ingredients: [
@@ -274,7 +289,7 @@ const pizzas = ref([
     prices: { P: 39.0, G: 52.0 },
   },
   {
-    id: 22,
+    id: 23,
     name: "BACONDA CASA",
     category: "ESPECIAL",
     ingredients: [
@@ -290,7 +305,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 23,
+    id: 24,
     name: "LOMBINHO COM CATUPIRY",
     category: "ESPECIAL",
     ingredients: [
@@ -304,7 +319,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 24,
+    id: 25,
     name: "CARNE DO SOL DA CASA",
     category: "ESPECIAL",
     ingredients: [
