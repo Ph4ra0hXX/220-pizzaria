@@ -378,7 +378,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 35.0 },
   },
   {
     id: 29,
@@ -392,7 +392,7 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 35.0 },
   },
   {
     id: 30,
@@ -404,7 +404,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 35.0 },
   },
   {
     id: 31,
@@ -419,7 +419,21 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 35.0 },
+  },
+  {
+    id: 32,
+    name: "PIZZA DE FRANGO",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
   },
 ]);
 
@@ -564,9 +578,11 @@ const getPaymentMethodLabel = (method) => {
                   'BEBIDA',
                 ]"
                 :key="category"
-                :class="['filter-btn', { active: categoryFilter === category }]"
+                :class="['filter-btn', { active: categoryFilter === category, promo: category === 'PROMOÇÃO' }]"
                 @click="categoryFilter = category"
               >
+                <span v-if="category === 'PROMOÇÃO'" class="promo-badge">SÓ HOJE</span>
+                <span v-if="category === 'PROMOÇÃO'" class="fire-icon">🔥</span>
                 {{ category }}
               </button>
             </div>
@@ -807,6 +823,65 @@ const getPaymentMethodLabel = (method) => {
   transition: all 0.3s;
   font-weight: 600;
   font-size: 0.9rem;
+  position: relative;
+}
+
+.filter-btn.promo {
+  background: linear-gradient(135deg, #ff4500 0%, #ff6347 100%);
+  color: #ffeb3b;
+  border: 2px solid #ff4500;
+  padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+}
+
+.filter-btn.promo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
+}
+
+.promo-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff0000;
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.fire-icon {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  animation: flicker 1s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-50%) scale(1.1);
+  }
 }
 
 .filter-btn.active {
@@ -814,6 +889,12 @@ const getPaymentMethodLabel = (method) => {
   border-color: #c61818;
   color: white;
   box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
+}
+
+.filter-btn.promo.active {
+  background: linear-gradient(135deg, #cc3700 0%, #ff4500 100%);
+  border-color: #cc3700;
+  transform: scale(1.05);
 }
 
 .detail-section {
