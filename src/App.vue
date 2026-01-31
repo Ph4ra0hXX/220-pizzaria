@@ -336,7 +336,7 @@ const pizzas = ref([
   },
   {
     id: 26,
-    name: "CAMARAO PREMIUM TARÊ",
+    name: "CAMARÃO SUPREME",
     category: "ESPECIAL",
     ingredients: [
       "MASSA 25cm",
