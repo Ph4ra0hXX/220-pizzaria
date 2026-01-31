@@ -122,6 +122,20 @@ const pizzas = ref([
   },
   {
     id: 9,
+    name: "MISTA",
+    category: "TRADICIONAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "AZEITONA",
+      "OREGANO",
+      "CEBOLA",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
+  {
+    id: 10,
     name: "PIZZA DE CAMARÃO",
     category: "ESPECIAL",
     ingredients: [
@@ -136,7 +150,7 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
-    id: 10,
+    id: 11,
     name: "PIZZA DE LOMBO",
     category: "TRADICIONAL",
     ingredients: [
@@ -150,7 +164,7 @@ const pizzas = ref([
     prices: { P: 39.0, G: 53.0 },
   },
   {
-    id: 11,
+    id: 12,
     name: "PIZZA DE LOMBO COM ABACAXI",
     category: "ESPECIAL",
     ingredients: [
@@ -164,7 +178,7 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
-    id: 12,
+    id: 13,
     name: "PIZZA DE CARNE DE SOL",
     category: "TRADICIONAL",
     ingredients: [
@@ -335,7 +349,7 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
-    id: 26,
+    id: 27,
     name: "CAMARÃO SUPREME",
     category: "ESPECIAL",
     ingredients: [
