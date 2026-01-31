@@ -334,6 +334,24 @@ const pizzas = ref([
     ],
     prices: { P: 44.0, G: 66.0 },
   },
+  {
+    id: 26,
+    name: "CAMARAO PREMIUM TARÊ",
+    category: "ESPECIAL",
+    ingredients: [
+      "MASSA 25cm",
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CAMARÃO",
+      "TOMATE CEREJA",
+      "GENGIBRE",
+      "MANJERICÃO",
+      "MOLHO TARÊ",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { P: 52.0, G: 72.0 },
+  },
 ]);
 
 const edges = ref([
