@@ -366,6 +366,61 @@ const pizzas = ref([
     ],
     prices: { P: 52.0, G: 72.0 },
   },
+  {
+    id: 28,
+    name: "PIZZA DE CALABRESA",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA FATIADA",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 37.0 },
+  },
+  {
+    id: 29,
+    name: "MISTA",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "AZEITONA",
+      "OREGANO",
+      "CEBOLA",
+    ],
+    prices: { G: 37.0 },
+  },
+  {
+    id: 30,
+    name: "PIZZA DE MUSSARELA",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 37.0 },
+  },
+  {
+    id: 31,
+    name: "PIZZA MARGUERITA",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 37.0 },
+  },
 ]);
 
 const edges = ref([
@@ -389,7 +444,13 @@ const isCheckoutOpen = ref(false);
 
 const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
-  selectedSize.value = pizza.category === "BEBIDA" ? null : "P";
+  if (pizza.category === "BEBIDA") {
+    selectedSize.value = null;
+  } else if (pizza.category === "PROMOÇÃO") {
+    selectedSize.value = "G";
+  } else {
+    selectedSize.value = "P";
+  }
   selectedEdge.value = null;
   selectedComment.value = "";
   selectedFlavors.value = [];
@@ -398,6 +459,7 @@ const selectPizza = (pizza) => {
 const addToCart = () => {
   if (selectedPizza.value) {
     const isBeverage = selectedPizza.value.category === "BEBIDA";
+    const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
     let itemPrice = isBeverage
       ? selectedPizza.value.prices.unit
       : selectedPizza.value.prices[selectedSize.value];
@@ -406,7 +468,8 @@ const addToCart = () => {
     if (
       selectedSize.value === "G" &&
       selectedFlavors.value.length > 0 &&
-      !isBeverage
+      !isBeverage &&
+      !isPromotion
     ) {
       const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
       const totalFlavorPrice = selectedFlavors.value.reduce(
@@ -414,7 +477,7 @@ const addToCart = () => {
         0,
       );
       itemPrice = basePrice + totalFlavorPrice;
-    } else if (selectedSize.value === "G" && !isBeverage) {
+    } else if (selectedSize.value === "G" && !isBeverage && !isPromotion) {
       // Se tamanho G sem sabores adicionais, aplicar desconto de 50%
       itemPrice = itemPrice / 2;
     }
@@ -457,6 +520,13 @@ const getFilteredPizzas = () => {
   );
 };
 
+const getAvailableSizes = (pizza) => {
+  if (pizza.category === "PROMOÇÃO") {
+    return ["G"];
+  }
+  return ["P", "G"];
+};
+
 const handleCompleteOrder = (order) => {
   console.log("Pedido finalizado:", order);
   cart.value = [];
@@ -487,6 +557,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
+                  'PROMOÇÃO',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
@@ -510,7 +581,7 @@ const getPaymentMethodLabel = (method) => {
           <PizzaDetail
             :pizza="selectedPizza"
             :pizzas="pizzas"
-            :sizes="['P', 'G']"
+            :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
             v-model:selectedSize="selectedSize"
             v-model:selectedEdge="selectedEdge"

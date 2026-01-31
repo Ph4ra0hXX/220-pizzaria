@@ -58,13 +58,16 @@ const getDisplayPrice = (pizza, edge) => {
   if (isBeverage(pizza)) {
     return pizza.prices.unit.toFixed(2);
   }
+  const isPromotion = pizza.category === "PROMOÇÃO";
   let price = parseFloat(getPrice(pizza, props.selectedSize));
 
   // Se tamanho G e há sabores selecionados, somar metade da pizza base + metade de cada sabor
+  // (mas não para promoções)
   if (
     props.selectedSize === "G" &&
     props.selectedFlavors &&
-    props.selectedFlavors.length > 0
+    props.selectedFlavors.length > 0 &&
+    !isPromotion
   ) {
     const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
     const totalFlavorPrice = props.selectedFlavors.reduce(
@@ -111,7 +114,7 @@ const toggleFlavor = (flavorPizza) => {
 };
 
 const isFlavorsAllowed = () => {
-  return !isBeverage(props.pizza);
+  return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
 };
 
 const isFlavorSelected = (flavorPizza) => {

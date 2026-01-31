@@ -22,6 +22,11 @@ const getPriceDisplay = (pizza) => {
   if (isBeverage(pizza)) {
     return `R$ ${pizza.prices.unit.toFixed(2)}`;
   }
+  // Se só tem tamanho G (promoção)
+  if (!pizza.prices.P && pizza.prices.G) {
+    return `G: R$ ${pizza.prices.G.toFixed(2)}`;
+  }
+  // Caso normal com P e G
   return `P: R$ ${pizza.prices.P.toFixed(2)} | G: R$ ${pizza.prices.G.toFixed(2)}`;
 };
 </script>
