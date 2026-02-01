@@ -368,7 +368,7 @@ const pizzas = ref([
   },
   {
     id: 28,
-    name: "PIZZA DE CALABRESA",
+    name: "PIZZA DE CALABRESA + Guaraná Antártica 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -378,11 +378,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 43.0 },
   },
   {
     id: 29,
-    name: "MISTA",
+    name: "MISTA + Guaraná Antártica 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -392,11 +392,11 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 43.0 },
   },
   {
     id: 30,
-    name: "PORTUGUESA DA CASA",
+    name: "PORTUGUESA DA CASA + Guaraná Antártica 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -411,11 +411,11 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 43.0 },
   },
   {
     id: 31,
-    name: "PIZZA MARGUERITA",
+    name: "PIZZA MARGHERITA + Guaraná Antártica 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -426,11 +426,11 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 43.0 },
   },
   {
     id: 32,
-    name: "PIZZA DE FRANGO",
+    name: "PIZZA DE FRANGO + Guaraná Antártica 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -440,7 +440,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 43.0 },
   },
 ]);
 
