@@ -180,6 +180,12 @@ const formatOrderForWhatsApp = () => {
     if (item.edge) {
       message += `  + Borda: ${item.edge.name} (+R$ ${item.edge.price.toFixed(2)})\n`;
     }
+    if (item.additionals && item.additionals.length > 0) {
+      message += `  + Adicionais:\n`;
+      item.additionals.forEach((additional) => {
+        message += `    - ${additional.name} (+R$ ${additional.price.toFixed(2)})\n`;
+      });
+    }
     if (item.comment) {
       message += `  + Obs: ${item.comment}\n`;
     }

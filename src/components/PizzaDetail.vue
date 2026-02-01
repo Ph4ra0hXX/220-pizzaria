@@ -24,6 +24,14 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  additionals: {
+    type: Array,
+    default: () => [],
+  },
+  selectedAdditionals: {
+    type: Array,
+    default: () => [],
+  },
   selectedComment: {
     type: String,
     default: "",
@@ -37,6 +45,7 @@ const props = defineProps({
 const emit = defineEmits([
   "update:selectedSize",
   "update:selectedEdge",
+  "update:selectedAdditionals",
   "update:selectedComment",
   "update:selectedFlavors",
   "add-to-cart",
@@ -81,6 +90,16 @@ const getDisplayPrice = (pizza, edge) => {
   if (edge) {
     price += edge.price;
   }
+
+  // Adicionar preço dos adicionais
+  if (props.selectedAdditionals && props.selectedAdditionals.length > 0) {
+    const additionalsPrice = props.selectedAdditionals.reduce(
+      (sum, additional) => sum + additional.price,
+      0,
+    );
+    price += additionalsPrice;
+  }
+
   return price.toFixed(2);
 };
 
@@ -113,12 +132,27 @@ const toggleFlavor = (flavorPizza) => {
   emit("update:selectedFlavors", newFlavors);
 };
 
-const isFlavorsAllowed = () => {
-  return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
+const toggleAdditional = (additional) => {
+  let newAdditionals = [...(props.selectedAdditionals || [])];
+  const index = newAdditionals.findIndex((a) => a.id === additional.id);
+
+  if (index > -1) {
+    // Remove additional
+    newAdditionals.splice(index, 1);
+  } else {
+    // Add additional
+    newAdditionals.push(additional);
+  }
+
+  emit("update:selectedAdditionals", newAdditionals);
 };
 
-const isFlavorSelected = (flavorPizza) => {
-  return (props.selectedFlavors || []).some((f) => f.id === flavorPizza.id);
+const isAdditionalSelected = (additional) => {
+  return (props.selectedAdditionals || []).some((a) => a.id === additional.id);
+};
+
+const isFlavorsAllowed = () => {
+  return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
 };
 </script>
 
@@ -225,6 +259,30 @@ const isFlavorSelected = (flavorPizza) => {
             >
               <span class="edge-name">{{ edge.name }}</span>
               <span class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          v-if="!isBeverage(pizza) && additionals.length > 0"
+          class="additionals-section"
+        >
+          <h3>Adicionais (Opcional):</h3>
+          <div class="additionals-list">
+            <button
+              v-for="additional in additionals"
+              :key="additional.id"
+              class="additional-btn"
+              :class="{ active: isAdditionalSelected(additional) }"
+              @click="toggleAdditional(additional)"
+            >
+              <span v-if="isAdditionalSelected(additional)" class="check-mark"
+                >✓</span
+              >
+              <span class="additional-name">{{ additional.name }}</span>
+              <span class="additional-price"
+                >+R$ {{ additional.price.toFixed(2) }}</span
+              >
             </button>
           </div>
         </div>
@@ -595,6 +653,61 @@ const isFlavorSelected = (flavorPizza) => {
 .flavor-btn .check-mark {
   font-weight: 700;
   font-size: 1.1rem;
+}
+
+.additionals-section {
+  margin-bottom: 2rem;
+}
+
+.additionals-section h3 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.additionals-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.additional-btn {
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.additional-btn:hover {
+  border-color: #c61818;
+  background: #fff8f4;
+}
+
+.additional-btn.active {
+  background: #c61818;
+  border-color: #c61818;
+  color: white;
+}
+
+.additional-btn .check-mark {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.additional-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.additional-price {
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 @media (max-width: 600px) {

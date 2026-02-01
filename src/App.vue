@@ -445,9 +445,17 @@ const edges = ref([
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
 ]);
 
+const additionals = ref([
+  { id: 1, name: "CATUPIRY ORIGINAL", price: 10.0 },
+  { id: 2, name: "CHEDDAR", price: 10.0 },
+  { id: 3, name: "CREM CHEESE", price: 10.0 },
+  { id: 4, name: "GELEIA DE PIMENTA", price: 5.0 },
+]);
+
 const selectedPizza = ref(null);
 const selectedSize = ref("P");
 const selectedEdge = ref(null);
+const selectedAdditionals = ref([]);
 const selectedComment = ref("");
 const selectedFlavors = ref([]);
 const cart = ref([]);
@@ -465,6 +473,7 @@ const selectPizza = (pizza) => {
     selectedSize.value = "P";
   }
   selectedEdge.value = null;
+  selectedAdditionals.value = [];
   selectedComment.value = "";
   selectedFlavors.value = [];
 };
@@ -499,11 +508,24 @@ const addToCart = () => {
       itemPrice += selectedEdge.value.price;
     }
 
+    // Adicionar preço dos adicionais
+    if (selectedAdditionals.value.length > 0 && !isBeverage) {
+      const additionalsPrice = selectedAdditionals.value.reduce(
+        (sum, additional) => sum + additional.price,
+        0,
+      );
+      itemPrice += additionalsPrice;
+    }
+
     cart.value.push({
       id: Date.now(),
       pizza: selectedPizza.value,
       size: isBeverage ? null : selectedSize.value,
       edge: selectedEdge.value,
+      additionals:
+        selectedAdditionals.value.length > 0
+          ? [...selectedAdditionals.value]
+          : null,
       price: itemPrice,
       comment: selectedComment.value,
       flavors:
@@ -511,6 +533,7 @@ const addToCart = () => {
     });
     selectedPizza.value = null;
     selectedEdge.value = null;
+    selectedAdditionals.value = [];
     selectedComment.value = "";
     selectedFlavors.value = [];
   }
@@ -606,8 +629,10 @@ const getPaymentMethodLabel = (method) => {
             :pizzas="pizzas"
             :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
+            :additionals="additionals"
             v-model:selectedSize="selectedSize"
             v-model:selectedEdge="selectedEdge"
+            v-model:selectedAdditionals="selectedAdditionals"
             v-model:selectedComment="selectedComment"
             v-model:selectedFlavors="selectedFlavors"
             @add-to-cart="addToCart"
@@ -680,6 +705,18 @@ const getPaymentMethodLabel = (method) => {
                 <p v-if="item.edge" class="item-info">
                   {{ item.edge.name }} (+R$ {{ item.edge.price.toFixed(2) }})
                 </p>
+                <div
+                  v-if="item.additionals && item.additionals.length > 0"
+                  class="item-info"
+                >
+                  <div
+                    v-for="additional in item.additionals"
+                    :key="additional.id"
+                  >
+                    {{ additional.name }} (+R$
+                    {{ additional.price.toFixed(2) }})
+                  </div>
+                </div>
                 <p v-if="item.comment" class="item-comment">
                   💬 {{ item.comment }}
                 </p>
