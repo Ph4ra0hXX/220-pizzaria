@@ -151,6 +151,10 @@ const isAdditionalSelected = (additional) => {
   return (props.selectedAdditionals || []).some((a) => a.id === additional.id);
 };
 
+const isFlavorSelected = (flavor) => {
+  return (props.selectedFlavors || []).some((f) => f.id === flavor.id);
+};
+
 const isFlavorsAllowed = () => {
   return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
 };
