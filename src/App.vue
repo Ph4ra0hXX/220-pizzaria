@@ -438,12 +438,11 @@ const pizzas = ref([
 ]);
 
 const edges = ref([
-  { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 10.0 },
-  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 10.0 },
-  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 10.0 },
+  { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 15.0 },
+  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 15.0 },
+  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
-  { id: 6, name: "GELEIA DE PIMENTA", price: 5.0 },
 ]);
 
 const selectedPizza = ref(null);
@@ -578,10 +577,18 @@ const getPaymentMethodLabel = (method) => {
                   'BEBIDA',
                 ]"
                 :key="category"
-                :class="['filter-btn', { active: categoryFilter === category, promo: category === 'PROMOÇÃO' }]"
+                :class="[
+                  'filter-btn',
+                  {
+                    active: categoryFilter === category,
+                    promo: category === 'PROMOÇÃO',
+                  },
+                ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-badge">SÓ HOJE</span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-badge"
+                  >SÓ HOJE</span
+                >
                 <span v-if="category === 'PROMOÇÃO'" class="fire-icon">🔥</span>
                 {{ category }}
               </button>
@@ -856,7 +863,8 @@ const getPaymentMethodLabel = (method) => {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -874,7 +882,8 @@ const getPaymentMethodLabel = (method) => {
 }
 
 @keyframes flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: translateY(-50%) scale(1);
   }
