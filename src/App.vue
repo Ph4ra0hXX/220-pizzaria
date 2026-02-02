@@ -493,7 +493,7 @@ const addToCart = () => {
       ? selectedPizza.value.prices.unit
       : selectedPizza.value.prices[selectedSize.value];
 
-    // Se tamanho G e há sabores selecionados, somar metade da pizza base + metade de cada sabor
+    // Se tamanho G e há sabores selecionados (meio a meio), somar metade da pizza base + metade de cada sabor
     if (
       selectedSize.value === "G" &&
       selectedFlavors.value.length > 0 &&
@@ -506,10 +506,8 @@ const addToCart = () => {
         0,
       );
       itemPrice = basePrice + totalFlavorPrice;
-    } else if (selectedSize.value === "G" && !isBeverage && !isPromotion) {
-      // Se tamanho G sem sabores adicionais, aplicar desconto de 50%
-      itemPrice = itemPrice / 2;
     }
+    // Se tamanho G sem sabores adicionais, usa o preço normal (não divide)
 
     if (selectedEdge.value && !isBeverage) {
       itemPrice += selectedEdge.value.price;
