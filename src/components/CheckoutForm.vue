@@ -112,29 +112,35 @@ const validatePaymentInfo = () => {
 const formatOrderForWhatsApp = () => {
   let message = "";
 
-  message += "*CLIENTE:*\n";
+  // Adiciona data e hora do pedido no topo
+  const now = new Date();
+  message += `PEDIDO - ${now.toLocaleDateString("pt-BR")} | ${now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}\n`;
+  message += `────────────────────\n\n`;
+
+  // CLIENTE
+  message += `*CLIENTE*\n`;
   message += `Nome: ${deliveryInfo.value.name}\n`;
 
   if (deliveryType.value === "delivery") {
-    message += `Rua: ${deliveryInfo.value.street}\n`;
-    message += `Número: ${deliveryInfo.value.number}\n`;
+    message += `Tipo: Entrega\n`;
+    message += `Endereco: ${deliveryInfo.value.street}, ${deliveryInfo.value.number}\n`;
     if (deliveryInfo.value.complement) {
       message += `Complemento: ${deliveryInfo.value.complement}\n`;
     }
     message += `Bairro: ${deliveryInfo.value.neighborhood}\n`;
   } else {
-    message += `Tipo: IR BUSCAR (SEM TAXA)\n`;
+    message += `Tipo: Retirada no local (sem taxa)\n`;
   }
   message += "\n";
 
-  message += "*ITENS DO PEDIDO:*\n";
+  // ITENS DO PEDIDO
+  message += `*ITENS DO PEDIDO*\n\n`;
 
   // Separar pizzas e bebidas
   const pizzaItems = [];
   const drinkItems = [];
 
   props.cartItems.forEach((item) => {
-    // Se for uma bebida (verifica pela categoria ou pelo objeto drink)
     if (item.drink || (item.pizza && item.pizza.category === "BEBIDA")) {
       drinkItems.push(item);
       return;
@@ -143,77 +149,100 @@ const formatOrderForWhatsApp = () => {
   });
 
   // Processa pizzas
-  pizzaItems.forEach((item) => {
-    const itemSize = item.size ? ` (${item.size})` : "";
-    const itemPrice = item.price.toFixed(2);
-    // Pizza G com 1 flavor adicional = 2 metades (principal + flavor)
-    const hasTwoFlavors =
-      item.flavors && item.flavors.length === 1 && item.size === "G";
-    const sumNote = hasTwoFlavors ? "" : "";
+  pizzaItems.forEach((item, index) => {
+    const sizeLabel =
+      item.size === "P"
+        ? "Pequena (P)"
+        : item.size === "M"
+          ? "Media (M)"
+          : "Grande (G)";
 
-    // Mostra "PIZZA" seguido do tamanho e preço
-    message += `- PIZZA${itemSize} - R$ ${itemPrice}${sumNote}\n`;
+    // Calcula o preço base da pizza (sem borda e adicionais)
+    let basePizzaPrice = 0;
+    if (item.flavors && item.flavors.length > 0 && item.size === "G") {
+      basePizzaPrice = item.pizza.prices[item.size] / 2;
+      item.flavors.forEach((flavor) => {
+        basePizzaPrice += flavor.prices[item.size] / 2;
+      });
+    } else {
+      basePizzaPrice = item.pizza.prices[item.size];
+    }
 
-    // Se tem sabores adicionais (flavors), adiciona a pizza principal como 1/2
+    message += `${index + 1}. Pizza ${sizeLabel}\n`;
+
+    // Sabores
     if (item.flavors && item.flavors.length > 0) {
+      message += `   Sabores:\n`;
       if (item.size === "G" && item.flavors.length === 1) {
-        // Pizza G com 1 flavor adicional = 2 metades
         const mainHalfPrice = (item.pizza.prices[item.size] / 2).toFixed(2);
-        message += `  + 1/2 ${item.pizza.name} ${mainHalfPrice}\n`;
+        message += `   - 1/2 ${item.pizza.name} - R$ ${mainHalfPrice}\n`;
         item.flavors.forEach((flavor) => {
           const flavorHalfPrice = (flavor.prices[item.size] / 2).toFixed(2);
-          message += `  + 1/2 ${flavor.name} ${flavorHalfPrice}\n`;
-        });
-      } else if (item.size === "P") {
-        message += `  + 1 ${item.pizza.name}\n`;
-        item.flavors.forEach((flavor) => {
-          message += `  + 1 ${flavor.name}\n`;
+          message += `   - 1/2 ${flavor.name} - R$ ${flavorHalfPrice}\n`;
         });
       } else {
-        message += `  + Com: ${item.flavors.map((f) => f.name).join(", ")}\n`;
+        message += `   - ${item.pizza.name}\n`;
+        item.flavors.forEach((flavor) => {
+          message += `   - ${flavor.name}\n`;
+        });
       }
     } else {
-      // Se NÃO tem sabores adicionais, adiciona a pizza principal como 1
-      message += `  + 1 ${item.pizza.name}\n`;
+      message += `   Sabor: ${item.pizza.name}\n`;
     }
 
-    if (item.edge) {
-      message += `  + Borda: ${item.edge.name} (+R$ ${item.edge.price.toFixed(2)})\n`;
+    message += `   Preço: R$ ${basePizzaPrice.toFixed(2)}\n`;
+
+    // Extras (Borda e Adicionais)
+    const hasExtras =
+      item.edge || (item.additionals && item.additionals.length > 0);
+    if (hasExtras) {
+      message += `\n   Extras:\n`;
+      if (item.edge) {
+        message += `   - Borda de ${item.edge.name}: R$ ${item.edge.price.toFixed(2)}\n`;
+      }
+      if (item.additionals && item.additionals.length > 0) {
+        item.additionals.forEach((additional) => {
+          message += `   - ${additional.name}: R$ ${additional.price.toFixed(2)}\n`;
+        });
+      }
     }
-    if (item.additionals && item.additionals.length > 0) {
-      message += `  + Adicionais:\n`;
-      item.additionals.forEach((additional) => {
-        message += `    - ${additional.name} (+R$ ${additional.price.toFixed(2)})\n`;
-      });
-    }
+
     if (item.comment) {
-      message += `  + Obs: ${item.comment}\n`;
+      message += `\n   Obs: ${item.comment}\n`;
     }
+
+    message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
   });
 
   // Processa bebidas separadamente
   if (drinkItems.length > 0) {
-    message += `* Bebidas *\n`;
+    message += `${pizzaItems.length + 1}. Bebidas\n`;
     drinkItems.forEach((item) => {
-      // Verifica se a bebida está em item.drink ou item.pizza
       const drinkName = item.drink ? item.drink.name : item.pizza.name;
       const drinkPrice = item.drink ? item.drink.price : item.price;
-      message += `  + 1 ${drinkName} - R$ ${drinkPrice.toFixed(2)}\n`;
+      message += `   - ${drinkName}: R$ ${drinkPrice.toFixed(2)}\n`;
     });
+    message += `\n`;
   }
 
+  message += `────────────────────\n\n`;
+
+  // ENTREGA
+  message += `*ENTREGA*\n`;
   const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
   if (deliveryType.value === "delivery") {
-    message += `\n*TAXA DE ENTREGA:* R$ 5.00\n`;
+    message += `Entrega - R$ 5,00\n\n`;
   } else {
-    message += `\n*TAXA DE ENTREGA:* GRÁTIS (IR BUSCAR)\n`;
+    message += `Retirada no local - Gratis\n\n`;
   }
-  message += `*TOTAL: R$ ${(props.totalPrice + deliveryFee).toFixed(2)}*\n`;
-  message += `*METODO DE PAGAMENTO:* ${getPaymentMethodName(paymentMethod.value)}\n`;
 
-  // Adiciona data e hora do pedido
-  const now = new Date();
-  message += `\n${now.toLocaleDateString("pt-BR")} às ${now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}`;
+  // PAGAMENTO
+  message += `*PAGAMENTO*\n`;
+  message += `Metodo: ${getPaymentMethodName(paymentMethod.value)}\n\n`;
+
+  // TOTAL
+  message += `*TOTAL DO PEDIDO*\n`;
+  message += `R$ ${(props.totalPrice + deliveryFee).toFixed(2)}`;
 
   return message;
 };
@@ -284,7 +313,6 @@ const getTotalWithDelivery = () => {
       <div class="delivery-type-selector">
         <label class="delivery-type-option">
           <input type="radio" v-model="deliveryType" value="delivery" />
-          <span class="type-icon">🏍️</span>
           <span class="type-info">
             <span class="type-name">Entrega</span>
             <span class="type-price">R$ 5,00</span>
@@ -293,10 +321,9 @@ const getTotalWithDelivery = () => {
 
         <label class="delivery-type-option">
           <input type="radio" v-model="deliveryType" value="pickup" />
-          <span class="type-icon">🏪</span>
           <span class="type-info">
-            <span class="type-name">Ir Buscar</span>
-            <span class="type-price">Grátis</span>
+            <span class="type-name">Retirar no Local</span>
+            <span class="type-price">Gratis</span>
           </span>
         </label>
       </div>
@@ -388,25 +415,21 @@ const getTotalWithDelivery = () => {
       <div class="payment-methods">
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="pix" />
-          <span class="method-icon">💳</span>
           <span class="method-name">PIX</span>
         </label>
 
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="credit" />
-          <span class="method-icon">💳</span>
-          <span class="method-name">Cartão de Crédito</span>
+          <span class="method-name">Cartao de Credito</span>
         </label>
 
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="debit" />
-          <span class="method-icon">🏦</span>
-          <span class="method-name">Cartão de Débito</span>
+          <span class="method-name">Cartao de Debito</span>
         </label>
 
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="cash" />
-          <span class="method-icon">💵</span>
           <span class="method-name">Dinheiro</span>
         </label>
       </div>
