@@ -366,6 +366,20 @@ const pizzas = ref([
     ],
     prices: { P: 52.0, G: 72.0 },
   },
+  {
+    id: 28,
+    name: "FILÉ MIGNON",
+    category: "ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FILÉ MIGNON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 50.0, G: 72.0 },
+  },
   // {
   //   id: 28,
   //   name: "PIZZA DE CALABRESA + Guaraná Antártica 1L",
