@@ -640,10 +640,11 @@ const getPaymentMethodLabel = (method) => {
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-badge"
-                  >SÓ HOJE</span
-                >
-                <span v-if="category === 'PROMOÇÃO'" class="fire-icon">🔥</span>
+                <span v-if="category === 'PROMOÇÃO'" class="carnival-icons">
+                  <span class="carnival-icon carnival-icon-1">🎭</span>
+                  <span class="carnival-icon carnival-icon-2">🎉</span>
+                </span>
+                <div v-if="category === 'PROMOÇÃO'" class="confetti"></div>
                 {{ category }}
               </button>
             </div>
@@ -902,18 +903,79 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .filter-btn.promo {
-  background: linear-gradient(135deg, #ff4500 0%, #ff6347 100%);
+  background: linear-gradient(
+    135deg,
+    #00aa44 0%,
+    #ffd700 25%,
+    #ff1493 50%,
+    #00ffff 75%,
+    #ff6347 100%
+  );
   color: #ffffff;
-  border: 2px solid #ff4500;
-  padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+  border: 3px solid #ffd700;
+  padding: 0.6rem 1.2rem;
   font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 6px 20px rgba(255, 215, 0, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: visible;
+  animation: carnival-pulse 1.2s ease-in-out infinite;
 }
 
 .filter-btn.promo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
+  transform: scale(1.08) rotateZ(-2deg);
+  box-shadow:
+    0 8px 25px rgba(255, 215, 0, 0.7),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation-play-state: paused;
+}
+
+@keyframes carnival-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotateZ(0deg);
+    background: linear-gradient(
+      135deg,
+      #00aa44 0%,
+      #ffd700 25%,
+      #ff1493 50%,
+      #00ffff 75%,
+      #ff6347 100%
+    );
+  }
+  25% {
+    background: linear-gradient(
+      45deg,
+      #ff1493 0%,
+      #00ffff 25%,
+      #ff6347 50%,
+      #00aa44 75%,
+      #ffd700 100%
+    );
+  }
+  50% {
+    transform: scale(1.02) rotateZ(1deg);
+    background: linear-gradient(
+      225deg,
+      #ffd700 0%,
+      #ff6347 25%,
+      #00aa44 50%,
+      #ff1493 75%,
+      #00ffff 100%
+    );
+  }
+  75% {
+    background: linear-gradient(
+      -45deg,
+      #00ffff 0%,
+      #ff1493 25%,
+      #00aa44 50%,
+      #ffd700 75%,
+      #ff6347 100%
+    );
+  }
 }
 
 .promo-badge {
@@ -961,6 +1023,111 @@ const getPaymentMethodLabel = (method) => {
   }
 }
 
+.carnival-icons {
+  position: absolute;
+  font-size: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.carnival-icon {
+  animation: carnival-bounce 0.6s ease-in-out infinite;
+}
+
+.carnival-icon-1 {
+  animation-delay: 0s;
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carnival-icon-2 {
+  animation-delay: 0.2s;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-15deg);
+}
+
+.carnival-icon-3 {
+  animation-delay: 0.4s;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(15deg);
+}
+
+@keyframes carnival-bounce {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(0deg);
+  }
+  25% {
+    opacity: 0.9;
+    transform: translateY(-8px) rotateZ(-10deg);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translateY(-8px) rotateZ(10deg);
+  }
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.confetti::before,
+.confetti::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ffd700, #ffa500);
+  border-radius: 50%;
+  animation: confetti-fall 3s ease-in forwards;
+}
+
+.confetti::before {
+  left: 10%;
+  animation-delay: 0s;
+  background: radial-gradient(circle, #00ff00, #00aa00);
+}
+
+.confetti::after {
+  left: 80%;
+  animation-delay: 0.5s;
+  background: radial-gradient(circle, #ff1493, #ff69b4);
+}
+
+@keyframes confetti-fall {
+  0% {
+    top: 0;
+    opacity: 1;
+    transform: translateX(0) rotateZ(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    transform: translateX(40px) rotateZ(360deg);
+  }
+}
+
 .filter-btn.active {
   background: #c61818;
   border-color: #c61818;
@@ -969,9 +1136,20 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .filter-btn.promo.active {
-  background: linear-gradient(135deg, #cc3700 0%, #ff4500 100%);
-  border-color: #cc3700;
-  transform: scale(1.05);
+  background: linear-gradient(
+    135deg,
+    #00aa44 0%,
+    #ffd700 25%,
+    #ff1493 50%,
+    #00ffff 75%,
+    #ff6347 100%
+  );
+  border-color: #ffd700;
+  transform: scale(1.1) rotateZ(-3deg);
+  box-shadow:
+    0 10px 30px rgba(255, 215, 0, 0.7),
+    0 0 30px rgba(255, 69, 0, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .detail-section {
