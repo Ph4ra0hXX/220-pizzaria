@@ -624,7 +624,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
-                  'PROMOÇÃO',
+                  /* 'PROMOÇÃO', */
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
@@ -635,16 +635,16 @@ const getPaymentMethodLabel = (method) => {
                   'filter-btn',
                   {
                     active: categoryFilter === category,
-                    promo: category === 'PROMOÇÃO',
+                    /* promo: category === 'PROMOÇÃO', */
                   },
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="carnival-icons">
+                <!-- <span v-if="category === 'PROMOÇÃO'" class="carnival-icons">
                   <span class="carnival-icon carnival-icon-1">🎭</span>
                   <span class="carnival-icon carnival-icon-2">🎉</span>
                 </span>
-                <div v-if="category === 'PROMOÇÃO'" class="confetti"></div>
+                <div v-if="category === 'PROMOÇÃO'" class="confetti"></div> -->
                 {{ category }}
               </button>
             </div>
