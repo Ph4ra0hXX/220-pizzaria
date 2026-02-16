@@ -318,7 +318,7 @@ const pizzas = ref([
     ],
     prices: { P: 42.0, G: 56.0 },
   },
-  {
+ /* {
     id: 24,
     name: "LOMBINHO COM CATUPIRY",
     category: "ESPECIAL",
@@ -331,7 +331,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 42.0, G: 56.0 },
-  },
+  }, */
   {
     id: 25,
     name: "CARNE DE SOL DA CASA",
