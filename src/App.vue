@@ -149,34 +149,34 @@ const pizzas = ref([
     ],
     prices: { P: 44.0, G: 66.0 },
   },
-  // {
-  //   id: 11,
-  //   name: "PIZZA DE LOMBO",
-  //   category: "TRADICIONAL",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE ESPECIAL",
-  //     "MUSSARELA",
-  //     "LOMBINHO",
-  //     "CEBOLA",
-  //     "AZEITONAS",
-  //     "OREGANO",
-  //   ],
-  //   prices: { P: 39.0, G: 53.0 },
-  // },
-  // {
-  //   id: 12,
-  //   name: "PIZZA DE LOMBO COM ABACAXI",
-  //   category: "ESPECIAL",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE ESPECIAL",
-  //     "MUSSARELA",
-  //     "LOMBINHO",
-  //     "ABACAXI CARAMELIZADO",
-  //     "AZEITONAS",
-  //     "OREGANO",
-  //   ],
-  //   prices: { P: 42.0, G: 56.0 },
-  // },
+   {
+     id: 11,
+     name: "PIZZA DE LOMBO",
+     category: "TRADICIONAL",
+     ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+       "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+       "AZEITONAS",
+      "OREGANO",
+    ],
+     prices: { P: 39.0, G: 53.0 },
+   },
+   {
+     id: 12,
+     name: "PIZZA DE LOMBO COM ABACAXI",
+    category: "ESPECIAL",
+     ingredients: [
+       "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "ABACAXI CARAMELIZADO",
+       "AZEITONAS",
+      "OREGANO",
+     ],
+    prices: { P: 42.0, G: 56.0 },
+   },
   {
     id: 13,
     name: "PIZZA DE CARNE DE SOL",
@@ -318,7 +318,7 @@ const pizzas = ref([
     ],
     prices: { P: 42.0, G: 56.0 },
   },
- /* {
+  {
     id: 24,
     name: "LOMBINHO COM CATUPIRY",
     category: "ESPECIAL",
@@ -331,7 +331,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 42.0, G: 56.0 },
-  }, */
+  }, 
   {
     id: 25,
     name: "CARNE DE SOL DA CASA",
