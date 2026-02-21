@@ -1,5 +1,33 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+
+// Lista de bairros com taxas de entrega
+const neighborhoods = [
+  { name: "BOA FÉ", fee: 5.0 },
+  { name: "BOM FIM", fee: 5.0 },
+  { name: "BOM NOME", fee: 5.0 },
+  { name: "BROTOLANDIA", fee: 5.0 },
+  { name: "CENTRO", fee: 5.0 },
+  { name: "CONJ. HABITAR BRASIL", fee: 5.0 },
+  { name: "CIDADE ALTA", fee: 7.0 },
+  { name: "ESTRADA DAS FLORES", fee: 7.0 },
+  { name: "EUCALIPTOS", fee: 5.0 },
+  { name: "ILHA", fee: 5.0 },
+  { name: "JOSE SIMÕES", fee: 5.0 },
+  { name: "JOÃO XXIII", fee: 5.0 },
+  { name: "LUIZ ALVES DE FREITAS", fee: 5.0 },
+  { name: "LOT.CONVIVER", fee: 6.0 },
+  { name: "MONSENHOR OTAVIO", fee: 5.0 },
+  { name: "PITOMBEIRA", fee: 5.0 },
+  { name: "OUTROS", fee: 7.0 },
+  { name: "POPULARES", fee: 5.0 },
+  { name: "SANTA LUZIA", fee: 5.0 },
+  { name: "SÃO RAIMUNDO", fee: 7.0 },
+  { name: "SITIO BOM JESUS", fee: 5.0 },
+  { name: "SITIO SOCORRO", fee: 5.0 },
+  { name: "VILA DO ALONSO", fee: 6.0 },
+  { name: "VILA TETEU", fee: 5.0 },
+];
 
 const props = defineProps({
   totalPrice: {
@@ -229,9 +257,9 @@ const formatOrderForWhatsApp = () => {
 
   // ENTREGA
   message += `*ENTREGA*\n`;
-  const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
+  const deliveryFee = getDeliveryFee();
   if (deliveryType.value === "delivery") {
-    message += `Entrega - R$ 5,00\n\n`;
+    message += `Entrega (${deliveryInfo.value.neighborhood}) - R$ ${deliveryFee.toFixed(2)}\n\n`;
   } else {
     message += `Retirada no local - Gratis\n\n`;
   }
@@ -267,7 +295,7 @@ const sendToWhatsApp = () => {
 };
 
 const completeOrder = () => {
-  const deliveryFee = deliveryType.value === "delivery" ? 5 : 0;
+  const deliveryFee = getDeliveryFee();
   const order = {
     deliveryInfo: deliveryInfo.value,
     deliveryType: deliveryType.value,
@@ -281,10 +309,17 @@ const completeOrder = () => {
   emit("complete-order", order);
 };
 
+// Calcula a taxa de entrega baseada no bairro selecionado
+const getDeliveryFee = () => {
+  if (deliveryType.value !== "delivery") return 0;
+  const selected = neighborhoods.find(
+    (n) => n.name === deliveryInfo.value.neighborhood
+  );
+  return selected ? selected.fee : 0;
+};
+
 const getTotalWithDelivery = () => {
-  return deliveryType.value === "delivery"
-    ? props.totalPrice + 5
-    : props.totalPrice;
+  return props.totalPrice + getDeliveryFee();
 };
 </script>
 
@@ -315,7 +350,7 @@ const getTotalWithDelivery = () => {
           <input type="radio" v-model="deliveryType" value="delivery" />
           <span class="type-info">
             <span class="type-name">Entrega</span>
-            <span class="type-price">R$ 5,00</span>
+            <span class="type-price">A partir de R$ 5,00</span>
           </span>
         </label>
 
@@ -374,13 +409,20 @@ const getTotalWithDelivery = () => {
 
           <div class="form-group">
             <label for="neighborhood">Bairro *</label>
-            <input
+            <select
               id="neighborhood"
               v-model="deliveryInfo.neighborhood"
-              type="text"
-              placeholder="Nome do bairro"
               :class="{ 'input-error': errors.neighborhood }"
-            />
+            >
+              <option value="" disabled>Selecione o bairro</option>
+              <option
+                v-for="neighborhood in neighborhoods"
+                :key="neighborhood.name"
+                :value="neighborhood.name"
+              >
+                {{ neighborhood.name }} - R$ {{ neighborhood.fee.toFixed(2) }}
+              </option>
+            </select>
             <span v-if="errors.neighborhood" class="error-message">{{
               errors.neighborhood
             }}</span>
@@ -456,8 +498,8 @@ const getTotalWithDelivery = () => {
           <span>R$ {{ totalPrice.toFixed(2) }}</span>
         </div>
         <div v-if="deliveryType === 'delivery'" class="summary-line">
-          <span>Taxa de entrega:</span>
-          <span>R$ 5,00</span>
+          <span>Taxa de entrega ({{ deliveryInfo.neighborhood }}):</span>
+          <span>R$ {{ getDeliveryFee().toFixed(2) }}</span>
         </div>
         <div v-else class="summary-line delivery-free">
           <span>Taxa de entrega:</span>
