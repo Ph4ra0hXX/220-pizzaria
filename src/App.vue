@@ -617,7 +617,7 @@ const getPaymentMethodLabel = (method) => {
 </script>
 
 <template>
-<!--  <div class="pizzaria-app">
+  <div class="pizzaria-app">
     <img src="/logo.png" alt="" />
     <div class="container">
       <div class="main-content">
@@ -820,7 +820,7 @@ const getPaymentMethodLabel = (method) => {
         <p class="footer-text">DE 18HS ÀS 22:30HS</p>
       </div>
     </footer>
-  </div> -->
+  </div>
 </template>
 
 <style scoped>
