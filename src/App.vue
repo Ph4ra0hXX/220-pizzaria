@@ -476,17 +476,20 @@ const edges = ref([
   { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
+  { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
 ]);
 
 const additionals = ref([
   { id: 1, name: "CATUPIRY ORIGINAL", price: 10.0 },
   { id: 2, name: "CHEDDAR", price: 10.0 },
   { id: 3, name: "CREM CHEESE", price: 10.0 },
-  { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 5.0 },
-  { id: 5, name: "MILHO VERDE", price: 2.0 },
-  { id: 6, name: "CEBOLA", price: 2.0 },
-  { id: 7, name: "PIMENTÃO", price: 2.0 },
-  { id: 8, name: "TOMATE", price: 2.0 },
+  { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 7.0 },
+  { id: 5, name: "GELEIA DE PIMENTA", price: 7.0 },
+  { id: 6, name: "ABACAXI CARAMELIZADO", price: 10.0 },
+  { id: 7, name: "MILHO VERDE", price: 2.0 },
+  { id: 8, name: "CEBOLA", price: 2.0 },
+  { id: 9, name: "PIMENTÃO", price: 2.0 },
+  { id: 10, name: "TOMATE", price: 2.0 },
 ]);
 
 const selectedPizza = ref(null);
