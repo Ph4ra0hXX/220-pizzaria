@@ -46,7 +46,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
- /* {
+  /* {
     id: 4,
     name: "PIZZA DE CALABRESA COM CATUPIRY",
     category: "TRADICIONAL",
@@ -120,7 +120,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 54.0 },
   },
-/*  {
+  {
     id: 9,
     name: "MISTA",
     category: "TRADICIONAL",
@@ -133,7 +133,7 @@ const pizzas = ref([
       "CEBOLA",
     ],
     prices: { P: 37.0, G: 48.0 },
-  }, */
+  },
   {
     id: 10,
     name: "PIZZA DE CAMARÃO",
@@ -149,34 +149,34 @@ const pizzas = ref([
     ],
     prices: { P: 44.0, G: 66.0 },
   },
-   {
-     id: 11,
-     name: "PIZZA DE LOMBO",
-     category: "TRADICIONAL",
-     ingredients: [
+  {
+    id: 11,
+    name: "PIZZA DE LOMBO",
+    category: "TRADICIONAL",
+    ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
-       "MUSSARELA",
+      "MUSSARELA",
       "LOMBINHO",
       "CEBOLA",
-       "AZEITONAS",
+      "AZEITONAS",
       "OREGANO",
     ],
-     prices: { P: 39.0, G: 53.0 },
-   },
-   {
-     id: 12,
-     name: "PIZZA DE LOMBO COM ABACAXI",
+    prices: { P: 39.0, G: 53.0 },
+  },
+  {
+    id: 12,
+    name: "PIZZA DE LOMBO COM ABACAXI",
     category: "ESPECIAL",
-     ingredients: [
-       "MOLHO DE TOMATE ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
       "LOMBINHO",
       "ABACAXI CARAMELIZADO",
-       "AZEITONAS",
+      "AZEITONAS",
       "OREGANO",
-     ],
+    ],
     prices: { P: 42.0, G: 56.0 },
-   },
+  },
   {
     id: 13,
     name: "PIZZA DE CARNE DE SOL",
@@ -331,7 +331,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 42.0, G: 56.0 },
-  }, 
+  },
   {
     id: 25,
     name: "CARNE DE SOL DA CASA",
@@ -380,7 +380,7 @@ const pizzas = ref([
     ],
     prices: { P: 50.0, G: 72.0 },
   },
- /* {
+  /* {
     id: 28,
     name: "PIZZA DE CALABRESA",
     category: "PROMOÇÃO",
@@ -677,7 +677,7 @@ const getPaymentMethodLabel = (method) => {
             @add-to-cart="addToCart"
             @close="selectedPizza = null"
           />
-        </section> 
+        </section>
       </div>
     </div>
 
@@ -811,7 +811,7 @@ const getPaymentMethodLabel = (method) => {
             isCheckoutOpen = false;
             isCartOpen = true;
           "
-        /> 
+        />
       </div>
     </div>
 
