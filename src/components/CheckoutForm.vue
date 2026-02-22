@@ -5,6 +5,7 @@ import { ref, computed } from "vue";
 const neighborhoods = [
   { name: "BOA FÉ", fee: 5.0 },
   { name: "BOM FIM", fee: 5.0 },
+  { name: "BOM JESUS", fee: 5.0 },
   { name: "BOM NOME", fee: 5.0 },
   { name: "BROTOLANDIA", fee: 5.0 },
   { name: "CENTRO", fee: 5.0 },
@@ -313,7 +314,7 @@ const completeOrder = () => {
 const getDeliveryFee = () => {
   if (deliveryType.value !== "delivery") return 0;
   const selected = neighborhoods.find(
-    (n) => n.name === deliveryInfo.value.neighborhood
+    (n) => n.name === deliveryInfo.value.neighborhood,
   );
   return selected ? selected.fee : 0;
 };
