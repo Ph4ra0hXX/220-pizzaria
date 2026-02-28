@@ -492,6 +492,7 @@ const additionals = ref([
   { id: 10, name: "TOMATE", price: 2.0 },
 ]);
 
+
 const selectedPizza = ref(null);
 const selectedSize = ref("P");
 const selectedEdge = ref(null);
