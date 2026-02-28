@@ -392,7 +392,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
   {
     id: 29,
@@ -406,7 +406,7 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
   {
     id: 30,
@@ -425,7 +425,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
   {
     id: 31,
@@ -440,7 +440,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
   {
     id: 32,
@@ -454,7 +454,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
   {
     id: 33,
@@ -466,7 +466,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 49.9 },
   },
 ]);
 
@@ -632,7 +632,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
-                  /* 'PROMOÇÃO', */
+                  'PROMOÇÃO',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
@@ -643,16 +643,16 @@ const getPaymentMethodLabel = (method) => {
                   'filter-btn',
                   {
                     active: categoryFilter === category,
-                    /* promo: category === 'PROMOÇÃO', */
+                    promo: category === 'PROMOÇÃO',
                   },
                 ]"
                 @click="categoryFilter = category"
               >
-                <!-- <span v-if="category === 'PROMOÇÃO'" class="carnival-icons">
+                <span v-if="category === 'PROMOÇÃO'" class="carnival-icons">
                   <span class="carnival-icon carnival-icon-1">🎭</span>
                   <span class="carnival-icon carnival-icon-2">🎉</span>
                 </span>
-                <div v-if="category === 'PROMOÇÃO'" class="confetti"></div> -->
+                <div v-if="category === 'PROMOÇÃO'" class="confetti"></div>
                 {{ category }}
               </button>
             </div>
