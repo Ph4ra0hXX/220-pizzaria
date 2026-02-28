@@ -46,7 +46,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
-  /* {
+   {
     id: 4,
     name: "PIZZA DE CALABRESA COM CATUPIRY",
     category: "TRADICIONAL",
@@ -60,7 +60,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 42.0, G: 58.0 },
-  }, */
+  }, 
   {
     id: 5,
     name: "PIZZA DE PORTUGUESA",
