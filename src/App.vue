@@ -382,7 +382,7 @@ const pizzas = ref([
   },
   {
     id: 28,
-    name: "PIZZA DE CALABRESA",
+    name: "PIZZA DE CALABRESA G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -396,7 +396,7 @@ const pizzas = ref([
   },
   {
     id: 29,
-    name: "MISTA",
+    name: "MISTA G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -410,7 +410,7 @@ const pizzas = ref([
   },
   {
     id: 30,
-    name: "PORTUGUESA DA CASA",
+    name: "PORTUGUESA DA CASA G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -429,7 +429,7 @@ const pizzas = ref([
   },
   {
     id: 31,
-    name: "PIZZA MARGHERITA",
+    name: "PIZZA MARGHERITA G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -444,7 +444,7 @@ const pizzas = ref([
   },
   {
     id: 32,
-    name: "PIZZA DE FRANGO",
+    name: "PIZZA DE FRANGO G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -458,7 +458,7 @@ const pizzas = ref([
   },
   {
     id: 33,
-    name: "PIZZA DE MUSSARELA",
+    name: "PIZZA DE MUSSARELA G + BORDA GRÁTIS",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
