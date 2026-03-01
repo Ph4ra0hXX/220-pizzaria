@@ -275,7 +275,7 @@ const getFilteredEdges = () => {
               @click="$emit('update:selectedEdge', edge)"
             >
               <span class="edge-name">{{ edge.name }}</span>
-              <span v-if="isPromotion()" class="edge-price free">GRÁTIS</span>
+              <span v-if="isPromotion() || edge.price === 0" class="edge-price free">GRÁTIS</span>
               <span v-else class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
             </button>
           </div>
