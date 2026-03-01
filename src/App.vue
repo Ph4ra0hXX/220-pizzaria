@@ -543,7 +543,7 @@ const addToCart = () => {
     }
     // Se tamanho G sem sabores adicionais, usa o preço normal (não divide)
 
-    if (selectedEdge.value && !isBeverage) {
+    if (selectedEdge.value && !isBeverage && !isPromotion) {
       itemPrice += selectedEdge.value.price;
     }
 

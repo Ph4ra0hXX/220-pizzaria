@@ -87,7 +87,7 @@ const getDisplayPrice = (pizza, edge) => {
   }
   // Se tamanho G sem sabores adicionais, manter o preço original (não divide mais)
 
-  if (edge) {
+  if (edge && !isPromotion) {
     price += edge.price;
   }
 
@@ -157,6 +157,19 @@ const isFlavorSelected = (flavor) => {
 
 const isFlavorsAllowed = () => {
   return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
+};
+
+const isPromotion = () => {
+  return props.pizza.category === "PROMOÇÃO";
+};
+
+const getFilteredEdges = () => {
+  if (isPromotion()) {
+    return props.edges.filter(
+      (e) => e.name === "BORDA CHEDDAR ORIGINAL" || e.name === "BORDA CREAM CHEESE ORIGINAL"
+    );
+  }
+  return props.edges;
 };
 </script>
 
@@ -245,7 +258,7 @@ const isFlavorsAllowed = () => {
           v-if="!isBeverage(pizza) && edges.length > 0"
           class="edges-section"
         >
-          <h3>Bordas (Opcional):</h3>
+          <h3>{{ isPromotion() ? 'Borda Grátis (Escolha uma):' : 'Bordas (Opcional):' }}</h3>
           <div class="edges-list">
             <button
               class="edge-btn no-edge"
@@ -255,14 +268,15 @@ const isFlavorsAllowed = () => {
               Sem Borda
             </button>
             <button
-              v-for="edge in edges"
+              v-for="edge in getFilteredEdges()"
               :key="edge.id"
               class="edge-btn"
               :class="{ active: selectedEdge && selectedEdge.id === edge.id }"
               @click="$emit('update:selectedEdge', edge)"
             >
               <span class="edge-name">{{ edge.name }}</span>
-              <span class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
+              <span v-if="isPromotion()" class="edge-price free">GRÁTIS</span>
+              <span v-else class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
             </button>
           </div>
         </div>
@@ -521,6 +535,12 @@ const isFlavorsAllowed = () => {
 .edge-price {
   font-size: 0.9rem;
   opacity: 0.8;
+}
+
+.edge-price.free {
+  color: #2e7d32;
+  font-weight: 700;
+  opacity: 1;
 }
 
 .comment-section {
