@@ -472,8 +472,8 @@ const pizzas = ref([
 
 const edges = ref([
   { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 15.0 },
-  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 15.0 },
-  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
+  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 0.0 },
+  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 0.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
   { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
@@ -741,7 +741,7 @@ const getPaymentMethodLabel = (method) => {
 
                 <p v-if="item.edge" class="item-info">
                   {{ item.edge.name }}
-                  <span v-if="item.pizza.category === 'PROMOÇÃO'">(GRÁTIS)</span>
+                  <span v-if="item.pizza.category === 'PROMOÇÃO' || item.edge.price === 0">(GRÁTIS)</span>
                   <span v-else>(+R$ {{ item.edge.price.toFixed(2) }})</span>
                 </p>
                 <div
