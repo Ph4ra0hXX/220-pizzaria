@@ -227,7 +227,12 @@ const formatOrderForWhatsApp = () => {
     if (hasExtras) {
       message += `\n   Extras:\n`;
       if (item.edge) {
-        message += `   - Borda de ${item.edge.name}: R$ ${item.edge.price.toFixed(2)}\n`;
+        const isPromo = item.pizza.category === "PROMOÇÃO";
+        if (isPromo) {
+          message += `   - Borda de ${item.edge.name}: GRÁTIS\n`;
+        } else {
+          message += `   - Borda de ${item.edge.name}: R$ ${item.edge.price.toFixed(2)}\n`;
+        }
       }
       if (item.additionals && item.additionals.length > 0) {
         item.additionals.forEach((additional) => {
