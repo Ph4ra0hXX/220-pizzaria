@@ -265,6 +265,11 @@ const formatOrderForWhatsApp = () => {
 
   message += `────────────────────\n\n`;
 
+  // PROMOÇÃO
+  message += `*PROMOÇÃO APLICADA*\n`;
+  message += `Desconto de ${discountPercentage}% nos itens: -R$ ${getDiscount().toFixed(2)}\n`;
+  message += `Subtotal com desconto: R$ ${getSubtotalWithDiscount().toFixed(2)}\n\n`;
+
   // ENTREGA
   message += `*ENTREGA*\n`;
   const deliveryFee = getDeliveryFee();
@@ -280,7 +285,7 @@ const formatOrderForWhatsApp = () => {
 
   // TOTAL
   message += `*TOTAL DO PEDIDO*\n`;
-  message += `R$ ${(props.totalPrice + deliveryFee).toFixed(2)}`;
+  message += `R$ ${getTotalWithDelivery().toFixed(2)}`;
 
   return message;
 };
@@ -306,12 +311,17 @@ const sendToWhatsApp = () => {
 
 const completeOrder = () => {
   const deliveryFee = getDeliveryFee();
+  const discount = getDiscount();
   const order = {
     deliveryInfo: deliveryInfo.value,
     deliveryType: deliveryType.value,
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
-    total: props.totalPrice + deliveryFee,
+    subtotal: props.totalPrice,
+    discount: discount,
+    discountPercentage: discountPercentage,
+    deliveryFee: deliveryFee,
+    total: getTotalWithDelivery(),
     timestamp: new Date(),
   };
 
@@ -328,8 +338,19 @@ const getDeliveryFee = () => {
   return selected ? selected.fee : 0;
 };
 
+// Promoção: 10% de desconto nos itens (não inclui entrega)
+const discountPercentage = 10;
+
+const getDiscount = () => {
+  return props.totalPrice * (discountPercentage / 100);
+};
+
+const getSubtotalWithDiscount = () => {
+  return props.totalPrice - getDiscount();
+};
+
 const getTotalWithDelivery = () => {
-  return props.totalPrice + getDeliveryFee();
+  return getSubtotalWithDiscount() + getDeliveryFee();
 };
 </script>
 
@@ -514,8 +535,16 @@ const getTotalWithDelivery = () => {
 
       <div class="payment-summary">
         <div class="summary-line">
-          <span>Subtotal:</span>
+          <span>Subtotal dos itens:</span>
           <span>R$ {{ totalPrice.toFixed(2) }}</span>
+        </div>
+        <div class="summary-line discount">
+          <span>🎉 Desconto ({{ discountPercentage }}%):</span>
+          <span class="discount-value">-R$ {{ getDiscount().toFixed(2) }}</span>
+        </div>
+        <div class="summary-line">
+          <span>Subtotal com desconto:</span>
+          <span>R$ {{ getSubtotalWithDiscount().toFixed(2) }}</span>
         </div>
         <div v-if="deliveryType === 'delivery'" class="summary-line">
           <span>Taxa de entrega ({{ deliveryInfo.neighborhood }}):</span>
@@ -903,6 +932,20 @@ const getTotalWithDelivery = () => {
   font-size: 1.2rem;
   font-weight: 700;
   color: #000;
+}
+
+.summary-line.discount {
+  color: #28a745;
+  font-weight: 600;
+  background: #f0fff4;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0.25rem 0;
+}
+
+.summary-line.discount .discount-value {
+  color: #28a745;
+  font-weight: 700;
 }
 
 .form-actions {
