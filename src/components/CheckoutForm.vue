@@ -78,6 +78,7 @@ const deliveryInfo = ref({
   number: "",
   complement: "",
   neighborhood: "",
+  reference: "",
 });
 
 // Erros de validação
@@ -157,6 +158,9 @@ const formatOrderForWhatsApp = () => {
       message += `Complemento: ${deliveryInfo.value.complement}\n`;
     }
     message += `Bairro: ${deliveryInfo.value.neighborhood}\n`;
+    if (deliveryInfo.value.reference) {
+      message += `Ponto de Referência: ${deliveryInfo.value.reference}\n`;
+    }
   } else {
     message += `Tipo: Retirada no local (sem taxa)\n`;
   }
@@ -442,6 +446,16 @@ const getTotalWithDelivery = () => {
             v-model="deliveryInfo.complement"
             type="text"
             placeholder="Apto, bloco, etc"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="reference">Ponto de Referência</label>
+          <input
+            id="reference"
+            v-model="deliveryInfo.reference"
+            type="text"
+            placeholder="Ex: Próximo à padaria, casa azul..."
           />
         </div>
       </div>
