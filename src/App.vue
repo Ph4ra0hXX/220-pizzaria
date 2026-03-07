@@ -18,7 +18,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 38.0, G: 46.0 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
-   {
+  {
     id: 4,
     name: "PIZZA DE CALABRESA COM CATUPIRY",
     category: "TRADICIONAL",
@@ -60,7 +60,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 42.0, G: 58.0 },
-  }, 
+  },
   {
     id: 5,
     name: "PIZZA DE PORTUGUESA",
@@ -472,8 +472,8 @@ const pizzas = ref([
 
 const edges = ref([
   { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 15.0 },
-  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 0.0 },
-  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 0.0 },
+  { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 15.0 },
+  { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
   { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
@@ -491,7 +491,6 @@ const additionals = ref([
   { id: 9, name: "PIMENTÃO", price: 2.0 },
   { id: 10, name: "TOMATE", price: 2.0 },
 ]);
-
 
 const selectedPizza = ref(null);
 const selectedSize = ref("P");
@@ -648,9 +647,13 @@ const getPaymentMethodLabel = (method) => {
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
+                  >🔥</span
+                >
                 {{ category }}
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
+                  >🔥</span
+                >
               </button>
             </div>
           </div>
@@ -741,7 +744,13 @@ const getPaymentMethodLabel = (method) => {
 
                 <p v-if="item.edge" class="item-info">
                   {{ item.edge.name }}
-                  <span v-if="item.pizza.category === 'PROMOÇÃO' || item.edge.price === 0">(GRÁTIS)</span>
+                  <span
+                    v-if="
+                      item.pizza.category === 'PROMOÇÃO' ||
+                      item.edge.price === 0
+                    "
+                    >(GRÁTIS)</span
+                  >
                   <span v-else>(+R$ {{ item.edge.price.toFixed(2) }})</span>
                 </p>
                 <div
@@ -928,7 +937,7 @@ const getPaymentMethodLabel = (method) => {
 }
 
 .filter-btn.promo::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
@@ -952,7 +961,8 @@ const getPaymentMethodLabel = (method) => {
 }
 
 @keyframes promo-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow:
       0 4px 15px rgba(255, 78, 0, 0.4),
       0 0 20px rgba(236, 159, 5, 0.2);
@@ -1033,8 +1043,6 @@ const getPaymentMethodLabel = (method) => {
     transform: translateY(-50%) scale(1.1);
   }
 }
-
-
 
 .filter-btn.active {
   background: #c61818;
