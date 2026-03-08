@@ -539,9 +539,11 @@ const getTotalWithDelivery = () => {
           <span>R$ {{ totalPrice.toFixed(2) }}</span>
         </div>
         <div class="summary-line discount">
-          <span>🌹 Desconto ({{ discountPercentage }}%) - Feliz Dia das Mulheres!</span>
-
+          <span>🌹 Desconto ({{ discountPercentage }}%):</span>
           <span class="discount-value">-R$ {{ getDiscount().toFixed(2) }}</span>
+        </div>
+        <div class="summary-line discount" style="justify-content: center;">
+          <span>🌹 Feliz Dia das Mulheres! 🌹</span>
         </div>
         <div class="summary-line">
           <span>Subtotal com desconto:</span>
