@@ -87,7 +87,7 @@ const getDisplayPrice = (pizza, edge) => {
   }
   // Se tamanho G sem sabores adicionais, manter o preço original (não divide mais)
 
-  if (edge && !isPromotion) {
+  if (edge) {
     price += edge.price;
   }
 
@@ -164,11 +164,6 @@ const isPromotion = () => {
 };
 
 const getFilteredEdges = () => {
-  if (isPromotion()) {
-    return props.edges.filter(
-      (e) => e.name === "BORDA CHEDDAR ORIGINAL" || e.name === "BORDA CREAM CHEESE ORIGINAL"
-    );
-  }
   return props.edges;
 };
 </script>
@@ -258,7 +253,7 @@ const getFilteredEdges = () => {
           v-if="!isBeverage(pizza) && edges.length > 0"
           class="edges-section"
         >
-          <h3>{{ isPromotion() ? 'Borda Grátis (Escolha uma):' : 'Bordas (Opcional):' }}</h3>
+          <h3>Bordas (Opcional):</h3>
           <div class="edges-list">
             <button
               class="edge-btn no-edge"
@@ -275,8 +270,7 @@ const getFilteredEdges = () => {
               @click="$emit('update:selectedEdge', edge)"
             >
               <span class="edge-name">{{ edge.name }}</span>
-              <span v-if="isPromotion() || edge.price === 0" class="edge-price free">GRÁTIS</span>
-              <span v-else class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
+              <span class="edge-price">+R$ {{ edge.price.toFixed(2) }}</span>
             </button>
           </div>
         </div>
