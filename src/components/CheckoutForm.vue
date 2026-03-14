@@ -306,15 +306,12 @@ const sendToWhatsApp = () => {
 
 const completeOrder = () => {
   const deliveryFee = getDeliveryFee();
-  const discount = getDiscount();
   const order = {
     deliveryInfo: deliveryInfo.value,
     deliveryType: deliveryType.value,
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
     subtotal: props.totalPrice,
-    discount: discount,
-    discountPercentage: discountPercentage,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
