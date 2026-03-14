@@ -265,11 +265,6 @@ const formatOrderForWhatsApp = () => {
 
   message += `────────────────────\n\n`;
 
-  // PROMOÇÃO
-  message += `*PROMOÇÃO APLICADA*\n`;
-  message += `Desconto de ${discountPercentage}% nos itens: -R$ ${getDiscount().toFixed(2)}\n`;
-  message += `Subtotal com desconto: R$ ${getSubtotalWithDiscount().toFixed(2)}\n\n`;
-
   // ENTREGA
   message += `*ENTREGA*\n`;
   const deliveryFee = getDeliveryFee();
@@ -338,19 +333,8 @@ const getDeliveryFee = () => {
   return selected ? selected.fee : 0;
 };
 
-// Promoção: 10% de desconto nos itens (não inclui entrega)
-const discountPercentage = 10;
-
-const getDiscount = () => {
-  return props.totalPrice * (discountPercentage / 100);
-};
-
-const getSubtotalWithDiscount = () => {
-  return props.totalPrice - getDiscount();
-};
-
 const getTotalWithDelivery = () => {
-  return getSubtotalWithDiscount() + getDeliveryFee();
+  return props.totalPrice + getDeliveryFee();
 };
 </script>
 
@@ -538,17 +522,7 @@ const getTotalWithDelivery = () => {
           <span>Subtotal dos itens:</span>
           <span>R$ {{ totalPrice.toFixed(2) }}</span>
         </div>
-        <div class="summary-line discount">
-          <span>Desconto ({{ discountPercentage }}%):</span>
-          <span class="discount-value">-R$ {{ getDiscount().toFixed(2) }}</span>
-        </div>
-        <div class="summary-line discount" style="justify-content: center;">
-          <span>🌹 Feliz Dia das Mulheres! 🌹</span>
-        </div>
-        <div class="summary-line">
-          <span>Subtotal com desconto:</span>
-          <span>R$ {{ getSubtotalWithDiscount().toFixed(2) }}</span>
-        </div>
+
         <div v-if="deliveryType === 'delivery'" class="summary-line">
           <span>Taxa de entrega ({{ deliveryInfo.neighborhood }}):</span>
           <span>R$ {{ getDeliveryFee().toFixed(2) }}</span>
