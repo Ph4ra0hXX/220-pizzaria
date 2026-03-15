@@ -803,7 +803,9 @@ const getPaymentMethodLabel = (method) => {
 
                 <p v-if="item.edge" class="item-info">
                   {{ item.edge.name }}
-                  <span v-else>(+R$ {{ item.edge.price.toFixed(2) }})</span>
+                  <span v-if="item.edge.price > 0"
+                    >(+R$ {{ item.edge.price.toFixed(2) }})</span
+                  >
                 </p>
                 <div
                   v-if="item.additionals && item.additionals.length > 0"
