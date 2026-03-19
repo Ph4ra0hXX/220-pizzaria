@@ -174,8 +174,20 @@ const getFilteredEdges = () => {
       <button class="close-btn" @click="$emit('close')">✕</button>
 
       <div class="detail-header">
-        <div class="pizza-icon" :class="{ 'beverage-icon': isBeverage(pizza) }">
-          {{ isBeverage(pizza) ? "🥤" : "🍕" }}
+        <div class="pizza-image-container">
+          <img
+            v-if="pizza.image"
+            :src="pizza.image"
+            :alt="pizza.name"
+            class="pizza-image"
+          />
+          <div
+            v-else
+            class="pizza-icon"
+            :class="{ 'beverage-icon': isBeverage(pizza) }"
+          >
+            {{ isBeverage(pizza) ? "🥤" : "🍕" }}
+          </div>
         </div>
         <h2>{{ pizza.name }}</h2>
       </div>
@@ -386,6 +398,21 @@ const getFilteredEdges = () => {
 .pizza-icon {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+}
+
+.pizza-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  height: 150px;
+}
+
+.pizza-image {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .pizza-icon.beverage-icon {

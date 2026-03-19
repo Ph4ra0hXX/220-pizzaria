@@ -39,7 +39,10 @@ const getPriceDisplay = (pizza) => {
       class="pizza-card"
       @click="$emit('select-pizza', pizza)"
     >
-      <div class="pizza-icon">{{ getIcon(pizza) }}</div>
+      <div class="pizza-image">
+        <img v-if="pizza.image" :src="pizza.image" :alt="pizza.name" />
+        <div v-else class="pizza-icon">{{ getIcon(pizza) }}</div>
+      </div>
       <h3>{{ pizza.name }}</h3>
       <div class="sizes-prices">
         <span class="price-info">{{ getPriceDisplay(pizza) }}</span>
@@ -75,10 +78,26 @@ const getPriceDisplay = (pizza) => {
     0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.pizza-icon {
-  font-size: 3rem;
-  text-align: center;
+.pizza-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.pizza-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pizza-icon {
+  font-size: 4rem;
 }
 
 .pizza-card h3 {
