@@ -253,7 +253,7 @@ const pizzas = ref([
   },
   {
     id: 32,
-    name: "FRANGO BACON",
+    name: "FRANBACON",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE",
