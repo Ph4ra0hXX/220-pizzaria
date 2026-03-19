@@ -410,6 +410,22 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
+    id: 26,
+    name: "PIZZA DE ATUM",
+    category: "ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "ATUM",
+      "CATUPIRY",
+      "MUSSARELA",
+      "TOMATE",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 44.0, G: 66.0 },
+  },
+  {
     id: 27,
     name: "CAMARÃO SUPREME",
     category: "ESPECIAL",
