@@ -231,12 +231,7 @@ const formatOrderForWhatsApp = () => {
     if (hasExtras) {
       message += `\n   Extras:\n`;
       if (item.edge) {
-        const isPromo = item.pizza.category === "PROMOÇÃO";
-        if (isPromo || item.edge.price === 0) {
-          message += `   - Borda de ${item.edge.name}: GRÁTIS\n`;
-        } else {
-          message += `   - Borda de ${item.edge.name}: R$ ${item.edge.price.toFixed(2)}\n`;
-        }
+        message += `   - Borda de ${item.edge.name}: R$ ${item.edge.price.toFixed(2)}\n`;
       }
       if (item.additionals && item.additionals.length > 0) {
         item.additionals.forEach((additional) => {
