@@ -459,10 +459,9 @@ const pizzas = ref([
     prices: { P: 50.0, G: 72.0 },
   },
   */
-  /*
   {
     id: 34,
-    name: "PIZZA DE MUSSARELA G",
+    name: "MUSSARELA",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -474,7 +473,7 @@ const pizzas = ref([
   },
   {
     id: 35,
-    name: "PIZZA DE CALABRESA G",
+    name: "CALABRESA",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -488,7 +487,7 @@ const pizzas = ref([
   },
   {
     id: 36,
-    name: "PIZZA MARGUERITA G",
+    name: "MARGUERITA",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -501,23 +500,23 @@ const pizzas = ref([
     ],
     prices: { G: 39.9 },
   },
-  // {
-  //   id: 37,
-  //   name: "PIZZA DE FRANGO G",
-  //   category: "PROMOÇÃO",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE ESPECIAL",
-  //     "MUSSARELA",
-  //     "FRANGO",
-  //     "MILHO VERDE",
-  //     "AZEITONAS",
-  //     "OREGANO",
-  //   ],
-  //   prices: { G: 39.9 },
-  // },
+  {
+    id: 37,
+    name: "FRANGO",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 39.9 },
+  },
   {
     id: 38,
-    name: "MISTA G",
+    name: "MISTA",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -531,7 +530,7 @@ const pizzas = ref([
   },
   {
     id: 39,
-    name: "CALABRESA SUPREME G",
+    name: "CALABRESA SUPREME",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -544,24 +543,24 @@ const pizzas = ref([
     ],
     prices: { G: 39.9 },
   },
-  // {
-  //   id: 40,
-  //   name: "FRANGO CHEDDAR G",
-  //   category: "PROMOÇÃO",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE",
-  //     "MUSSARELA",
-  //     "FRANGO",
-  //     "MILHO VERDE",
-  //     "CHEDDAR",
-  //     "AZEITONA",
-  //     "OREGANO",
-  //   ],
-  //   prices: { G: 39.9 },
-  // },
+  {
+    id: 40,
+    name: "FRANGO CHEDDAR",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "CHEDDAR",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 39.9 },
+  },
   {
     id: 41,
-    name: "PIZZA DE PORTUGUESA G",
+    name: "PORTUGUESA",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -576,7 +575,6 @@ const pizzas = ref([
     ],
     prices: { G: 39.9 },
   },
-  */
 ]);
 
 const edges = ref([
@@ -740,7 +738,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
-                  /* 'PROMOÇÃO', */
+                  'PROMOÇÃO',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
