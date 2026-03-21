@@ -488,7 +488,7 @@ const additionals = ref([
   { id: 1, name: "CATUPIRY ORIGINAL", price: 10.0 },
   { id: 2, name: "CHEDDAR", price: 10.0 },
   { id: 3, name: "CREM CHEESE", price: 10.0 },
-  { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 7.0 },
+  { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 10.0 },
   { id: 5, name: "GELEIA DE PIMENTA", price: 7.0 },
   { id: 6, name: "ABACAXI CARAMELIZADO", price: 10.0 },
   { id: 7, name: "MILHO VERDE", price: 2.0 },
