@@ -85,7 +85,7 @@ const pizzas = ref([
   {
     id: 6,
     image: "/pizzas/6.jpeg",
-    name: "PIZZA DE PORTUGUESA DA CASA",
+    name: "PIZZA PORTUGUESA DA CASA",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -442,7 +442,7 @@ const pizzas = ref([
   },
   {
     id: 31,
-    name: "PIZZA DE PORTUGUESA G + GUARANÁ",
+    name: "PIZZA PORTUGUESA G + GUARANÁ",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -472,6 +472,24 @@ const pizzas = ref([
       "CEBOLA",
     ],
     prices: { G: 48.9 },
+  },
+  {
+    id: 33,
+    name: "PIZZA PORTUGUESA",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 39.0, G: 53.0 },
   },
 ]);
 
