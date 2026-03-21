@@ -7,7 +7,7 @@ import CheckoutForm from "./components/CheckoutForm.vue";
 const pizzas = ref([
   {
     id: 1,
-    name: "CALABRESA SUPREME",
+    name: "PIZZA DE CALABRESA SUPREME",
     image: "/pizzas/1.jpeg",
     category: "TRADICIONAL",
     ingredients: [
@@ -85,7 +85,7 @@ const pizzas = ref([
   {
     id: 6,
     image: "/pizzas/6.jpeg",
-    name: "PORTUGUESA DA CASA",
+    name: "PIZZA DE PORTUGUESA DA CASA",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -105,7 +105,7 @@ const pizzas = ref([
   {
     id: 7,
     image: "/pizzas/7.jpeg",
-    name: "FRANBACON",
+    name: "PIZZA DE FRANBACON",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -121,7 +121,7 @@ const pizzas = ref([
   {
     id: 8,
     image: "/pizzas/8.jpeg",
-    name: "CAMARÃO SUPREME",
+    name: "PIZZA DE CAMARÃO SUPREME",
     category: "ESPECIAL",
     ingredients: [
       "MASSA 25cm",
@@ -186,7 +186,7 @@ const pizzas = ref([
   {
     id: 12,
     image: "",
-    name: "LOMBINHO COM CATUPIRY",
+    name: "PIZZA DE LOMBINHO COM CATUPIRY",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -217,7 +217,7 @@ const pizzas = ref([
   },
   {
     id: 14,
-    name: "FRANGO CHEDDAR",
+    name: "PIZZA DE FRANGO CHEDDAR",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -232,7 +232,7 @@ const pizzas = ref([
   },
   {
     id: 15,
-    name: "BACON CHEDDAR",
+    name: "PIZZA DE BACON CHEDDAR",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -248,7 +248,7 @@ const pizzas = ref([
   },
   {
     id: 16,
-    name: "DISQUETE",
+    name: "PIZZA DE DISQUETE",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     image: "",
@@ -256,7 +256,7 @@ const pizzas = ref([
   },
   {
     id: 17,
-    name: "BIS",
+    name: "PIZZA DE BIS",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
     image: "",
@@ -264,7 +264,7 @@ const pizzas = ref([
   },
   {
     id: 18,
-    name: "OURO BRANCO",
+    name: "PIZZA DE OURO BRANCO",
     category: "DOCE",
     ingredients: [
       "CHOCOLATE BRANCO",
@@ -300,7 +300,7 @@ const pizzas = ref([
   },
   {
     id: 22,
-    name: "BACONDA CASA",
+    name: "PIZZA DE BACONDA CASA",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -317,7 +317,7 @@ const pizzas = ref([
   },
   {
     id: 23,
-    name: "CARNE DE SOL DA CASA",
+    name: "PIZZA DE CARNE DE SOL DA CASA",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -351,7 +351,7 @@ const pizzas = ref([
   },
   {
     id: 25,
-    name: "MUSSARELA",
+    name: "PIZZA DE MUSSARELA G + GUARANÁ",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -360,26 +360,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 48.9 },
   },
   {
     id: 26,
-    name: "CALABRESA",
-    category: "PROMOÇÃO",
-    image: "",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "CALABRESA FATIADA",
-      "CEBOLA",
-      "AZEITONAS",
-      "OREGANO",
-    ],
-    prices: { G: 39.9 },
-  },
-  {
-    id: 27,
-    name: "MARGUERITA",
+    name: "PIZZA DE MARGUERITA G + GUARANÁ",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -391,13 +376,44 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 48.9 },
+  },
+  {
+    id: 27,
+    name: "PIZZA DE CALABRESA G + GUARANÁ",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA FATIADA",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 48.9 },
   },
   {
     id: 28,
-    name: "FRANGO",
+    name: "PIZZA DE CALABRESA SUPREME G + GUARANÁ",
     category: "PROMOÇÃO",
-    image: "",
+    image: "/pizzas/1.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CALABRESA",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 48.9 },
+  },
+  {
+    id: 29,
+    name: "PIZZA DE FRANGO G + GUARANÁ",
+    category: "PROMOÇÃO",
+    image: "/pizzas/2.jpeg",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
@@ -406,26 +422,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
-  },
-  {
-    id: 29,
-    name: "MISTA",
-    category: "PROMOÇÃO",
-    image: "",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "PRESUNTO",
-      "AZEITONA",
-      "OREGANO",
-      "CEBOLA",
-    ],
-    prices: { G: 39.9 },
+    prices: { G: 48.9 },
   },
   {
     id: 30,
-    name: "FRANGO CHEDDAR",
+    name: "PIZZA DE FRANGO CHEDDAR G + GUARANÁ",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -437,11 +438,11 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 48.9 },
   },
   {
     id: 31,
-    name: "PORTUGUESA",
+    name: "PIZZA DE PORTUGUESA G + GUARANÁ",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -455,7 +456,22 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 48.9 },
+  },
+  {
+    id: 32,
+    name: "PIZZA DE MISTA G + GUARANÁ",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "AZEITONA",
+      "OREGANO",
+      "CEBOLA",
+    ],
+    prices: { G: 48.9 },
   },
 ]);
 

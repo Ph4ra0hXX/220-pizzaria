@@ -110,7 +110,10 @@ const getMaxFlavors = () => {
 const getAvailableFlavors = () => {
   // Retorna todas as pizzas EXCETO a selecionada e bebidas
   return props.pizzas.filter(
-    (p) => p.id !== props.pizza.id && p.category !== "BEBIDA",
+    (p) =>
+      p.id !== props.pizza.id &&
+      p.category !== "BEBIDA" &&
+      p.category !== "PROMOÇÃO",
   );
 };
 
