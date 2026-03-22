@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import PizzaList from "./components/PizzaList.vue";
 import PizzaDetail from "./components/PizzaDetail.vue";
 import CheckoutForm from "./components/CheckoutForm.vue";
@@ -683,13 +683,13 @@ const removeFromCart = (id) => {
   applyPromotions();
 };
 
-const getTotalPrice = () => {
-  applyPromotions(); // Recalcular promoções sempre que calcular total
+const getTotalPrice = computed(() => {
+  applyPromotions(); // Recalcular promoções quando o carrinho mudar
   return cart.value.reduce(
     (total, item) => total + calculateItemPrice(item),
     0,
   );
-};
+});
 
 const getFilteredPizzas = () => {
   if (categoryFilter.value === "TODAS") {
@@ -795,7 +795,7 @@ const getPaymentMethodLabel = (method) => {
       @click="isCartOpen = true"
     >
       <div class="cart-total-display">
-        <span class="cart-price">R$ {{ getTotalPrice().toFixed(2) }}</span>
+        <span class="cart-price">R$ {{ getTotalPrice.toFixed(2) }}</span>
       </div>
       <span class="cart-icon">🛒</span>
     </div>
@@ -893,11 +893,11 @@ const getPaymentMethodLabel = (method) => {
             <div class="modal-cart-summary">
               <div class="summary-row">
                 <span>Subtotal:</span>
-                <span>R$ {{ getTotalPrice().toFixed(2) }}</span>
+                <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
               </div>
               <div class="summary-row total">
                 <span>Total:</span>
-                <span>R$ {{ getTotalPrice().toFixed(2) }}</span>
+                <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
               </div>
               <button
                 class="checkout-btn"
@@ -923,7 +923,7 @@ const getPaymentMethodLabel = (method) => {
       <div class="checkout-modal" @click.stop>
         <button class="modal-close" @click="isCheckoutOpen = false">✕</button>
         <CheckoutForm
-          :totalPrice="getTotalPrice()"
+          :totalPrice="getTotalPrice"
           :cartItems="cart"
           @complete-order="handleCompleteOrder"
           @back-to-cart="
