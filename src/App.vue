@@ -491,13 +491,56 @@ const pizzas = ref([
     ],
     prices: { P: 39.0, G: 53.0 },
   },
+  {
+    id: 34,
+    name: "PIZZA MISTA",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "AZEITONA",
+      "OREGANO",
+      "CEBOLA",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
+  {
+    id: 35,
+    name: "PIZZA DE FRANGO COM CATUPIRY",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "CATUPIRY",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 42.0, G: 56.0 },
+  },
+  {
+    id: 36,
+    name: "PIZZA DE MUSSARELA",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
 ]);
 
 const edges = ref([
   { id: 1, name: "BORDA DE CATUPIRY ORIGINAL", price: 15.0 },
   { id: 2, name: "BORDA CHEDDAR ORIGINAL", price: 15.0 },
   { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
-  // { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
+  { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
   { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
 ]);
