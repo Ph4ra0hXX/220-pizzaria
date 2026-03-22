@@ -171,7 +171,7 @@ const pizzas = ref([
   {
     id: 11,
     image: "",
-    name: "PIZZA DE LOMBO COM ABACAXI",
+    name: "PIZZA DE LOMBO COM ABACAXI CARAMELIZADO",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
