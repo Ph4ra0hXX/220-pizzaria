@@ -170,7 +170,7 @@ const pizzas = ref([
   },
   {
     id: 11,
-    image: "",
+    image: "/pizzas/10.jpg",
     name: "PIZZA DE LOMBO COM ABACAXI CARAMELIZADO",
     category: "ESPECIAL",
     ingredients: [
@@ -329,7 +329,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    image: "",
+    image: "/pizzas/11.jpg",
     prices: { P: 44.0, G: 66.0 },
   },
   {
