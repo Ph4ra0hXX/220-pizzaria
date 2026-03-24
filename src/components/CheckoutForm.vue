@@ -244,16 +244,7 @@ const formatOrderForWhatsApp = () => {
       message += `\n   Obs: ${item.comment}\n`;
     }
 
-    // Exibir promoção se houver
-    if (item.promotion) {
-      message += `\n   🎉 *PROMOÇÃO APLICADA*\n`;
-      message += `   Desconto 15% (Promoção 2xG)\n`;
-      message += `   Valor original: R$ ${item.price.toFixed(2)}\n`;
-      message += `   Desconto: -R$ ${item.promotion.discountAmount.toFixed(2)}\n`;
-      message += `   *Subtotal: R$ ${(item.price - item.promotion.discountAmount).toFixed(2)}*\n\n`;
-    } else {
-      message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
-    }
+    message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
   });
 
   // Processa bebidas separadamente
@@ -268,16 +259,6 @@ const formatOrderForWhatsApp = () => {
   }
 
   message += `────────────────────\n\n`;
-
-  // DESCONTOS
-  const totalDiscount = props.cartItems.reduce((sum, item) => {
-    return sum + (item.promotion ? item.promotion.discountAmount : 0);
-  }, 0);
-
-  if (totalDiscount > 0) {
-    message += `*DESCONTOS*\n`;
-    message += `Promoção 2xG (15%): -R$ ${totalDiscount.toFixed(2)}\n\n`;
-  }
 
   // ENTREGA
   message += `*ENTREGA*\n`;

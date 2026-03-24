@@ -634,11 +634,9 @@ const addToCart = () => {
       comment: selectedComment.value,
       flavors:
         selectedFlavors.value.length > 0 ? [...selectedFlavors.value] : null,
-      promotion: null, // Será preenchido pela função applyPromotions()
     };
 
     cart.value.push(newItem);
-    applyPromotions(); // Aplicar promoções após adicionar ao carrinho
 
     selectedPizza.value = null;
     selectedEdge.value = null;
@@ -648,90 +646,12 @@ const addToCart = () => {
   }
 };
 
-// Função para calcular o preço base de uma pizza (sem borda e adicionais)
-const calculateBasePizzaPrice = (item) => {
-  if (item.pizza.category === "BEBIDA") {
-    return 0; // Bebidas não entram na promoção
-  }
-
-  let basePrice = 0;
-
-  // Se há sabores (meio a meio em pizza G)
-  if (item.flavors && item.flavors.length > 0 && item.size === "G") {
-    basePrice = item.pizza.prices[item.size] / 2;
-    item.flavors.forEach((flavor) => {
-      basePrice += flavor.prices[item.size] / 2;
-    });
-  } else {
-    // Preço base sem sabores adicionais
-    basePrice = item.pizza.prices[item.size];
-  }
-
-  return basePrice;
-};
-
-// Função para aplicar a promoção de 2 pizzas grandes
-const applyPromotions = () => {
-  // Limpar todas as promoções existentes
-  cart.value.forEach((item) => {
-    item.promotion = null;
-  });
-
-  // Encontrar todas as pizzas grandes (não bebidas)
-  const largePizzas = cart.value.filter(
-    (item) => item.size === "G" && item.pizza.category !== "BEBIDA",
-  );
-
-  // Se há 2 ou mais pizzas grandes
-  if (largePizzas.length >= 2) {
-    // Calcular preço base de cada pizza grande
-    const largePizzasWithBasePrice = largePizzas.map((item) => ({
-      item,
-      basePrice: calculateBasePizzaPrice(item),
-    }));
-
-    // Ordenar por preço base (descendente) e pegar a mais cara
-    const sortedByPrice = largePizzasWithBasePrice.sort(
-      (a, b) => b.basePrice - a.basePrice,
-    );
-
-    // Aplicar desconto de 15% na pizza mais cara
-    const mostExpensiveItem = sortedByPrice[0].item;
-    const basePrice = sortedByPrice[0].basePrice;
-    const discountAmount = basePrice * 0.15;
-
-    mostExpensiveItem.promotion = {
-      type: "2xG",
-      discountPercentage: 15,
-      discountAmount: discountAmount,
-      originalBasePrice: basePrice,
-    };
-  }
-};
-
-// Função para recalcular o preço final de um item considerando a promoção
-const calculateItemPrice = (item) => {
-  let finalPrice = item.price;
-
-  // Se há promoção, subtrair do preço total
-  if (item.promotion) {
-    finalPrice -= item.promotion.discountAmount;
-  }
-
-  return finalPrice;
-};
-
 const removeFromCart = (id) => {
   cart.value = cart.value.filter((item) => item.id !== id);
-  applyPromotions();
 };
 
 const getTotalPrice = computed(() => {
-  applyPromotions(); // Recalcular promoções quando o carrinho mudar
-  return cart.value.reduce(
-    (total, item) => total + calculateItemPrice(item),
-    0,
-  );
+  return cart.value.reduce((total, item) => total + item.price, 0);
 });
 
 const getFilteredPizzas = () => {
@@ -912,18 +832,9 @@ const getPaymentMethodLabel = (method) => {
                 <p v-if="item.comment" class="item-comment">
                   💬 {{ item.comment }}
                 </p>
-                <p v-if="item.promotion" class="item-promo">
-                  🎉 Promoção: 15% OFF
-                  <br />
-                  <span class="discount-value"
-                    >-R$ {{ item.promotion.discountAmount.toFixed(2) }}</span
-                  >
-                </p>
               </div>
               <div class="item-actions">
-                <span class="price"
-                  >R$ {{ calculateItemPrice(item).toFixed(2) }}</span
-                >
+                <span class="price">R$ {{ item.price.toFixed(2) }}</span>
                 <button
                   @click="removeFromCart(item.id)"
                   class="remove-btn-modal"
@@ -1397,26 +1308,6 @@ const getPaymentMethodLabel = (method) => {
   border-left: 3px solid #c61818;
   border-radius: 4px;
   font-style: italic;
-}
-
-.item-details .item-promo {
-  color: #0d7922;
-  font-size: 0.85rem;
-  margin: 0.8rem 0 0 0;
-  padding: 0.6rem 0.8rem;
-  background: #d4edda;
-  border-left: 4px solid #0d7922;
-  border-radius: 4px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.discount-value {
-  display: block;
-  color: #155724;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-top: 0.3rem;
 }
 
 .item-actions {
