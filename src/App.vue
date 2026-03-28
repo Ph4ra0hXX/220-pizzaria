@@ -171,8 +171,8 @@ const pizzas = ref([
   },
   {
     id: 10,
-    name: "PIZZA DE LOMBO",
-    image: "",
+    name: "PIZZA DE LOMBINHO",
+    image: "/pizzas/13.jpg",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
