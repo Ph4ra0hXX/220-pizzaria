@@ -67,6 +67,22 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
+    id: 37,
+    image: "",
+    name: "PIZZA MARGUERITA",
+    category: "TRADICIONAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
+  {
     id: 5,
     image: "/pizzas/5.jpeg",
     name: "PIZZA DE CAMARÃO",
