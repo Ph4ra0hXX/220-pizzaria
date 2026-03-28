@@ -75,7 +75,6 @@ const copyPix = async () => {
 const deliveryInfo = ref({
   name: "",
   street: "",
-  number: "",
   complement: "",
   neighborhood: "",
   reference: "",
@@ -85,7 +84,6 @@ const deliveryInfo = ref({
 const errors = ref({
   name: "",
   street: "",
-  number: "",
   neighborhood: "",
 });
 
@@ -107,7 +105,6 @@ const validateDeliveryInfo = () => {
   errors.value = {
     name: "",
     street: "",
-    number: "",
     neighborhood: "",
   };
 
@@ -120,10 +117,6 @@ const validateDeliveryInfo = () => {
   if (deliveryType.value === "delivery") {
     if (!String(info.street ?? "").trim()) {
       errors.value.street = "Por favor, informe a rua";
-      isValid = false;
-    }
-    if (!String(info.number ?? "").trim()) {
-      errors.value.number = "Por favor, informe o número da casa";
       isValid = false;
     }
     if (!String(info.neighborhood ?? "").trim()) {
@@ -153,7 +146,7 @@ const formatOrderForWhatsApp = () => {
 
   if (deliveryType.value === "delivery") {
     message += `Tipo: Entrega\n`;
-    message += `Endereco: ${deliveryInfo.value.street}, ${deliveryInfo.value.number}\n`;
+    message += `Endereco: ${deliveryInfo.value.street}\n`;
     if (deliveryInfo.value.complement) {
       message += `Complemento: ${deliveryInfo.value.complement}\n`;
     }
@@ -400,20 +393,6 @@ const getTotalWithDelivery = () => {
         </div>
 
         <div class="form-row">
-          <div class="form-group">
-            <label for="number">Número *</label>
-            <input
-              id="number"
-              v-model="deliveryInfo.number"
-              type="number"
-              placeholder="000"
-              :class="{ 'input-error': errors.number }"
-            />
-            <span v-if="errors.number" class="error-message">{{
-              errors.number
-            }}</span>
-          </div>
-
           <div class="form-group">
             <label for="neighborhood">Bairro *</label>
             <select
