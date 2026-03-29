@@ -362,8 +362,22 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    image: "",
+    image: "/pizzas/14.jpg",
     prices: { P: 44.0, G: 66.0 },
+  },
+  {
+    id: 25,
+    name: "PIZZA DE PEPPERONI",
+    category: "ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PEPPERONI",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    image: "",
+    prices: { P: 42.0, G: 56.0 },
   },
   /*
   {
