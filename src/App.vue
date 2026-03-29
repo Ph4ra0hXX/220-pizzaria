@@ -703,6 +703,21 @@ const getTotalPrice = computed(() => {
   return cart.value.reduce((total, item) => total + item.price, 0);
 });
 
+// Verifica se há pelo menos uma pizza tamanho G no carrinho
+const hasLargePizza = computed(() => {
+  return cart.value.some((item) => item.size === "G");
+});
+
+// Calcula o desconto: R$ 5 se tiver pizza G, caso contrário R$ 0
+const getDiscountValue = computed(() => {
+  return hasLargePizza.value ? 5.0 : 0;
+});
+
+// Total com desconto aplicado
+const getTotalWithDiscount = computed(() => {
+  return getTotalPrice.value - getDiscountValue.value;
+});
+
 const getFilteredPizzas = () => {
   if (categoryFilter.value === "TODAS") {
     return pizzas.value;
@@ -807,7 +822,7 @@ const getPaymentMethodLabel = (method) => {
       @click="isCartOpen = true"
     >
       <div class="cart-total-display">
-        <span class="cart-price">R$ {{ getTotalPrice.toFixed(2) }}</span>
+        <span class="cart-price">R$ {{ getTotalWithDiscount.toFixed(2) }}</span>
       </div>
       <span class="cart-icon">🛒</span>
     </div>
@@ -898,9 +913,13 @@ const getPaymentMethodLabel = (method) => {
                 <span>Subtotal:</span>
                 <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
               </div>
+              <div v-if="hasLargePizza" class="summary-row discount">
+                <span>Desconto (pizza G):</span>
+                <span>-R$ {{ getDiscountValue.toFixed(2) }}</span>
+              </div>
               <div class="summary-row total">
                 <span>Total:</span>
-                <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
+                <span>R$ {{ getTotalWithDiscount.toFixed(2) }}</span>
               </div>
               <button
                 class="checkout-btn"
@@ -926,7 +945,9 @@ const getPaymentMethodLabel = (method) => {
       <div class="checkout-modal" @click.stop>
         <button class="modal-close" @click="isCheckoutOpen = false">✕</button>
         <CheckoutForm
-          :totalPrice="getTotalPrice"
+          :totalPrice="getTotalWithDiscount"
+          :subtotalPrice="getTotalPrice"
+          :discountValue="getDiscountValue"
           :cartItems="cart"
           @complete-order="handleCompleteOrder"
           @back-to-cart="
@@ -1412,6 +1433,15 @@ const getPaymentMethodLabel = (method) => {
   font-weight: 700;
   color: black;
   margin-bottom: 1rem;
+}
+
+.summary-row.discount {
+  color: #28a745;
+  font-weight: 600;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0.25rem 0;
 }
 
 .checkout-btn {
