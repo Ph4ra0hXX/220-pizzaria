@@ -365,6 +365,7 @@ const pizzas = ref([
     image: "",
     prices: { P: 44.0, G: 66.0 },
   },
+  /*
   {
     id: 25,
     name: "PIZZA DE MUSSARELA",
@@ -520,6 +521,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.9 },
   },
+  */
   {
     id: 33,
     name: "PIZZA PORTUGUESA",
@@ -747,7 +749,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
-                  'PROMOÇÃO',
+                  /* 'PROMOÇÃO', */
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
