@@ -35,14 +35,6 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  subtotalPrice: {
-    type: Number,
-    default: 0,
-  },
-  discountValue: {
-    type: Number,
-    default: 0,
-  },
   cartItems: {
     type: Array,
     required: true,
@@ -274,12 +266,9 @@ const formatOrderForWhatsApp = () => {
   message += `*PAGAMENTO*\n`;
   message += `Metodo: ${getPaymentMethodName(paymentMethod.value)}\n\n`;
 
-  // RESUMO COM DESCONTO
+  // RESUMO DO PEDIDO
   message += `*RESUMO DO PEDIDO*\n`;
-  message += `Subtotal: R$ ${props.subtotalPrice.toFixed(2)}\n`;
-  if (props.discountValue > 0) {
-    message += `Desconto (pizza G): -R$ ${props.discountValue.toFixed(2)}\n`;
-  }
+  message += `Subtotal: R$ ${props.totalPrice.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
   // TOTAL

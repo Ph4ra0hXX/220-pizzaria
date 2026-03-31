@@ -717,21 +717,6 @@ const getTotalPrice = computed(() => {
   return cart.value.reduce((total, item) => total + item.price, 0);
 });
 
-// Verifica se há pelo menos uma pizza tamanho G no carrinho
-const hasLargePizza = computed(() => {
-  return cart.value.some((item) => item.size === "G");
-});
-
-// Calcula o desconto: R$ 5 se tiver pizza G, caso contrário R$ 0
-const getDiscountValue = computed(() => {
-  return hasLargePizza.value ? 5.0 : 0;
-});
-
-// Total com desconto aplicado
-const getTotalWithDiscount = computed(() => {
-  return getTotalPrice.value - getDiscountValue.value;
-});
-
 const getFilteredPizzas = () => {
   if (categoryFilter.value === "TODAS") {
     return pizzas.value;
@@ -836,7 +821,7 @@ const getPaymentMethodLabel = (method) => {
       @click="isCartOpen = true"
     >
       <div class="cart-total-display">
-        <span class="cart-price">R$ {{ getTotalWithDiscount.toFixed(2) }}</span>
+        <span class="cart-price">R$ {{ getTotalPrice.toFixed(2) }}</span>
       </div>
       <span class="cart-icon">🛒</span>
     </div>
@@ -923,17 +908,9 @@ const getPaymentMethodLabel = (method) => {
             </div>
 
             <div class="modal-cart-summary">
-              <div class="summary-row">
-                <span>Subtotal:</span>
-                <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
-              </div>
-              <div v-if="hasLargePizza" class="summary-row discount">
-                <span>Desconto (pizza G):</span>
-                <span>-R$ {{ getDiscountValue.toFixed(2) }}</span>
-              </div>
               <div class="summary-row total">
                 <span>Total:</span>
-                <span>R$ {{ getTotalWithDiscount.toFixed(2) }}</span>
+                <span>R$ {{ getTotalPrice.toFixed(2) }}</span>
               </div>
               <button
                 class="checkout-btn"
@@ -959,9 +936,7 @@ const getPaymentMethodLabel = (method) => {
       <div class="checkout-modal" @click.stop>
         <button class="modal-close" @click="isCheckoutOpen = false">✕</button>
         <CheckoutForm
-          :totalPrice="getTotalWithDiscount"
-          :subtotalPrice="getTotalPrice"
-          :discountValue="getDiscountValue"
+          :totalPrice="getTotalPrice"
           :cartItems="cart"
           @complete-order="handleCompleteOrder"
           @back-to-cart="
