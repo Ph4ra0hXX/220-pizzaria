@@ -41,6 +41,11 @@ const props = defineProps({
   },
 });
 
+const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
+// Mantido para compatibilidade com o template atual.
+// Se não houver regra de desconto ativa, permanece 0.
+const discountValue = computed(() => 0);
+
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
@@ -304,7 +309,7 @@ const completeOrder = () => {
     deliveryType: deliveryType.value,
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
-    subtotal: props.totalPrice,
+    subtotal: subtotalPrice.value,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
@@ -324,7 +329,7 @@ const getDeliveryFee = () => {
 };
 
 const getTotalWithDelivery = () => {
-  return props.totalPrice + getDeliveryFee();
+  return subtotalPrice.value + getDeliveryFee();
 };
 </script>
 
