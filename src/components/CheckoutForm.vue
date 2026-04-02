@@ -167,20 +167,42 @@ const formatOrderForWhatsApp = () => {
   // ITENS DO PEDIDO
   message += `*ITENS DO PEDIDO*\n\n`;
 
-  // Separar pizzas e bebidas
+  // Separar combos, pizzas e bebidas
+  const comboItems = [];
   const pizzaItems = [];
   const drinkItems = [];
 
   props.cartItems.forEach((item) => {
-    if (item.drink || (item.pizza && item.pizza.category === "BEBIDA")) {
+    if (item.pizza && item.pizza.category === "COMBOS") {
+      comboItems.push(item);
+    } else if (item.drink || (item.pizza && item.pizza.category === "BEBIDA")) {
       drinkItems.push(item);
-      return;
+    } else {
+      pizzaItems.push(item);
     }
-    pizzaItems.push(item);
+  });
+
+  let itemIndex = 1;
+
+  // Processa combos
+  comboItems.forEach((item) => {
+    message += `${itemIndex}. ${item.pizza.name}\n`;
+
+    message += `   Componentes:\n`;
+    item.pizza.ingredients.forEach((ingredient) => {
+      message += `   - ${ingredient}\n`;
+    });
+
+    if (item.comment) {
+      message += `\n   Obs: ${item.comment}\n`;
+    }
+
+    message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
+    itemIndex++;
   });
 
   // Processa pizzas
-  pizzaItems.forEach((item, index) => {
+  pizzaItems.forEach((item) => {
     const sizeLabel =
       item.size === "P"
         ? "Pequena (P)"
@@ -199,7 +221,7 @@ const formatOrderForWhatsApp = () => {
       basePizzaPrice = item.pizza.prices[item.size];
     }
 
-    message += `${index + 1}. Pizza ${sizeLabel}\n`;
+    message += `${itemIndex}. Pizza ${sizeLabel}\n`;
 
     // Sabores
     if (item.flavors && item.flavors.length > 0) {
@@ -243,11 +265,12 @@ const formatOrderForWhatsApp = () => {
     }
 
     message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
+    itemIndex++;
   });
 
   // Processa bebidas separadamente
   if (drinkItems.length > 0) {
-    message += `${pizzaItems.length + 1}. Bebidas\n`;
+    message += `${itemIndex}. Bebidas\n`;
     drinkItems.forEach((item) => {
       const drinkName = item.drink ? item.drink.name : item.pizza.name;
       const drinkPrice = item.drink ? item.drink.price : item.price;

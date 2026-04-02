@@ -265,9 +265,9 @@ const pizzas = ref([
   {
     id: 16,
     name: "PIZZA DE DISQUETE",
+    image: "/pizzas/15.jpg",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    image: "",
     prices: { P: 39.0, G: 52.0 },
   },
   {
@@ -706,6 +706,54 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
+  {
+    id: 47,
+    name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
+    category: "COMBOS",
+    image: "",
+    ingredients: [
+      "PIZZA G MUSSARELA",
+      "PIZZA G DE CALABRESA",
+      "GUARANA ANTARTICA 1L",
+    ],
+    prices: { combo: 89.9 },
+  },
+  {
+    id: 48,
+    name: "PIZZA G FRANGO + PIZZA G CALABRESA + GUARANA ANTARTICA 1L",
+    category: "COMBOS",
+    image: "",
+    ingredients: [
+      "PIZZA G FRANGO",
+      "PIZZA G CALABRESA",
+      "GUARANA ANTARTICA 1L",
+    ],
+    prices: { combo: 94.9 },
+  },
+  {
+    id: 49,
+    name: "PIZZA G CALABRESA + PIZZA G DISQUETE + GUARANA ANTARTICA 1L",
+    category: "COMBOS",
+    image: "",
+    ingredients: [
+      "PIZZA G CALABRESA",
+      "PIZZA G DISQUETE",
+      "GUARANA ANTARTICA 1L",
+    ],
+    prices: { combo: 99.9 },
+  },
+  {
+    id: 50,
+    name: "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO + PIZZA G MARGUERITA + GUARANA ANTARTICA 1L",
+    category: "COMBOS",
+    image: "",
+    ingredients: [
+      "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO",
+      "PIZZA G MARGUERITA",
+      "GUARANA ANTARTICA 1L",
+    ],
+    prices: { combo: 109.9 },
+  },
 ]);
 
 const edges = ref([
@@ -745,6 +793,8 @@ const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
   if (pizza.category === "BEBIDA") {
     selectedSize.value = null;
+  } else if (pizza.category === "COMBOS") {
+    selectedSize.value = null;
   } else if (pizza.category === "PROMOÇÃO") {
     selectedSize.value = "G";
   } else {
@@ -760,16 +810,20 @@ const addToCart = () => {
   if (selectedPizza.value) {
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
+    const isCombo = selectedPizza.value.category === "COMBOS";
     let itemPrice = isBeverage
       ? selectedPizza.value.prices.unit
-      : selectedPizza.value.prices[selectedSize.value];
+      : isCombo
+        ? selectedPizza.value.prices.combo
+        : selectedPizza.value.prices[selectedSize.value];
 
     // Se tamanho G e há sabores selecionados (meio a meio), somar metade da pizza base + metade de cada sabor
     if (
       selectedSize.value === "G" &&
       selectedFlavors.value.length > 0 &&
       !isBeverage &&
-      !isPromotion
+      !isPromotion &&
+      !isCombo
     ) {
       const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
       const totalFlavorPrice = selectedFlavors.value.reduce(
@@ -780,12 +834,12 @@ const addToCart = () => {
     }
     // Se tamanho G sem sabores adicionais, usa o preço normal (não divide)
 
-    if (selectedEdge.value && !isBeverage) {
+    if (selectedEdge.value && !isBeverage && !isCombo) {
       itemPrice += selectedEdge.value.price;
     }
 
     // Adicionar preço dos adicionais
-    if (selectedAdditionals.value.length > 0 && !isBeverage) {
+    if (selectedAdditionals.value.length > 0 && !isBeverage && !isCombo) {
       const additionalsPrice = selectedAdditionals.value.reduce(
         (sum, additional) => sum + additional.price,
         0,
@@ -796,7 +850,7 @@ const addToCart = () => {
     const newItem = {
       id: Date.now(),
       pizza: selectedPizza.value,
-      size: isBeverage ? null : selectedSize.value,
+      size: isBeverage || isCombo ? null : selectedSize.value,
       edge: selectedEdge.value,
       additionals:
         selectedAdditionals.value.length > 0
@@ -836,6 +890,9 @@ const getFilteredPizzas = () => {
 };
 
 const getAvailableSizes = (pizza) => {
+  if (pizza.category === "COMBOS") {
+    return [];
+  }
   if (pizza.category === "PROMOÇÃO") {
     return ["G"];
   }
@@ -873,6 +930,7 @@ const getPaymentMethodLabel = (method) => {
                 v-for="category in [
                   'TODAS',
                   'PROMOÇÃO',
+                  'COMBOS',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
@@ -953,20 +1011,41 @@ const getPaymentMethodLabel = (method) => {
           <div v-else>
             <div v-for="item in cart" :key="item.id" class="modal-cart-item">
               <div class="item-details">
-                <p v-if="item.size" class="item-info">
+                <p v-if="item.pizza.category === 'COMBOS'" class="item-info">
+                  🎁 Combo
+                </p>
+                <p v-else-if="item.size" class="item-info">
                   Tamanho: {{ item.size }}
                 </p>
                 <p v-else class="item-info">Bebida: 1L</p>
 
                 <p
+                  v-if="item.pizza.category === 'COMBOS'"
+                  class="item-info combo-name"
+                >
+                  {{ item.pizza.name }}
+                </p>
+                <div
+                  v-if="item.pizza.category === 'COMBOS'"
+                  class="item-info combo-components"
+                >
+                  <div
+                    v-for="component in item.pizza.ingredients"
+                    :key="component"
+                  >
+                    • {{ component }}
+                  </div>
+                </div>
+
+                <p
+                  v-else-if="!item.flavors || item.flavors.length === 0"
                   class="item-info"
-                  v-if="!item.flavors || item.flavors.length === 0"
                 >
                   {{ item.pizza.name }}
                 </p>
 
                 <div
-                  v-if="
+                  v-else-if="
                     item.size === 'G' && item.flavors && item.flavors.length > 0
                   "
                   class="item-info"
@@ -983,14 +1062,21 @@ const getPaymentMethodLabel = (method) => {
                   Sabor: {{ item.flavors.map((f) => f.name).join(" + ") }}
                 </p>
 
-                <p v-if="item.edge" class="item-info">
+                <p
+                  v-if="item.edge && item.pizza.category !== 'COMBOS'"
+                  class="item-info"
+                >
                   {{ item.edge.name }}
                   <span v-if="item.edge.price > 0"
                     >(+R$ {{ item.edge.price.toFixed(2) }})</span
                   >
                 </p>
                 <div
-                  v-if="item.additionals && item.additionals.length > 0"
+                  v-if="
+                    item.additionals &&
+                    item.additionals.length > 0 &&
+                    item.pizza.category !== 'COMBOS'
+                  "
                   class="item-info"
                 >
                   <div

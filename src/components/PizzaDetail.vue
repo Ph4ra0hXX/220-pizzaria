@@ -60,12 +60,18 @@ const getPrice = (pizza, size) => {
   if (isBeverage(pizza)) {
     return pizza.prices.unit.toFixed(2);
   }
+  if (pizza.category === "COMBOS") {
+    return pizza.prices.combo.toFixed(2);
+  }
   return pizza.prices[size].toFixed(2);
 };
 
 const getDisplayPrice = (pizza, edge) => {
   if (isBeverage(pizza)) {
     return pizza.prices.unit.toFixed(2);
+  }
+  if (pizza.category === "COMBOS") {
+    return pizza.prices.combo.toFixed(2);
   }
   const isPromotion = pizza.category === "PROMOÇÃO";
   let price = parseFloat(getPrice(pizza, props.selectedSize));
@@ -159,7 +165,11 @@ const isFlavorSelected = (flavor) => {
 };
 
 const isFlavorsAllowed = () => {
-  return !isBeverage(props.pizza) && props.pizza.category !== "PROMOÇÃO";
+  return (
+    !isBeverage(props.pizza) &&
+    props.pizza.category !== "PROMOÇÃO" &&
+    props.pizza.category !== "COMBOS"
+  );
 };
 
 const isPromotion = () => {
@@ -196,7 +206,10 @@ const getFilteredEdges = () => {
       </div>
 
       <div class="detail-body">
-        <div v-if="!isBeverage(pizza)" class="size-selector">
+        <div
+          v-if="!isBeverage(pizza) && pizza.category !== 'COMBOS'"
+          class="size-selector"
+        >
           <h3>Selecione o tamanho:</h3>
           <div class="size-options">
             <button
@@ -251,7 +264,10 @@ const getFilteredEdges = () => {
           </div>
         </div>
 
-        <div v-if="!isBeverage(pizza)" class="ingredients-section">
+        <div
+          v-if="!isBeverage(pizza) && pizza.category !== 'COMBOS'"
+          class="ingredients-section"
+        >
           <h3>Ingredientes:</h3>
           <div class="ingredients-list">
             <span
@@ -265,7 +281,11 @@ const getFilteredEdges = () => {
         </div>
 
         <div
-          v-if="!isBeverage(pizza) && edges.length > 0"
+          v-if="
+            !isBeverage(pizza) &&
+            pizza.category !== 'COMBOS' &&
+            edges.length > 0
+          "
           class="edges-section"
         >
           <h3>Bordas (Opcional):</h3>
@@ -291,7 +311,11 @@ const getFilteredEdges = () => {
         </div>
 
         <div
-          v-if="!isBeverage(pizza) && additionals.length > 0"
+          v-if="
+            !isBeverage(pizza) &&
+            pizza.category !== 'COMBOS' &&
+            additionals.length > 0
+          "
           class="additionals-section"
         >
           <h3>Adicionais (Opcional):</h3>

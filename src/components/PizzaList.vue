@@ -15,12 +15,17 @@ const isBeverage = (pizza) => {
 const getIcon = (pizza) => {
   if (isBeverage(pizza)) return "🥤";
   if (pizza.category === "DOCE") return "🍰";
+  if (pizza.category === "COMBOS") return "🎁";
   return "🍕";
 };
 
 const getPriceDisplay = (pizza) => {
   if (isBeverage(pizza)) {
     return `R$ ${pizza.prices.unit.toFixed(2)}`;
+  }
+  // Se é COMBO
+  if (pizza.category === "COMBOS" && pizza.prices.combo) {
+    return `R$ ${pizza.prices.combo.toFixed(2)}`;
   }
   // Se só tem tamanho G (promoção)
   if (!pizza.prices.P && pizza.prices.G) {
