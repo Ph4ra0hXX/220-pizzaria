@@ -947,11 +947,11 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
-                  >🔥</span
+                  >✝️</span
                 >
                 {{ category }}
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
-                  >🔥</span
+                  >✝️</span
                 >
               </button>
             </div>
