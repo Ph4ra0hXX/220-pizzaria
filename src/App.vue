@@ -710,7 +710,7 @@ const pizzas = ref([
     id: 47,
     name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/12.jpg",
+    image: "🍕🍕🥤",
     ingredients: [
       "PIZZA G MUSSARELA",
       "PIZZA G DE CALABRESA",
@@ -722,7 +722,7 @@ const pizzas = ref([
     id: 48,
     name: "PIZZA G FRANGO + PIZZA G CALABRESA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/2.jpeg",
+    image: "🍕🍕🥤",
     ingredients: [
       "PIZZA G FRANGO",
       "PIZZA G CALABRESA",
@@ -734,7 +734,7 @@ const pizzas = ref([
     id: 49,
     name: "PIZZA G CALABRESA + PIZZA G DISQUETE + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/15.jpg",
+    image: "🍕🍕🥤",
     ingredients: [
       "PIZZA G CALABRESA",
       "PIZZA G DISQUETE",
@@ -746,7 +746,7 @@ const pizzas = ref([
     id: 50,
     name: "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO + PIZZA G MARGUERITA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/10.jpg",
+    image: "🍕🍕🥤",
     ingredients: [
       "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO",
       "PIZZA G MARGUERITA",

@@ -19,6 +19,10 @@ const getIcon = (pizza) => {
   return "🍕";
 };
 
+const isEmoji = (str) => {
+  return /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u.test(str);
+};
+
 const getPriceDisplay = (pizza) => {
   if (isBeverage(pizza)) {
     return `R$ ${pizza.prices.unit.toFixed(2)}`;
@@ -45,8 +49,14 @@ const getPriceDisplay = (pizza) => {
       @click="$emit('select-pizza', pizza)"
     >
       <div class="pizza-image">
-        <img v-if="pizza.image" :src="pizza.image" :alt="pizza.name" />
-        <div v-else class="pizza-icon">{{ getIcon(pizza) }}</div>
+        <img
+          v-if="pizza.image && !isEmoji(pizza.image)"
+          :src="pizza.image"
+          :alt="pizza.name"
+        />
+        <div v-else class="pizza-icon">
+          {{ isEmoji(pizza.image) ? pizza.image : getIcon(pizza) }}
+        </div>
       </div>
       <h3>{{ pizza.name }}</h3>
       <div class="sizes-prices">

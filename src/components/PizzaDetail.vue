@@ -56,6 +56,10 @@ const isBeverage = (pizza) => {
   return pizza.category === "BEBIDA";
 };
 
+const isEmoji = (str) => {
+  return /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u.test(str);
+};
+
 const getPrice = (pizza, size) => {
   if (isBeverage(pizza)) {
     return pizza.prices.unit.toFixed(2);
@@ -189,7 +193,7 @@ const getFilteredEdges = () => {
       <div class="detail-header">
         <div class="pizza-image-container">
           <img
-            v-if="pizza.image"
+            v-if="pizza.image && !isEmoji(pizza.image)"
             :src="pizza.image"
             :alt="pizza.name"
             class="pizza-image"
@@ -199,7 +203,13 @@ const getFilteredEdges = () => {
             class="pizza-icon"
             :class="{ 'beverage-icon': isBeverage(pizza) }"
           >
-            {{ isBeverage(pizza) ? "🥤" : "🍕" }}
+            {{
+              isEmoji(pizza.image)
+                ? pizza.image
+                : isBeverage(pizza)
+                  ? "🥤"
+                  : "🍕"
+            }}
           </div>
         </div>
         <h2>{{ pizza.name }}</h2>
