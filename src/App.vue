@@ -876,17 +876,6 @@ const getPaymentMethodLabel = (method) => {
                 >
                   {{ item.pizza.name }}
                 </p>
-                <div
-                  v-if="item.pizza.category === 'COMBOS'"
-                  class="item-info combo-components"
-                >
-                  <div
-                    v-for="component in item.pizza.ingredients"
-                    :key="component"
-                  >
-                    • {{ component }}
-                  </div>
-                </div>
 
                 <p
                   v-else-if="!item.flavors || item.flavors.length === 0"
