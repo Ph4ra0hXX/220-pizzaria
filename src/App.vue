@@ -263,6 +263,21 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
+    id: 51,
+    name: "PIZZA DE BACON",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 39.0, G: 50.0 },
+  },
+  {
     id: 16,
     name: "PIZZA DE DISQUETE",
     image: "/pizzas/15.jpg",
