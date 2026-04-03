@@ -789,6 +789,7 @@ const getPaymentMethodLabel = (method) => {
                   {
                     active: categoryFilter === category,
                     promo: category === 'PROMOÇÃO',
+                    combo: category === 'COMBOS',
                   },
                 ]"
                 @click="categoryFilter = category"
@@ -796,10 +797,13 @@ const getPaymentMethodLabel = (method) => {
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
                   >✝️</span
                 >
-                {{ category }}
+                <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
+                <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
+                <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
                   >✝️</span
                 >
+                <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
               </button>
             </div>
           </div>
@@ -1125,6 +1129,49 @@ const getPaymentMethodLabel = (method) => {
   background: linear-gradient(135deg, #ff6b00 0%, #ffc107 100%);
 }
 
+.filter-btn.combo {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+  border: 2px solid #1e7e34;
+  padding: 0.6rem 1.4rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 4px 15px rgba(40, 167, 69, 0.4),
+    0 0 20px rgba(32, 201, 151, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: combo-glow 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.combo::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  animation: combo-shine 3s ease-in-out infinite;
+}
+
+.filter-btn.combo:hover {
+  transform: scale(1.08);
+}
+
+.combo-icon {
+  font-size: 1rem;
+  animation: combo-bounce 0.8s ease-in-out infinite alternate;
+}
+
 @keyframes promo-glow {
   0%,
   100% {
@@ -1209,6 +1256,40 @@ const getPaymentMethodLabel = (method) => {
   }
 }
 
+@keyframes combo-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 15px rgba(40, 167, 69, 0.4),
+      0 0 20px rgba(32, 201, 151, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 4px 20px rgba(40, 167, 69, 0.6),
+      0 0 35px rgba(32, 201, 151, 0.4);
+  }
+}
+
+@keyframes combo-shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@keyframes combo-bounce {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
 .filter-btn.active {
   background: #c61818;
   border-color: #c61818;
@@ -1223,6 +1304,15 @@ const getPaymentMethodLabel = (method) => {
   box-shadow:
     0 6px 25px rgba(255, 78, 0, 0.6),
     0 0 30px rgba(236, 159, 5, 0.4);
+}
+
+.filter-btn.combo.active {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+  border-color: #0d6efd;
+  transform: scale(1.08);
+  box-shadow:
+    0 6px 25px rgba(40, 167, 69, 0.6),
+    0 0 30px rgba(32, 201, 151, 0.4);
 }
 
 .detail-section {
