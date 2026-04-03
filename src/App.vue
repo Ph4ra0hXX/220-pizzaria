@@ -132,7 +132,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 42.0, G: 58.0 },
+    prices: { P: 39.0, G: 52.0 },
   },
   {
     id: 8,
@@ -598,7 +598,7 @@ const pizzas = ref([
   {
     id: 31,
     name: "PIZZA PORTUGUESA",
-    category: "PROMOÇÃO",
+    category: "TRADICIONAL",
     image: "",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -611,7 +611,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { P: 37.0, G: 48.0 },
   },
   {
     id: 32,
@@ -679,6 +679,24 @@ const pizzas = ref([
     prices: { P: 39.0, G: 53.0 },
   },
   {
+    id: 40,
+    name: "PIZZA PORTUGUESA",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
+  {
     id: 34,
     name: "PIZZA MISTA",
     category: "TRADICIONAL",
@@ -706,7 +724,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 42.0, G: 56.0 },
+    prices: { P: 42.0, G: 58.0 },
   },
   {
     id: 36,
