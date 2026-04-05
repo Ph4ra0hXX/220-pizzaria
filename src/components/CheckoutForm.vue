@@ -188,11 +188,6 @@ const formatOrderForWhatsApp = () => {
   comboItems.forEach((item) => {
     message += `${itemIndex}. ${item.pizza.name}\n`;
 
-    message += `   Componentes:\n`;
-    item.pizza.ingredients.forEach((ingredient) => {
-      message += `   - ${ingredient}\n`;
-    });
-
     if (item.comment) {
       message += `\n   Obs: ${item.comment}\n`;
     }
