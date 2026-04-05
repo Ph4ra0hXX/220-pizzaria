@@ -601,6 +601,18 @@ const pizzas = ref([
     ],
     prices: { combo: 109.9 },
   },
+  {
+    id: 58,
+    name: "PIZZA G CARNE DE SOL + PIZZA G FRANBACON + GUARANA ANTARTICA 1L",
+    category: "COMBOS",
+    image: "",
+    ingredients: [
+      "PIZZA G CARNE DE SOL",
+      "PIZZA G FRANBACON",
+      "GUARANA ANTARTICA 1L",
+    ],
+    prices: { combo: 109.9 },
+  },
 ]);
 
 const edges = ref([
