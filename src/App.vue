@@ -789,7 +789,7 @@ const getPaymentMethodLabel = (method) => {
                 v-for="category in [
                   'TODAS',
                   'PROMOÇÃO',
-                  'filter-btn',
+                  'COMBOS',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
