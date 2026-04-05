@@ -68,7 +68,7 @@ const pizzas = ref([
   },
   {
     id: 37,
-    image: "",
+    image: "/pizzas/16.jpeg",
     name: "PIZZA MARGUERITA",
     category: "TRADICIONAL",
     ingredients: [
@@ -777,7 +777,7 @@ const getPaymentMethodLabel = (method) => {
                 v-for="category in [
                   'TODAS',
                   'PROMOÇÃO',
-                  'COMBOS',
+                  'filter-btn',
                   'TRADICIONAL',
                   'ESPECIAL',
                   'DOCE',
@@ -858,7 +858,7 @@ const getPaymentMethodLabel = (method) => {
           <div v-else>
             <div v-for="item in cart" :key="item.id" class="modal-cart-item">
               <div class="item-details">
-                <p v-if="item.pizza.category === 'COMBOS'" class="item-info">
+                <p v-if="item.pizza.category === 'COMBOS COM DES'" class="item-info">
                   🎁 Combo
                 </p>
                 <p v-else-if="item.size" class="item-info">
