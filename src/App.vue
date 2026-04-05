@@ -605,7 +605,7 @@ const pizzas = ref([
     id: 58,
     name: "PIZZA G CARNE DE SOL + PIZZA G FRANBACON + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "",
+    image: "/pizzas/combo5.jpeg",
     ingredients: [
       "PIZZA G CARNE DE SOL",
       "PIZZA G FRANBACON",
