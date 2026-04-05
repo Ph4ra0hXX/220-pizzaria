@@ -874,13 +874,13 @@ const getPaymentMethodLabel = (method) => {
           <div v-else>
             <div v-for="item in cart" :key="item.id" class="modal-cart-item">
               <div class="item-details">
-                <p v-if="item.pizza.category === 'COMBOS COM DES'" class="item-info">
+                <p v-if="item.pizza.category === 'COMBOS'" class="item-info">
                   🎁 Combo
                 </p>
                 <p v-else-if="item.size" class="item-info">
                   Tamanho: {{ item.size }}
                 </p>
-                <p v-else class="item-info">Bebida: 1L</p>
+                <p v-else-if="item.pizza.category === 'BEBIDA'" class="item-info">Bebida: 1L</p>
 
                 <p
                   v-if="item.pizza.category === 'COMBOS'"
