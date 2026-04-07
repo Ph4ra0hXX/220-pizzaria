@@ -405,7 +405,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 53,
@@ -420,7 +420,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 54,
@@ -438,7 +438,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 55,
@@ -453,7 +453,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 56,
@@ -469,7 +469,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 57,
@@ -484,7 +484,7 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 58,
@@ -499,7 +499,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 59,
@@ -514,7 +514,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 40,
@@ -831,13 +831,13 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
-                  >✝️</span
+                  >💰</span
                 >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
-                  >✝️</span
+                  >💰</span
                 >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
               </button>
