@@ -507,8 +507,8 @@ const getTotalWithDelivery = () => {
             <strong>{{ pixKey }}</strong>
           </div>
           <div class="pix-beneficiary">
-            <p><strong>Beneficiário:</strong> Herbene Carneiro Girão</p>
-            <p><strong>Banco:</strong> Banco Inter</p>
+            <p><strong>Beneficiário:</strong> Glaucia Herbene Carneiro Girao</p>
+            <p><strong>Banco:</strong> Pagbank</p>
           </div>
         </div>
         <button @click="copyPix" class="btn-secondary pix-copy-btn">
