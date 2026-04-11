@@ -52,6 +52,20 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
+  id: 99,
+  name: "FILÉ MIGNON",
+  category: "ESPECIAL",
+  ingredients: [
+    "MOLHO DE TOMATE",
+    "MUSSARELA",
+    "FILÉ MIGNON",
+    "CEBOLA",
+    "AZEITONA",
+    "OREGANO",
+  ],
+  prices: { P: 50.0, G: 72.0 },
+},
+  {
     id: 4,
     image: "/pizzas/12.jpg",
     name: "PIZZA DE CALABRESA",
