@@ -8,7 +8,7 @@ const pizzas = ref([
   {
     id: 1,
     name: "PIZZA DE CALABRESA SUPREME",
-    image: "/pizzas/1.jpeg",
+    image: "/pizzas/1.webp",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -24,7 +24,7 @@ const pizzas = ref([
   {
     id: 2,
     name: "PIZZA DE FRANGO",
-    image: "/pizzas/2.jpeg",
+    image: "/pizzas/2.webp",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -38,7 +38,7 @@ const pizzas = ref([
   },
   {
     id: 3,
-    image: "/pizzas/3.jpeg",
+    image: "/pizzas/3.webp",
     name: "PIZZA DE CARNE DE SOL",
     category: "TRADICIONAL",
     ingredients: [
@@ -67,7 +67,7 @@ const pizzas = ref([
   },
   {
     id: 4,
-    image: "/pizzas/12.jpg",
+    image: "/pizzas/12.webp",
     name: "PIZZA DE CALABRESA",
     category: "TRADICIONAL",
     ingredients: [
@@ -82,7 +82,7 @@ const pizzas = ref([
   },
   {
     id: 37,
-    image: "/pizzas/16.jpeg",
+    image: "/pizzas/16.webp",
     name: "PIZZA MARGUERITA",
     category: "TRADICIONAL",
     ingredients: [
@@ -98,7 +98,7 @@ const pizzas = ref([
   },
   {
     id: 5,
-    image: "/pizzas/5.jpeg",
+    image: "/pizzas/5.webp",
     name: "PIZZA DE CAMARÃO",
     category: "ESPECIAL",
     ingredients: [
@@ -114,7 +114,7 @@ const pizzas = ref([
   },
   {
     id: 6,
-    image: "/pizzas/6.jpeg",
+    image: "/pizzas/6.webp",
     name: "PIZZA PORTUGUESA DA CASA",
     category: "ESPECIAL",
     ingredients: [
@@ -134,7 +134,7 @@ const pizzas = ref([
   },
   {
     id: 7,
-    image: "/pizzas/7.jpeg",
+    image: "/pizzas/7.webp",
     name: "PIZZA DE FRANBACON",
     category: "TRADICIONAL",
     ingredients: [
@@ -150,7 +150,7 @@ const pizzas = ref([
   },
   {
     id: 8,
-    image: "/pizzas/8.jpeg",
+    image: "/pizzas/8.webp",
     name: "PIZZA DE CAMARÃO SUPREME",
     category: "ESPECIAL",
     ingredients: [
@@ -169,7 +169,7 @@ const pizzas = ref([
   },
   {
     id: 9,
-    image: "/pizzas/9.jpeg",
+    image: "/pizzas/9.webp",
     name: "PIZZA DE CALABRESA COM CATUPIRY",
     category: "TRADICIONAL",
     ingredients: [
@@ -186,7 +186,7 @@ const pizzas = ref([
   {
     id: 10,
     name: "PIZZA DE LOMBINHO",
-    image: "/pizzas/13.jpg",
+    image: "/pizzas/13.webp",
     category: "TRADICIONAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
@@ -200,7 +200,7 @@ const pizzas = ref([
   },
   {
     id: 11,
-    image: "/pizzas/10.jpg",
+    image: "/pizzas/10.webp",
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
     category: "ESPECIAL",
     ingredients: [
@@ -294,7 +294,7 @@ const pizzas = ref([
   {
     id: 16,
     name: "PIZZA DE DISQUETE",
-    image: "/pizzas/15.jpg",
+    image: "/pizzas/15.webp",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 39.0, G: 52.0 },
@@ -316,7 +316,7 @@ const pizzas = ref([
       "BOMBONS OURO BRANCO",
       "CHOCOLATE AO LEITE",
     ],
-    image: "",
+    image: "/pizzas/17.webp",
     prices: { P: 45.0, G: 66.0 },
   },
   {
@@ -374,7 +374,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    image: "/pizzas/11.jpg",
+    image: "/pizzas/11.webp",
     prices: { P: 44.0, G: 66.0 },
   },
   {
@@ -391,7 +391,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    image: "/pizzas/14.jpg",
+    image: "/pizzas/14.webp",
     prices: { P: 44.0, G: 66.0 },
   },
   {
@@ -473,7 +473,7 @@ const pizzas = ref([
   //   id: 56,
   //   name: "PIZZA MARGUERITA",
   //   category: "PROMOÇÃO",
-  //   image: "/pizzas/16.jpeg",
+  //   image: "/pizzas/16.webp",
   //   ingredients: [
   //     "MOLHO DE TOMATE",
   //     "MUSSARELA",
@@ -519,7 +519,7 @@ const pizzas = ref([
   //   id: 59,
   //   name: "PIZZA DE LOMBINHO",
   //   category: "PROMOÇÃO",
-  //   image: "/pizzas/13.jpg",
+  //   image: "/pizzas/13.webp",
   //   ingredients: [
   //     "MOLHO DE TOMATE ESPECIAL",
   //     "MUSSARELA",
@@ -595,7 +595,7 @@ const pizzas = ref([
     id: 60,
     name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/combo1.jpeg",
+    image: "/pizzas/combo1.webp",
     ingredients: [
       "PIZZA G MUSSARELA",
       "PIZZA G DE CALABRESA",
@@ -607,7 +607,7 @@ const pizzas = ref([
     id: 61,
     name: "PIZZA G FRANGO + PIZZA G CALABRESA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/combo2.jpeg",
+    image: "/pizzas/combo2.webp",
     ingredients: [
       "PIZZA G FRANGO",
       "PIZZA G CALABRESA",
@@ -619,7 +619,7 @@ const pizzas = ref([
     id: 62,
     name: "PIZZA G CALABRESA + PIZZA G DISQUETE + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/combo3.jpeg",
+    image: "/pizzas/combo3.webp",
     ingredients: [
       "PIZZA G CALABRESA",
       "PIZZA G DISQUETE",
@@ -631,7 +631,7 @@ const pizzas = ref([
     id: 63,
     name: "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO + PIZZA G MARGUERITA + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/combo4.jpeg",
+    image: "/pizzas/combo4.webp",
     ingredients: [
       "PIZZA G LOMBINHO C/ABACAXI CARAMELIZADO",
       "PIZZA G MARGUERITA",
@@ -643,7 +643,7 @@ const pizzas = ref([
     id: 64,
     name: "PIZZA G CARNE DE SOL + PIZZA G FRANBACON + GUARANA ANTARTICA 1L",
     category: "COMBOS",
-    image: "/pizzas/combo5.jpeg",
+    image: "/pizzas/combo5.webp",
     ingredients: [
       "PIZZA G CARNE DE SOL",
       "PIZZA G FRANBACON",
