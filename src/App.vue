@@ -280,7 +280,7 @@ const pizzas = ref([
     id: 51,
     name: "PIZZA DE BACON",
     category: "TRADICIONAL",
-    image: "",
+    image: "/pizzas/18.jpg",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
@@ -345,7 +345,7 @@ const pizzas = ref([
   },
   {
     id: 22,
-    name: "PIZZA DE BACONDA CASA",
+    name: "PIZZA DE BACON DA CASA",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE",
