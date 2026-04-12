@@ -55,6 +55,7 @@ const pizzas = ref([
     id: 99,
     name: "FILÉ MIGNON",
     category: "ESPECIAL",
+    image: "/pizzas/19.jpg",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
