@@ -410,6 +410,20 @@ const pizzas = ref([
     prices: { P: 42.0, G: 56.0 },
   },
   {
+    id: 65,
+    name: "PIZZA DE PEPPERONI",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PEPPERONI",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    image: "",
+    prices: { G: 36.9 },
+  },
+  {
     id: 52,
     name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
@@ -420,7 +434,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 53,
@@ -435,8 +449,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
+  /*
   {
     id: 54,
     name: "PIZZA PORTUGUESA",
@@ -453,8 +468,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
+  */
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -468,7 +484,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 56,
@@ -484,7 +500,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 57,
@@ -499,8 +515,9 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
+  /*
   {
     id: 58,
     name: "PIZZA DE BACON",
@@ -514,7 +531,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 59,
@@ -529,8 +546,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 36.9 },
   },
+  */
   {
     id: 40,
     name: "PIZZA PORTUGUESA",
