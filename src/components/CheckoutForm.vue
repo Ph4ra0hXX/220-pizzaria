@@ -16,7 +16,7 @@ const neighborhoods = [
   { name: "ILHA", fee: 5.0 },
   { name: "JOSE SIMÕES", fee: 5.0 },
   { name: "JOÃO XXIII", fee: 5.0 },
-  { name: "LUIZ ALVES DE FREITAS", fee: 5.0 },
+  { name: "LUIZ ALVES DE FREITAS", fee: 7.0 },
   { name: "LOT.CONVIVER", fee: 6.0 },
   { name: "MONSENHOR OTAVIO", fee: 5.0 },
   { name: "PITOMBEIRA", fee: 5.0 },
