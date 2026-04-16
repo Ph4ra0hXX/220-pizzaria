@@ -411,12 +411,14 @@ const pizzas = ref([
   },
   {
     id: 65,
-    name: "PIZZA DE PEPPERONI",
+    name: "PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
-      "PEPPERONI",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
       "AZEITONA",
       "OREGANO",
     ],
@@ -517,7 +519,6 @@ const pizzas = ref([
     ],
     prices: { G: 36.9 },
   },
-  /*
   {
     id: 58,
     name: "PIZZA DE BACON",
@@ -548,7 +549,6 @@ const pizzas = ref([
     ],
     prices: { G: 36.9 },
   },
-  */
   {
     id: 40,
     name: "PIZZA PORTUGUESA",
