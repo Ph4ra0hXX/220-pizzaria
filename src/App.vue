@@ -342,7 +342,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "",
     ingredients: [],
-    prices: { unit: 11.0 },
+    prices: { unit: 6.0 },
   },
   {
     id: 22,
@@ -397,6 +397,7 @@ const pizzas = ref([
   },
   {
     id: 25,
+    image: "/pizzas/20.jpg",
     name: "PIZZA DE PEPPERONI",
     category: "ESPECIAL",
     ingredients: [
@@ -406,7 +407,6 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    image: "",
     prices: { P: 42.0, G: 56.0 },
   },
   // {
@@ -481,7 +481,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     image: "",
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 52,
@@ -494,7 +494,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 53,
@@ -509,7 +509,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
   /*
   {
@@ -544,7 +544,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 56,
@@ -560,7 +560,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 57,
@@ -575,8 +575,9 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
+  /*
   {
     id: 58,
     name: "PIZZA DE BACON",
@@ -590,8 +591,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
   },
+  */
   {
     id: 59,
     name: "PIZZA DE LOMBINHO",
@@ -605,7 +607,31 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 39.9 },
+  },
+  {
+    id: 64,
+    name: "PIZZA DE CALABRESA SUPREME",
+    category: "PROMOÇÃO",
+    image: "/pizzas/1.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CALABRESA",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 39.9 },
+  },
+  {
+    id: 66,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { G: 39.9 },
   },
   {
     id: 40,
