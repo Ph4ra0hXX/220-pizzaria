@@ -500,7 +500,7 @@ const pizzas = ref([
     id: 53,
     name: "PIZZA DE CALABRESA",
     category: "PROMOÇÃO",
-    image: "/pizzas/12.jpg",
+    image: "/pizzas/12.webp",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
@@ -535,7 +535,7 @@ const pizzas = ref([
     id: 55,
     name: "PIZZA DE FRANGO",
     category: "PROMOÇÃO",
-    image: "/pizzas/2.jpeg",
+    image: "/pizzas/2.webp",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
