@@ -114,11 +114,20 @@ const getDisplayPrice = (pizza, edge) => {
 };
 
 const getMaxFlavors = () => {
+  if (props.pizza.category === "PROMOÇÃO") {
+    return 2;
+  }
   return 1;
 };
 
 const getAvailableFlavors = () => {
-  // Retorna todas as pizzas EXCETO a selecionada e bebidas
+  // Se é promoção, retorna apenas outras pizzas de promoção
+  if (props.pizza.category === "PROMOÇÃO") {
+    return props.pizzas.filter(
+      (p) => p.id !== props.pizza.id && p.category === "PROMOÇÃO",
+    );
+  }
+  // Caso contrário, retorna todas as pizzas EXCETO a selecionada e bebidas
   return props.pizzas.filter(
     (p) =>
       p.id !== props.pizza.id &&
@@ -169,11 +178,7 @@ const isFlavorSelected = (flavor) => {
 };
 
 const isFlavorsAllowed = () => {
-  return (
-    !isBeverage(props.pizza) &&
-    props.pizza.category !== "PROMOÇÃO" &&
-    props.pizza.category !== "COMBOS"
-  );
+  return !isBeverage(props.pizza) && props.pizza.category !== "COMBOS";
 };
 
 const isPromotion = () => {
