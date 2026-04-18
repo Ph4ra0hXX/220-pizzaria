@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 
 // Lista de bairros com taxas de entrega
 const neighborhoods = [
+  { name: "ARRAIAL", fee: 10.0 },
   { name: "BOA FÉ", fee: 5.0 },
   { name: "BOM FIM", fee: 5.0 },
   { name: "BOM JESUS", fee: 5.0 },
