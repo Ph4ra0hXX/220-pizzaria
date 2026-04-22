@@ -573,7 +573,7 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   /*
   {
@@ -592,45 +592,6 @@ const pizzas = ref([
     prices: { G: 39.9 },
   },
   */
-  {
-    id: 59,
-    name: "PIZZA DE LOMBINHO",
-    category: "PROMOÇÃO",
-    image: "/pizzas/13.webp",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "LOMBINHO",
-      "CEBOLA",
-      "AZEITONAS",
-      "OREGANO",
-    ],
-    prices: { G: 39.9 },
-  },
-  {
-    id: 64,
-    name: "PIZZA DE CALABRESA SUPREME",
-    category: "PROMOÇÃO",
-    image: "/pizzas/1.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "CALABRESA",
-      "BACON",
-      "CEBOLA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 39.9 },
-  },
-  {
-    id: 66,
-    name: "PIZZA DE DISQUETE",
-    category: "PROMOÇÃO",
-    image: "/pizzas/15.webp",
-    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { G: 39.9 },
-  },
   {
     id: 40,
     name: "PIZZA PORTUGUESA",
