@@ -393,7 +393,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     image: "/pizzas/14.webp",
-    prices: { P: 44.0, G: 66.0 },
+    prices: { P: 44.0, G: 59.9 },
   },
   {
     id: 25,
