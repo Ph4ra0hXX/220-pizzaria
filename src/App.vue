@@ -481,7 +481,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     image: "",
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 52,
@@ -494,7 +494,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 53,
@@ -509,9 +509,8 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
-  /*
   {
     id: 54,
     name: "PIZZA PORTUGUESA",
@@ -530,7 +529,6 @@ const pizzas = ref([
     ],
     prices: { G: 36.9 },
   },
-  */
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -544,7 +542,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 56,
@@ -560,7 +558,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 57,
