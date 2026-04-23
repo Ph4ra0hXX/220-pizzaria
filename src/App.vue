@@ -735,6 +735,7 @@ const additionals = ref([
   { id: 8, name: "CEBOLA", price: 2.0 },
   { id: 9, name: "PIMENTÃO", price: 2.0 },
   { id: 10, name: "TOMATE", price: 2.0 },
+  { id: 11, name: "BACON", price: 10.0 },
 ]);
 
 const selectedPizza = ref(null);
