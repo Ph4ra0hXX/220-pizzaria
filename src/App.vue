@@ -595,6 +595,39 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { G: 39.9 },
   },
+  {
+    id: 67,
+    name: "PIZZA DE ATUM",
+    category: "PROMOÇÃO",
+    image: "/pizzas/14.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "ATUM",
+      "CATUPIRY",
+      "MUSSARELA",
+      "TOMATE",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 59.9 },
+  },
+  {
+    id: 68,
+    name: "PIZZA DE CAMARÃO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/5.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CAMARÃO REFOGADO",
+      "TOMATE CEREJA",
+      "ALHO TORRADO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 59.9 },
+  },
   /*
   {
     id: 58,
@@ -797,20 +830,46 @@ const addToCart = () => {
         ? selectedPizza.value.prices.combo
         : selectedPizza.value.prices[selectedSize.value];
 
-    // Se tamanho G e há sabores selecionados (meio a meio), somar metade da pizza base + metade de cada sabor
+    // Se tamanho G e há sabores selecionados (meio a meio)
     if (
       selectedSize.value === "G" &&
       selectedFlavors.value.length > 0 &&
       !isBeverage &&
-      !isPromotion &&
       !isCombo
     ) {
-      const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
-      const totalFlavorPrice = selectedFlavors.value.reduce(
-        (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
-        0,
-      );
-      itemPrice = basePrice + totalFlavorPrice;
+      if (isPromotion) {
+        // Para pizzas de promoção, verificar se algum sabor é Atum ou Camarão
+        const hasSpecialFlavor = selectedFlavors.value.some(
+          (flavor) => flavor.id === 67 || flavor.id === 68,
+        );
+        const isBaseSpecial =
+          selectedPizza.value.id === 67 || selectedPizza.value.id === 68;
+
+        if (hasSpecialFlavor || isBaseSpecial) {
+          // Calcular com preços especiais (Atum/Camarão custam 59.90)
+          const basePrice = (isBaseSpecial ? 59.9 : 39.9) / 2;
+          const totalFlavorPrice = selectedFlavors.value.reduce(
+            (sum, flavor) => {
+              const flavorPrice =
+                flavor.id === 67 || flavor.id === 68 ? 59.9 : 39.9;
+              return sum + flavorPrice / 2;
+            },
+            0,
+          );
+          itemPrice = basePrice + totalFlavorPrice;
+        } else {
+          // Todas as pizzas de promoção comum: 39.90
+          itemPrice = 39.9;
+        }
+      } else {
+        // Para pizzas normais, somar metade da pizza base + metade de cada sabor
+        const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
+        const totalFlavorPrice = selectedFlavors.value.reduce(
+          (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
+          0,
+        );
+        itemPrice = basePrice + totalFlavorPrice;
+      }
     }
     // Se tamanho G sem sabores adicionais, usa o preço normal (não divide)
 

@@ -80,20 +80,41 @@ const getDisplayPrice = (pizza, edge) => {
   const isPromotion = pizza.category === "PROMOÇÃO";
   let price = parseFloat(getPrice(pizza, props.selectedSize));
 
-  // Se tamanho G e há sabores selecionados, somar metade da pizza base + metade de cada sabor
-  // (mas não para promoções)
+  // Se tamanho G e há sabores selecionados (meio a meio)
   if (
     props.selectedSize === "G" &&
     props.selectedFlavors &&
-    props.selectedFlavors.length > 0 &&
-    !isPromotion
+    props.selectedFlavors.length > 0
   ) {
-    const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
-    const totalFlavorPrice = props.selectedFlavors.reduce(
-      (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
-      0,
-    );
-    price = basePrice + totalFlavorPrice;
+    if (isPromotion) {
+      // Para pizzas de promoção, verificar se algum sabor é Atum ou Camarão
+      const hasSpecialFlavor = props.selectedFlavors.some(
+        (flavor) => flavor.id === 67 || flavor.id === 68,
+      );
+      const isBaseSpecial = pizza.id === 67 || pizza.id === 68;
+
+      if (hasSpecialFlavor || isBaseSpecial) {
+        // Calcular com preços especiais (Atum/Camarão custam 59.90)
+        const basePrice = (isBaseSpecial ? 59.9 : 39.9) / 2;
+        const totalFlavorPrice = props.selectedFlavors.reduce((sum, flavor) => {
+          const flavorPrice =
+            flavor.id === 67 || flavor.id === 68 ? 59.9 : 39.9;
+          return sum + flavorPrice / 2;
+        }, 0);
+        price = basePrice + totalFlavorPrice;
+      } else {
+        // Todas as pizzas de promoção comum: 39.90
+        price = 39.9;
+      }
+    } else {
+      // Para pizzas normais, somar metade da pizza base + metade de cada sabor
+      const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
+      const totalFlavorPrice = props.selectedFlavors.reduce(
+        (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
+        0,
+      );
+      price = basePrice + totalFlavorPrice;
+    }
   }
   // Se tamanho G sem sabores adicionais, manter o preço original (não divide mais)
 
@@ -114,9 +135,6 @@ const getDisplayPrice = (pizza, edge) => {
 };
 
 const getMaxFlavors = () => {
-  if (props.pizza.category === "PROMOÇÃO") {
-    return 2;
-  }
   return 1;
 };
 
