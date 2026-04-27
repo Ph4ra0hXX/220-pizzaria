@@ -423,6 +423,7 @@ const pizzas = ref([
   //   ],
   //   prices: { P: 40.0, G: 52.0 },
   // },
+  /*
   {
     id: 67,
     name: "PIZZA DE ATUM",
@@ -440,6 +441,8 @@ const pizzas = ref([
     ],
     prices: { G: 59.9 },
   },
+  */
+  /*
   {
     id: 68,
     name: "PIZZA DE CAMARÃO",
@@ -456,6 +459,7 @@ const pizzas = ref([
     ],
     prices: { G: 59.9 },
   },
+  */
   {
     id: 39,
     name: "Bacon",
@@ -514,7 +518,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     image: "",
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 52,
@@ -527,7 +531,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 53,
@@ -542,7 +546,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
 
   {
@@ -558,7 +562,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 56,
@@ -574,7 +578,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 57,
@@ -589,7 +593,7 @@ const pizzas = ref([
       "OREGANO",
       "CEBOLA",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 58,
@@ -604,8 +608,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
   },
+  /*
   {
     id: 59,
     name: "PIZZA DE PEPPERONI",
@@ -620,13 +625,32 @@ const pizzas = ref([
     ],
     prices: { G: 39.9 },
   },
+  */
   {
     id: 66,
     name: "PIZZA DE DISQUETE",
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { G: 39.9 },
+    prices: { G: 36.9 },
+  },
+  {
+    id: 88,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 36.9 },
   },
 
   /*
