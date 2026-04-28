@@ -342,7 +342,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 11.0 },
+    prices: { unit: 7.0 },
   },
   {
     id: 22,
@@ -799,7 +799,7 @@ const edges = ref([
   { id: 3, name: "BORDA CREAM CHEESE ORIGINAL", price: 15.0 },
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
-  { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
+  // { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
 ]);
 
 const additionals = ref([
@@ -1019,9 +1019,7 @@ const getPaymentMethodLabel = (method) => {
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'"
-                  >SEGUNDA MALUCA 🤪</span
-                >
+                <span v-else-if="category === 'PROMOÇÃO'">TERÇA MALUCA 🤪</span>
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
