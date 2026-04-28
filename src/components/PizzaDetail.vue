@@ -103,8 +103,13 @@ const getDisplayPrice = (pizza, edge) => {
         }, 0);
         price = basePrice + totalFlavorPrice;
       } else {
-        // Todas as pizzas de promoção comum: 39.90
-        price = 39.9;
+        // Pizzas de promoção comum: calcular normalmente
+        const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
+        const totalFlavorPrice = props.selectedFlavors.reduce(
+          (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
+          0,
+        );
+        price = basePrice + totalFlavorPrice;
       }
     } else {
       // Para pizzas normais, somar metade da pizza base + metade de cada sabor
