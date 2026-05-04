@@ -737,6 +737,115 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
+  // PIZZAS DE PROMOÇÃO
+  {
+    id: 100,
+    name: "PIZZA DE MUSSARELA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 101,
+    name: "PIZZA MARGUERITA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/16.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 102,
+    name: "PIZZA MISTA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "AZEITONA",
+      "OREGANO",
+      "CEBOLA",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 103,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 104,
+    name: "PIZZA DE FRANGO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/2.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 105,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
+    id: 106,
+    name: "PIZZA DE CALABRESA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/12.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA FATIADA",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
+  },
   {
     id: 60,
     name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
@@ -1004,7 +1113,7 @@ const getPaymentMethodLabel = (method) => {
               <button
                 v-for="category in [
                   'TODAS',
-                  /* 'PROMOÇÃO', */
+                  'PROMOÇÃO',
                   'COMBOS',
                   'TRADICIONAL',
                   'ESPECIAL',
@@ -1025,9 +1134,7 @@ const getPaymentMethodLabel = (method) => {
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'"
-                  >🔥 PROMOÇÃO 35,00 🔥</span
-                >
+                <span v-else-if="category === 'PROMOÇÃO'">🔥 PROMOÇÃO 🔥</span>
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>

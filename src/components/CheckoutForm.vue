@@ -42,21 +42,7 @@ const props = defineProps({
   },
 });
 
-const DISCOUNT_RATE = 0.12;
-
-const roundMoney = (value) => {
-  const numberValue = Number(value) || 0;
-  return Math.round((numberValue + Number.EPSILON) * 100) / 100;
-};
-
 const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
-// Desconto fixo de 12% aplicado somente sobre o subtotal dos itens (não inclui entrega).
-const discountValue = computed(() =>
-  roundMoney(subtotalPrice.value * DISCOUNT_RATE),
-);
-const subtotalAfterDiscount = computed(() =>
-  Math.max(0, roundMoney(subtotalPrice.value - discountValue.value)),
-);
 
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
@@ -304,8 +290,6 @@ const formatOrderForWhatsApp = () => {
   // RESUMO DO PEDIDO
   message += `*RESUMO DO PEDIDO*\n`;
   message += `Subtotal: R$ ${subtotalPrice.value.toFixed(2)}\n`;
-  message += `Desconto (12%): -R$ ${discountValue.value.toFixed(2)}\n`;
-  message += `Subtotal com desconto: R$ ${subtotalAfterDiscount.value.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
   // TOTAL
@@ -342,8 +326,6 @@ const completeOrder = () => {
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
     subtotal: subtotalPrice.value,
-    discount: discountValue.value,
-    subtotalAfterDiscount: subtotalAfterDiscount.value,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
@@ -363,7 +345,7 @@ const getDeliveryFee = () => {
 };
 
 const getTotalWithDelivery = () => {
-  return subtotalAfterDiscount.value + getDeliveryFee();
+  return subtotalPrice.value + getDeliveryFee();
 };
 </script>
 
@@ -536,11 +518,6 @@ const getTotalWithDelivery = () => {
         <div class="summary-line">
           <span>Subtotal dos itens:</span>
           <span>R$ {{ subtotalPrice.toFixed(2) }}</span>
-        </div>
-
-        <div v-if="discountValue > 0" class="summary-line discount">
-          <span>Desconto (12%):</span>
-          <span>-R$ {{ discountValue.toFixed(2) }}</span>
         </div>
 
         <div v-if="deliveryType === 'delivery'" class="summary-line">
@@ -929,20 +906,6 @@ const getTotalWithDelivery = () => {
   font-size: 1.2rem;
   font-weight: 700;
   color: #000;
-}
-
-.summary-line.discount {
-  color: #28a745;
-  font-weight: 600;
-  background: #f0fff4;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  margin: 0.25rem 0;
-}
-
-.summary-line.discount .discount-value {
-  color: #28a745;
-  font-weight: 700;
 }
 
 .form-actions {
