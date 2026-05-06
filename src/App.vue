@@ -762,7 +762,7 @@ const pizzas = ref([
     id: 107,
     name: "PIZZA A MODA 220",
     category: "PROMOÇÃO",
-    image: "/pizzas/20.jpg",
+    image: "/pizzas/21.jpg",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
