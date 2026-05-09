@@ -807,7 +807,7 @@ const pizzas = ref([
     ],
     prices: { G: 37.9 },
   },
-  {
+  /*{
     id: 102,
     name: "PIZZA MISTA",
     category: "PROMOÇÃO",
@@ -821,8 +821,8 @@ const pizzas = ref([
       "CEBOLA",
     ],
     prices: { G: 37.9 },
-  },
-  {
+  },*/
+  /*{
     id: 103,
     name: "PIZZA PORTUGUESA",
     category: "PROMOÇÃO",
@@ -839,7 +839,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 37.9 },
-  },
+  },*/
   {
     id: 104,
     name: "PIZZA DE FRANGO",
