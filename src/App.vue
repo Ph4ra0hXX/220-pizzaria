@@ -1319,14 +1319,14 @@ const getPaymentMethodLabel = (method) => {
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
                 <span v-else-if="category === 'PROMOÇÃO'"
-                  >PROMO DIA DAS MÃES</span
+                  >PROMOÇÃO 38.90</span
                 >
                 <span v-else>{{ category }}</span>
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
               </button>
             </div>
