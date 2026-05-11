@@ -1319,14 +1319,16 @@ const getPaymentMethodLabel = (method) => {
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
+                  >🔥</span
+                >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'"
-                  >PROMOÇÃO 38.90</span
-                >
+                <span v-else-if="category === 'PROMOÇÃO'">PROMOÇÃO 38.90</span>
                 <span v-else>{{ category }}</span>
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">🔥</span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
+                  >🔥</span
+                >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
               </button>
             </div>
@@ -1517,6 +1519,19 @@ const getPaymentMethodLabel = (method) => {
         <p class="footer-title">Horário de Funcionamento</p>
         <p class="footer-text">SÁBADOS E DOMINGOS</p>
         <p class="footer-text">DE 18HS ÀS 22:30HS</p>
+
+        <p class="footer-title">Endereço</p>
+        <p class="footer-text">
+          <a
+            class="footer-link"
+            href="https://www.google.com/maps/search/?api=1&query=R.%20Raimundo%20Pereira%20Lima%2C%20220%20-%20Pitombeira%2C%20Limoeiro%20do%20Norte%20-%20CE%2C%2062930-000%2C%20Brasil"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            R. Raimundo Pereira Lima, 220 - Pitombeira, Limoeiro do Norte - CE,
+            62930-000, Brasil
+          </a>
+        </p>
       </div>
     </footer>
   </div>
@@ -2274,5 +2289,14 @@ const getPaymentMethodLabel = (method) => {
   font-size: 1.1rem;
   margin: 0.5rem 0;
   font-weight: 600;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }
 </style>
