@@ -745,6 +745,38 @@ const pizzas = ref([
     prices: { P: 42.0, G: 58.0 },
   },
   {
+    id: 32,
+    name: "PIZZA DE FRANGO COM CREME CHEESE",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "CREME CHEESE",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 42.0, G: 58.0 },
+  },
+  {
+    id: 33,
+    name: "PIZZA DE CALABRESA COM CREME CHEESE",
+    category: "TRADICIONAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CALABRESA",
+      "CREME CHEESE",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 42.0, G: 58.0 },
+  },
+  {
     id: 36,
     name: "PIZZA DE MUSSARELA",
     category: "TRADICIONAL",
@@ -1232,7 +1264,9 @@ const getPaymentMethodLabel = (method) => {
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'">PROMO DIA DAS MÃES</span>
+                <span v-else-if="category === 'PROMOÇÃO'"
+                  >PROMO DIA DAS MÃES</span
+                >
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon"></span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁</span>
