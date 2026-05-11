@@ -790,6 +790,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   // PIZZAS DE PROMOÇÃO
+  /*
   {
     id: 107,
     name: "PIZZA A MODA 220",
@@ -810,6 +811,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
   {
     id: 100,
     name: "PIZZA DE MUSSARELA",
@@ -918,6 +920,7 @@ const pizzas = ref([
     ],
     prices: { G: 37.9 },
   },
+  /*
   {
     id: 108,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -938,6 +941,8 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
+  /*
   {
     id: 109,
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
@@ -953,6 +958,8 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
+  /*
   {
     id: 110,
     name: "PIZZA DE CARNE DE SOL",
@@ -968,6 +975,8 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
+  /*
   {
     id: 111,
     name: "PIZZA DE DISQUETE",
@@ -976,6 +985,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { G: 45.0 },
   },
+  */
   {
     id: 60,
     name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
