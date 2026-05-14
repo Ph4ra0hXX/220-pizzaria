@@ -62,20 +62,26 @@ const isEmoji = (str) => {
 
 const getPrice = (pizza, size) => {
   if (isBeverage(pizza)) {
-    return pizza.prices.unit.toFixed(2);
+    return pizza.prices?.unit?.toFixed(2) || "0.00";
   }
   if (pizza.category === "COMBOS") {
-    return pizza.prices.combo.toFixed(2);
+    return pizza.prices?.combo?.toFixed(2) || "0.00";
+  }
+  if (!size || !pizza.prices?.[size]) {
+    return "0.00";
   }
   return pizza.prices[size].toFixed(2);
 };
 
 const getDisplayPrice = (pizza, edge) => {
   if (isBeverage(pizza)) {
-    return pizza.prices.unit.toFixed(2);
+    return pizza.prices?.unit?.toFixed(2) || "0.00";
   }
   if (pizza.category === "COMBOS") {
-    return pizza.prices.combo.toFixed(2);
+    return pizza.prices?.combo?.toFixed(2) || "0.00";
+  }
+  if (!props.selectedSize) {
+    return "0.00";
   }
   const isPromotion = pizza.category === "PROMOÇÃO";
   let price = parseFloat(getPrice(pizza, props.selectedSize));
