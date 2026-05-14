@@ -26,6 +26,7 @@ const neighborhoods = [
   { name: "SANTA LUZIA", fee: 5.0 },
   { name: "SÃO RAIMUNDO", fee: 7.0 },
   { name: "SITIO BOM JESUS", fee: 5.0 },
+  { name: "SITIO MILAGRES", fee: 10.0 },
   { name: "SITIO SOCORRO", fee: 5.0 },
   { name: "VILA DO ALONSO", fee: 6.0 },
   { name: "VILA TETEU", fee: 5.0 },

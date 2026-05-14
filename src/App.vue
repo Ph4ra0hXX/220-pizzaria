@@ -362,7 +362,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 11.0 },
+    prices: { unit: 7.0 },
   },
   {
     id: 22,
@@ -826,6 +826,21 @@ const pizzas = ref([
     prices: { G: 38.9 },
   },
   {
+    id: 999,
+    name: "PIZZA DE LOMBINHO",
+    image: "/pizzas/13.webp",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 38.0 },
+  },
+  {
     id: 101,
     name: "PIZZA MARGUERITA",
     category: "PROMOÇÃO",
@@ -952,7 +967,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
-  {
+  /*{
     id: 114,
     name: "PIZZA DE CALABRESA COM CREME CHEESE",
     category: "PROMOÇÃO",
@@ -967,7 +982,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },
+  },*/
   /*
   {
     id: 108,
