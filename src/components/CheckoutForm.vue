@@ -50,7 +50,7 @@ const emit = defineEmits(["complete-order", "back-to-cart"]);
 const currentStep = ref("delivery");
 const deliveryType = ref("delivery"); // 'delivery' ou 'pickup'
 const paymentMethod = ref("pix");
-const pixKey = "88996954495";
+const pixKey = "74204963315, Ozinete Lima Maia";
 const copyingPix = ref(false);
 
 const copyPix = async () => {
