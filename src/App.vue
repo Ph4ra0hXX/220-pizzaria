@@ -1268,7 +1268,12 @@ const selectPizza = (pizza) => {
   } else if (pizza.category === "COMBOS") {
     selectedSize.value = null;
   } else if (pizza.category === "PROMOÇÃO") {
-    selectedSize.value = "G";
+    // Se a pizza da promoção tem preço P, seleciona P, senão G
+    if (pizza.prices.P) {
+      selectedSize.value = "P";
+    } else {
+      selectedSize.value = "G";
+    }
   } else {
     selectedSize.value = "P";
   }
@@ -1406,13 +1411,12 @@ const getFilteredPizzas = () => {
 };
 
 const getAvailableSizes = (pizza) => {
-  if (pizza.category === "COMBOS") {
+  if (!pizza || !pizza.prices) {
     return [];
   }
-  if (pizza.category === "PROMOÇÃO") {
-    return ["G"];
-  }
-  return ["P", "G"];
+  return Object.keys(pizza.prices).filter(
+    (size) => size === "P" || size === "G",
+  );
 };
 
 const handleCompleteOrder = (order) => {
