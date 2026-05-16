@@ -821,12 +821,16 @@ const pizzas = ref([
   },
   {
     id: 200,
-    name: "PIZZA DE BOMBINHO",
+    name: "PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
-      "CHOCOLATE AO LEITE",
-      "BOMBONS",
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
     ],
     prices: { G: 38.9 },
   },
@@ -874,7 +878,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 48.0 },
   },
   {
     id: 201,
