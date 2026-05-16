@@ -825,7 +825,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
-  {
+  /*{
     id: 999,
     name: "PIZZA DE LOMBINHO",
     image: "/pizzas/13.webp",
@@ -839,7 +839,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },
+  },*/
   {
     id: 101,
     name: "PIZZA MARGUERITA",
@@ -904,7 +904,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
-  {
+  /*{
     id: 105,
     name: "PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
@@ -919,7 +919,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },
+  },*/
   {
     id: 106,
     name: "PIZZA DE CALABRESA",
@@ -935,7 +935,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
-  {
+  /*{
     id: 112,
     name: "PIZZA DE FRANGO CHEDDAR",
     category: "PROMOÇÃO",
@@ -950,8 +950,8 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },
-  {
+  },*/
+  /*{
     id: 113,
     name: "PIZZA DE FRANGO COM CREME CHEESE",
     category: "PROMOÇÃO",
@@ -966,7 +966,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },
+  },*/
   /*{
     id: 114,
     name: "PIZZA DE CALABRESA COM CREME CHEESE",
@@ -1049,6 +1049,125 @@ const pizzas = ref([
     prices: { G: 45.0 },
   },
   */
+  // PIZZAS DE PROMOÇÃO - 38.90 (tamanho G)
+  {
+    id: 200,
+    name: "PIZZA DE BOMBINHO",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "CHOCOLATE AO LEITE",
+      "BOMBONS",
+    ],
+    prices: { P: 34.0, G: 38.9 },
+  },
+  // PIZZAS DE PROMOÇÃO - 48.00 (tamanho G)
+  {
+    id: 201,
+    name: "PIZZA A MODA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/21.jpg",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CARNE DE SOL",
+      "CALABRESA",
+      "BACON",
+      "MILHO VERDE",
+      "CEBOLA",
+      "PIMENTAO",
+      "TOMATE CEREJA",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 48.0 },
+  },
+  {
+    id: 202,
+    name: "PIZZA PORTUGUESA DA CASA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/6.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "CALABRESA",
+      "OVO",
+      "CEBOLA",
+      "PIMENTAO",
+      "GELEIA DE PIMENTA",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 48.0 },
+  },
+  {
+    id: 203,
+    name: "PIZZA DE LOMBINHO COM CATUPIRY",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CATUPIRY",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 48.0 },
+  },
+  {
+    id: 204,
+    name: "PIZZA DE ATUM",
+    category: "PROMOÇÃO",
+    image: "/pizzas/14.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "ATUM",
+      "CATUPIRY",
+      "MUSSARELA",
+      "TOMATE",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 48.0 },
+  },
+  {
+    id: 205,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 48.0 },
+  },
+  // PIZZAS DE PROMOÇÃO - 34.00 (tamanho P)
+  {
+    id: 206,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 34.0 },
+  },
+  {
+    id: 207,
+    name: "PIZZA DE BIS",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+    prices: { P: 34.0 },
+  },
   {
     id: 60,
     name: "PIZZA G MUSSARELA + PIZZA G DE CALABRESA + GUARANA ANTARTICA 1L",
@@ -1159,11 +1278,24 @@ const selectPizza = (pizza) => {
   selectedEdge.value = null;
   selectedAdditionals.value = [];
   selectedComment.value = "";
-  selectedFlavors.value = [];
+  selectedFlavors.value = []; // Pizza P não pode ter meio a meio
+};
+
+const updateSize = (newSize) => {
+  selectedSize.value = newSize;
+  // Se mudou para P, limpar sabores (pizza P não pode ser meio a meio)
+  if (newSize === "P") {
+    selectedFlavors.value = [];
+  }
 };
 
 const addToCart = () => {
   if (selectedPizza.value) {
+    // Validação: Pizza P não pode ter meio a meio (sabores múltiplos)
+    if (selectedSize.value === "P" && selectedFlavors.value.length > 0) {
+      selectedFlavors.value = [];
+    }
+
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
     const isCombo = selectedPizza.value.category === "COMBOS";
@@ -1361,7 +1493,8 @@ const getPaymentMethodLabel = (method) => {
             :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
             :additionals="additionals"
-            v-model:selectedSize="selectedSize"
+            :selectedSize="selectedSize"
+            @update:selectedSize="updateSize"
             v-model:selectedEdge="selectedEdge"
             v-model:selectedAdditionals="selectedAdditionals"
             v-model:selectedComment="selectedComment"

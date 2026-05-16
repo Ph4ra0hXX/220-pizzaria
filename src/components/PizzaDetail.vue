@@ -207,7 +207,11 @@ const isFlavorSelected = (flavor) => {
 };
 
 const isFlavorsAllowed = () => {
-  return !isBeverage(props.pizza) && props.pizza.category !== "COMBOS";
+  return (
+    !isBeverage(props.pizza) &&
+    props.pizza.category !== "COMBOS" &&
+    props.selectedSize === "G"
+  );
 };
 
 const isPromotion = () => {
