@@ -951,7 +951,7 @@ const pizzas = ref([
   },
   {
     id: 206,
-    name: "PIZZA DE DISQUETE",
+    name: "PIZZA DE DISQUETE P",
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
@@ -959,7 +959,7 @@ const pizzas = ref([
   },
   {
     id: 207,
-    name: "PIZZA DE BIS",
+    name: "PIZZA DE BIS P",
     category: "PROMOÇÃO",
     image: "",
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
