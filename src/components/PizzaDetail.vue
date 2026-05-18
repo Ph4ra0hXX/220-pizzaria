@@ -150,10 +150,14 @@ const getMaxFlavors = () => {
 };
 
 const getAvailableFlavors = () => {
-  // Se é promoção, retorna apenas outras pizzas de promoção
+  // Se é promoção, retorna apenas outras pizzas de promoção do mesmo tamanho
   if (props.pizza.category === "PROMOÇÃO") {
     return props.pizzas.filter(
-      (p) => p.id !== props.pizza.id && p.category === "PROMOÇÃO",
+      (p) =>
+        p.id !== props.pizza.id &&
+        p.category === "PROMOÇÃO" &&
+        p.prices &&
+        p.prices[props.selectedSize], // Verifica se tem preço para o tamanho selecionado
     );
   }
   // Caso contrário, retorna todas as pizzas EXCETO a selecionada e bebidas
@@ -207,6 +211,11 @@ const isFlavorSelected = (flavor) => {
 };
 
 const isFlavorsAllowed = () => {
+  // Para promoção, apenas tamanho G pode ter metade metade
+  if (props.pizza.category === "PROMOÇÃO") {
+    return props.selectedSize === "G" && !isBeverage(props.pizza);
+  }
+
   return (
     !isBeverage(props.pizza) &&
     props.pizza.category !== "COMBOS" &&
