@@ -225,8 +225,8 @@ const getFilteredEdges = () => {
 </script>
 
 <template>
-  <div class="detail-container">
-    <div class="detail-card">
+  <div class="detail-container" @click="$emit('close')">
+    <div class="detail-card" @click.stop>
       <button class="close-btn" @click="$emit('close')">✕</button>
 
       <div class="detail-header">
