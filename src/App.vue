@@ -801,7 +801,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 101,
@@ -817,7 +817,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 200,
@@ -832,7 +832,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 106,
@@ -847,7 +847,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 104,
@@ -862,8 +862,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
+  /*
   {
     id: 203,
     name: "PIZZA DE LOMBINHO COM CATUPIRY",
@@ -880,6 +881,8 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
+  /*
   {
     id: 201,
     name: "PIZZA A MODA 220",
@@ -900,6 +903,8 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
+  /*
   {
     id: 202,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -920,6 +925,8 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
+  /*
   {
     id: 204,
     name: "PIZZA DE ATUM",
@@ -937,6 +944,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
   {
     id: 205,
     name: "PIZZA DE FRANBACON",
@@ -951,7 +959,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 48.0 },
+    prices: { G: 37.9 },
   },
   {
     id: 206,
@@ -1055,7 +1063,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },*/
-  /*{
+  {
     id: 112,
     name: "PIZZA DE FRANGO CHEDDAR",
     category: "PROMOÇÃO",
@@ -1070,7 +1078,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.9 },
-  },*/
+  },
   /*{
     id: 113,
     name: "PIZZA DE FRANGO COM CREME CHEESE",
@@ -1476,7 +1484,9 @@ const getPaymentMethodLabel = (method) => {
                 </span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'">💥Promoção FDS💥🍕</span>
+                <span v-else-if="category === 'PROMOÇÃO'"
+                  >PROMOÇÃO 37,90 E 34,00🔥🍕</span
+                >
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'PROMOÇÃO'" class="promo-icon">
                   🔥</span
