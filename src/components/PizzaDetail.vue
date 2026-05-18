@@ -210,6 +210,7 @@ const isFlavorsAllowed = () => {
   return (
     !isBeverage(props.pizza) &&
     props.pizza.category !== "COMBOS" &&
+    props.pizza.category !== "PROMOÇÃO" &&
     props.selectedSize === "G"
   );
 };
