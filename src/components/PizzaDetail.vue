@@ -149,6 +149,11 @@ const getMaxFlavors = () => {
   return 1;
 };
 
+const getFlavorDisplayName = (pizza) => {
+  // Remove "+ GUARANA ANTARTICA 1L" from the pizza name for display
+  return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
+};
+
 const getAvailableFlavors = () => {
   // Se é promoção, retorna apenas outras pizzas de promoção do mesmo tamanho
   if (props.pizza.category === "PROMOÇÃO") {
@@ -316,7 +321,7 @@ const getFilteredEdges = () => {
               <span v-if="isFlavorSelected(flavorPizza)" class="check-mark"
                 >✓</span
               >
-              {{ flavorPizza.name }}
+              {{ getFlavorDisplayName(flavorPizza) }}
             </button>
           </div>
         </div>
