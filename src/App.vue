@@ -792,7 +792,7 @@ const pizzas = ref([
   // PIZZAS DE PROMOÇÃO
   {
     id: 100,
-    name: "PIZZA DE MUSSARELA",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -805,7 +805,7 @@ const pizzas = ref([
   },
   {
     id: 101,
-    name: "PIZZA MARGUERITA",
+    name: "+ GUARANA ANTARTICA 1L PIZZA MARGUERITA",
     category: "PROMOÇÃO",
     image: "/pizzas/16.webp",
     ingredients: [
@@ -821,7 +821,7 @@ const pizzas = ref([
   },
   {
     id: 200,
-    name: "PIZZA DE LOMBINHO",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -836,7 +836,7 @@ const pizzas = ref([
   },
   {
     id: 106,
-    name: "PIZZA DE CALABRESA",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE CALABRESA",
     category: "PROMOÇÃO",
     image: "/pizzas/12.webp",
     ingredients: [
@@ -851,7 +851,7 @@ const pizzas = ref([
   },
   {
     id: 104,
-    name: "PIZZA DE FRANGO",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE FRANGO",
     category: "PROMOÇÃO",
     image: "/pizzas/2.webp",
     ingredients: [
@@ -947,7 +947,7 @@ const pizzas = ref([
   */
   {
     id: 205,
-    name: "PIZZA DE FRANBACON",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -963,7 +963,7 @@ const pizzas = ref([
   },
   {
     id: 210,
-    name: "PIZZA PORTUGUESA",
+    name: "+ GUARANA ANTARTICA 1L PIZZA PORTUGUESA",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -981,7 +981,7 @@ const pizzas = ref([
   },
   {
     id: 211,
-    name: "PIZZA DE FRANGO COM CREME CHEESE",
+    name: "+ GUARANA ANTARTICA 1L PIZZA DE FRANGO COM CREME CHEESE",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
