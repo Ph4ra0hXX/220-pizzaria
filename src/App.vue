@@ -1472,6 +1472,11 @@ const handleCompleteOrder = (order) => {
   isCartOpen.value = false;
 };
 
+const getCleanPizzaName = (pizza) => {
+  // Remove "+ GUARANA ANTARTICA 1L" from the pizza name
+  return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
+};
+
 const getPaymentMethodLabel = (method) => {
   const labels = {
     pix: "PIX",
@@ -1618,9 +1623,15 @@ const getPaymentMethodLabel = (method) => {
                   "
                   class="item-info"
                 >
-                  <div>1/2 {{ item.pizza.name }}</div>
+                  <div>1/2 {{ getCleanPizzaName(item.pizza) }}</div>
                   <div v-for="flavor in item.flavors" :key="flavor.id">
-                    1/2 {{ flavor.name }}
+                    1/2 {{ getCleanPizzaName(flavor) }}
+                  </div>
+                  <div
+                    v-if="item.pizza.category === 'PROMOÇÃO'"
+                    class="guarana-single"
+                  >
+                    + GUARANA ANTARTICA 1L
                   </div>
                 </div>
                 <p
