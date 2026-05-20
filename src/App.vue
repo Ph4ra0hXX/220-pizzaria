@@ -961,22 +961,22 @@ const pizzas = ref([
     ],
     prices: { G: 37.9 },
   },
-  {
+  /*{
     id: 206,
     name: "PIZZA DE DISQUETE P",
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 34.0 },
-  },
-  {
+  }*/
+  /*{
     id: 207,
     name: "PIZZA DE BIS P",
     category: "PROMOÇÃO",
     image: "",
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
     prices: { P: 34.0 },
-  },
+  }*/
   /*
   {
     id: 107,
@@ -1063,7 +1063,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },*/
-  {
+  /*{
     id: 112,
     name: "PIZZA DE FRANGO CHEDDAR",
     category: "PROMOÇÃO",
@@ -1078,7 +1078,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 37.9 },
-  },
+  }*/
   /*{
     id: 113,
     name: "PIZZA DE FRANGO COM CREME CHEESE",
