@@ -362,7 +362,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 7.0 },
+    prices: { unit: 11.0 },
   },
   {
     id: 22,
