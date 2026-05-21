@@ -1627,12 +1627,6 @@ const getPaymentMethodLabel = (method) => {
                   <div v-for="flavor in item.flavors" :key="flavor.id">
                     1/2 {{ getCleanPizzaName(flavor) }}
                   </div>
-                  <div
-                    v-if="item.pizza.category === 'PROMOÇÃO'"
-                    class="guarana-single"
-                  >
-                    + GUARANA ANTARTICA 1L
-                  </div>
                 </div>
                 <p
                   v-else-if="item.flavors && item.flavors.length > 0"
