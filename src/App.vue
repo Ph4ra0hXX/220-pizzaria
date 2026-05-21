@@ -792,7 +792,7 @@ const pizzas = ref([
   // PIZZAS DE PROMOÇÃO
   {
     id: 100,
-    name: "PIZZA DE MUSSARELA + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -801,11 +801,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 101,
-    name: "PIZZA MARGUERITA + GUARANA ANTARTICA 1L",
+    name: "PIZZA MARGUERITA",
     category: "PROMOÇÃO",
     image: "/pizzas/16.webp",
     ingredients: [
@@ -817,11 +817,11 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 200,
-    name: "PIZZA DE LOMBINHO + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE BOMBINHO",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -832,11 +832,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 106,
-    name: "PIZZA DE CALABRESA + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE CALABRESA",
     category: "PROMOÇÃO",
     image: "/pizzas/12.webp",
     ingredients: [
@@ -847,11 +847,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 104,
-    name: "PIZZA DE FRANGO + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE FRANGO",
     category: "PROMOÇÃO",
     image: "/pizzas/2.webp",
     ingredients: [
@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   /*
   {
@@ -947,7 +947,7 @@ const pizzas = ref([
   */
   {
     id: 205,
-    name: "PIZZA DE FRANBACON + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -959,11 +959,11 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 210,
-    name: "PIZZA PORTUGUESA + GUARANA ANTARTICA 1L",
+    name: "PIZZA PORTUGUESA",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -977,11 +977,11 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   {
     id: 211,
-    name: "PIZZA DE FRANGO COM CREME CHEESE + GUARANA ANTARTICA 1L",
+    name: "PIZZA DE FRANGO COM CREME CHEESE",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -993,7 +993,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 36.0 },
   },
   /*{
     id: 206,
