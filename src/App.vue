@@ -821,7 +821,7 @@ const pizzas = ref([
   },
   {
     id: 200,
-    name: "PIZZA DE BOMBINHO",
+    name: "PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
