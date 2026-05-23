@@ -79,6 +79,7 @@ const copyPix = async () => {
 const deliveryInfo = ref({
   name: "",
   street: "",
+  houseNumber: "",
   complement: "",
   neighborhood: "",
   reference: "",
@@ -88,6 +89,7 @@ const deliveryInfo = ref({
 const errors = ref({
   name: "",
   street: "",
+  houseNumber: "",
   neighborhood: "",
 });
 
@@ -109,6 +111,7 @@ const validateDeliveryInfo = () => {
   errors.value = {
     name: "",
     street: "",
+    houseNumber: "",
     neighborhood: "",
   };
 
@@ -121,6 +124,10 @@ const validateDeliveryInfo = () => {
   if (deliveryType.value === "delivery") {
     if (!String(info.street ?? "").trim()) {
       errors.value.street = "Por favor, informe a rua";
+      isValid = false;
+    }
+    if (!String(info.houseNumber ?? "").trim()) {
+      errors.value.houseNumber = "Por favor, informe o número";
       isValid = false;
     }
     if (!String(info.neighborhood ?? "").trim()) {
@@ -150,7 +157,7 @@ const formatOrderForWhatsApp = () => {
 
   if (deliveryType.value === "delivery") {
     message += `Tipo: Entrega\n`;
-    message += `Endereco: ${deliveryInfo.value.street}\n`;
+    message += `Endereco: ${deliveryInfo.value.street}, Nº ${deliveryInfo.value.houseNumber}\n`;
     if (deliveryInfo.value.complement) {
       message += `Complemento: ${deliveryInfo.value.complement}\n`;
     }
@@ -405,18 +412,34 @@ const getTotalWithDelivery = () => {
       <div v-if="deliveryType === 'delivery'" class="address-section">
         <h4>Endereço para Entrega</h4>
 
-        <div class="form-group">
-          <label for="street">Rua *</label>
-          <input
-            id="street"
-            v-model="deliveryInfo.street"
-            type="text"
-            placeholder="Nome da rua"
-            :class="{ 'input-error': errors.street }"
-          />
-          <span v-if="errors.street" class="error-message">{{
-            errors.street
-          }}</span>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="street">Rua *</label>
+            <input
+              id="street"
+              v-model="deliveryInfo.street"
+              type="text"
+              placeholder="Nome da rua"
+              :class="{ 'input-error': errors.street }"
+            />
+            <span v-if="errors.street" class="error-message">{{
+              errors.street
+            }}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="houseNumber">Número *</label>
+            <input
+              id="houseNumber"
+              v-model="deliveryInfo.houseNumber"
+              type="text"
+              placeholder="Nº da casa"
+              :class="{ 'input-error': errors.houseNumber }"
+            />
+            <span v-if="errors.houseNumber" class="error-message">{{
+              errors.houseNumber
+            }}</span>
+          </div>
         </div>
 
         <div class="form-row">
