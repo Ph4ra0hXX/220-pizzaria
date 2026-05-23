@@ -801,7 +801,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 38.0 },
   },
   {
     id: 101,
@@ -817,7 +817,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 38.0 },
   },
   {
     id: 200,
@@ -832,7 +832,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 38.0 },
   },
   {
     id: 106,
@@ -847,7 +847,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 38.0 },
   },
   {
     id: 104,
@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 38.0 },
   },
   /*
   {
@@ -945,6 +945,7 @@ const pizzas = ref([
     prices: { G: 48.0 },
   },
   */
+  /*
   {
     id: 205,
     name: "PIZZA DE FRANBACON",
@@ -995,6 +996,7 @@ const pizzas = ref([
     ],
     prices: { G: 36.0 },
   },
+  */
   /*{
     id: 206,
     name: "PIZZA DE DISQUETE P",
@@ -1518,18 +1520,14 @@ const getPaymentMethodLabel = (method) => {
                 ]"
                 @click="categoryFilter = category"
               >
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"
-                  >🔥
-                </span>
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"> </span>
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
                 <span v-else-if="category === 'PROMOÇÃO'"
-                  >🔥🚨 PROMOÇAO 36,00 🍕🔥</span
+                  >🔥🚨 PROMOÇAO 38,00 🍕🔥</span
                 >
                 <span v-else>{{ category }}</span>
-                <span v-if="category === 'PROMOÇÃO'" class="promo-icon">
-                  🔥</span
-                >
+                <span v-if="category === 'PROMOÇÃO'" class="promo-icon"> </span>
                 <span v-if="category === 'COMBOS'" class="combo-icon"> 🎁</span>
               </button>
             </div>
