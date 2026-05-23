@@ -724,13 +724,13 @@ const getTotalWithDelivery = () => {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
 .delivery-type-selector {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -812,7 +812,7 @@ const getTotalWithDelivery = () => {
 
 .payment-methods {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 2rem;
 }
