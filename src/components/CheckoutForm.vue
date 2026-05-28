@@ -41,9 +41,20 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  appliedCoupon: {
+    type: String,
+    default: "",
+  },
 });
 
 const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
+
+const couponDiscount = computed(() => {
+  if (props.appliedCoupon === "ATILA") {
+    return 10.0;
+  }
+  return 0;
+});
 
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
@@ -297,6 +308,12 @@ const formatOrderForWhatsApp = () => {
 
   // RESUMO DO PEDIDO
   message += `*RESUMO DO PEDIDO*\n`;
+  if (props.appliedCoupon) {
+    message += `Cupom: ${props.appliedCoupon}\n`;
+    if (couponDiscount.value > 0) {
+      message += `Desconto: - R$ ${couponDiscount.value.toFixed(2)}\n`;
+    }
+  }
   message += `Subtotal: R$ ${subtotalPrice.value.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
@@ -353,7 +370,7 @@ const getDeliveryFee = () => {
 };
 
 const getTotalWithDelivery = () => {
-  return subtotalPrice.value + getDeliveryFee();
+  return subtotalPrice.value + getDeliveryFee() - couponDiscount.value;
 };
 </script>
 
@@ -542,6 +559,16 @@ const getTotalWithDelivery = () => {
         <div class="summary-line">
           <span>Subtotal dos itens:</span>
           <span>R$ {{ subtotalPrice.toFixed(2) }}</span>
+        </div>
+
+        <div v-if="appliedCoupon" class="summary-line coupon">
+          <span>Cupom Aplicado:</span>
+          <span>{{ appliedCoupon }}</span>
+        </div>
+
+        <div v-if="couponDiscount > 0" class="summary-line discount">
+          <span>Desconto do Cupom:</span>
+          <span>- R$ {{ couponDiscount.toFixed(2) }}</span>
         </div>
 
         <div v-if="deliveryType === 'delivery'" class="summary-line">
@@ -922,6 +949,24 @@ const getTotalWithDelivery = () => {
 .summary-line.delivery-free {
   color: #28a745;
   font-weight: 600;
+}
+
+.summary-line.coupon {
+  color: #2e7d32;
+  font-weight: 700;
+  background-color: rgba(46, 125, 50, 0.1);
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+.summary-line.discount {
+  color: #c61818;
+  font-weight: 700;
+  background-color: rgba(198, 24, 24, 0.1);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
 }
 
 .summary-line.total {

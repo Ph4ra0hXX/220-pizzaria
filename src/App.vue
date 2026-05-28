@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import PizzaList from "./components/PizzaList.vue";
 import PizzaDetail from "./components/PizzaDetail.vue";
 import CheckoutForm from "./components/CheckoutForm.vue";
@@ -1343,6 +1343,31 @@ const cart = ref([]);
 const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
+const appliedCoupon = ref("");
+
+const categories = computed(() => {
+  const allCategories = [
+    "TODAS",
+    "PROMOÇÃO",
+    "COMBOS",
+    "TRADICIONAL",
+    "ESPECIAL",
+    "DOCE",
+    "BEBIDA",
+  ];
+  if (appliedCoupon.value) {
+    return allCategories.filter((c) => c !== "PROMOÇÃO");
+  }
+  return allCategories;
+});
+
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const coupon = urlParams.get("cupom");
+  if (coupon) {
+    appliedCoupon.value = coupon.toUpperCase();
+  }
+});
 
 const selectPizza = (pizza) => {
   selectedPizza.value = pizza;
@@ -1485,10 +1510,17 @@ const getTotalPrice = computed(() => {
 });
 
 const getFilteredPizzas = () => {
-  if (categoryFilter.value === "TODAS") {
-    return pizzas.value;
+  let filtered = pizzas.value;
+
+  if (appliedCoupon.value) {
+    filtered = filtered.filter((p) => p.category !== "PROMOÇÃO");
   }
-  return pizzas.value.filter(
+
+  if (categoryFilter.value === "TODAS") {
+    return filtered;
+  }
+
+  return filtered.filter(
     (p) => (p.category || "TRADICIONAL") === categoryFilter.value,
   );
 };
@@ -1535,15 +1567,7 @@ const getPaymentMethodLabel = (method) => {
             <h2>Nossas Pizzas</h2>
             <div class="filter-buttons">
               <button
-                v-for="category in [
-                  'TODAS',
-                  'PROMOÇÃO',
-                  'COMBOS',
-                  'TRADICIONAL',
-                  'ESPECIAL',
-                  'DOCE',
-                  'BEBIDA',
-                ]"
+                v-for="category in categories"
                 :key="category"
                 :class="[
                   'filter-btn',
@@ -1739,6 +1763,7 @@ const getPaymentMethodLabel = (method) => {
         <CheckoutForm
           :totalPrice="getTotalPrice"
           :cartItems="cart"
+          :appliedCoupon="appliedCoupon"
           @complete-order="handleCompleteOrder"
           @back-to-cart="
             isCheckoutOpen = false;
