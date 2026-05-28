@@ -50,7 +50,7 @@ const props = defineProps({
 const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
 
 const couponDiscount = computed(() => {
-  if (props.appliedCoupon === "ATILA") {
+  if (props.appliedCoupon === "ATILA10") {
     return 10.0;
   }
   return 0;
@@ -308,13 +308,15 @@ const formatOrderForWhatsApp = () => {
 
   // RESUMO DO PEDIDO
   message += `*RESUMO DO PEDIDO*\n`;
+  message += `Subtotal Itens: R$ ${subtotalPrice.value.toFixed(2)}\n`;
   if (props.appliedCoupon) {
     message += `Cupom: ${props.appliedCoupon}\n`;
     if (couponDiscount.value > 0) {
       message += `Desconto: - R$ ${couponDiscount.value.toFixed(2)}\n`;
+      const appliedSubtotal = subtotalPrice.value - couponDiscount.value;
+      message += `Subtotal c/ Desconto: R$ ${appliedSubtotal.toFixed(2)}\n`;
     }
   }
-  message += `Subtotal: R$ ${subtotalPrice.value.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
   // TOTAL
@@ -569,6 +571,11 @@ const getTotalWithDelivery = () => {
         <div v-if="couponDiscount > 0" class="summary-line discount">
           <span>Desconto do Cupom:</span>
           <span>- R$ {{ couponDiscount.toFixed(2) }}</span>
+        </div>
+
+        <div v-if="couponDiscount > 0" class="summary-line subtotal-discounted">
+          <span>Subtotal com Desconto:</span>
+          <span>R$ {{ (subtotalPrice - couponDiscount).toFixed(2) }}</span>
         </div>
 
         <div v-if="deliveryType === 'delivery'" class="summary-line">
@@ -967,6 +974,14 @@ const getTotalWithDelivery = () => {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 4px;
+}
+
+.summary-line.subtotal-discounted {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .summary-line.total {
