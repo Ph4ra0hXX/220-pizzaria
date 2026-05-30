@@ -1,8 +1,12 @@
 <script setup>
-defineProps({
+const props = defineProps({
   pizzas: {
     type: Array,
     required: true,
+  },
+  appliedCoupon: {
+    type: String,
+    default: "",
   },
 });
 
@@ -10,6 +14,19 @@ defineEmits(["select-pizza"]);
 
 const isBeverage = (pizza) => {
   return pizza.category === "BEBIDA";
+};
+
+const getBeveragePrice = (pizza) => {
+  if (
+    pizza.id === 21 &&
+    String(props.appliedCoupon ?? "")
+      .trim()
+      .toUpperCase() === "ATILA10"
+  ) {
+    return 11.0;
+  }
+
+  return pizza.prices.unit;
 };
 
 const getIcon = (pizza) => {
@@ -25,7 +42,7 @@ const isEmoji = (str) => {
 
 const getPriceDisplay = (pizza) => {
   if (isBeverage(pizza)) {
-    return `R$ ${pizza.prices.unit.toFixed(2)}`;
+    return `R$ ${getBeveragePrice(pizza).toFixed(2)}`;
   }
   // Se é COMBO
   if (pizza.category === "COMBOS" && pizza.prices.combo) {

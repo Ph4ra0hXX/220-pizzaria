@@ -1346,6 +1346,58 @@ const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
+const GUARANA_PRODUCT_ID = 21;
+const GUARANA_COUPON_PRICE = 11.0;
+
+const getCouponCode = () =>
+  String(appliedCoupon.value ?? "")
+    .trim()
+    .toUpperCase();
+
+const getBeveragePrice = (pizza) => {
+  if (!pizza?.prices?.unit) {
+    return 0;
+  }
+
+  if (
+    pizza.category === "BEBIDA" &&
+    (pizza.id === GUARANA_PRODUCT_ID ||
+      pizza.name === "GUARANA ANTARTICA 1L") &&
+    getCouponCode() === "ATILA10"
+  ) {
+    return GUARANA_COUPON_PRICE;
+  }
+
+  return pizza.prices.unit;
+};
+
+const getCartItemPrice = (item) => {
+  if (!item) {
+    return 0;
+  }
+
+  if (item.pizza?.category === "BEBIDA") {
+    return getBeveragePrice(item.pizza);
+  }
+
+  return Number(item.price ?? 0);
+};
+
+const cartItemsForCheckout = computed(() =>
+  cart.value.map((item) => ({
+    ...item,
+    price: getCartItemPrice(item),
+    drink: item.drink
+      ? {
+          ...item.drink,
+          price:
+            item.pizza?.category === "BEBIDA"
+              ? getBeveragePrice(item.pizza)
+              : item.drink.price,
+        }
+      : item.drink,
+  })),
+);
 
 const categories = computed(() => {
   const allCategories = [
@@ -1412,7 +1464,7 @@ const addToCart = () => {
     const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
     const isCombo = selectedPizza.value.category === "COMBOS";
     let itemPrice = isBeverage
-      ? selectedPizza.value.prices.unit
+      ? getBeveragePrice(selectedPizza.value)
       : isCombo
         ? selectedPizza.value.prices.combo
         : selectedPizza.value.prices[selectedSize.value];
@@ -1508,7 +1560,10 @@ const removeFromCart = (id) => {
 };
 
 const getTotalPrice = computed(() => {
-  return cart.value.reduce((total, item) => total + item.price, 0);
+  return cartItemsForCheckout.value.reduce(
+    (total, item) => total + getCartItemPrice(item),
+    0,
+  );
 });
 
 const getFilteredPizzas = () => {
@@ -1595,6 +1650,7 @@ const getPaymentMethodLabel = (method) => {
           </div>
           <PizzaList
             :pizzas="getFilteredPizzas()"
+            :appliedCoupon="appliedCoupon"
             @select-pizza="selectPizza"
           />
         </section>
@@ -1603,6 +1659,7 @@ const getPaymentMethodLabel = (method) => {
           <PizzaDetail
             :pizza="selectedPizza"
             :pizzas="pizzas"
+            :appliedCoupon="appliedCoupon"
             :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
             :additionals="additionals"
@@ -1724,7 +1781,9 @@ const getPaymentMethodLabel = (method) => {
                 </p>
               </div>
               <div class="item-actions">
-                <span class="price">R$ {{ item.price.toFixed(2) }}</span>
+                <span class="price"
+                  >R$ {{ getCartItemPrice(item).toFixed(2) }}</span
+                >
                 <button
                   @click="removeFromCart(item.id)"
                   class="remove-btn-modal"
@@ -1764,7 +1823,7 @@ const getPaymentMethodLabel = (method) => {
         <button class="modal-close" @click="isCheckoutOpen = false">✕</button>
         <CheckoutForm
           :totalPrice="getTotalPrice"
-          :cartItems="cart"
+          :cartItems="cartItemsForCheckout"
           :appliedCoupon="appliedCoupon"
           @complete-order="handleCompleteOrder"
           @back-to-cart="

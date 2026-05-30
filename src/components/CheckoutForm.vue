@@ -56,6 +56,22 @@ const couponDiscount = computed(() => {
   return 0;
 });
 
+const getItemPrice = (item) => {
+  if (
+    item?.pizza?.category === "BEBIDA" &&
+    item.pizza.id === 21 &&
+    props.appliedCoupon === "ATILA10"
+  ) {
+    return 11.0;
+  }
+
+  if (item?.drink?.price) {
+    return item.drink.price;
+  }
+
+  return Number(item?.price ?? 0);
+};
+
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
@@ -209,7 +225,7 @@ const formatOrderForWhatsApp = () => {
       message += `\n   Obs: ${item.comment}\n`;
     }
 
-    message += `\n   *Subtotal: R$ ${item.price.toFixed(2)}*\n\n`;
+    message += `\n   *Subtotal: R$ ${getItemPrice(item).toFixed(2)}*\n\n`;
     itemIndex++;
   });
 
@@ -285,7 +301,7 @@ const formatOrderForWhatsApp = () => {
     message += `${itemIndex}. Bebidas\n`;
     drinkItems.forEach((item) => {
       const drinkName = item.drink ? item.drink.name : item.pizza.name;
-      const drinkPrice = item.drink ? item.drink.price : item.price;
+      const drinkPrice = getItemPrice(item);
       message += `   - ${drinkName}: R$ ${drinkPrice.toFixed(2)}\n`;
     });
     message += `\n`;

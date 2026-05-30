@@ -4,6 +4,10 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  appliedCoupon: {
+    type: String,
+    default: "",
+  },
   pizzas: {
     type: Array,
     required: true,
@@ -56,13 +60,26 @@ const isBeverage = (pizza) => {
   return pizza.category === "BEBIDA";
 };
 
+const getBeveragePrice = (pizza) => {
+  if (
+    pizza.id === 21 &&
+    String(props.appliedCoupon ?? "")
+      .trim()
+      .toUpperCase() === "ATILA10"
+  ) {
+    return 11.0;
+  }
+
+  return pizza.prices?.unit ?? 0;
+};
+
 const isEmoji = (str) => {
   return /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u.test(str);
 };
 
 const getPrice = (pizza, size) => {
   if (isBeverage(pizza)) {
-    return pizza.prices?.unit?.toFixed(2) || "0.00";
+    return getBeveragePrice(pizza).toFixed(2);
   }
   if (pizza.category === "COMBOS") {
     return pizza.prices?.combo?.toFixed(2) || "0.00";
@@ -75,7 +92,7 @@ const getPrice = (pizza, size) => {
 
 const getDisplayPrice = (pizza, edge) => {
   if (isBeverage(pizza)) {
-    return pizza.prices?.unit?.toFixed(2) || "0.00";
+    return getBeveragePrice(pizza).toFixed(2);
   }
   if (pizza.category === "COMBOS") {
     return pizza.prices?.combo?.toFixed(2) || "0.00";
