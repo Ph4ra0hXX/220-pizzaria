@@ -217,7 +217,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 38.9, G: 38.9 },
+    prices: { P: 39.0, G: 53.0 },
   },
   {
     id: 11,
