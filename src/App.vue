@@ -879,6 +879,24 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
+  {
+    id: 103,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 36.9 },
+  },
   /*
   {
     id: 107,
