@@ -21,7 +21,7 @@ const getBeveragePrice = (pizza) => {
     pizza.id === 21 &&
     String(props.appliedCoupon ?? "")
       .trim()
-      .toUpperCase() === "ATILA10"
+      .toUpperCase() === "DISABLED_COUPON"
   ) {
     return 11.0;
   }
@@ -30,7 +30,7 @@ const getBeveragePrice = (pizza) => {
 };
 
 const getIcon = (pizza) => {
-  if (isBeverage(pizza)) return "🥤";
+  if (isBeverage(pizza)) return "";
   if (pizza.category === "DOCE") return "🍰";
   if (pizza.category === "COMBOS") return "🎁";
   return "🍕";

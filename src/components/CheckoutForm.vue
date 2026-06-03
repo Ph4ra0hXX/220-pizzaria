@@ -50,7 +50,7 @@ const props = defineProps({
 const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
 
 const couponDiscount = computed(() => {
-  if (props.appliedCoupon === "ATILA10") {
+  if (props.appliedCoupon === "DISABLED_COUPON") {
     return 10.0;
   }
   return 0;
@@ -60,7 +60,7 @@ const getItemPrice = (item) => {
   if (
     item?.pizza?.category === "BEBIDA" &&
     item.pizza.id === 21 &&
-    props.appliedCoupon === "ATILA10"
+    props.appliedCoupon === "DISABLED_COUPON"
   ) {
     return 11.0;
   }

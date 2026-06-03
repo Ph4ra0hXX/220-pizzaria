@@ -65,7 +65,7 @@ const getBeveragePrice = (pizza) => {
     pizza.id === 21 &&
     String(props.appliedCoupon ?? "")
       .trim()
-      .toUpperCase() === "ATILA10"
+      .toUpperCase() === "DISABLED_COUPON"
   ) {
     return 11.0;
   }
@@ -273,11 +273,7 @@ const getFilteredEdges = () => {
             :class="{ 'beverage-icon': isBeverage(pizza) }"
           >
             {{
-              isEmoji(pizza.image)
-                ? pizza.image
-                : isBeverage(pizza)
-                  ? "🥤"
-                  : "🍕"
+              isEmoji(pizza.image) ? pizza.image : isBeverage(pizza) ? "" : "🍕"
             }}
           </div>
         </div>

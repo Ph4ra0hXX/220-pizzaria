@@ -1381,7 +1381,7 @@ const getBeveragePrice = (pizza) => {
     pizza.category === "BEBIDA" &&
     (pizza.id === GUARANA_PRODUCT_ID ||
       pizza.name === "GUARANA ANTARTICA 1L") &&
-    getCouponCode() === "ATILA10"
+    getCouponCode() === "DISABLED_COUPON"
   ) {
     return GUARANA_COUPON_PRICE;
   }
@@ -1655,10 +1655,8 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
+                <span v-if="category === 'PROMOÇÃO'">🔥 </span>
                 <span v-if="category === 'COMBOS'">COMBO COM DESCONTO</span>
-                <span v-else-if="category === 'PROMOÇÃO'"
-                  >🍕🥤 Pizza + Refrigerante 45.00</span
-                >
                 <span v-else>{{ category }}</span>
                 <span v-if="category === 'COMBOS'" class="combo-icon"> 🎁</span>
               </button>
