@@ -819,7 +819,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
-  {
+  /*{
     id: 200,
     name: "PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
@@ -833,7 +833,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.0 },
-  },
+  },*/
   {
     id: 106,
     name: "PIZZA DE CALABRESA",
@@ -864,7 +864,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
-  {
+  /*{
     id: 105,
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
     category: "PROMOÇÃO",
@@ -878,7 +878,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.0 },
-  },
+  },*/
   {
     id: 103,
     name: "PIZZA PORTUGUESA",
