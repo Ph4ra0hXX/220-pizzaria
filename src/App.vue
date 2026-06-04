@@ -880,7 +880,7 @@ const pizzas = ref([
     prices: { G: 38.0 },
   },
   {
-    id: 166,
+    id: 299,
     name: "PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
     image: "/pizzas/13.webp",
