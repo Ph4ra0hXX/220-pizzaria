@@ -864,6 +864,21 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
+  {
+    id: 107,
+    name: "PIZZA DE FRANGO COM CATUPIRY",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "CATUPIRY",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 38.0 },
+  },
   /*{
     id: 105,
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
