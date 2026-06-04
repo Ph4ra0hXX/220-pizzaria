@@ -879,6 +879,22 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
+  {
+    id: 166,
+    name: "PIZZA DE LOMBINHO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/13.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 38.0 },
+  },
+
   /*{
     id: 105,
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
