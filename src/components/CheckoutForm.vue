@@ -574,6 +574,31 @@ const getTotalWithDelivery = () => {
       </div>
 
       <div class="payment-summary">
+        <h4 class="summary-items-title">Itens do Pedido</h4>
+        <div class="summary-items-list">
+          <div v-for="(item, index) in cartItems" :key="index" class="summary-item">
+            <div class="summary-item-info">
+              <span class="summary-item-name">
+                <template v-if="item.drink">{{ item.drink.name }}</template>
+                <template v-else-if="item.pizza && item.pizza.category === 'BEBIDA'">{{ item.pizza.name }}</template>
+                <template v-else-if="item.pizza && item.pizza.category === 'COMBOS'">{{ item.pizza.name }}</template>
+                <template v-else>
+                  Pizza {{ item.size === 'P' ? 'Pequena' : item.size === 'M' ? 'Média' : 'Grande' }} - {{ item.pizza.name }}
+                  <template v-if="item.flavors && item.flavors.length > 0">
+                    / {{ item.flavors.map(f => f.name).join(' / ') }}
+                  </template>
+                </template>
+              </span>
+              <span v-if="item.edge" class="summary-item-extra">+ Borda {{ item.edge.name }}</span>
+              <span v-if="item.additionals && item.additionals.length > 0" class="summary-item-extra">
+                + {{ item.additionals.map(a => a.name).join(', ') }}
+              </span>
+              <span v-if="item.comment" class="summary-item-obs">Obs: {{ item.comment }}</span>
+            </div>
+            <span class="summary-item-price">R$ {{ getItemPrice(item).toFixed(2) }}</span>
+          </div>
+        </div>
+
         <div class="summary-line">
           <span>Subtotal dos itens:</span>
           <span>R$ {{ subtotalPrice.toFixed(2) }}</span>
@@ -917,6 +942,62 @@ const getTotalWithDelivery = () => {
   border-radius: 8px;
   margin-bottom: 1.5rem;
   border-top: 2px solid #c61818;
+}
+
+.summary-items-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.summary-items-list {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #ccc;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+  gap: 1rem;
+}
+
+.summary-item + .summary-item {
+  border-top: 1px solid #f0d0d0;
+}
+
+.summary-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.summary-item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-item-extra {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.summary-item-obs {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.summary-item-price {
+  font-weight: 700;
+  color: #c61818;
+  white-space: nowrap;
+  font-size: 0.9rem;
 }
 
 .pix-section {

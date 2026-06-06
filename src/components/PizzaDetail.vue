@@ -109,40 +109,14 @@ const getDisplayPrice = (pizza, edge) => {
     props.selectedFlavors &&
     props.selectedFlavors.length > 0
   ) {
-    if (isPromotion) {
-      // Para pizzas de promoção, verificar se algum sabor é Atum ou Camarão
-      const hasSpecialFlavor = props.selectedFlavors.some(
-        (flavor) => flavor.id === 67 || flavor.id === 68,
-      );
-      const isBaseSpecial = pizza.id === 67 || pizza.id === 68;
-
-      if (hasSpecialFlavor || isBaseSpecial) {
-        // Calcular com preços especiais (Atum/Camarão custam 59.90)
-        const basePrice = (isBaseSpecial ? 59.9 : 39.9) / 2;
-        const totalFlavorPrice = props.selectedFlavors.reduce((sum, flavor) => {
-          const flavorPrice =
-            flavor.id === 67 || flavor.id === 68 ? 59.9 : 39.9;
-          return sum + flavorPrice / 2;
-        }, 0);
-        price = basePrice + totalFlavorPrice;
-      } else {
-        // Pizzas de promoção comum: calcular normalmente
-        const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
-        const totalFlavorPrice = props.selectedFlavors.reduce(
-          (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
-          0,
-        );
-        price = basePrice + totalFlavorPrice;
-      }
-    } else {
-      // Para pizzas normais, somar metade da pizza base + metade de cada sabor
-      const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
-      const totalFlavorPrice = props.selectedFlavors.reduce(
-        (sum, flavor) => sum + flavor.prices[props.selectedSize] / 2,
-        0,
-      );
-      price = basePrice + totalFlavorPrice;
-    }
+    // Metade da pizza base
+    const basePrice = parseFloat(getPrice(pizza, props.selectedSize)) / 2;
+    // Metade de cada sabor selecionado
+    const totalFlavorPrice = props.selectedFlavors.reduce((sum, flavor) => {
+      const flavorPrice = parseFloat(getPrice(flavor, props.selectedSize)) / 2;
+      return sum + flavorPrice;
+    }, 0);
+    price = basePrice + totalFlavorPrice;
   }
   // Se tamanho G sem sabores adicionais, manter o preço original (não divide mais)
 
