@@ -801,7 +801,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 37.9 },
   },
   {
     id: 101,
@@ -817,7 +817,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 37.9 },
   },
   /*{
     id: 200,
@@ -847,7 +847,23 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 37.9 },
+  },
+  {
+    id: 999,
+    image: "/pizzas/9.webp",
+    name: "PIZZA DE CALABRESA COM CATUPIRY",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA FATIADA",
+      "CATUPIRY",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 37.9 },
   },
   {
     id: 104,
@@ -862,9 +878,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 37.9 },
   },
-  {
+  /*{
     id: 107,
     name: "PIZZA DE FRANGO COM CATUPIRY",
     category: "PROMOÇÃO",
@@ -878,8 +894,8 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 42.0 },
-  },
-  {
+  }, */
+  /* {
     id: 299,
     name: "PIZZA DE LOMBINHO",
     category: "PROMOÇÃO",
@@ -893,7 +909,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.0 },
-  },
+  },*/
 
   /*{
     id: 105,
@@ -926,9 +942,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
+    prices: { G: 37.9 },
   },
-  {
+  /*  {
     id: 108,
     name: "PIZZA A MODA 220",
     category: "PROMOÇÃO",
@@ -947,8 +963,8 @@ const pizzas = ref([
       "AZEITONA",
     ],
     prices: { G: 42.0 },
-  },
-  {
+  },*/
+  /* {
     id: 109,
     name: "PIZZA DE LOMBINHO COM CATUPIRY",
     category: "PROMOÇÃO",
@@ -963,8 +979,8 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 42.0 },
-  },
-  {
+  }, */
+  /*{
     id: 110,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -979,7 +995,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 42.0 },
-  },
+  },*/
   /*
   {
     id: 107,
@@ -1738,9 +1754,7 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'"
-                  >Promoção 38,00 e 42,00💥🍕</span
-                >
+                <span v-if="category === 'PROMOÇÃO'">Promoção 37,90 💥🍕</span>
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
