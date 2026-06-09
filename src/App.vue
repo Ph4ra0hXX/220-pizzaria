@@ -620,21 +620,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
-  {
-    id: 58,
-    name: "PIZZA DE LOMBINHO",
-    category: "PROMOÇÃO",
-    image: "/pizzas/13.webp",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "LOMBINHO",
-      "CEBOLA",
-      "AZEITONAS",
-      "OREGANO",
-    ],
-    prices: { G: 38.9 },
-  },
+  
   */
   /*
   {
@@ -713,6 +699,21 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 37.0, G: 48.0 },
+  },
+  {
+    id: 767,
+    name: "PIZZA DE LOMBINHO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/13.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 37.9 },
   },
   {
     id: 34,
