@@ -850,7 +850,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
-  {
+  /*{
     id: 999,
     image: "/pizzas/9.webp",
     name: "PIZZA DE CALABRESA COM CATUPIRY",
@@ -865,7 +865,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 38.0 },
-  },
+  },*/
   {
     id: 104,
     name: "PIZZA DE FRANGO",
@@ -1032,7 +1032,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },*/
-  {
+  /*{
     id: 103,
     name: "PIZZA PORTUGUESA",
     category: "PROMOÇÃO",
@@ -1049,7 +1049,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 42.0 },
-  },
+  },*/
   /*  {
     id: 108,
     name: "PIZZA A MODA 220",
