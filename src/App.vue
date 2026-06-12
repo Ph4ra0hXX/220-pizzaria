@@ -1571,6 +1571,26 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
+const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS", "PIZZA DE DISQUETE"];
+
+const isSmallPromotionPizza = (pizza) => {
+  return (
+    pizza?.category === "PROMOÇÃO" &&
+    PROMOTION_SMALL_PIZZA_NAMES.includes(pizza.name)
+  );
+};
+
+const getPizzaPrices = (pizza) => {
+  if (!pizza?.prices) {
+    return {};
+  }
+
+  if (isSmallPromotionPizza(pizza)) {
+    return { P: pizza.prices.P ?? pizza.prices.G };
+  }
+
+  return pizza.prices;
+};
 
 const getCouponCode = () =>
   String(appliedCoupon.value ?? "")
@@ -1653,8 +1673,10 @@ const selectPizza = (pizza) => {
   } else if (pizza.category === "COMBOS") {
     selectedSize.value = null;
   } else if (pizza.category === "PROMOÇÃO") {
-    // Se a pizza da promoção tem preço P, seleciona P, senão G
-    if (pizza.prices.P) {
+    if (isSmallPromotionPizza(pizza)) {
+      selectedSize.value = "P";
+    } else if (pizza.prices.P) {
+      // Se a pizza da promoção tem preço P, seleciona P, senão G
       selectedSize.value = "P";
     } else {
       selectedSize.value = "G";
@@ -1686,11 +1708,12 @@ const addToCart = () => {
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
     const isCombo = selectedPizza.value.category === "COMBOS";
+    const selectedPizzaPrices = getPizzaPrices(selectedPizza.value);
     let itemPrice = isBeverage
       ? getBeveragePrice(selectedPizza.value)
       : isCombo
         ? selectedPizza.value.prices.combo
-        : selectedPizza.value.prices[selectedSize.value];
+        : selectedPizzaPrices[selectedSize.value];
 
     // Se tamanho G e há sabores selecionados (meio a meio)
     if (
@@ -1701,15 +1724,16 @@ const addToCart = () => {
     ) {
       if (isPromotion) {
         // Pizzas de promoção: usar o preço real de cada pizza dividido por 2
-        const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
+        const basePrice = selectedPizzaPrices[selectedSize.value] / 2;
         const totalFlavorPrice = selectedFlavors.value.reduce(
-          (sum, flavor) => sum + (flavor.prices[selectedSize.value] || 0) / 2,
+          (sum, flavor) =>
+            sum + (getPizzaPrices(flavor)[selectedSize.value] || 0) / 2,
           0,
         );
         itemPrice = basePrice + totalFlavorPrice;
       } else {
         // Para pizzas normais, somar metade da pizza base + metade de cada sabor
-        const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
+        const basePrice = selectedPizzaPrices[selectedSize.value] / 2;
         const totalFlavorPrice = selectedFlavors.value.reduce(
           (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
           0,
@@ -1785,10 +1809,11 @@ const getFilteredPizzas = () => {
 };
 
 const getAvailableSizes = (pizza) => {
-  if (!pizza || !pizza.prices) {
+  const prices = getPizzaPrices(pizza);
+  if (!Object.keys(prices).length) {
     return [];
   }
-  return Object.keys(pizza.prices).filter(
+  return Object.keys(prices).filter(
     (size) => size === "P" || size === "G",
   );
 };
