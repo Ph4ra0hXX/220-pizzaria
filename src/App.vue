@@ -713,7 +713,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 42.0 },
   },
   {
     id: 34,
@@ -802,7 +802,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 38.0 },
   },
   {
     id: 101,
@@ -818,7 +818,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 38.0 },
   },
   /*{
     id: 200,
@@ -848,7 +848,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 38.0 },
   },
   {
     id: 999,
@@ -864,7 +864,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 38.0 },
   },
   {
     id: 104,
@@ -879,7 +879,112 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 38.0 },
+  },
+  {
+    id: 110,
+    name: "PIZZA PORTUGUESA DA CASA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/6.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "PRESUNTO",
+      "CALABRESA",
+      "OVO",
+      "CEBOLA",
+      "PIMENTAO",
+      "GELEIA DE PIMENTA",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 42.0 },
+  },
+  {
+    id: 111,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 42.0 },
+  },
+  {
+    id: 112,
+    name: "PIZZA A MODA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/21.jpg",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CARNE DE SOL",
+      "CALABRESA",
+      "BACON",
+      "MILHO VERDE",
+      "CEBOLA",
+      "PIMENTAO",
+      "TOMATE CEREJA",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 42.0 },
+  },
+  {
+    id: 113,
+    name: "PIZZA DE ATUM",
+    category: "PROMOÇÃO",
+    image: "/pizzas/14.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "ATUM",
+      "CATUPIRY",
+      "MUSSARELA",
+      "TOMATE",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 49.0 },
+  },
+  {
+    id: 114,
+    name: "PIZZA DE CAMARÃO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/5.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CAMARÃO REFOGADO",
+      "TOMATE CEREJA",
+      "ALHO TORRADO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 49.0 },
+  },
+  {
+    id: 115,
+    name: "PIZZA DE BIS",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+    prices: { P: 30.0 },
+  },
+  {
+    id: 116,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 30.0 },
   },
   /*{
     id: 107,
@@ -943,7 +1048,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 42.0 },
   },
   /*  {
     id: 108,
@@ -1595,34 +1700,13 @@ const addToCart = () => {
       !isCombo
     ) {
       if (isPromotion) {
-        // Para pizzas de promoção, verificar se algum sabor é Atum ou Camarão
-        const hasSpecialFlavor = selectedFlavors.value.some(
-          (flavor) => flavor.id === 67 || flavor.id === 68,
+        // Pizzas de promoção: usar o preço real de cada pizza dividido por 2
+        const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
+        const totalFlavorPrice = selectedFlavors.value.reduce(
+          (sum, flavor) => sum + (flavor.prices[selectedSize.value] || 0) / 2,
+          0,
         );
-        const isBaseSpecial =
-          selectedPizza.value.id === 67 || selectedPizza.value.id === 68;
-
-        if (hasSpecialFlavor || isBaseSpecial) {
-          // Calcular com preços especiais (Atum/Camarão custam 59.90)
-          const basePrice = (isBaseSpecial ? 59.9 : 39.9) / 2;
-          const totalFlavorPrice = selectedFlavors.value.reduce(
-            (sum, flavor) => {
-              const flavorPrice =
-                flavor.id === 67 || flavor.id === 68 ? 59.9 : 39.9;
-              return sum + flavorPrice / 2;
-            },
-            0,
-          );
-          itemPrice = basePrice + totalFlavorPrice;
-        } else {
-          // Pizzas de promoção comum: calcular normalmente
-          const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
-          const totalFlavorPrice = selectedFlavors.value.reduce(
-            (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
-            0,
-          );
-          itemPrice = basePrice + totalFlavorPrice;
-        }
+        itemPrice = basePrice + totalFlavorPrice;
       } else {
         // Para pizzas normais, somar metade da pizza base + metade de cada sabor
         const basePrice = selectedPizza.value.prices[selectedSize.value] / 2;
