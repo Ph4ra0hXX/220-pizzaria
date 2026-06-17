@@ -1872,7 +1872,7 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'">Promoção ❤️🍕</span>
+                <span v-if="category === 'PROMOÇÃO'">Promoção 💥🍕</span>
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
