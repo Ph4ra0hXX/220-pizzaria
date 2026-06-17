@@ -713,7 +713,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 34,
@@ -802,7 +802,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 36.9 },
   },
   {
     id: 101,
@@ -818,7 +818,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 36.9 },
   },
   /*{
     id: 200,
@@ -833,7 +833,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 36.9 },
   },*/
   {
     id: 106,
@@ -848,7 +848,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.0 },
+    prices: { G: 36.9 },
   },
   /*{
     id: 999,
@@ -881,6 +881,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },
+  /*
   {
     id: 110,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -901,6 +902,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.0 },
   },
+  */
   {
     id: 111,
     name: "PIZZA DE FRANBACON",
@@ -915,8 +917,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
+    prices: { G: 41.9 },
   },
+  /*
   {
     id: 112,
     name: "PIZZA A MODA 220",
@@ -937,6 +940,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.0 },
   },
+  */
   {
     id: 113,
     name: "PIZZA DE ATUM",
@@ -952,8 +956,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 49.0 },
+    prices: { G: 41.9 },
   },
+  /*
   {
     id: 114,
     name: "PIZZA DE CAMARÃO",
@@ -970,6 +975,8 @@ const pizzas = ref([
     ],
     prices: { G: 49.0 },
   },
+  */
+  /*
   {
     id: 115,
     name: "PIZZA DE BIS",
@@ -978,6 +985,8 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
     prices: { P: 30.0 },
   },
+  */
+  /*
   {
     id: 116,
     name: "PIZZA DE DISQUETE",
@@ -986,6 +995,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 30.0 },
   },
+  */
   /*{
     id: 107,
     name: "PIZZA DE FRANGO COM CATUPIRY",
@@ -1032,7 +1042,7 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },*/
-  /*{
+  {
     id: 103,
     name: "PIZZA PORTUGUESA",
     category: "PROMOÇÃO",
@@ -1048,8 +1058,8 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
-  },*/
+    prices: { G: 41.9 },
+  },
   /*  {
     id: 108,
     name: "PIZZA A MODA 220",
@@ -1086,7 +1096,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.0 },
   }, */
-  /*{
+  {
     id: 110,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -1100,8 +1110,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
-  },*/
+    prices: { G: 41.9 },
+  },
   /*
   {
     id: 107,
@@ -1813,9 +1823,7 @@ const getAvailableSizes = (pizza) => {
   if (!Object.keys(prices).length) {
     return [];
   }
-  return Object.keys(prices).filter(
-    (size) => size === "P" || size === "G",
-  );
+  return Object.keys(prices).filter((size) => size === "P" || size === "G");
 };
 
 const handleCompleteOrder = (order) => {
