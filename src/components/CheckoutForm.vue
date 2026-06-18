@@ -14,6 +14,7 @@ const neighborhoods = [
   { name: "CIDADE ALTA", fee: 7.0 },
   { name: "ESTRADA DAS FLORES", fee: 7.0 },
   { name: "EUCALIPTOS", fee: 5.0 },
+  { name: "HOSPITAL REGIONAL", fee: 20.0 },
   { name: "ILHA", fee: 5.0 },
   { name: "JOSE SIMÕES", fee: 5.0 },
   { name: "JOÃO XXIII", fee: 5.0 },
