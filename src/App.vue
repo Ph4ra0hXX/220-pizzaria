@@ -154,6 +154,23 @@ const pizzas = ref([
     prices: { P: 40.0, G: 54.0 },
   },
   {
+    id: 221,
+    name: "SERTANEJA 220",
+    category: "ESPECIAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { P: 37.0, G: 48.0 },
+  },
+  {
     id: 7,
     image: "/pizzas/7.webp",
     name: "PIZZA DE FRANBACON",
