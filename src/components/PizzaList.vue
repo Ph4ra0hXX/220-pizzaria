@@ -61,6 +61,12 @@ const getPriceDisplay = (pizza) => {
   }
   return "Preço indisponível";
 };
+
+const FEATURED_PIZZA_ID = 221;
+
+const isFeaturedPizza = (pizza) => {
+  return pizza.id === FEATURED_PIZZA_ID;
+};
 </script>
 
 <template>
@@ -69,8 +75,12 @@ const getPriceDisplay = (pizza) => {
       v-for="pizza in pizzas"
       :key="pizza.id"
       class="pizza-card"
+      :class="{ featured: isFeaturedPizza(pizza) }"
       @click="$emit('select-pizza', pizza)"
     >
+      <span v-if="isFeaturedPizza(pizza)" class="featured-badge">
+        Destaque da casa
+      </span>
       <div class="pizza-image">
         <img
           v-if="pizza.image && !isEmoji(pizza.image)"
@@ -106,6 +116,8 @@ const getPriceDisplay = (pizza) => {
   padding: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   box-shadow:
     inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.3),
@@ -114,6 +126,65 @@ const getPriceDisplay = (pizza) => {
     0 3px 2px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.1),
     0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-card.featured {
+  background: linear-gradient(180deg, #fff8f8 0%, #ffffff 52%);
+  outline: 2px solid rgba(232, 56, 63, 0.55);
+  outline-offset: -2px;
+  box-shadow:
+    inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 20px rgba(0, 0, 0, 0),
+    0 3px 0 #e8383f,
+    0 3px 2px rgba(0, 0, 0, 0.16),
+    0 14px 30px rgba(232, 56, 63, 0.26);
+}
+
+.pizza-card.featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #c61818, #e8383f);
+}
+
+.pizza-card.featured .pizza-image {
+  background:
+    radial-gradient(circle at center, rgba(232, 56, 63, 0.12), transparent 62%),
+    #fff1f1;
+  border: 1px solid rgba(232, 56, 63, 0.16);
+}
+
+.pizza-card.featured h3 {
+  color: #b51418;
+  font-weight: 800;
+}
+
+.pizza-card.featured .price-info {
+  background: rgba(232, 56, 63, 0.1);
+  color: #9f1115;
+  font-weight: 700;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  background: #e8383f;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  padding: 0.44rem 0.72rem;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(232, 56, 63, 0.32);
 }
 
 .pizza-image {
