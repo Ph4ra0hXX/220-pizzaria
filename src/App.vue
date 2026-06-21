@@ -9,7 +9,7 @@ const pizzas = ref([
     id: 221,
     name: "SERTANEJA 220",
     category: "ESPECIAL",
-    image: "",
+    image: "/pizzas/22.webp",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
