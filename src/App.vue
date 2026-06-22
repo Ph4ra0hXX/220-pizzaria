@@ -730,7 +730,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 34,
@@ -934,7 +934,23 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 36.9 },
+  },
+  {
+    id: 211,
+    name: "PIZZA DE FRANGO COM CREME CHEESE",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "CREME CHEESE",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 36.9 },
   },
   /*
   {
@@ -958,23 +974,6 @@ const pizzas = ref([
     prices: { G: 42.0 },
   },
   */
-  {
-    id: 113,
-    name: "PIZZA DE ATUM",
-    category: "PROMOÇÃO",
-    image: "/pizzas/14.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "ATUM",
-      "CATUPIRY",
-      "MUSSARELA",
-      "TOMATE",
-      "CEBOLA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
-  },
   /*
   {
     id: 114,
@@ -1059,24 +1058,6 @@ const pizzas = ref([
     ],
     prices: { G: 38.0 },
   },*/
-  {
-    id: 103,
-    name: "PIZZA PORTUGUESA",
-    category: "PROMOÇÃO",
-    image: "",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "PRESUNTO",
-      "OVOS",
-      "CEBOLA",
-      "MILHO VERDE",
-      "PIMENTAO",
-      "AZEITONAS",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
-  },
   /*  {
     id: 108,
     name: "PIZZA A MODA 220",
@@ -1113,22 +1094,6 @@ const pizzas = ref([
     ],
     prices: { G: 42.0 },
   }, */
-  {
-    id: 110,
-    name: "PIZZA DE CALABRESA SUPREME",
-    category: "PROMOÇÃO",
-    image: "/pizzas/1.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "CALABRESA",
-      "BACON",
-      "CEBOLA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
-  },
   /*
   {
     id: 107,
