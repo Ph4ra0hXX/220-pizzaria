@@ -730,7 +730,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   {
     id: 34,
@@ -819,7 +819,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   {
     id: 101,
@@ -835,7 +835,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   /*{
     id: 200,
@@ -865,7 +865,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   /*{
     id: 999,
@@ -896,7 +896,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   /*
   {
@@ -920,6 +920,7 @@ const pizzas = ref([
     prices: { G: 42.0 },
   },
   */
+  /*
   {
     id: 111,
     name: "PIZZA DE FRANBACON",
@@ -936,6 +937,23 @@ const pizzas = ref([
     ],
     prices: { G: 36.9 },
   },
+  */
+  {
+    id: 112,
+    name: "PIZZA DE FRANGO COM CHEDDAR",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "CHEDDAR",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 35.9 },
+  },
   {
     id: 211,
     name: "PIZZA DE FRANGO COM CREME CHEESE",
@@ -950,7 +968,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.9 },
   },
   /*
   {
