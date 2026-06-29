@@ -730,7 +730,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 34,
@@ -809,6 +809,23 @@ const pizzas = ref([
   },
   // PIZZAS DE PROMOÇÃO
   {
+    id: 222,
+    name: "SERTANEJA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/22.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 35.0 },
+  },
+  {
     id: 100,
     name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
@@ -819,7 +836,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 101,
@@ -835,7 +852,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 35.9 },
+    prices: { G: 35.0 },
   },
   /*{
     id: 200,
@@ -865,7 +882,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.9 },
+    prices: { G: 35.0 },
   },
   /*{
     id: 999,
@@ -896,7 +913,25 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.9 },
+    prices: { G: 35.0 },
+  },
+  {
+    id: 103,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 35.0 },
   },
   /*
   {
@@ -938,6 +973,7 @@ const pizzas = ref([
     prices: { G: 36.9 },
   },
   */
+  /*
   {
     id: 112,
     name: "PIZZA DE FRANGO COM CHEDDAR",
@@ -990,6 +1026,8 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
+  /*
   {
     id: 202,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -1010,6 +1048,8 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
+  /*
   {
     id: 203,
     name: "PIZZA DE LOMBINHO COM ABACAXI CARAMELIZADO",
@@ -1025,6 +1065,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.0 },
   },
+  */
   /*
   {
     id: 112,
