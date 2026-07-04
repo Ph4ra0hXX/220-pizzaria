@@ -98,7 +98,7 @@ const isFeaturedPizza = (pizza) => {
       <p v-if="!isBeverage(pizza)" class="ingredients">
         {{ pizza.ingredients.length }} ingredientes
       </p>
-      <p v-else class="ingredients">Bebida 1L</p>
+      <p v-else class="ingredients">Bebida</p>
     </div>
   </div>
 </template>

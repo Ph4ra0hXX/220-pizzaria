@@ -374,6 +374,14 @@ const pizzas = ref([
     prices: { unit: 11.0 },
   },
   {
+    id: 212,
+    name: "COCA COLA 2L",
+    category: "BEBIDA",
+    image: "/pizzas/bebida1.jpg",
+    ingredients: [],
+    prices: { unit: 15.0 },
+  },
+  {
     id: 21,
     name: "GUARANA ANTARTICA 1L",
     category: "BEBIDA",
