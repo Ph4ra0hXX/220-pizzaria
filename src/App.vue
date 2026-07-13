@@ -827,7 +827,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 36.9 },
   },
   {
     id: 101,
@@ -843,7 +843,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 36.9 },
   },
   {
     id: 106,
@@ -858,7 +858,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.0 },
+    prices: { G: 36.9 },
   },
   {
     id: 105,
@@ -874,7 +874,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 103,
@@ -892,7 +892,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 104,
@@ -907,7 +907,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 36.9 },
   },
   {
     id: 111,
@@ -923,7 +923,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 200,
@@ -938,7 +938,24 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.0 },
+    prices: { G: 41.9 },
+  },
+  {
+    id: 222,
+    name: "SERTANEJA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/22.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 41.9 },
   },
   // Fora da lista de promoção atual, manter comentada.
   // {
