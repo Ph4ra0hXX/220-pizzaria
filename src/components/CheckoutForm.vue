@@ -3,6 +3,8 @@ import { ref, computed } from "vue";
 
 // Lista de bairros com taxas de entrega
 const neighborhoods = [
+  { name: "PITOMBEIRA (DA PIZZARIA 220 ATE AABB)", fee: 2.5 },
+  { name: "PITOMBEIRA (DEPOIS DA AABB)", fee: 5.0 },
   { name: "ANTONIO HOLANDA", fee: 5.0 },
   { name: "ARRAIAL", fee: 10.0 },
   { name: "BOA FÉ", fee: 5.0 },
