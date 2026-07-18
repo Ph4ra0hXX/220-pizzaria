@@ -860,7 +860,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.9 },
   },
-  {
+ /* { 
     id: 105,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -875,7 +875,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 41.9 },
-  },
+  }, */
   {
     id: 103,
     name: "PIZZA PORTUGUESA",
