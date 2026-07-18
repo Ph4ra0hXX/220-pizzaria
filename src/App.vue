@@ -54,7 +54,7 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 3,
+    id: 378,
     image: "/pizzas/3.webp",
     name: "PIZZA DE CARNE DE SOL",
     category: "TRADICIONAL",
