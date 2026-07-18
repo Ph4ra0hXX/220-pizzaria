@@ -1089,7 +1089,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 42.0 },
+    prices: { G: 49.9 },
   },
   
   /*
@@ -1689,9 +1689,9 @@ const pizzas = ref([
     prices: { G: 45.0 },
   },
   */
-/*  
+ 
   {
-    id: 110,
+    id: 45656,
     name: "PIZZA DE CARNE DE SOL",
     category: "PROMOÇÃO",
     image: "/pizzas/3.webp",
@@ -1705,7 +1705,7 @@ const pizzas = ref([
     ],
     prices: { G: 49.9 },
   },
-  */
+  
   /*
   {
     id: 111,
