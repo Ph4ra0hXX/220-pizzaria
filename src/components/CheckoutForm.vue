@@ -423,7 +423,7 @@ const getTotalWithDelivery = () => {
           <input type="radio" v-model="deliveryType" value="delivery" />
           <span class="type-info">
             <span class="type-name">Entrega</span>
-            <span class="type-price">A partir de R$ 5,00</span>
+            <span class="type-price">A partir de R$ 2,50</span>
           </span>
         </label>
 
