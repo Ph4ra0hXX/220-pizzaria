@@ -940,7 +940,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.9 },
   },
-  {
+/*  {
     id: 222,
     name: "SERTANEJA 220",
     category: "PROMOÇÃO",
@@ -956,7 +956,7 @@ const pizzas = ref([
       "AZEITONA",
     ],
     prices: { G: 41.9 },
-  },
+  },*/
   // Fora da lista de promoção atual, manter comentada.
   // {
   //   id: 222,
@@ -1689,7 +1689,7 @@ const pizzas = ref([
     prices: { G: 45.0 },
   },
   */
-  
+  /*
   {
     id: 110,
     name: "PIZZA DE CARNE DE SOL",
@@ -1705,7 +1705,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
-  
+  */
   /*
   {
     id: 111,
