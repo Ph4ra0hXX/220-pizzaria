@@ -1705,6 +1705,14 @@ const pizzas = ref([
     ],
     prices: { G: 49.9 },
   },
+  {
+    id: 45657,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 29.99 },
+  },
   
   /*
   {
