@@ -385,7 +385,7 @@ const pizzas = ref([
     id: 213,
     name: "FANTA LARANJA 2L",
     category: "BEBIDA",
-    image: "/pizzas/bebida2.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqoRf6vsDB9uUqppVUtd1a3oVkkF6kdWMn1_whBWdghYYtiMto_M-YPE&s=10",
     ingredients: [],
     prices: { unit: 13.0 },
   },
