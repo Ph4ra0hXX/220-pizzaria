@@ -382,6 +382,14 @@ const pizzas = ref([
     prices: { unit: 14.0 },
   },
   {
+    id: 213,
+    name: "FANTA LARANJA 2L",
+    category: "BEBIDA",
+    image: "/pizzas/bebida2.jpg",
+    ingredients: [],
+    prices: { unit: 13.0 },
+  },
+  {
     id: 21,
     name: "GUARANA ANTARTICA 1L",
     category: "BEBIDA",
