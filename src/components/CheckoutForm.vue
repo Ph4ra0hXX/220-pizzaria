@@ -5,7 +5,7 @@ import { ref, computed } from "vue";
 const neighborhoods = [
   { name: "PITOMBEIRA (DA PIZZARIA 220 ATE AABB)", fee: 2.5 },
   { name: "PITOMBEIRA (DEPOIS DA AABB)", fee: 5.0 },
-  { name: "ANTONIO HOLANDA", fee: 5.0 },
+  { name: "ANTONIO HOLANDA", fee: 7.0 },
   { name: "ARRAIAL", fee: 10.0 },
   { name: "BOA FÉ", fee: 5.0 },
   { name: "BOM FIM", fee: 5.0 },
