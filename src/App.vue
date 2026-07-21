@@ -835,7 +835,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 101,
@@ -851,7 +851,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 106,
@@ -866,7 +866,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 41.9 },
   },
  /* { 
     id: 105,
@@ -900,7 +900,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 104,
@@ -915,7 +915,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 111,
@@ -931,22 +931,22 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 200,
-    name: "PIZZA DE LOMBINHO",
+    name: "PIZZA DE FRANGO COM CATUPIRY",
     category: "PROMOÇÃO",
-    image: "/pizzas/13.webp",
+    image: "",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
-      "LOMBINHO",
-      "CEBOLA",
+      "FRANGO",
+      "CATUPIRY",
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 48.9 },
   },
 /*  {
     id: 222,
@@ -1097,7 +1097,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 49.9 },
+    prices: { G: 48.9 },
   },
   
   /*
@@ -1230,7 +1230,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 49.9 },
+    prices: { G: 48.9 },
   },
   
   /*
@@ -1700,27 +1700,28 @@ const pizzas = ref([
  
   {
     id: 45656,
-    name: "PIZZA DE CARNE DE SOL",
+    name: "PIZZA DE CALABRESA C/ CATUPIRY",
     category: "PROMOÇÃO",
-    image: "/pizzas/3.webp",
+    image: "/pizzas/9.webp",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
-      "CARNE DO SOL",
+      "CALABRESA FATIADA",
+      "CATUPIRY",
       "CEBOLA",
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 49.9 },
+    prices: { G: 48.9 },
   },
-  {
-    id: 45657,
-    name: "PIZZA DE DISQUETE",
-    category: "PROMOÇÃO",
-    image: "/pizzas/15.webp",
-    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 29.99 },
-  },
+  // {
+  //   id: 45657,
+  //   name: "PIZZA DE DISQUETE",
+  //   category: "PROMOÇÃO",
+  //   image: "/pizzas/15.webp",
+  //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+  //   prices: { P: 29.99 },
+  // },
   
   /*
   {
