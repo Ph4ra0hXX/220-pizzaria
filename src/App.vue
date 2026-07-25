@@ -1905,7 +1905,7 @@ const cartItemsForCheckout = computed(() =>
 const categories = computed(() => {
   const allCategories = [
     "TODAS",
-    "PROMOÇÃO",
+    // "PROMOÇÃO",
     "COMBOS",
     "TRADICIONAL",
     "ESPECIAL",
@@ -2053,11 +2053,7 @@ const getTotalPrice = computed(() => {
 });
 
 const getFilteredPizzas = () => {
-  let filtered = pizzas.value;
-
-  if (appliedCoupon.value) {
-    filtered = filtered.filter((p) => p.category !== "PROMOÇÃO");
-  }
+  let filtered = pizzas.value.filter((p) => p.category !== "PROMOÇÃO");
 
   if (categoryFilter.value === "TODAS") {
     return filtered;
