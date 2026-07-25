@@ -61,6 +61,12 @@ const couponDiscount = computed(() => {
   return 0;
 });
 
+const promotionalDiscount = computed(() => subtotalPrice.value * 0.15);
+
+const discountedSubtotal = computed(() =>
+  Math.max(subtotalPrice.value - couponDiscount.value - promotionalDiscount.value, 0),
+);
+
 const getItemPrice = (item) => {
   if (
     item?.pizza?.category === "BEBIDA" &&
@@ -338,6 +344,8 @@ const formatOrderForWhatsApp = () => {
       message += `Subtotal c/ Desconto: R$ ${appliedSubtotal.toFixed(2)}\n`;
     }
   }
+  message += `Desconto 15%: - R$ ${promotionalDiscount.value.toFixed(2)}\n`;
+  message += `Subtotal com descontos: R$ ${discountedSubtotal.value.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
   // TOTAL
@@ -374,6 +382,7 @@ const completeOrder = () => {
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
     subtotal: subtotalPrice.value,
+    discount: couponDiscount.value + promotionalDiscount.value,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
@@ -393,7 +402,7 @@ const getDeliveryFee = () => {
 };
 
 const getTotalWithDelivery = () => {
-  return subtotalPrice.value + getDeliveryFee() - couponDiscount.value;
+  return discountedSubtotal.value + getDeliveryFee();
 };
 </script>
 
@@ -619,9 +628,14 @@ const getTotalWithDelivery = () => {
           <span>- R$ {{ couponDiscount.toFixed(2) }}</span>
         </div>
 
-        <div v-if="couponDiscount > 0" class="summary-line subtotal-discounted">
-          <span>Subtotal com Desconto:</span>
-          <span>R$ {{ (subtotalPrice - couponDiscount).toFixed(2) }}</span>
+        <div class="summary-line discount">
+          <span>Desconto 15%:</span>
+          <span>- R$ {{ promotionalDiscount.toFixed(2) }}</span>
+        </div>
+
+        <div class="summary-line subtotal-discounted">
+          <span>Subtotal com descontos:</span>
+          <span>R$ {{ discountedSubtotal.toFixed(2) }}</span>
         </div>
 
         <div v-if="deliveryType === 'delivery'" class="summary-line">
