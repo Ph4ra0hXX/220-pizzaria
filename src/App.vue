@@ -450,10 +450,9 @@ const pizzas = ref([
     prices: { P: 44.0, G: 66.0 },
   },
   {
-    id: 26,
+    id: 345,
     name: "ARRETADA 220",
     category: "ESPECIAL",
-    image: "",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
@@ -464,6 +463,7 @@ const pizzas = ref([
       "AZEITONA",
       "MOLHO BARBECUE",
     ],
+    image: "/pizzas/24.webp",
     prices: { P: 39.0, G: 52.0 },
   },
   /*
