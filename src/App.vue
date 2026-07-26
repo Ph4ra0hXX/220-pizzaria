@@ -2073,6 +2073,12 @@ const getTotalPrice = computed(() => {
 const getFilteredPizzas = () => {
   let filtered = pizzas.value.filter((p) => p.category !== "PROMOÇÃO");
 
+  filtered = filtered.slice().sort((a, b) => {
+    if (a.id === 345) return -1;
+    if (b.id === 345) return 1;
+    return 0;
+  });
+
   if (categoryFilter.value === "TODAS") {
     return filtered;
   }
