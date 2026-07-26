@@ -385,7 +385,8 @@ const pizzas = ref([
     id: 213,
     name: "FANTA LARANJA 2L",
     category: "BEBIDA",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqoRf6vsDB9uUqppVUtd1a3oVkkF6kdWMn1_whBWdghYYtiMto_M-YPE&s=10",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqoRf6vsDB9uUqppVUtd1a3oVkkF6kdWMn1_whBWdghYYtiMto_M-YPE&s=10",
     ingredients: [],
     prices: { unit: 13.0 },
   },
@@ -447,6 +448,23 @@ const pizzas = ref([
     ],
     image: "/pizzas/14.webp",
     prices: { P: 44.0, G: 66.0 },
+  },
+  {
+    id: 26,
+    name: "ARRETADA 220",
+    category: "ESPECIAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CARNE DE SOL",
+      "QUEIJO COALHO",
+      "CEBOLA",
+      "OREGANO",
+      "AZEITONA",
+      "MOLHO BARBECUE",
+    ],
+    prices: { P: 39.0, G: 52.0 },
   },
   /*
   {
@@ -868,7 +886,7 @@ const pizzas = ref([
     ],
     prices: { G: 41.9 },
   },
- /* { 
+  /* { 
     id: 105,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -948,7 +966,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
-/*  {
+  /*  {
     id: 222,
     name: "SERTANEJA 220",
     category: "PROMOÇÃO",
@@ -1078,7 +1096,7 @@ const pizzas = ref([
   //   ],
   //   prices: { G: 37.9 },
   // },
-  
+
   {
     id: 110,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -1099,7 +1117,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
-  
+
   /*
   {
     id: 111,
@@ -1211,7 +1229,7 @@ const pizzas = ref([
     prices: { G: 48.0 },
   },
   */
-  
+
   {
     id: 112,
     name: "PIZZA A MODA 220",
@@ -1232,7 +1250,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
-  
+
   /*
   {
     id: 114,
@@ -1697,7 +1715,7 @@ const pizzas = ref([
     prices: { G: 45.0 },
   },
   */
- 
+
   {
     id: 45656,
     name: "PIZZA DE CALABRESA C/ CATUPIRY",
@@ -1722,7 +1740,7 @@ const pizzas = ref([
   //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
   //   prices: { P: 29.99 },
   // },
-  
+
   /*
   {
     id: 111,
