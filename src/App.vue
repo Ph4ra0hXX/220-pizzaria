@@ -460,6 +460,7 @@ const pizzas = ref([
       "QUEIJO COALHO",
       "CEBOLA",
       "OREGANO",
+      "BACON",
       "AZEITONA",
       "MOLHO BARBECUE",
     ],
