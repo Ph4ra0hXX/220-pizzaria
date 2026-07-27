@@ -164,13 +164,19 @@ const getFlavorDisplayName = (pizza) => {
   return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
 };
 
+const PROMOTION_FLAVOR_NAMES = new Set([
+  "PIZZA DE MUSSARELA",
+  "PIZZA DE CALABRESA",
+]);
+
 const getAvailableFlavors = () => {
-  // Se é promoção, retorna apenas outras pizzas de promoção do mesmo tamanho
+  // Se é promoção, retorna somente as pizzas promocionais permitidas como sabor adicional
   if (props.pizza.category === "PROMOÇÃO") {
     return props.pizzas.filter(
       (p) =>
         p.id !== props.pizza.id &&
         p.category === "PROMOÇÃO" &&
+        PROMOTION_FLAVOR_NAMES.has(p.name) &&
         p.prices &&
         p.prices[props.selectedSize], // Verifica se tem preço para o tamanho selecionado
     );
