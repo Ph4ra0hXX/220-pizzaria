@@ -1824,9 +1824,9 @@ const edges = ref([
 ]);
 
 const additionals = ref([
-  { id: 1, name: "CATUPIRY ORIGINAL", price: 0.0 },
+  { id: 1, name: "CATUPIRY ORIGINAL", price: 10.0 },
   { id: 2, name: "CHEDDAR", price: 10.0 },
-  { id: 3, name: "CREM CHEESE", price: 0.0 },
+  { id: 3, name: "CREM CHEESE", price: 10.0 },
   { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 10.0 },
   { id: 5, name: "GELEIA DE PIMENTA", price: 7.0 },
   { id: 6, name: "ABACAXI CARAMELIZADO", price: 10.0 },
@@ -1834,7 +1834,7 @@ const additionals = ref([
   { id: 8, name: "CEBOLA", price: 2.0 },
   { id: 9, name: "PIMENTÃO", price: 2.0 },
   { id: 10, name: "TOMATE", price: 2.0 },
-  { id: 11, name: "BACON", price: 0.0 },
+  { id: 11, name: "BACON", price: 10.0 },
 ]);
 
 const selectedPizza = ref(null);
@@ -1855,6 +1855,7 @@ const PIZZAS_WITHOUT_FREE_ADDITIONALS = [
   "PIZZA DE MUSSARELA",
   "PIZZA DE CALABRESA",
 ];
+const FREE_ADDITIONAL_IDS = new Set([1, 3, 11]);
 
 const isSmallPromotionPizza = (pizza) => {
   return (
@@ -1875,16 +1876,22 @@ const getPizzaPrices = (pizza) => {
   return pizza.prices;
 };
 
-const availableAdditionals = computed(() => {
-  if (
-    selectedPizza.value &&
-    PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(selectedPizza.value.name)
-  ) {
-    return additionals.value.filter((additional) => additional.price > 0);
+const getAdditionalPriceForPizza = (additional, pizza) => {
+  if (!additional) {
+    return 0;
   }
 
-  return additionals.value;
-});
+  const isFreePizza =
+    pizza &&
+    pizza.category !== "PROMOÇÃO" &&
+    !PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(pizza.name);
+
+  if (isFreePizza && FREE_ADDITIONAL_IDS.has(additional.id)) {
+    return 0;
+  }
+
+  return additional.price;
+};
 
 const getCouponCode = () =>
   String(appliedCoupon.value ?? "")
@@ -2044,7 +2051,8 @@ const addToCart = () => {
     // Adicionar preço dos adicionais
     if (selectedAdditionals.value.length > 0 && !isBeverage && !isCombo) {
       const additionalsPrice = selectedAdditionals.value.reduce(
-        (sum, additional) => sum + additional.price,
+        (sum, additional) =>
+          sum + getAdditionalPriceForPizza(additional, selectedPizza.value),
         0,
       );
       itemPrice += additionalsPrice;
@@ -2191,7 +2199,7 @@ const getPaymentMethodLabel = (method) => {
             :appliedCoupon="appliedCoupon"
             :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
-            :additionals="availableAdditionals"
+            :additionals="additionals"
             :selectedSize="selectedSize"
             @update:selectedSize="updateSize"
             v-model:selectedEdge="selectedEdge"

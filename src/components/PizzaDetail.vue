@@ -77,6 +77,25 @@ const isEmoji = (str) => {
   return /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u.test(str);
 };
 
+const FREE_ADDITIONAL_IDS = new Set([1, 3, 11]);
+const PIZZAS_WITHOUT_FREE_ADDITIONALS = [
+  "PIZZA DE MUSSARELA",
+  "PIZZA DE CALABRESA",
+];
+
+const getAdditionalPrice = (additional) => {
+  const isFreePizza =
+    props.pizza &&
+    props.pizza.category !== "PROMOÇÃO" &&
+    !PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(props.pizza.name);
+
+  if (isFreePizza && FREE_ADDITIONAL_IDS.has(additional.id)) {
+    return 0;
+  }
+
+  return additional.price;
+};
+
 const getPrice = (pizza, size) => {
   if (isBeverage(pizza)) {
     return getBeveragePrice(pizza).toFixed(2);
@@ -127,7 +146,7 @@ const getDisplayPrice = (pizza, edge) => {
   // Adicionar preço dos adicionais
   if (props.selectedAdditionals && props.selectedAdditionals.length > 0) {
     const additionalsPrice = props.selectedAdditionals.reduce(
-      (sum, additional) => sum + additional.price,
+      (sum, additional) => sum + getAdditionalPrice(additional),
       0,
     );
     price += additionalsPrice;
@@ -382,8 +401,8 @@ const getFilteredEdges = () => {
               <span class="additional-name">{{ additional.name }}</span>
               <span class="additional-price">
                 {{
-                  additional.price > 0
-                    ? `+R$ ${additional.price.toFixed(2)}`
+                  getAdditionalPrice(additional) > 0
+                    ? `+R$ ${getAdditionalPrice(additional).toFixed(2)}`
                     : "GRÁTIS"
                 }}
               </span>
