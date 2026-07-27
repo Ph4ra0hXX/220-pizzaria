@@ -854,7 +854,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 36.0 },
   },
   {
     id: 101,
@@ -885,7 +885,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 36.0 },
   },
   /* { 
     id: 105,
@@ -1924,7 +1924,7 @@ const cartItemsForCheckout = computed(() =>
 const categories = computed(() => {
   const allCategories = [
     "TODAS",
-    // "PROMOÇÃO",
+    "PROMOÇÃO",
     "COMBOS",
     "TRADICIONAL",
     "ESPECIAL",
@@ -2072,7 +2072,7 @@ const getTotalPrice = computed(() => {
 });
 
 const getFilteredPizzas = () => {
-  let filtered = pizzas.value.filter((p) => p.category !== "PROMOÇÃO");
+  let filtered = pizzas.value.slice();
 
   filtered = filtered.slice().sort((a, b) => {
     if (a.id === 345) return -1;
@@ -2081,11 +2081,21 @@ const getFilteredPizzas = () => {
   });
 
   if (categoryFilter.value === "TODAS") {
-    return filtered;
+    return filtered.filter((p) => p.category !== "PROMOÇÃO");
+  }
+
+  if (categoryFilter.value === "PROMOÇÃO") {
+    return filtered.filter(
+      (p) =>
+        p.category === "PROMOÇÃO" &&
+        ["PIZZA DE MUSSARELA", "PIZZA DE CALABRESA"].includes(p.name),
+    );
   }
 
   return filtered.filter(
-    (p) => (p.category || "TRADICIONAL") === categoryFilter.value,
+    (p) =>
+      p.category !== "PROMOÇÃO" &&
+      (p.category || "TRADICIONAL") === categoryFilter.value,
   );
 };
 
