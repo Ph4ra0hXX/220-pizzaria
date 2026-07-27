@@ -380,9 +380,13 @@ const getFilteredEdges = () => {
                 >✓</span
               >
               <span class="additional-name">{{ additional.name }}</span>
-              <span class="additional-price"
-                >+R$ {{ additional.price.toFixed(2) }}</span
-              >
+              <span class="additional-price">
+                {{
+                  additional.price > 0
+                    ? `+R$ ${additional.price.toFixed(2)}`
+                    : "GRÁTIS"
+                }}
+              </span>
             </button>
           </div>
         </div>

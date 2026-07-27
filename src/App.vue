@@ -1824,9 +1824,9 @@ const edges = ref([
 ]);
 
 const additionals = ref([
-  { id: 1, name: "CATUPIRY ORIGINAL", price: 10.0 },
+  { id: 1, name: "CATUPIRY ORIGINAL", price: 0.0 },
   { id: 2, name: "CHEDDAR", price: 10.0 },
-  { id: 3, name: "CREM CHEESE", price: 10.0 },
+  { id: 3, name: "CREM CHEESE", price: 0.0 },
   { id: 4, name: "GELEIA DE ABACAXI COM PIMENTA", price: 10.0 },
   { id: 5, name: "GELEIA DE PIMENTA", price: 7.0 },
   { id: 6, name: "ABACAXI CARAMELIZADO", price: 10.0 },
@@ -1834,7 +1834,7 @@ const additionals = ref([
   { id: 8, name: "CEBOLA", price: 2.0 },
   { id: 9, name: "PIMENTÃO", price: 2.0 },
   { id: 10, name: "TOMATE", price: 2.0 },
-  { id: 11, name: "BACON", price: 10.0 },
+  { id: 11, name: "BACON", price: 0.0 },
 ]);
 
 const selectedPizza = ref(null);

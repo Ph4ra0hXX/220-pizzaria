@@ -61,10 +61,8 @@ const couponDiscount = computed(() => {
   return 0;
 });
 
-const promotionalDiscount = computed(() => subtotalPrice.value * 0.15);
-
 const discountedSubtotal = computed(() =>
-  Math.max(subtotalPrice.value - couponDiscount.value - promotionalDiscount.value, 0),
+  Math.max(subtotalPrice.value - couponDiscount.value, 0),
 );
 
 const getItemPrice = (item) => {
@@ -344,7 +342,6 @@ const formatOrderForWhatsApp = () => {
       message += `Subtotal c/ Desconto: R$ ${appliedSubtotal.toFixed(2)}\n`;
     }
   }
-  message += `Desconto 15%: - R$ ${promotionalDiscount.value.toFixed(2)}\n`;
   message += `Subtotal com descontos: R$ ${discountedSubtotal.value.toFixed(2)}\n`;
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
@@ -382,7 +379,7 @@ const completeOrder = () => {
     paymentMethod: paymentMethod.value,
     items: props.cartItems,
     subtotal: subtotalPrice.value,
-    discount: couponDiscount.value + promotionalDiscount.value,
+    discount: couponDiscount.value,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
@@ -590,26 +587,53 @@ const getTotalWithDelivery = () => {
       <div class="payment-summary">
         <h4 class="summary-items-title">Itens do Pedido</h4>
         <div class="summary-items-list">
-          <div v-for="(item, index) in cartItems" :key="index" class="summary-item">
+          <div
+            v-for="(item, index) in cartItems"
+            :key="index"
+            class="summary-item"
+          >
             <div class="summary-item-info">
               <span class="summary-item-name">
                 <template v-if="item.drink">{{ item.drink.name }}</template>
-                <template v-else-if="item.pizza && item.pizza.category === 'BEBIDA'">{{ item.pizza.name }}</template>
-                <template v-else-if="item.pizza && item.pizza.category === 'COMBOS'">{{ item.pizza.name }}</template>
+                <template
+                  v-else-if="item.pizza && item.pizza.category === 'BEBIDA'"
+                  >{{ item.pizza.name }}</template
+                >
+                <template
+                  v-else-if="item.pizza && item.pizza.category === 'COMBOS'"
+                  >{{ item.pizza.name }}</template
+                >
                 <template v-else>
-                  Pizza {{ item.size === 'P' ? 'Pequena' : item.size === 'M' ? 'Média' : 'Grande' }} - {{ item.pizza.name }}
+                  Pizza
+                  {{
+                    item.size === "P"
+                      ? "Pequena"
+                      : item.size === "M"
+                        ? "Média"
+                        : "Grande"
+                  }}
+                  - {{ item.pizza.name }}
                   <template v-if="item.flavors && item.flavors.length > 0">
-                    / {{ item.flavors.map(f => f.name).join(' / ') }}
+                    / {{ item.flavors.map((f) => f.name).join(" / ") }}
                   </template>
                 </template>
               </span>
-              <span v-if="item.edge" class="summary-item-extra">+ Borda {{ item.edge.name }}</span>
-              <span v-if="item.additionals && item.additionals.length > 0" class="summary-item-extra">
-                + {{ item.additionals.map(a => a.name).join(', ') }}
+              <span v-if="item.edge" class="summary-item-extra"
+                >+ Borda {{ item.edge.name }}</span
+              >
+              <span
+                v-if="item.additionals && item.additionals.length > 0"
+                class="summary-item-extra"
+              >
+                + {{ item.additionals.map((a) => a.name).join(", ") }}
               </span>
-              <span v-if="item.comment" class="summary-item-obs">Obs: {{ item.comment }}</span>
+              <span v-if="item.comment" class="summary-item-obs"
+                >Obs: {{ item.comment }}</span
+              >
             </div>
-            <span class="summary-item-price">R$ {{ getItemPrice(item).toFixed(2) }}</span>
+            <span class="summary-item-price"
+              >R$ {{ getItemPrice(item).toFixed(2) }}</span
+            >
           </div>
         </div>
 
@@ -626,11 +650,6 @@ const getTotalWithDelivery = () => {
         <div v-if="couponDiscount > 0" class="summary-line discount">
           <span>Desconto do Cupom:</span>
           <span>- R$ {{ couponDiscount.toFixed(2) }}</span>
-        </div>
-
-        <div class="summary-line discount">
-          <span>Desconto 15%:</span>
-          <span>- R$ {{ promotionalDiscount.toFixed(2) }}</span>
         </div>
 
         <div class="summary-line subtotal-discounted">
