@@ -1851,6 +1851,10 @@ const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
 const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS", "PIZZA DE DISQUETE"];
+const PIZZAS_WITHOUT_FREE_ADDITIONALS = [
+  "PIZZA DE MUSSARELA",
+  "PIZZA DE CALABRESA",
+];
 
 const isSmallPromotionPizza = (pizza) => {
   return (
@@ -1870,6 +1874,17 @@ const getPizzaPrices = (pizza) => {
 
   return pizza.prices;
 };
+
+const availableAdditionals = computed(() => {
+  if (
+    selectedPizza.value &&
+    PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(selectedPizza.value.name)
+  ) {
+    return additionals.value.filter((additional) => additional.price > 0);
+  }
+
+  return additionals.value;
+});
 
 const getCouponCode = () =>
   String(appliedCoupon.value ?? "")
@@ -2176,7 +2191,7 @@ const getPaymentMethodLabel = (method) => {
             :appliedCoupon="appliedCoupon"
             :sizes="getAvailableSizes(selectedPizza)"
             :edges="edges"
-            :additionals="additionals"
+            :additionals="availableAdditionals"
             :selectedSize="selectedSize"
             @update:selectedSize="updateSize"
             v-model:selectedEdge="selectedEdge"
