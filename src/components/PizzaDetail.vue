@@ -77,22 +77,7 @@ const isEmoji = (str) => {
   return /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u.test(str);
 };
 
-const FREE_ADDITIONAL_IDS = new Set([1, 3, 11]);
-const PIZZAS_WITHOUT_FREE_ADDITIONALS = [
-  "PIZZA DE MUSSARELA",
-  "PIZZA DE CALABRESA",
-];
-
 const getAdditionalPrice = (additional) => {
-  const isFreePizza =
-    props.pizza &&
-    props.pizza.category !== "PROMOÇÃO" &&
-    !PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(props.pizza.name);
-
-  if (isFreePizza && FREE_ADDITIONAL_IDS.has(additional.id)) {
-    return 0;
-  }
-
   return additional.price;
 };
 
@@ -167,6 +152,7 @@ const getFlavorDisplayName = (pizza) => {
 const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE MUSSARELA",
   "PIZZA DE CALABRESA",
+  "PIZZA DE FRANGO",
 ]);
 
 const getAvailableFlavors = () => {

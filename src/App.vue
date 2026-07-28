@@ -934,7 +934,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 36.0 },
   },
   {
     id: 111,
@@ -1851,11 +1851,6 @@ const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
 const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS", "PIZZA DE DISQUETE"];
-const PIZZAS_WITHOUT_FREE_ADDITIONALS = [
-  "PIZZA DE MUSSARELA",
-  "PIZZA DE CALABRESA",
-];
-const FREE_ADDITIONAL_IDS = new Set([1, 3, 11]);
 
 const isSmallPromotionPizza = (pizza) => {
   return (
@@ -1878,15 +1873,6 @@ const getPizzaPrices = (pizza) => {
 
 const getAdditionalPriceForPizza = (additional, pizza) => {
   if (!additional) {
-    return 0;
-  }
-
-  const isFreePizza =
-    pizza &&
-    pizza.category !== "PROMOÇÃO" &&
-    !PIZZAS_WITHOUT_FREE_ADDITIONALS.includes(pizza.name);
-
-  if (isFreePizza && FREE_ADDITIONAL_IDS.has(additional.id)) {
     return 0;
   }
 
@@ -2111,7 +2097,11 @@ const getFilteredPizzas = () => {
     return filtered.filter(
       (p) =>
         p.category === "PROMOÇÃO" &&
-        ["PIZZA DE MUSSARELA", "PIZZA DE CALABRESA"].includes(p.name),
+        [
+          "PIZZA DE MUSSARELA",
+          "PIZZA DE CALABRESA",
+          "PIZZA DE FRANGO",
+        ].includes(p.name),
     );
   }
 
