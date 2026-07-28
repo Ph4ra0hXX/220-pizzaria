@@ -382,6 +382,14 @@ const pizzas = ref([
     prices: { unit: 14.0 },
   },
   {
+    id: 216787,
+    name: "SÃO GERALDO 1L",
+    category: "BEBIDA",
+    image: "/pizzas/bebida4.jpeg",
+    ingredients: [],
+    prices: { unit: 10.0 },
+  },
+  {
     id: 213,
     name: "FANTA LARANJA 2L",
     category: "BEBIDA",
