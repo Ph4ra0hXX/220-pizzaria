@@ -153,6 +153,9 @@ const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE MUSSARELA",
   "PIZZA DE CALABRESA",
   "PIZZA DE FRANGO",
+  "ARRETADA 220",
+  "SERTANEJA 220",
+  "PIZZA DE FRANBACON",
 ]);
 
 const getAvailableFlavors = () => {
