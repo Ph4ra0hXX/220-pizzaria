@@ -2239,7 +2239,9 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'">🍕 Pizza + Refrigerante 1L 🥤</span>
+                <span v-if="category === 'PROMOÇÃO'"
+                  >Promoção: Pizza 🍕 + Refri 1L 🥤</span
+                >
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
