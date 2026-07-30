@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 101,
@@ -878,7 +878,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 106,
@@ -893,7 +893,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 41.9 },
   },
   /* { 
     id: 105,
@@ -942,7 +942,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.0 },
+    prices: { G: 41.9 },
   },
   {
     id: 111,
@@ -958,8 +958,25 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 46.0 },
+    prices: { G: 41.9 },
   },
+  {
+    id: 211,
+    name: "PIZZA DE FRANGO COM CREME CHEESE",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "CREME CHEESE",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 41.9 },
+  },
+  /*
   {
     id: 222,
     name: "SERTANEJA 220",
@@ -995,6 +1012,8 @@ const pizzas = ref([
     ],
     prices: { G: 46.0 },
   },
+  */
+  /*
   {
     id: 200,
     name: "PIZZA DE FRANGO COM CATUPIRY",
@@ -1010,6 +1029,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
+  */
   /*  {
     id: 222,
     name: "SERTANEJA 220",
@@ -1141,6 +1161,7 @@ const pizzas = ref([
   //   prices: { G: 37.9 },
   // },
 
+  /*
   {
     id: 110,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -1161,6 +1182,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
+  */
 
   /*
   {
@@ -1274,6 +1296,7 @@ const pizzas = ref([
   },
   */
 
+  /*
   {
     id: 112,
     name: "PIZZA A MODA 220",
@@ -1294,6 +1317,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
+  */
 
   /*
   {
@@ -1760,6 +1784,7 @@ const pizzas = ref([
   },
   */
 
+  /*
   {
     id: 45656,
     name: "PIZZA DE CALABRESA C/ CATUPIRY",
@@ -1776,6 +1801,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
+  */
   // {
   //   id: 45657,
   //   name: "PIZZA DE DISQUETE",
@@ -2142,11 +2168,12 @@ const getFilteredPizzas = () => {
         p.category === "PROMOÇÃO" &&
         [
           "PIZZA DE MUSSARELA",
+          "PIZZA MARGUERITA",
           "PIZZA DE CALABRESA",
+          "PIZZA PORTUGUESA",
           "PIZZA DE FRANGO",
-          "ARRETADA 220",
-          "SERTANEJA 220",
           "PIZZA DE FRANBACON",
+          "PIZZA DE FRANGO COM CREME CHEESE",
         ].includes(p.name),
     );
   }
@@ -2212,7 +2239,7 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'">Promoção 💥🍕</span>
+                <span v-if="category === 'PROMOÇÃO'">🍕 Pizza + Refrigerante 1L 🥤</span>
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
