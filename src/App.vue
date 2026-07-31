@@ -976,24 +976,6 @@ const pizzas = ref([
     ],
     prices: { G: 41.9 },
   },
-  /*
-  {
-    id: 222,
-    name: "SERTANEJA 220",
-    category: "PROMOÇÃO",
-    image: "/pizzas/22.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "FRANGO",
-      "LOMBINHO",
-      "BACON",
-      "CATUPIRY",
-      "OREGANO",
-      "AZEITONA",
-    ],
-    prices: { G: 46.0 },
-  },
   {
     id: 223,
     name: "ARRETADA 220",
@@ -1010,9 +992,8 @@ const pizzas = ref([
       "AZEITONA",
       "MOLHO BARBECUE",
     ],
-    prices: { G: 46.0 },
+    prices: { G: 41.9 },
   },
-  */
   /*
   {
     id: 200,
@@ -2174,6 +2155,7 @@ const getFilteredPizzas = () => {
           "PIZZA DE FRANGO",
           "PIZZA DE FRANBACON",
           "PIZZA DE FRANGO COM CREME CHEESE",
+          "ARRETADA 220",
         ].includes(p.name),
     );
   }
