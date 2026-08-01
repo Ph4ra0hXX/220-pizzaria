@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9 },
+    prices: { P: 28.9, G: 39.9 },
   },
   {
     id: 106,
@@ -877,7 +877,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9 },
+    prices: { P: 28.9, G: 39.9 },
   },
   /* { 
     id: 105,
@@ -911,7 +911,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { P: 28.9, G: 39.9 },
   },
   {
     id: 104,
@@ -926,7 +926,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9 },
+    prices: { P: 28.9, G: 39.9 },
   },
   {
     id: 116,
@@ -934,7 +934,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { G: 39.9 },
+    prices: { P: 28.9, G: 39.9 },
   },
   /*
   {
