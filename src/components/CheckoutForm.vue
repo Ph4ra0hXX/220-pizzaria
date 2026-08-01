@@ -83,10 +83,6 @@ const getItemPrice = (item) => {
 
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
-const PROMOTION_DRINK_LABEL = "Refrigerante 1L incluso";
-
-const hasPromotionDrink = (item) => item?.pizza?.category === "PROMOÇÃO";
-
 const currentStep = ref("delivery");
 const deliveryType = ref("delivery"); // 'delivery' ou 'pickup'
 const paymentMethod = ref("pix");
@@ -282,10 +278,6 @@ const formatOrderForWhatsApp = () => {
       }
     } else {
       message += `   Sabor: ${item.pizza.name}\n`;
-    }
-
-    if (hasPromotionDrink(item)) {
-      message += `   Refrigerante: ${PROMOTION_DRINK_LABEL}\n`;
     }
 
     message += `   Preço: R$ ${basePizzaPrice.toFixed(2)}\n`;

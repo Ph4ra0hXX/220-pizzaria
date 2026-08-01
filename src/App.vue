@@ -862,23 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
-  },
-  {
-    id: 101,
-    name: "PIZZA MARGUERITA",
-    category: "PROMOÇÃO",
-    image: "/pizzas/16.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "TOMATE",
-      "MANJERICÃO",
-      "AZEITE DE OLIVA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
+    prices: { P: 28.9 },
   },
   {
     id: 106,
@@ -893,7 +877,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { P: 28.9 },
   },
   /* { 
     id: 105,
@@ -927,7 +911,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 104,
@@ -942,57 +926,15 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { P: 28.9 },
   },
   {
-    id: 111,
-    name: "PIZZA DE FRANBACON",
+    id: 116,
+    name: "PIZZA DE DISQUETE",
     category: "PROMOÇÃO",
-    image: "/pizzas/7.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "FRANGO",
-      "BACON",
-      "CEBOLA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
-  },
-  {
-    id: 211,
-    name: "PIZZA DE FRANGO COM CREME CHEESE",
-    category: "PROMOÇÃO",
-    image: "",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "FRANGO",
-      "CREME CHEESE",
-      "MILHO VERDE",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 41.9 },
-  },
-  {
-    id: 223,
-    name: "ARRETADA 220",
-    category: "PROMOÇÃO",
-    image: "/pizzas/24.webp",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "CARNE DE SOL",
-      "QUEIJO COALHO",
-      "CEBOLA",
-      "OREGANO",
-      "BACON",
-      "AZEITONA",
-      "MOLHO BARBECUE",
-    ],
-    prices: { G: 41.9 },
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { G: 39.9 },
   },
   /*
   {
@@ -1900,7 +1842,7 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
-const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS", "PIZZA DE DISQUETE"];
+const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS"];
 
 const isSmallPromotionPizza = (pizza) => {
   return (
@@ -2144,20 +2086,24 @@ const getFilteredPizzas = () => {
   }
 
   if (categoryFilter.value === "PROMOÇÃO") {
-    return filtered.filter(
-      (p) =>
-        p.category === "PROMOÇÃO" &&
-        [
-          "PIZZA DE MUSSARELA",
-          "PIZZA MARGUERITA",
-          "PIZZA DE CALABRESA",
-          "PIZZA PORTUGUESA",
-          "PIZZA DE FRANGO",
-          "PIZZA DE FRANBACON",
-          "PIZZA DE FRANGO COM CREME CHEESE",
-          "ARRETADA 220",
-        ].includes(p.name),
-    );
+    const promotionPizzaNames = [
+      "PIZZA DE MUSSARELA",
+      "PIZZA DE CALABRESA",
+      "PIZZA DE FRANGO",
+      "PIZZA PORTUGUESA",
+      "PIZZA DE DISQUETE",
+    ];
+
+    return filtered
+      .filter(
+        (p) =>
+          p.category === "PROMOÇÃO" && promotionPizzaNames.includes(p.name),
+      )
+      .sort(
+        (a, b) =>
+          promotionPizzaNames.indexOf(a.name) -
+          promotionPizzaNames.indexOf(b.name),
+      );
   }
 
   return filtered.filter(
@@ -2222,7 +2168,7 @@ const getPaymentMethodLabel = (method) => {
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
                 <span v-if="category === 'PROMOÇÃO'"
-                  >Promoção: Pizza 🍕 + Refri 1L 🥤</span
+                  >Promoção 🍕</span
                 >
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span

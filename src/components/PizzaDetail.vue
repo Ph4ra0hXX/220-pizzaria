@@ -151,24 +151,22 @@ const getFlavorDisplayName = (pizza) => {
 
 const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE MUSSARELA",
-  "PIZZA MARGUERITA",
   "PIZZA DE CALABRESA",
-  "PIZZA PORTUGUESA",
   "PIZZA DE FRANGO",
-  "PIZZA DE FRANBACON",
-  "PIZZA DE FRANGO COM CREME CHEESE",
+  "PIZZA PORTUGUESA",
+  "PIZZA DE DISQUETE",
 ]);
 
 const getAvailableFlavors = () => {
-  // Se é promoção, retorna somente as pizzas promocionais permitidas como sabor adicional
+  // Se é promoção G, permite montar com qualquer pizza do cardápio que tenha tamanho G.
   if (props.pizza.category === "PROMOÇÃO") {
     return props.pizzas.filter(
       (p) =>
         p.id !== props.pizza.id &&
-        p.category === "PROMOÇÃO" &&
-        PROMOTION_FLAVOR_NAMES.has(p.name) &&
-        p.prices &&
-        p.prices[props.selectedSize], // Verifica se tem preço para o tamanho selecionado
+        p.category !== "BEBIDA" &&
+        p.category !== "COMBOS" &&
+        (p.category !== "PROMOÇÃO" || PROMOTION_FLAVOR_NAMES.has(p.name)) &&
+        p.prices?.[props.selectedSize],
     );
   }
   // Caso contrário, retorna todas as pizzas EXCETO a selecionada e bebidas
