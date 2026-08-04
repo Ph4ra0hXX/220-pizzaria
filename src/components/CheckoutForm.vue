@@ -193,7 +193,7 @@ const formatOrderForWhatsApp = () => {
 
   if (deliveryType.value === "delivery") {
     message += `Tipo: Entrega\n`;
-    message += `Endereco: ${deliveryInfo.value.street}, Nº ${deliveryInfo.value.houseNumber}\n`;
+    message += `Endereço: ${deliveryInfo.value.street}, Nº ${deliveryInfo.value.houseNumber}\n`;
     if (deliveryInfo.value.complement) {
       message += `Complemento: ${deliveryInfo.value.complement}\n`;
     }
@@ -244,7 +244,7 @@ const formatOrderForWhatsApp = () => {
       item.size === "P"
         ? "Pequena (P)"
         : item.size === "M"
-          ? "Media (M)"
+          ? "Média (M)"
           : "Grande (G)";
 
     // Calcula o preço base da pizza (sem borda e adicionais)
@@ -324,12 +324,12 @@ const formatOrderForWhatsApp = () => {
   if (deliveryType.value === "delivery") {
     message += `Entrega (${deliveryInfo.value.neighborhood}) - R$ ${deliveryFee.toFixed(2)}\n\n`;
   } else {
-    message += `Retirada no local - Gratis\n\n`;
+    message += `Retirada no local - Grátis\n\n`;
   }
 
   // PAGAMENTO
   message += `*PAGAMENTO*\n`;
-  message += `Metodo: ${getPaymentMethodName(paymentMethod.value)}\n\n`;
+  message += `Método: ${getPaymentMethodName(paymentMethod.value)}\n\n`;
 
   // RESUMO DO PEDIDO
   message += `*RESUMO DO PEDIDO*\n`;
@@ -438,7 +438,7 @@ const getTotalWithDelivery = () => {
           <input type="radio" v-model="deliveryType" value="pickup" />
           <span class="type-info">
             <span class="type-name">Retirar no Local</span>
-            <span class="type-price">Gratis</span>
+            <span class="type-price">Grátis</span>
           </span>
         </label>
       </div>
@@ -554,12 +554,12 @@ const getTotalWithDelivery = () => {
 
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="credit" />
-          <span class="method-name">Cartao de Credito</span>
+          <span class="method-name">Cartão de Crédito</span>
         </label>
 
         <label class="payment-option">
           <input type="radio" v-model="paymentMethod" value="debit" />
-          <span class="method-name">Cartao de Debito</span>
+          <span class="method-name">Cartão de Débito</span>
         </label>
 
         <label class="payment-option">
@@ -575,7 +575,7 @@ const getTotalWithDelivery = () => {
             <strong>{{ pixKey }}</strong>
           </div>
           <div class="pix-beneficiary">
-            <p><strong>Beneficiário:</strong> Glaucia Herbene Carneiro Girao</p>
+            <p><strong>Beneficiário:</strong> Glaucia Herbene Carneiro Girão</p>
             <p><strong>Banco:</strong> Pagbank</p>
           </div>
         </div>

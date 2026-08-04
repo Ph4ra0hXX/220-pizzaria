@@ -929,6 +929,38 @@ const pizzas = ref([
     prices: { P: 28.9, G: 39.9 },
   },
   {
+    id: 107,
+    name: "PIZZA MARGUERITA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/16.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 28.9, G: 39.9 },
+  },
+  {
+    id: 108,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "/pizzas/7.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 28.9, G: 39.9 },
+  },
+  {
     id: 116,
     name: "PIZZA DE DISQUETE",
     category: "PROMOÇÃO",
@@ -2089,7 +2121,9 @@ const getFilteredPizzas = () => {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
       "PIZZA DE CALABRESA",
+      "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
+      "PIZZA DE FRANBACON",
       "PIZZA PORTUGUESA",
       "PIZZA DE DISQUETE",
     ];

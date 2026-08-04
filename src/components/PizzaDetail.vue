@@ -152,7 +152,9 @@ const getFlavorDisplayName = (pizza) => {
 const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE MUSSARELA",
   "PIZZA DE CALABRESA",
+  "PIZZA MARGUERITA",
   "PIZZA DE FRANGO",
+  "PIZZA DE FRANBACON",
   "PIZZA PORTUGUESA",
   "PIZZA DE DISQUETE",
 ]);
@@ -163,6 +165,7 @@ const getAvailableFlavors = () => {
     return props.pizzas.filter(
       (p) =>
         p.id !== props.pizza.id &&
+        p.name !== props.pizza.name &&
         p.category !== "BEBIDA" &&
         p.category !== "COMBOS" &&
         (p.category !== "PROMOÇÃO" || PROMOTION_FLAVOR_NAMES.has(p.name)) &&
@@ -173,6 +176,7 @@ const getAvailableFlavors = () => {
   return props.pizzas.filter(
     (p) =>
       p.id !== props.pizza.id &&
+      p.name !== props.pizza.name &&
       p.category !== "BEBIDA" &&
       p.category !== "PROMOÇÃO",
   );
