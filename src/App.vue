@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   {
     id: 106,
@@ -877,7 +877,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   /* { 
     id: 105,
@@ -911,7 +911,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   {
     id: 104,
@@ -926,7 +926,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   {
     id: 107,
@@ -942,7 +942,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   {
     id: 108,
@@ -958,7 +958,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   {
     id: 116,
@@ -966,7 +966,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 28.9, G: 39.9 },
+    prices: { P: 28.9, G: 38.9 },
   },
   /*
   {
@@ -2017,7 +2017,6 @@ const addToCart = () => {
     }
 
     const isBeverage = selectedPizza.value.category === "BEBIDA";
-    const isPromotion = selectedPizza.value.category === "PROMOÇÃO";
     const isCombo = selectedPizza.value.category === "COMBOS";
     const selectedPizzaPrices = getPizzaPrices(selectedPizza.value);
     let itemPrice = isBeverage
@@ -2033,24 +2032,13 @@ const addToCart = () => {
       !isBeverage &&
       !isCombo
     ) {
-      if (isPromotion) {
-        // Pizzas de promoção: usar o preço real de cada pizza dividido por 2
-        const basePrice = selectedPizzaPrices[selectedSize.value] / 2;
-        const totalFlavorPrice = selectedFlavors.value.reduce(
-          (sum, flavor) =>
-            sum + (getPizzaPrices(flavor)[selectedSize.value] || 0) / 2,
-          0,
-        );
-        itemPrice = basePrice + totalFlavorPrice;
-      } else {
-        // Para pizzas normais, somar metade da pizza base + metade de cada sabor
-        const basePrice = selectedPizzaPrices[selectedSize.value] / 2;
-        const totalFlavorPrice = selectedFlavors.value.reduce(
-          (sum, flavor) => sum + flavor.prices[selectedSize.value] / 2,
-          0,
-        );
-        itemPrice = basePrice + totalFlavorPrice;
-      }
+      const basePrice = (selectedPizzaPrices[selectedSize.value] || 0) / 2;
+      const totalFlavorPrice = selectedFlavors.value.reduce(
+        (sum, flavor) =>
+          sum + (getPizzaPrices(flavor)[selectedSize.value] || 0) / 2,
+        0,
+      );
+      itemPrice = basePrice + totalFlavorPrice;
     }
     // Se tamanho G sem sabores adicionais, usa o preço normal (não divide)
 

@@ -104,7 +104,6 @@ const getDisplayPrice = (pizza, edge) => {
   if (!props.selectedSize) {
     return "0.00";
   }
-  const isPromotion = pizza.category === "PROMOÇÃO";
   let price = parseFloat(getPrice(pizza, props.selectedSize));
 
   // Se tamanho G e há sabores selecionados (meio a meio)
@@ -159,27 +158,23 @@ const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE DISQUETE",
 ]);
 
-const getAvailableFlavors = () => {
-  // Se é promoção G, permite montar com qualquer pizza do cardápio que tenha tamanho G.
-  if (props.pizza.category === "PROMOÇÃO") {
-    return props.pizzas.filter(
-      (p) =>
-        p.id !== props.pizza.id &&
-        p.name !== props.pizza.name &&
-        p.category !== "BEBIDA" &&
-        p.category !== "COMBOS" &&
-        (p.category !== "PROMOÇÃO" || PROMOTION_FLAVOR_NAMES.has(p.name)) &&
-        p.prices?.[props.selectedSize],
-    );
-  }
-  // Caso contrário, retorna todas as pizzas EXCETO a selecionada e bebidas
-  return props.pizzas.filter(
-    (p) =>
-      p.id !== props.pizza.id &&
-      p.name !== props.pizza.name &&
-      p.category !== "BEBIDA" &&
-      p.category !== "PROMOÇÃO",
+const isPromotionFlavorAllowed = (pizza) => {
+  return pizza.category !== "PROMOÇÃO" || PROMOTION_FLAVOR_NAMES.has(pizza.name);
+};
+
+const canUseAsFlavor = (pizza) => {
+  return (
+    pizza.id !== props.pizza.id &&
+    pizza.name !== props.pizza.name &&
+    pizza.category !== "BEBIDA" &&
+    pizza.category !== "COMBOS" &&
+    isPromotionFlavorAllowed(pizza) &&
+    pizza.prices?.[props.selectedSize]
   );
+};
+
+const getAvailableFlavors = () => {
+  return props.pizzas.filter(canUseAsFlavor);
 };
 
 const toggleFlavor = (flavorPizza) => {
