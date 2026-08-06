@@ -929,7 +929,7 @@ const pizzas = ref([
     prices: { P: 27.9, G: 37.9 },
   },
   {
-    id: 107,
+    id: 1037738,
     name: "PIZZA MARGUERITA",
     category: "PROMOÇÃO",
     image: "/pizzas/16.webp",
