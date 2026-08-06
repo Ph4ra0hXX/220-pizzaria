@@ -2113,12 +2113,27 @@ const getFilteredPizzas = () => {
       "PIZZA DE FRANGO",
       "PIZZA PORTUGUESA",
     ];
+    const promotionPizzasByName = new Map();
 
-    return filtered
-      .filter(
-        (p) =>
-          p.category === "PROMOÇÃO" && promotionPizzaNames.includes(p.name),
-      )
+    filtered.forEach((p) => {
+      if (
+        p.category !== "PROMOÇÃO" ||
+        !promotionPizzaNames.includes(p.name)
+      ) {
+        return;
+      }
+
+      const currentPizza = promotionPizzasByName.get(p.name);
+      const pizzaPrice = p.prices?.G ?? p.prices?.P ?? Infinity;
+      const currentPizzaPrice =
+        currentPizza?.prices?.G ?? currentPizza?.prices?.P ?? Infinity;
+
+      if (!currentPizza || pizzaPrice < currentPizzaPrice) {
+        promotionPizzasByName.set(p.name, p);
+      }
+    });
+
+    return Array.from(promotionPizzasByName.values())
       .sort(
         (a, b) =>
           promotionPizzaNames.indexOf(a.name) -

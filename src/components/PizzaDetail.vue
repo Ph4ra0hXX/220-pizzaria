@@ -172,7 +172,31 @@ const canUseAsFlavor = (pizza) => {
 };
 
 const getAvailableFlavors = () => {
-  return props.pizzas.filter(canUseAsFlavor);
+  const flavorsByName = new Map();
+
+  props.pizzas.forEach((pizza) => {
+    const flavorName = getFlavorDisplayName(pizza);
+
+    if (!canUseAsFlavor(pizza)) {
+      return;
+    }
+
+    const currentFlavor = flavorsByName.get(flavorName);
+    const pizzaPrice = pizza.prices?.[props.selectedSize] ?? Infinity;
+    const currentFlavorPrice =
+      currentFlavor?.prices?.[props.selectedSize] ?? Infinity;
+    const shouldPreferPromotionPrice =
+      props.pizza.category === "PROMOÇÃO" &&
+      pizza.category === "PROMOÇÃO" &&
+      (currentFlavor?.category !== "PROMOÇÃO" ||
+        pizzaPrice < currentFlavorPrice);
+
+    if (!currentFlavor || shouldPreferPromotionPrice) {
+      flavorsByName.set(flavorName, pizza);
+    }
+  });
+
+  return Array.from(flavorsByName.values());
 };
 
 const toggleFlavor = (flavorPizza) => {
