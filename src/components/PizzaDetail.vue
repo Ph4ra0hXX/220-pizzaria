@@ -153,9 +153,7 @@ const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE CALABRESA",
   "PIZZA MARGUERITA",
   "PIZZA DE FRANGO",
-  "PIZZA DE FRANBACON",
   "PIZZA PORTUGUESA",
-  "PIZZA DE DISQUETE",
 ]);
 
 const isPromotionFlavorAllowed = (pizza) => {

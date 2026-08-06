@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   {
     id: 106,
@@ -877,7 +877,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   /* { 
     id: 105,
@@ -911,7 +911,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   {
     id: 104,
@@ -926,7 +926,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   {
     id: 107,
@@ -942,7 +942,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   {
     id: 108,
@@ -958,7 +958,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   {
     id: 116,
@@ -966,7 +966,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 28.9, G: 38.9 },
+    prices: { P: 27.9, G: 37.9 },
   },
   /*
   {
@@ -2111,9 +2111,7 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
-      "PIZZA DE FRANBACON",
       "PIZZA PORTUGUESA",
-      "PIZZA DE DISQUETE",
     ];
 
     return filtered

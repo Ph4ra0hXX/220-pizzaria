@@ -51,7 +51,7 @@ const getPriceDisplay = (pizza) => {
   if (pizza.prices.P && pizza.prices.G) {
     return `P: R$ ${pizza.prices.P.toFixed(2)} | G: R$ ${pizza.prices.G.toFixed(2)}`;
   }
-  // Se só tem tamanho G (promoção)
+  // Se só tem tamanho G
   if (pizza.prices.G) {
     return `G: R$ ${pizza.prices.G.toFixed(2)}`;
   }
