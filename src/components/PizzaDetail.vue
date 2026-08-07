@@ -60,6 +60,10 @@ const isBeverage = (pizza) => {
   return pizza.category === "BEBIDA";
 };
 
+const isPromotionCategory = (category) => {
+  return String(category ?? "").startsWith("PROMO");
+};
+
 const getBeveragePrice = (pizza) => {
   if (
     pizza.id === 21 &&
@@ -151,13 +155,15 @@ const getFlavorDisplayName = (pizza) => {
 const PROMOTION_FLAVOR_NAMES = new Set([
   "PIZZA DE MUSSARELA",
   "PIZZA DE CALABRESA",
+  "PIZZA DE CALABRESA SUPREME",
   "PIZZA MARGUERITA",
   "PIZZA DE FRANGO",
+  "PIZZA DE FRANBACON",
   "PIZZA PORTUGUESA",
 ]);
 
 const isPromotionFlavorAllowed = (pizza) => {
-  return pizza.category !== "PROMOÇÃO" || PROMOTION_FLAVOR_NAMES.has(pizza.name);
+  return !isPromotionCategory(pizza.category) || PROMOTION_FLAVOR_NAMES.has(pizza.name);
 };
 
 const canUseAsFlavor = (pizza) => {
@@ -175,6 +181,10 @@ const getAvailableFlavors = () => {
   const flavorsByName = new Map();
 
   props.pizzas.forEach((pizza) => {
+    if (!pizza) {
+      return;
+    }
+
     const flavorName = getFlavorDisplayName(pizza);
 
     if (!canUseAsFlavor(pizza)) {
@@ -186,9 +196,9 @@ const getAvailableFlavors = () => {
     const currentFlavorPrice =
       currentFlavor?.prices?.[props.selectedSize] ?? Infinity;
     const shouldPreferPromotionPrice =
-      props.pizza.category === "PROMOÇÃO" &&
-      pizza.category === "PROMOÇÃO" &&
-      (currentFlavor?.category !== "PROMOÇÃO" ||
+      isPromotionCategory(props.pizza.category) &&
+      isPromotionCategory(pizza.category) &&
+      (!isPromotionCategory(currentFlavor?.category) ||
         pizzaPrice < currentFlavorPrice);
 
     if (!currentFlavor || shouldPreferPromotionPrice) {
@@ -242,7 +252,7 @@ const isFlavorSelected = (flavor) => {
 
 const isFlavorsAllowed = () => {
   // Para promoção, apenas tamanho G pode ter metade metade
-  if (props.pizza.category === "PROMOÇÃO") {
+  if (isPromotionCategory(props.pizza.category)) {
     return props.selectedSize === "G" && !isBeverage(props.pizza);
   }
 
@@ -254,7 +264,7 @@ const isFlavorsAllowed = () => {
 };
 
 const isPromotion = () => {
-  return props.pizza.category === "PROMOÇÃO";
+  return isPromotionCategory(props.pizza.category);
 };
 
 const getFilteredEdges = () => {

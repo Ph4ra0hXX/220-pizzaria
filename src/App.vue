@@ -862,7 +862,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   {
     id: 106,
@@ -877,9 +877,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
-  /* { 
+  {
     id: 105,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -893,8 +893,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
-  }, */
+    prices: { P: 29.0, G: 39.0 },
+  },
   {
     id: 103,
     name: "PIZZA PORTUGUESA",
@@ -911,7 +911,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   {
     id: 104,
@@ -926,7 +926,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   {
     id: 888888833333,
@@ -942,7 +942,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   {
     id: 108,
@@ -958,7 +958,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   {
     id: 116,
@@ -966,7 +966,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 27.9, G: 37.9 },
+    prices: { P: 29.0, G: 39.0 },
   },
   /*
   {
@@ -1876,9 +1876,13 @@ const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
 const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS"];
 
+const isPromotionCategory = (category) => {
+  return String(category ?? "").startsWith("PROMO");
+};
+
 const isSmallPromotionPizza = (pizza) => {
   return (
-    pizza?.category === "PROMOÇÃO" &&
+    isPromotionCategory(pizza?.category) &&
     PROMOTION_SMALL_PIZZA_NAMES.includes(pizza.name)
   );
 };
@@ -1983,7 +1987,7 @@ const selectPizza = (pizza) => {
     selectedSize.value = null;
   } else if (pizza.category === "COMBOS") {
     selectedSize.value = null;
-  } else if (pizza.category === "PROMOÇÃO") {
+  } else if (isPromotionCategory(pizza.category)) {
     if (isSmallPromotionPizza(pizza)) {
       selectedSize.value = "P";
     } else if (pizza.prices.P) {
@@ -2102,22 +2106,24 @@ const getFilteredPizzas = () => {
   });
 
   if (categoryFilter.value === "TODAS") {
-    return filtered.filter((p) => p.category !== "PROMOÇÃO");
+    return filtered.filter((p) => !isPromotionCategory(p.category));
   }
 
-  if (categoryFilter.value === "PROMOÇÃO") {
+  if (isPromotionCategory(categoryFilter.value)) {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
       "PIZZA DE CALABRESA",
+      "PIZZA DE CALABRESA SUPREME",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
+      "PIZZA DE FRANBACON",
       "PIZZA PORTUGUESA",
     ];
     const promotionPizzasByName = new Map();
 
     filtered.forEach((p) => {
       if (
-        p.category !== "PROMOÇÃO" ||
+        !isPromotionCategory(p.category) ||
         !promotionPizzaNames.includes(p.name)
       ) {
         return;
@@ -2143,7 +2149,7 @@ const getFilteredPizzas = () => {
 
   return filtered.filter(
     (p) =>
-      p.category !== "PROMOÇÃO" &&
+      !isPromotionCategory(p.category) &&
       (p.category || "TRADICIONAL") === categoryFilter.value,
   );
 };

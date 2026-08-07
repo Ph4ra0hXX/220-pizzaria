@@ -48,16 +48,17 @@ const getPriceDisplay = (pizza) => {
   if (pizza.category === "COMBOS" && pizza.prices.combo) {
     return `R$ ${pizza.prices.combo.toFixed(2)}`;
   }
-  if (pizza.prices.P && pizza.prices.G) {
-    return `P: R$ ${pizza.prices.P.toFixed(2)} | G: R$ ${pizza.prices.G.toFixed(2)}`;
+  const prices = pizza.prices;
+  if (prices.P && prices.G) {
+    return `P: R$ ${prices.P.toFixed(2)} | G: R$ ${prices.G.toFixed(2)}`;
   }
   // Se só tem tamanho G
-  if (pizza.prices.G) {
-    return `G: R$ ${pizza.prices.G.toFixed(2)}`;
+  if (prices.G) {
+    return `G: R$ ${prices.G.toFixed(2)}`;
   }
   // Se só tem tamanho P
-  if (pizza.prices.P) {
-    return `P: R$ ${pizza.prices.P.toFixed(2)}`;
+  if (prices.P) {
+    return `P: R$ ${prices.P.toFixed(2)}`;
   }
   return "Preço indisponível";
 };
