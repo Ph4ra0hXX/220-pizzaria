@@ -8,6 +8,7 @@ const pizzas = ref([
   {
     id: 346,
     name: "FRANGO TROPICAL 220",
+    image: "/pizzas/26.jpeg",
     category: "ESPECIAL",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
