@@ -2114,8 +2114,8 @@ const getFilteredPizzas = () => {
   let filtered = pizzas.value.slice();
 
   filtered = filtered.slice().sort((a, b) => {
-    if (a.id === 345) return -1;
-    if (b.id === 345) return 1;
+    if (a.id === 346) return -1;
+    if (b.id === 346) return 1;
     return 0;
   });
 
