@@ -2067,6 +2067,16 @@ const addToCart = () => {
       selectedFlavors.value = [];
     }
 
+    // Pizza promocional G só pode ser meio a meio com outro sabor promocional.
+    if (
+      selectedSize.value === "G" &&
+      isPromotionCategory(selectedPizza.value.category)
+    ) {
+      selectedFlavors.value = selectedFlavors.value.filter((flavor) =>
+        isPromotionCategory(flavor.category),
+      );
+    }
+
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isCombo = selectedPizza.value.category === "COMBOS";
     const selectedPizzaPrices = getPizzaPrices(selectedPizza.value);

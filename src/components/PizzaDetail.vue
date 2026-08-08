@@ -167,11 +167,17 @@ const isPromotionFlavorAllowed = (pizza) => {
 };
 
 const canUseAsFlavor = (pizza) => {
+  const promotionRequiresPromotionFlavor =
+    isPromotionCategory(props.pizza.category) &&
+    props.selectedSize === "G" &&
+    !isPromotionCategory(pizza.category);
+
   return (
     pizza.id !== props.pizza.id &&
     pizza.name !== props.pizza.name &&
     pizza.category !== "BEBIDA" &&
     pizza.category !== "COMBOS" &&
+    !promotionRequiresPromotionFlavor &&
     isPromotionFlavorAllowed(pizza) &&
     pizza.prices?.[props.selectedSize]
   );
