@@ -63,7 +63,7 @@ const getPriceDisplay = (pizza) => {
   return "Preço indisponível";
 };
 
-const FEATURED_PIZZA_ID = 345;
+const FEATURED_PIZZA_ID = 346;
 
 const isFeaturedPizza = (pizza) => {
   return pizza.id === FEATURED_PIZZA_ID;
