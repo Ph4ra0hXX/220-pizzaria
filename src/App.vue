@@ -2158,10 +2158,10 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(categoryFilter.value)) {
     const promotionPizzaNames = [
+      "FRANGO TROPICAL 220",
       "PIZZA DE MUSSARELA",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
-      "FRANGO TROPICAL 220",
       "PIZZA DE CALABRESA",
       "SERTANEJA 220",
       "PIZZA PORTUGUESA",
