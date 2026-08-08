@@ -852,7 +852,7 @@ const pizzas = ref([
     ],
     prices: { P: 42.0, G: 58.0 },
   },
-  /*{
+  {
     id: 36,
     name: "PIZZA DE MUSSARELA",
     category: "TRADICIONAL",
@@ -864,7 +864,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 37.0, G: 48.0 },
-  },*/
+  },
   // PIZZAS DE PROMOÇÃO
   {
     id: 100,
@@ -1923,8 +1923,11 @@ const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
 const PROMOTION_PRICE = 44.9;
 
+const normalizeCategory = (category) =>
+  String(category ?? "TRADICIONAL").trim().toUpperCase();
+
 const isPromotionCategory = (category) => {
-  return String(category ?? "").startsWith("PROMO");
+  return normalizeCategory(category).startsWith("PROMO");
 };
 
 const getPizzaPrices = (pizza) => {
@@ -2141,6 +2144,7 @@ const getTotalPrice = computed(() => {
 
 const getFilteredPizzas = () => {
   let filtered = pizzas.value.slice();
+  const selectedCategory = normalizeCategory(categoryFilter.value);
 
   filtered = filtered.slice().sort((a, b) => {
     if (a.id === 346) return -1;
@@ -2148,11 +2152,11 @@ const getFilteredPizzas = () => {
     return 0;
   });
 
-  if (categoryFilter.value === "TODAS") {
+  if (selectedCategory === "TODAS") {
     return filtered.filter((p) => !isPromotionCategory(p.category));
   }
 
-  if (isPromotionCategory(categoryFilter.value)) {
+  if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
       "FRANGO TROPICAL 220",
       "PIZZA DE MUSSARELA",
@@ -2193,7 +2197,7 @@ const getFilteredPizzas = () => {
   return filtered.filter(
     (p) =>
       !isPromotionCategory(p.category) &&
-      (p.category || "TRADICIONAL") === categoryFilter.value,
+      normalizeCategory(p.category) === selectedCategory,
   );
 };
 
