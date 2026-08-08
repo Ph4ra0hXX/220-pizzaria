@@ -6,6 +6,20 @@ import CheckoutForm from "./components/CheckoutForm.vue";
 
 const pizzas = ref([
   {
+    id: 346,
+    name: "FRANGO TROPICAL 220",
+    category: "ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
+      "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
+    ],
+    prices: { P: 39.0, G: 52.0 },
+  },
+  {
     id: 221,
     name: "SERTANEJA 220",
     category: "ESPECIAL",
