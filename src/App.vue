@@ -1921,17 +1921,10 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
-const PROMOTION_SMALL_PIZZA_NAMES = ["PIZZA DE BIS"];
+const PROMOTION_PRICE = 44.9;
 
 const isPromotionCategory = (category) => {
   return String(category ?? "").startsWith("PROMO");
-};
-
-const isSmallPromotionPizza = (pizza) => {
-  return (
-    isPromotionCategory(pizza?.category) &&
-    PROMOTION_SMALL_PIZZA_NAMES.includes(pizza.name)
-  );
 };
 
 const getPizzaPrices = (pizza) => {
@@ -1939,8 +1932,8 @@ const getPizzaPrices = (pizza) => {
     return {};
   }
 
-  if (isSmallPromotionPizza(pizza)) {
-    return { P: pizza.prices.P ?? pizza.prices.G };
+  if (isPromotionCategory(pizza.category)) {
+    return { G: PROMOTION_PRICE };
   }
 
   return pizza.prices;
@@ -2035,14 +2028,7 @@ const selectPizza = (pizza) => {
   } else if (pizza.category === "COMBOS") {
     selectedSize.value = null;
   } else if (isPromotionCategory(pizza.category)) {
-    if (isSmallPromotionPizza(pizza)) {
-      selectedSize.value = "P";
-    } else if (pizza.prices.P) {
-      // Se a pizza da promoção tem preço P, seleciona P, senão G
-      selectedSize.value = "P";
-    } else {
-      selectedSize.value = "G";
-    }
+    selectedSize.value = "G";
   } else {
     selectedSize.value = "P";
   }

@@ -81,6 +81,14 @@ const getItemPrice = (item) => {
   return Number(item?.price ?? 0);
 };
 
+const getPizzaPrice = (pizza, size) => {
+  if (String(pizza?.category ?? "").startsWith("PROMO") && size === "G") {
+    return 44.9;
+  }
+
+  return Number(pizza?.prices?.[size] ?? 0);
+};
+
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
@@ -250,12 +258,12 @@ const formatOrderForWhatsApp = () => {
     // Calcula o preço base da pizza (sem borda e adicionais)
     let basePizzaPrice = 0;
     if (item.flavors && item.flavors.length > 0 && item.size === "G") {
-      basePizzaPrice = item.pizza.prices[item.size] / 2;
+      basePizzaPrice = getPizzaPrice(item.pizza, item.size) / 2;
       item.flavors.forEach((flavor) => {
-        basePizzaPrice += flavor.prices[item.size] / 2;
+        basePizzaPrice += getPizzaPrice(flavor, item.size) / 2;
       });
     } else {
-      basePizzaPrice = item.pizza.prices[item.size];
+      basePizzaPrice = getPizzaPrice(item.pizza, item.size);
     }
 
     message += `${itemIndex}. Pizza ${sizeLabel}\n`;
@@ -264,10 +272,10 @@ const formatOrderForWhatsApp = () => {
     if (item.flavors && item.flavors.length > 0) {
       message += `   Sabores:\n`;
       if (item.size === "G" && item.flavors.length === 1) {
-        const mainHalfPrice = (item.pizza.prices[item.size] / 2).toFixed(2);
+        const mainHalfPrice = (getPizzaPrice(item.pizza, item.size) / 2).toFixed(2);
         message += `   - 1/2 ${item.pizza.name} - R$ ${mainHalfPrice}\n`;
         item.flavors.forEach((flavor) => {
-          const flavorHalfPrice = (flavor.prices[item.size] / 2).toFixed(2);
+          const flavorHalfPrice = (getPizzaPrice(flavor, item.size) / 2).toFixed(2);
           message += `   - 1/2 ${flavor.name} - R$ ${flavorHalfPrice}\n`;
         });
       } else {

@@ -64,6 +64,8 @@ const isPromotionCategory = (category) => {
   return String(category ?? "").startsWith("PROMO");
 };
 
+const PROMOTION_PRICE = 44.9;
+
 const getBeveragePrice = (pizza) => {
   if (
     pizza.id === 21 &&
@@ -91,6 +93,9 @@ const getPrice = (pizza, size) => {
   }
   if (pizza.category === "COMBOS") {
     return pizza.prices?.combo?.toFixed(2) || "0.00";
+  }
+  if (isPromotionCategory(pizza.category)) {
+    return size === "G" ? PROMOTION_PRICE.toFixed(2) : "0.00";
   }
   if (!size || !pizza.prices?.[size]) {
     return "0.00";
@@ -179,7 +184,9 @@ const canUseAsFlavor = (pizza) => {
     pizza.category !== "COMBOS" &&
     !promotionRequiresPromotionFlavor &&
     isPromotionFlavorAllowed(pizza) &&
-    pizza.prices?.[props.selectedSize]
+    (isPromotionCategory(pizza.category)
+      ? props.selectedSize === "G"
+      : pizza.prices?.[props.selectedSize])
   );
 };
 
@@ -198,9 +205,10 @@ const getAvailableFlavors = () => {
     }
 
     const currentFlavor = flavorsByName.get(flavorName);
-    const pizzaPrice = pizza.prices?.[props.selectedSize] ?? Infinity;
-    const currentFlavorPrice =
-      currentFlavor?.prices?.[props.selectedSize] ?? Infinity;
+    const pizzaPrice = Number(getPrice(pizza, props.selectedSize)) || Infinity;
+    const currentFlavorPrice = currentFlavor
+      ? Number(getPrice(currentFlavor, props.selectedSize)) || Infinity
+      : Infinity;
     const shouldPreferPromotionPrice =
       isPromotionCategory(props.pizza.category) &&
       isPromotionCategory(pizza.category) &&
