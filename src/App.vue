@@ -894,7 +894,7 @@ const pizzas = ref([
     ],
     prices: { P: 29.0, G: 39.0 },
   },
-  {
+  /*{
     id: 105,
     name: "PIZZA DE CALABRESA SUPREME",
     category: "PROMOÇÃO",
@@ -909,7 +909,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 29.0, G: 39.0 },
-  },
+  },*/
   {
     id: 103,
     name: "PIZZA PORTUGUESA",
@@ -959,7 +959,7 @@ const pizzas = ref([
     ],
     prices: { P: 29.0, G: 39.0 },
   },
-  {
+  /*{
     id: 108,
     name: "PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
@@ -974,13 +974,45 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 29.0, G: 39.0 },
-  },
-  {
+  },*/
+  /*{
     id: 116,
     name: "PIZZA DE DISQUETE",
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 29.0, G: 39.0 },
+  },*/
+  {
+    id: 1346,
+    name: "FRANGO TROPICAL 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/26.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
+      "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
+    ],
+    prices: { P: 29.0, G: 39.0 },
+  },
+  {
+    id: 1222,
+    name: "SERTANEJA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/22.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
     prices: { P: 29.0, G: 39.0 },
   },
   /*
@@ -2127,11 +2159,11 @@ const getFilteredPizzas = () => {
   if (isPromotionCategory(categoryFilter.value)) {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
-      "PIZZA DE CALABRESA",
-      "PIZZA DE CALABRESA SUPREME",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
-      "PIZZA DE FRANBACON",
+      "FRANGO TROPICAL 220",
+      "PIZZA DE CALABRESA",
+      "SERTANEJA 220",
       "PIZZA PORTUGUESA",
     ];
     const promotionPizzasByName = new Map();
