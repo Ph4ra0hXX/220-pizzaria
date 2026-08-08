@@ -53,7 +53,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
- /* {
+  {
     id: 2,
     name: "PIZZA DE FRANGO",
     image: "/pizzas/2.webp",
@@ -67,7 +67,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 37.0, G: 48.0 },
-  },*/
+  },
   {
     id: 378,
     image: "/pizzas/3.webp",
@@ -98,7 +98,7 @@ const pizzas = ref([
     ],
     prices: { P: 50.0, G: 72.0 },
   },
-  /*{
+  {
     id: 4,
     image: "/pizzas/12.webp",
     name: "PIZZA DE CALABRESA",
@@ -112,7 +112,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 37.0, G: 48.0 },
-  },*/
+  },
   {
     id: 377338,
     image: "/pizzas/16.webp",
@@ -757,7 +757,7 @@ const pizzas = ref([
     prices: { G: 39.9 },
   },
   */
-  /*{
+  {
     id: 40,
     name: "PIZZA PORTUGUESA",
     category: "TRADICIONAL",
@@ -774,7 +774,7 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { P: 37.0, G: 48.0 },
-  },*/
+  },
   // {
   //   id: 767,
   //   name: "PIZZA DE LOMBINHO",
