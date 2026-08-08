@@ -855,7 +855,7 @@ const pizzas = ref([
     id: 100,
     name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
-    image: "",
+    image: "/pizzas/25.jpeg",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
