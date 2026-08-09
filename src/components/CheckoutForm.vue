@@ -288,10 +288,6 @@ const formatOrderForWhatsApp = () => {
       message += `   Sabor: ${item.pizza.name}\n`;
     }
 
-    if (String(item.pizza.category ?? "").startsWith("PROMO")) {
-      message += `   Promoção: ganha 1 Guaraná 1L\n`;
-    }
-
     message += `   Preço: R$ ${basePizzaPrice.toFixed(2)}\n`;
 
     // Extras (Borda e Adicionais)
