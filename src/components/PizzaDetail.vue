@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from "vue";
+
 const props = defineProps({
   pizza: {
     type: Object,
@@ -64,8 +66,6 @@ const isPromotionCategory = (category) => {
   return String(category ?? "").startsWith("PROMO");
 };
 
-const PROMOTION_PRICE = 44.9;
-
 const getBeveragePrice = (pizza) => {
   if (
     pizza.id === 21 &&
@@ -94,14 +94,19 @@ const getPrice = (pizza, size) => {
   if (pizza.category === "COMBOS") {
     return pizza.prices?.combo?.toFixed(2) || "0.00";
   }
-  if (isPromotionCategory(pizza.category)) {
-    return size === "G" ? PROMOTION_PRICE.toFixed(2) : "0.00";
-  }
   if (!size || !pizza.prices?.[size]) {
     return "0.00";
   }
   return pizza.prices[size].toFixed(2);
 };
+
+const availableSizes = computed(() => {
+  const priceSizes = Object.keys(props.pizza?.prices ?? {}).filter(
+    (size) => size === "P" || size === "G",
+  );
+
+  return priceSizes.length ? priceSizes : props.sizes;
+});
 
 const getDisplayPrice = (pizza, edge) => {
   if (isBeverage(pizza)) {
@@ -157,36 +162,18 @@ const getFlavorDisplayName = (pizza) => {
   return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
 };
 
-const PROMOTION_FLAVOR_NAMES = new Set([
-  "PIZZA DE MUSSARELA",
-  "PIZZA MARGUERITA",
-  "PIZZA DE FRANGO",
-  "FRANGO TROPICAL 220",
-  "PIZZA DE CALABRESA",
-  "SERTANEJA 220",
-  "PIZZA PORTUGUESA",
-]);
-
-const isPromotionFlavorAllowed = (pizza) => {
-  return !isPromotionCategory(pizza.category) || PROMOTION_FLAVOR_NAMES.has(pizza.name);
+const getFlavorKey = (pizza) => {
+  return getFlavorDisplayName(pizza);
 };
 
 const canUseAsFlavor = (pizza) => {
-  const promotionRequiresPromotionFlavor =
-    isPromotionCategory(props.pizza.category) &&
-    props.selectedSize === "G" &&
-    !isPromotionCategory(pizza.category);
-
   return (
     pizza.id !== props.pizza.id &&
-    pizza.name !== props.pizza.name &&
+    getFlavorDisplayName(pizza) !== getFlavorDisplayName(props.pizza) &&
     pizza.category !== "BEBIDA" &&
     pizza.category !== "COMBOS" &&
-    !promotionRequiresPromotionFlavor &&
-    isPromotionFlavorAllowed(pizza) &&
-    (isPromotionCategory(pizza.category)
-      ? props.selectedSize === "G"
-      : pizza.prices?.[props.selectedSize])
+    props.selectedSize === "G" &&
+    pizza.prices?.G
   );
 };
 
@@ -198,25 +185,19 @@ const getAvailableFlavors = () => {
       return;
     }
 
-    const flavorName = getFlavorDisplayName(pizza);
+    const flavorKey = getFlavorKey(pizza);
 
     if (!canUseAsFlavor(pizza)) {
       return;
     }
 
-    const currentFlavor = flavorsByName.get(flavorName);
+    const currentFlavor = flavorsByName.get(flavorKey);
     const pizzaPrice = Number(getPrice(pizza, props.selectedSize)) || Infinity;
     const currentFlavorPrice = currentFlavor
       ? Number(getPrice(currentFlavor, props.selectedSize)) || Infinity
       : Infinity;
-    const shouldPreferPromotionPrice =
-      isPromotionCategory(props.pizza.category) &&
-      isPromotionCategory(pizza.category) &&
-      (!isPromotionCategory(currentFlavor?.category) ||
-        pizzaPrice < currentFlavorPrice);
-
-    if (!currentFlavor || shouldPreferPromotionPrice) {
-      flavorsByName.set(flavorName, pizza);
+    if (!currentFlavor || pizzaPrice < currentFlavorPrice) {
+      flavorsByName.set(flavorKey, pizza);
     }
   });
 
@@ -320,7 +301,7 @@ const getFilteredEdges = () => {
           <h3>Selecione o tamanho:</h3>
           <div class="size-options">
             <button
-              v-for="size in sizes"
+              v-for="size in availableSizes"
               :key="size"
               :class="['size-btn', { active: selectedSize === size }]"
               @click="$emit('update:selectedSize', size)"

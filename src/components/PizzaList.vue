@@ -16,10 +16,6 @@ const isBeverage = (pizza) => {
   return pizza.category === "BEBIDA";
 };
 
-const isPromotionCategory = (category) => {
-  return String(category ?? "").startsWith("PROMO");
-};
-
 const getBeveragePrice = (pizza) => {
   if (
     pizza.id === 21 &&
@@ -51,9 +47,6 @@ const getPriceDisplay = (pizza) => {
   // Se é COMBO
   if (pizza.category === "COMBOS" && pizza.prices.combo) {
     return `R$ ${pizza.prices.combo.toFixed(2)}`;
-  }
-  if (isPromotionCategory(pizza.category)) {
-    return "G: R$ 44.90";
   }
   const prices = pizza.prices;
   if (prices.P && prices.G) {

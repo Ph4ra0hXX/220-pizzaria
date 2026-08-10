@@ -130,6 +130,65 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
+    id: 52,
+    name: "PIZZA DE MUSSARELA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/25.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 29.9, G: 38.0 },
+  },
+  {
+    id: 53,
+    name: "PIZZA DE CALABRESA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/12.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA FATIADA",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 29.9, G: 38.0 },
+  },
+  {
+    id: 55,
+    name: "PIZZA DE FRANGO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/2.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 29.9, G: 38.0 },
+  },
+  {
+    id: 56,
+    name: "PIZZA MARGUERITA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/16.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { P: 29.9, G: 38.0 },
+  },
+  {
     id: 5,
     image: "/pizzas/5.webp",
     name: "PIZZA DE CAMARÃO",
@@ -1921,7 +1980,6 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
 const GUARANA_COUPON_PRICE = 11.0;
-const PROMOTION_PRICE = 44.9;
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL").trim().toUpperCase();
@@ -1933,10 +1991,6 @@ const isPromotionCategory = (category) => {
 const getPizzaPrices = (pizza) => {
   if (!pizza?.prices) {
     return {};
-  }
-
-  if (isPromotionCategory(pizza.category)) {
-    return { G: PROMOTION_PRICE };
   }
 
   return pizza.prices;
@@ -2003,7 +2057,7 @@ const cartItemsForCheckout = computed(() =>
 const categories = computed(() => {
   const allCategories = [
     "TODAS",
-    // "PROMOÇÃO", // Botão e categoria de promoção desativados.
+    "PROMOÇÃO",
     "COMBOS",
     "TRADICIONAL",
     "ESPECIAL",
@@ -2031,7 +2085,7 @@ const selectPizza = (pizza) => {
   } else if (pizza.category === "COMBOS") {
     selectedSize.value = null;
   } else if (isPromotionCategory(pizza.category)) {
-    selectedSize.value = "G";
+    selectedSize.value = getPizzaPrices(pizza).P ? "P" : "G";
   } else {
     selectedSize.value = "P";
   }
@@ -2054,16 +2108,6 @@ const addToCart = () => {
     // Validação: Pizza P não pode ter meio a meio (sabores múltiplos)
     if (selectedSize.value === "P" && selectedFlavors.value.length > 0) {
       selectedFlavors.value = [];
-    }
-
-    // Pizza promocional G só pode ser meio a meio com outro sabor promocional.
-    if (
-      selectedSize.value === "G" &&
-      isPromotionCategory(selectedPizza.value.category)
-    ) {
-      selectedFlavors.value = selectedFlavors.value.filter((flavor) =>
-        isPromotionCategory(flavor.category),
-      );
     }
 
     const isBeverage = selectedPizza.value.category === "BEBIDA";
@@ -2158,13 +2202,10 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "FRANGO TROPICAL 220",
       "PIZZA DE MUSSARELA",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "SERTANEJA 220",
-      "PIZZA PORTUGUESA",
     ];
     const promotionPizzasByName = new Map();
 
