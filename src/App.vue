@@ -858,6 +858,7 @@ const pizzas = ref([
       "MOLHO DE TOMATE",
       "MUSSARELA",
       "PRESUNTO",
+      "TOMATE",
       "AZEITONA",
       "OREGANO",
       "CEBOLA",
