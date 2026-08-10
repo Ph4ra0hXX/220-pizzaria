@@ -82,10 +82,6 @@ const getItemPrice = (item) => {
 };
 
 const getPizzaPrice = (pizza, size) => {
-  if (String(pizza?.category ?? "").startsWith("PROMO") && size === "G") {
-    return 44.9;
-  }
-
   return Number(pizza?.prices?.[size] ?? 0);
 };
 
