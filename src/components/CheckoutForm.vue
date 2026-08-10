@@ -65,14 +65,6 @@ const discountedSubtotal = computed(() =>
   Math.max(subtotalPrice.value - couponDiscount.value, 0),
 );
 
-const ORDER_DISCOUNT_RATE = 0.12;
-const orderDiscount = computed(
-  () => discountedSubtotal.value * ORDER_DISCOUNT_RATE,
-);
-const finalItemsSubtotal = computed(() =>
-  Math.max(discountedSubtotal.value - orderDiscount.value, 0),
-);
-
 const getItemPrice = (item) => {
   if (
     item?.pizza?.category === "BEBIDA" &&
@@ -358,8 +350,9 @@ const formatOrderForWhatsApp = () => {
       message += `Subtotal c/ Desconto: R$ ${appliedSubtotal.toFixed(2)}\n`;
     }
   }
-  message += `Desconto de 12%: - R$ ${orderDiscount.value.toFixed(2)}\n`;
-  message += `Subtotal com descontos: R$ ${finalItemsSubtotal.value.toFixed(2)}\n`;
+  if (couponDiscount.value > 0) {
+    message += `Subtotal com descontos: R$ ${discountedSubtotal.value.toFixed(2)}\n`;
+  }
   message += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n\n`;
 
   // TOTAL
@@ -397,7 +390,6 @@ const completeOrder = () => {
     items: props.cartItems,
     subtotal: subtotalPrice.value,
     couponDiscount: couponDiscount.value,
-    orderDiscount: orderDiscount.value,
     deliveryFee: deliveryFee,
     total: getTotalWithDelivery(),
     timestamp: new Date(),
@@ -417,7 +409,7 @@ const getDeliveryFee = () => {
 };
 
 const getTotalWithDelivery = () => {
-  return finalItemsSubtotal.value + getDeliveryFee();
+  return discountedSubtotal.value + getDeliveryFee();
 };
 </script>
 
@@ -670,14 +662,9 @@ const getTotalWithDelivery = () => {
           <span>- R$ {{ couponDiscount.toFixed(2) }}</span>
         </div>
 
-        <div class="summary-line discount">
-          <span>Desconto de 12%:</span>
-          <span>- R$ {{ orderDiscount.toFixed(2) }}</span>
-        </div>
-
-        <div class="summary-line subtotal-discounted">
+        <div v-if="couponDiscount > 0" class="summary-line subtotal-discounted">
           <span>Subtotal com descontos:</span>
-          <span>R$ {{ finalItemsSubtotal.toFixed(2) }}</span>
+          <span>R$ {{ discountedSubtotal.toFixed(2) }}</span>
         </div>
 
         <div v-if="deliveryType === 'delivery'" class="summary-line">
