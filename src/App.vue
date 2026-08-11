@@ -38,6 +38,22 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
+    id: 347,
+    name: "MISTA CREMOSA 220",
+    category: "ESPECIAL",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { P: 39.99, G: 52.0 },
+  },
+  {
     id: 1,
     name: "PIZZA DE CALABRESA SUPREME",
     image: "/pizzas/1.webp",
