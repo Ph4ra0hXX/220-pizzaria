@@ -41,7 +41,7 @@ const pizzas = ref([
     id: 347,
     name: "MISTA CREMOSA 220",
     category: "ESPECIAL",
-    image: "",
+    image: "/pizzas/27.jpeg",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "PRESUNTO",
