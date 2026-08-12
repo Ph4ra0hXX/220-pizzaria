@@ -63,7 +63,7 @@ const getPriceDisplay = (pizza) => {
   return "Preço indisponível";
 };
 
-const FEATURED_PIZZA_IDS = new Set([346, 1346]);
+const FEATURED_PIZZA_IDS = new Set([347, 1347]);
 
 const isFeaturedPizza = (pizza) => {
   return FEATURED_PIZZA_IDS.has(pizza.id);

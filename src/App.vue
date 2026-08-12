@@ -2292,8 +2292,8 @@ const getFilteredPizzas = () => {
   const selectedCategory = normalizeCategory(categoryFilter.value);
 
   filtered = filtered.slice().sort((a, b) => {
-    if (a.id === 346) return -1;
-    if (b.id === 346) return 1;
+    if (a.id === 347 || a.id === 1347) return -1;
+    if (b.id === 347 || b.id === 1347) return 1;
     return 0;
   });
 
@@ -2303,6 +2303,7 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
+      "MISTA CREMOSA 220",
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
@@ -2310,7 +2311,6 @@ const getFilteredPizzas = () => {
       "PIZZA MARGUERITA",
       "PIZZA DE FRANBACON",
       "SERTANEJA 220",
-      "MISTA CREMOSA 220",
     ];
     const promotionPizzasByName = new Map();
 
