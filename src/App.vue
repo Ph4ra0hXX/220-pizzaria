@@ -174,6 +174,22 @@ const pizzas = ref([
     prices: { G: 37.0 },
   },
   {
+    id: 54,
+    name: "PIZZA DE CALABRESA SUPREME",
+    image: "/pizzas/1.webp",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CALABRESA",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 45.0 },
+  },
+  {
     id: 55,
     name: "PIZZA DE FRANGO",
     category: "PROMOÇÃO",
@@ -218,7 +234,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 48.0 },
+    prices: { G: 45.0 },
   },
   {
     id: 1222,
@@ -235,7 +251,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 48.0 },
+    prices: { G: 45.0 },
   },
   {
     id: 1347,
@@ -251,7 +267,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 48.0 },
+    prices: { G: 45.0 },
   },
   // Fora da lista de promocao atual, manter comentada.
   // {
@@ -2290,6 +2306,7 @@ const getFilteredPizzas = () => {
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
+      "PIZZA DE CALABRESA SUPREME",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANBACON",
       "SERTANEJA 220",
