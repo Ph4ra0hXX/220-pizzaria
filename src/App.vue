@@ -145,6 +145,7 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
+  /*
   {
     id: 52,
     name: "PIZZA DE MUSSARELA",
@@ -269,6 +270,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
   // Fora da lista de promocao atual, manter comentada.
   // {
   //   id: 3450,
@@ -872,32 +874,32 @@ const pizzas = ref([
     prices: { G: 39.9 },
   },
   */
-  // {
-  //   id: 66,
-  //   name: "PIZZA DE DISQUETE",
-  //   category: "PROMOÇÃO",
-  //   image: "/pizzas/15.webp",
-  //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-  //   prices: { G: 36.9 },
-  // },
-  // {
-  //   id: 88,
-  //   name: "PIZZA PORTUGUESA",
-  //   category: "PROMOÇÃO",
-  //   image: "",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE ESPECIAL",
-  //     "MUSSARELA",
-  //     "PRESUNTO",
-  //     "OVOS",
-  //     "CEBOLA",
-  //     "MILHO VERDE",
-  //     "PIMENTAO",
-  //     "AZEITONAS",
-  //     "OREGANO",
-  //   ],
-  //   prices: { G: 36.9 },
-  // },
+  {
+    id: 66,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { G: 45.0 },
+  },
+  {
+    id: 88,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 37.0 },
+  },
 
   /*
   {
@@ -2303,14 +2305,8 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "MISTA CREMOSA 220",
-      "PIZZA DE MUSSARELA",
-      "PIZZA DE FRANGO",
-      "PIZZA DE CALABRESA",
-      "PIZZA DE CALABRESA SUPREME",
-      "PIZZA MARGUERITA",
-      "PIZZA DE FRANBACON",
-      "SERTANEJA 220",
+      "PIZZA PORTUGUESA",
+      "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
 
