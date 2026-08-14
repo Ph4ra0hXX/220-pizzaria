@@ -90,7 +90,7 @@ const emit = defineEmits(["complete-order", "back-to-cart"]);
 const currentStep = ref("delivery");
 const deliveryType = ref("delivery"); // 'delivery' ou 'pickup'
 const paymentMethod = ref("pix");
-const pixKey = "88996954495";
+const pixKey = "65.332.524/0001-25";
 const copyingPix = ref(false);
 
 const copyPix = async () => {
