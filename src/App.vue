@@ -145,7 +145,6 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
-  /*
   {
     id: 52,
     name: "PIZZA DE MUSSARELA",
@@ -270,7 +269,6 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
-  */
   // Fora da lista de promocao atual, manter comentada.
   // {
   //   id: 3450,
@@ -2305,7 +2303,15 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
+      "PIZZA DE MUSSARELA",
+      "PIZZA MARGUERITA",
+      "PIZZA DE FRANGO",
+      "PIZZA DE CALABRESA",
       "PIZZA PORTUGUESA",
+      "MISTA CREMOSA 220",
+      "PIZZA DE CALABRESA SUPREME",
+      "PIZZA DE FRANBACON",
+      "SERTANEJA 220",
       "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
