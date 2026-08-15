@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.0 },
   },
   {
     id: 53,
@@ -171,8 +171,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.0 },
   },
+  /*
   {
     id: 54,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -189,6 +190,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -202,8 +204,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.0 },
+    prices: { G: 38.0 },
   },
+  /*
   {
     id: 56,
     name: "PIZZA MARGUERITA",
@@ -236,6 +239,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.0 },
   },
+  */
   {
     id: 1222,
     name: "SERTANEJA 220",
@@ -251,7 +255,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 48.0 },
   },
   {
     id: 1347,
@@ -267,9 +271,27 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 48.0 },
   },
-  // Fora da lista de promocao atual, manter comentada.
+  {
+    id: 3450,
+    name: "ARRETADA 220",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CARNE DE SOL",
+      "QUEIJO COALHO",
+      "CEBOLA",
+      "OREGANO",
+      "BACON",
+      "AZEITONA",
+      "MOLHO BARBECUE",
+    ],
+    image: "/pizzas/24.webp",
+    prices: { G: 48.0 },
+  },
+  // Versão anterior mantida comentada.
   // {
   //   id: 3450,
   //   name: "ARRETADA 220",
@@ -872,6 +894,7 @@ const pizzas = ref([
     prices: { G: 39.9 },
   },
   */
+  /*
   {
     id: 66,
     name: "PIZZA DE DISQUETE",
@@ -898,6 +921,7 @@ const pizzas = ref([
     ],
     prices: { G: 37.0 },
   },
+  */
 
   /*
   {
