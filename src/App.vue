@@ -291,6 +291,14 @@ const pizzas = ref([
     image: "/pizzas/24.webp",
     prices: { G: 48.0 },
   },
+  {
+    id: 89,
+    name: "PIZZA DE BIZ",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIZ"],
+    prices: { G: 48.0 },
+  },
   // Versão anterior mantida comentada.
   // {
   //   id: 3450,
@@ -2333,6 +2341,7 @@ const getFilteredPizzas = () => {
       "MISTA CREMOSA 220",
       "SERTANEJA 220",
       "ARRETADA 220",
+      "PIZZA DE BIZ",
       // "PIZZA MARGUERITA",
       // "PIZZA PORTUGUESA",
       // "PIZZA DE CALABRESA SUPREME",
