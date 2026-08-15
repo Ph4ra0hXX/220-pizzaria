@@ -2328,15 +2328,16 @@ const getFilteredPizzas = () => {
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
-      "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA PORTUGUESA",
       "MISTA CREMOSA 220",
-      "PIZZA DE CALABRESA SUPREME",
-      "PIZZA DE FRANBACON",
       "SERTANEJA 220",
-      "PIZZA DE DISQUETE",
+      "ARRETADA 220",
+      // "PIZZA MARGUERITA",
+      // "PIZZA PORTUGUESA",
+      // "PIZZA DE CALABRESA SUPREME",
+      // "PIZZA DE FRANBACON",
+      // "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
 
