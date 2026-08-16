@@ -297,7 +297,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "",
     ingredients: ["CHOCOLATE AO LEITE", "BIZ"],
-    prices: { P: 29.99, G: 48.0 },
+    prices: { P: 29.99 },
   },
   {
     id: 206,
