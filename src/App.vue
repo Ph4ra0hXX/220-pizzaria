@@ -533,14 +533,14 @@ const pizzas = ref([
     ],
     prices: { P: 39.0, G: 50.0 },
   },
-  /*{
+  {
     id: 16,
     name: "PIZZA DE DISQUETE",
     image: "/pizzas/15.webp",
     category: "DOCE",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 39.0, G: 52.0 },
-  },*/
+  },
   {
     id: 17,
     name: "PIZZA DE BIS",
