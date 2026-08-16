@@ -297,7 +297,15 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "",
     ingredients: ["CHOCOLATE AO LEITE", "BIZ"],
-    prices: { G: 48.0 },
+    prices: { P: 29.99, G: 48.0 },
+  },
+  {
+    id: 206,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 29.99 },
   },
   // Versão anterior mantida comentada.
   // {
@@ -2342,11 +2350,11 @@ const getFilteredPizzas = () => {
       "SERTANEJA 220",
       "ARRETADA 220",
       "PIZZA DE BIZ",
+      "PIZZA DE DISQUETE",
       // "PIZZA MARGUERITA",
       // "PIZZA PORTUGUESA",
       // "PIZZA DE CALABRESA SUPREME",
       // "PIZZA DE FRANBACON",
-      // "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
 
