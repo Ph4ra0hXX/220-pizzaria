@@ -2133,6 +2133,8 @@ const isPromotionCategory = (category) => {
   return normalizeCategory(category).startsWith("PROMO");
 };
 
+const isGuaranaAntartica = (pizza) => pizza?.id === GUARANA_PRODUCT_ID;
+
 const getPizzaPrices = (pizza) => {
   if (!pizza?.prices) {
     return {};
@@ -2342,7 +2344,9 @@ const getFilteredPizzas = () => {
   });
 
   if (selectedCategory === "TODAS") {
-    return filtered.filter((p) => !isPromotionCategory(p.category));
+    return filtered
+      .filter((p) => !isPromotionCategory(p.category))
+      .sort((a, b) => Number(isGuaranaAntartica(b)) - Number(isGuaranaAntartica(a)));
   }
 
   if (isPromotionCategory(selectedCategory)) {
@@ -2380,12 +2384,15 @@ const getFilteredPizzas = () => {
       }
     });
 
-    return Array.from(promotionPizzasByName.values())
+    const promotionPizzas = Array.from(promotionPizzasByName.values())
       .sort(
         (a, b) =>
           promotionPizzaNames.indexOf(a.name) -
           promotionPizzaNames.indexOf(b.name),
       );
+
+    const guarana = filtered.find(isGuaranaAntartica);
+    return guarana ? [guarana, ...promotionPizzas] : promotionPizzas;
   }
 
   return filtered.filter(
