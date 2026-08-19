@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 53,
@@ -171,9 +171,8 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 37.9 },
   },
-  /*
   {
     id: 54,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -188,9 +187,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 44.9 },
   },
-  */
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -204,7 +202,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 56,
@@ -220,9 +218,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 37.9 },
   },
-  /*
   {
     id: 108,
     image: "/pizzas/7.webp",
@@ -237,10 +234,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.0 },
+    prices: { G: 44.9 },
   },
-  */
-  /*
   {
     id: 1222,
     name: "SERTANEJA 220",
@@ -256,9 +251,8 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 48.0 },
+    prices: { G: 44.9 },
   },
-  */
   {
     id: 1347,
     name: "MISTA CREMOSA 220",
@@ -273,7 +267,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 44.9 },
   },
   /*
   {
@@ -2352,17 +2346,17 @@ const getFilteredPizzas = () => {
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
-      "PIZZA DE FRANGO",
-      "PIZZA DE CALABRESA",
-      "MISTA CREMOSA 220",
       "PIZZA MARGUERITA",
-      // "SERTANEJA 220",
+      "PIZZA DE CALABRESA",
+      "PIZZA DE FRANGO",
+      "PIZZA DE CALABRESA SUPREME",
+      "SERTANEJA 220",
+      "MISTA CREMOSA 220",
+      "PIZZA DE FRANBACON",
       // "ARRETADA 220",
       // "PIZZA DE BIZ",
       // "PIZZA DE DISQUETE",
       // "PIZZA PORTUGUESA",
-      // "PIZZA DE CALABRESA SUPREME",
-      // "PIZZA DE FRANBACON",
     ];
     const promotionPizzasByName = new Map();
 
