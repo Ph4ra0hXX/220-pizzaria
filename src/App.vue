@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 53,
@@ -171,7 +171,22 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 39.0 },
+  },
+  {
+    id: 1346,
+    name: "FRANGO TROPICAL 220",
+    image: "/pizzas/26.jpeg",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
+      "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
+    ],
+    prices: { G: 39.0 },
   },
   {
     id: 54,
@@ -202,7 +217,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 56,
@@ -218,7 +233,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 108,
@@ -267,7 +282,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 39.0 },
   },
   /*
   {
@@ -2347,11 +2362,12 @@ const getFilteredPizzas = () => {
     const promotionPizzaNames = [
       "PIZZA DE MUSSARELA",
       "PIZZA MARGUERITA",
-      "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
+      "PIZZA DE CALABRESA",
+      "FRANGO TROPICAL 220",
+      "MISTA CREMOSA 220",
       "PIZZA DE CALABRESA SUPREME",
       "SERTANEJA 220",
-      "MISTA CREMOSA 220",
       "PIZZA DE FRANBACON",
       // "ARRETADA 220",
       // "PIZZA DE BIZ",
