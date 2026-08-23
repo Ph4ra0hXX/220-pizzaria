@@ -23,7 +23,7 @@ const getBeveragePrice = (pizza) => {
       .trim()
       .toUpperCase() === "DISABLED_COUPON"
   ) {
-    return 11.0;
+    return 10.0;
   }
 
   return pizza.prices.unit;

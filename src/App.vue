@@ -637,7 +637,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 7.0 },
+    prices: { unit: 10.0 },
   },
   {
     id: 22,
@@ -2140,7 +2140,7 @@ const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
-const GUARANA_COUPON_PRICE = 11.0;
+const GUARANA_COUPON_PRICE = 10.0;
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL").trim().toUpperCase();
@@ -2148,8 +2148,6 @@ const normalizeCategory = (category) =>
 const isPromotionCategory = (category) => {
   return normalizeCategory(category).startsWith("PROMO");
 };
-
-const isGuaranaAntartica = (pizza) => pizza?.id === GUARANA_PRODUCT_ID;
 
 const getPizzaPrices = (pizza) => {
   if (!pizza?.prices) {
@@ -2360,9 +2358,7 @@ const getFilteredPizzas = () => {
   });
 
   if (selectedCategory === "TODAS") {
-    return filtered
-      .filter((p) => !isPromotionCategory(p.category))
-      .sort((a, b) => Number(isGuaranaAntartica(b)) - Number(isGuaranaAntartica(a)));
+    return filtered.filter((p) => !isPromotionCategory(p.category));
   }
 
   if (isPromotionCategory(selectedCategory)) {
@@ -2408,8 +2404,7 @@ const getFilteredPizzas = () => {
           promotionPizzaNames.indexOf(b.name),
       );
 
-    const guarana = filtered.find(isGuaranaAntartica);
-    return guarana ? [guarana, ...promotionPizzas] : promotionPizzas;
+    return promotionPizzas;
   }
 
   return filtered.filter(
