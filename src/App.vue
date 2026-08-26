@@ -146,6 +146,22 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
+    id: 1347,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { P: 36.9 },
+  },
+  {
     id: 52,
     name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
@@ -156,7 +172,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { P: 36.9 },
   },
   {
     id: 53,
@@ -171,7 +187,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { P: 41.9 },
   },
   {
     id: 1346,
@@ -186,7 +202,7 @@ const pizzas = ref([
       "OREGANO",
       "FOLHAS FRESCAS DE MANJERICÃO",
     ],
-    prices: { G: 41.9 },
+    prices: { P: 41.9 },
   },
   {
     id: 55,
@@ -201,7 +217,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { P: 36.9 },
   },
   {
     id: 56,
@@ -217,7 +233,25 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { P: 36.9 },
+  },
+  {
+    id: 88,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "PRESUNTO",
+      "OVOS",
+      "CEBOLA",
+      "MILHO VERDE",
+      "PIMENTAO",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { P: 41.9 },
   },
   {
     id: 108,
@@ -233,7 +267,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { P: 41.9 },
   },
   {
     id: 89,
@@ -2322,19 +2356,21 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE MUSSARELA",
+      "MISTA CREMOSA 220",
       "PIZZA MARGUERITA",
+      "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
+      "PIZZA PORTUGUESA",
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANBACON",
       "FRANGO TROPICAL 220",
-      "PIZZA A MODA 220",
-      "SERTANEJA 220",
-      "PIZZA PORTUGUESA DA CASA",
       "PIZZA DE BIS",
       "PIZZA DE DISQUETE",
+      // Fora da lista de promoção atual, manter comentada.
+      // "PIZZA A MODA 220",
+      // "SERTANEJA 220",
+      // "PIZZA PORTUGUESA DA CASA",
       // "ARRETADA 220",
-      // "PIZZA PORTUGUESA",
     ];
     const promotionPizzasByName = new Map();
 
