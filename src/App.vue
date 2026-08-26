@@ -159,7 +159,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { P: 36.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 52,
@@ -172,7 +172,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 36.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 53,
@@ -187,7 +187,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 41.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 1346,
@@ -202,7 +202,7 @@ const pizzas = ref([
       "OREGANO",
       "FOLHAS FRESCAS DE MANJERICÃO",
     ],
-    prices: { P: 41.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 55,
@@ -217,7 +217,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 36.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 56,
@@ -233,7 +233,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 36.9 },
+    prices: { G: 36.9 },
   },
   {
     id: 88,
@@ -251,7 +251,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { P: 41.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 108,
@@ -267,7 +267,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { P: 41.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 89,
