@@ -630,7 +630,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 10.0 },
+    prices: { unit: 7.0 },
   },
   {
     id: 22,
@@ -2133,13 +2133,32 @@ const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const GUARANA_PRODUCT_ID = 21;
-const GUARANA_COUPON_PRICE = 10.0;
+const GUARANA_PRODUCT_NAME = "GUARANA ANTARTICA 1L";
+const GUARANA_COUPON_PRICE = 7.0;
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL").trim().toUpperCase();
 
 const isPromotionCategory = (category) => {
   return normalizeCategory(category).startsWith("PROMO");
+};
+
+const isGuaranaProduct = (pizza) => {
+  return (
+    pizza?.id === GUARANA_PRODUCT_ID || pizza?.name === GUARANA_PRODUCT_NAME
+  );
+};
+
+const getDisplayPriority = (pizza) => {
+  if (isGuaranaProduct(pizza)) {
+    return 0;
+  }
+
+  if (pizza.id === 347 || pizza.id === 1347) {
+    return 1;
+  }
+
+  return 2;
 };
 
 const getPizzaPrices = (pizza) => {
@@ -2170,8 +2189,7 @@ const getBeveragePrice = (pizza) => {
 
   if (
     pizza.category === "BEBIDA" &&
-    (pizza.id === GUARANA_PRODUCT_ID ||
-      pizza.name === "GUARANA ANTARTICA 1L") &&
+    isGuaranaProduct(pizza) &&
     getCouponCode() === "DISABLED_COUPON"
   ) {
     return GUARANA_COUPON_PRICE;
@@ -2344,11 +2362,9 @@ const getFilteredPizzas = () => {
   let filtered = pizzas.value.slice();
   const selectedCategory = normalizeCategory(categoryFilter.value);
 
-  filtered = filtered.slice().sort((a, b) => {
-    if (a.id === 347 || a.id === 1347) return -1;
-    if (b.id === 347 || b.id === 1347) return 1;
-    return 0;
-  });
+  filtered = filtered
+    .slice()
+    .sort((a, b) => getDisplayPriority(a) - getDisplayPriority(b));
 
   if (selectedCategory === "TODAS") {
     return filtered.filter((p) => !isPromotionCategory(p.category));
@@ -2399,7 +2415,11 @@ const getFilteredPizzas = () => {
           promotionPizzaNames.indexOf(b.name),
       );
 
-    return promotionPizzas;
+    const guaranaProduct = filtered.find(isGuaranaProduct);
+
+    return guaranaProduct
+      ? [guaranaProduct, ...promotionPizzas]
+      : promotionPizzas;
   }
 
   return filtered.filter(

@@ -71,7 +71,7 @@ const getItemPrice = (item) => {
     item.pizza.id === 21 &&
     props.appliedCoupon === "DISABLED_COUPON"
   ) {
-    return 11.0;
+    return 7.0;
   }
 
   if (item?.drink?.price) {
