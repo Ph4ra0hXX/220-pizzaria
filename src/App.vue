@@ -159,7 +159,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 41.9 },
   },
   {
     id: 52,
@@ -172,7 +172,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 53,
@@ -189,21 +189,22 @@ const pizzas = ref([
     ],
     prices: { G: 41.9 },
   },
-  {
-    id: 1346,
-    name: "FRANGO TROPICAL 220",
-    image: "/pizzas/26.jpeg",
-    category: "PROMOÇÃO",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "FRANGO DESFIADO",
-      "ABACAXI CARAMELIZADO",
-      "OREGANO",
-      "FOLHAS FRESCAS DE MANJERICÃO",
-    ],
-    prices: { G: 41.9 },
-  },
+  // Fora da lista de promocao atual, manter comentada.
+  // {
+  //   id: 1346,
+  //   name: "FRANGO TROPICAL 220",
+  //   image: "/pizzas/26.jpeg",
+  //   category: "PROMOÇÃO",
+  //   ingredients: [
+  //     "MOLHO DE TOMATE ESPECIAL",
+  //     "MUSSARELA",
+  //     "FRANGO DESFIADO",
+  //     "ABACAXI CARAMELIZADO",
+  //     "OREGANO",
+  //     "FOLHAS FRESCAS DE MANJERICÃO",
+  //   ],
+  //   prices: { G: 41.9 },
+  // },
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -217,7 +218,24 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.0 },
+  },
+  {
+    id: 1222,
+    name: "SERTANEJA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/22.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 41.9 },
   },
   {
     id: 56,
@@ -233,7 +251,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 36.9 },
+    prices: { G: 35.0 },
   },
   {
     id: 88,
@@ -269,22 +287,23 @@ const pizzas = ref([
     ],
     prices: { G: 41.9 },
   },
-  {
-    id: 89,
-    name: "PIZZA DE BIS",
-    category: "PROMOÇÃO",
-    image: "",
-    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
-    prices: { P: 29.9 },
-  },
-  {
-    id: 206,
-    name: "PIZZA DE DISQUETE",
-    category: "PROMOÇÃO",
-    image: "/pizzas/15.webp",
-    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 29.9 },
-  },
+  // Fora da lista de promocao atual, manter comentada.
+  // {
+  //   id: 89,
+  //   name: "PIZZA DE BIS",
+  //   category: "PROMOÇÃO",
+  //   image: "",
+  //   ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+  //   prices: { P: 29.9 },
+  // },
+  // {
+  //   id: 206,
+  //   name: "PIZZA DE DISQUETE",
+  //   category: "PROMOÇÃO",
+  //   image: "/pizzas/15.webp",
+  //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+  //   prices: { P: 29.9 },
+  // },
   /*
   {
     id: 3450,
@@ -2372,19 +2391,19 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "MISTA CREMOSA 220",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
-      "PIZZA PORTUGUESA",
-      "PIZZA DE CALABRESA",
+      "SERTANEJA 220",
+      "MISTA CREMOSA 220",
       "PIZZA DE FRANBACON",
-      "FRANGO TROPICAL 220",
-      "PIZZA DE BIS",
-      "PIZZA DE DISQUETE",
+      "PIZZA DE CALABRESA",
+      "PIZZA PORTUGUESA",
       // Fora da lista de promoção atual, manter comentada.
       // "PIZZA A MODA 220",
-      // "SERTANEJA 220",
+      // "FRANGO TROPICAL 220",
+      // "PIZZA DE BIS",
+      // "PIZZA DE DISQUETE",
       // "PIZZA PORTUGUESA DA CASA",
       // "ARRETADA 220",
     ];
