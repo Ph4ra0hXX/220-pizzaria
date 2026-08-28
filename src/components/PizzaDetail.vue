@@ -149,8 +149,10 @@ const getMaxFlavors = () => {
 };
 
 const getFlavorDisplayName = (pizza) => {
-  // Remove "+ GUARANA ANTARTICA 1L" from the pizza name for display
-  return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
+  return pizza.name.replace(
+    /\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i,
+    "",
+  );
 };
 
 const getFlavorKey = (pizza) => {

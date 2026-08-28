@@ -206,7 +206,7 @@ const pizzas = ref([
   },
   {
     id: 58,
-    name: "PIZZA DE BACON",
+    name: "PIZZA DE BACON + GUARANÁ ANTÁRTICA 1L",
     category: "PROMOÇÃO",
     image: "/pizzas/18.jpg",
     ingredients: [
@@ -222,7 +222,7 @@ const pizzas = ref([
   {
     id: 108,
     image: "/pizzas/7.webp",
-    name: "PIZZA DE FRANBACON",
+    name: "PIZZA DE FRANBACON + GUARANÁ ANTÁRTICA 1L",
     category: "PROMOÇÃO",
     ingredients: [
       "MOLHO DE TOMATE",
@@ -237,7 +237,7 @@ const pizzas = ref([
   },
   {
     id: 200,
-    name: "PIZZA DE FRANGO COM CATUPIRY",
+    name: "PIZZA DE FRANGO COM CATUPIRY + GUARANÁ ANTÁRTICA 1L",
     category: "PROMOÇÃO",
     image: "",
     ingredients: [
@@ -252,7 +252,7 @@ const pizzas = ref([
   },
   {
     id: 1346,
-    name: "FRANGO TROPICAL 220",
+    name: "FRANGO TROPICAL 220 + GUARANÁ ANTÁRTICA 1L",
     image: "/pizzas/26.jpeg",
     category: "PROMOÇÃO",
     ingredients: [
@@ -267,7 +267,7 @@ const pizzas = ref([
   },
   {
     id: 1347,
-    name: "MISTA CREMOSA 220",
+    name: "MISTA CREMOSA 220 + GUARANÁ ANTÁRTICA 1L",
     category: "PROMOÇÃO",
     image: "/pizzas/27.jpeg",
     ingredients: [
@@ -2398,11 +2398,11 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "PIZZA DE BACON",
-      "PIZZA DE FRANBACON",
-      "PIZZA DE FRANGO COM CATUPIRY",
-      "FRANGO TROPICAL 220",
-      "MISTA CREMOSA 220",
+      "PIZZA DE BACON + GUARANÁ ANTÁRTICA 1L",
+      "PIZZA DE FRANBACON + GUARANÁ ANTÁRTICA 1L",
+      "PIZZA DE FRANGO COM CATUPIRY + GUARANÁ ANTÁRTICA 1L",
+      "FRANGO TROPICAL 220 + GUARANÁ ANTÁRTICA 1L",
+      "MISTA CREMOSA 220 + GUARANÁ ANTÁRTICA 1L",
       // Fora da lista de promoção atual, manter comentada.
       // "SERTANEJA 220",
       // "PIZZA PORTUGUESA",
@@ -2465,8 +2465,10 @@ const handleCompleteOrder = (order) => {
 };
 
 const getCleanPizzaName = (pizza) => {
-  // Remove "+ GUARANA ANTARTICA 1L" from the pizza name
-  return pizza.name.replace(/\s*\+\s*GUARANA[^]*/i, "");
+  return pizza.name.replace(
+    /\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i,
+    "",
+  );
 };
 
 const getPaymentMethodLabel = (method) => {
