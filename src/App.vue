@@ -2182,7 +2182,9 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 
 const normalizeCategory = (category) =>
-  String(category ?? "TRADICIONAL").trim().toUpperCase();
+  String(category ?? "TRADICIONAL")
+    .trim()
+    .toUpperCase();
 
 const isPromotionCategory = (category) => {
   return normalizeCategory(category).startsWith("PROMO");
@@ -2202,6 +2204,26 @@ const getPizzaPrices = (pizza) => {
   }
 
   return pizza.prices;
+};
+
+const canUseFlavorWithPizza = (basePizza, flavorPizza) => {
+  if (!isPromotionCategory(basePizza.category)) {
+    return true;
+  }
+
+  const basePrice = Number(basePizza.prices?.G);
+  const flavorIsPromotion = isPromotionCategory(flavorPizza.category);
+  const flavorPrice = Number(flavorPizza.prices?.G);
+
+  if (basePrice === 45.9) {
+    return flavorIsPromotion && flavorPrice === 45.9;
+  }
+
+  if (basePrice === 38.9) {
+    return !(flavorIsPromotion && flavorPrice === 45.9);
+  }
+
+  return true;
 };
 
 const getAdditionalPriceForPizza = (additional, pizza) => {
@@ -2303,6 +2325,10 @@ const addToCart = () => {
     if (selectedSize.value === "P" && selectedFlavors.value.length > 0) {
       selectedFlavors.value = [];
     }
+
+    selectedFlavors.value = selectedFlavors.value.filter((flavor) =>
+      canUseFlavorWithPizza(selectedPizza.value, flavor),
+    );
 
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isCombo = selectedPizza.value.category === "COMBOS";
@@ -2432,12 +2458,11 @@ const getFilteredPizzas = () => {
       }
     });
 
-    const promotionPizzas = Array.from(promotionPizzasByName.values())
-      .sort(
-        (a, b) =>
-          promotionPizzaNames.indexOf(a.name) -
-          promotionPizzaNames.indexOf(b.name),
-      );
+    const promotionPizzas = Array.from(promotionPizzasByName.values()).sort(
+      (a, b) =>
+        promotionPizzaNames.indexOf(a.name) -
+        promotionPizzaNames.indexOf(b.name),
+    );
 
     return promotionPizzas;
   }
@@ -2465,10 +2490,7 @@ const handleCompleteOrder = (order) => {
 };
 
 const getCleanPizzaName = (pizza) => {
-  return pizza.name.replace(
-    /\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i,
-    "",
-  );
+  return pizza.name.replace(/\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i, "");
 };
 
 const getPaymentMethodLabel = (method) => {

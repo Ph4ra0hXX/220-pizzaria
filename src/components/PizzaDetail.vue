@@ -149,14 +149,32 @@ const getMaxFlavors = () => {
 };
 
 const getFlavorDisplayName = (pizza) => {
-  return pizza.name.replace(
-    /\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i,
-    "",
-  );
+  return pizza.name.replace(/\s*\+\s*GUARAN[ÁA]\s+ANT[ÁA]RTICA\s+1L\s*$/i, "");
 };
 
 const getFlavorKey = (pizza) => {
   return getFlavorDisplayName(pizza);
+};
+
+const isAllowedPromotionFlavor = (pizza) => {
+  const baseIsPromotion = isPromotionCategory(props.pizza.category);
+  const basePrice = Number(props.pizza.prices?.G);
+  const flavorIsPromotion = isPromotionCategory(pizza.category);
+  const flavorPrice = Number(pizza.prices?.G);
+
+  if (!baseIsPromotion) {
+    return true;
+  }
+
+  if (basePrice === 45.9) {
+    return flavorIsPromotion && flavorPrice === 45.9;
+  }
+
+  if (basePrice === 38.9) {
+    return !(flavorIsPromotion && flavorPrice === 45.9);
+  }
+
+  return true;
 };
 
 const canUseAsFlavor = (pizza) => {
@@ -165,6 +183,7 @@ const canUseAsFlavor = (pizza) => {
     getFlavorDisplayName(pizza) !== getFlavorDisplayName(props.pizza) &&
     pizza.category !== "BEBIDA" &&
     pizza.category !== "COMBOS" &&
+    isAllowedPromotionFlavor(pizza) &&
     props.selectedSize === "G" &&
     pizza.prices?.G
   );
