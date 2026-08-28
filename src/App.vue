@@ -146,22 +146,6 @@ const pizzas = ref([
     prices: { P: 37.0, G: 48.0 },
   },
   {
-    id: 1347,
-    name: "MISTA CREMOSA 220",
-    category: "PROMOÇÃO",
-    image: "/pizzas/27.jpeg",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "PRESUNTO",
-      "CREME CHEESE",
-      "MUSSARELA",
-      "TOMATE",
-      "OREGANO",
-      "AZEITONA",
-    ],
-    prices: { G: 41.9 },
-  },
-  {
     id: 52,
     name: "PIZZA DE MUSSARELA",
     category: "PROMOÇÃO",
@@ -172,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 38.9 },
   },
   {
     id: 53,
@@ -187,24 +171,8 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 38.9 },
   },
-  // Fora da lista de promocao atual, manter comentada.
-  // {
-  //   id: 1346,
-  //   name: "FRANGO TROPICAL 220",
-  //   image: "/pizzas/26.jpeg",
-  //   category: "PROMOÇÃO",
-  //   ingredients: [
-  //     "MOLHO DE TOMATE ESPECIAL",
-  //     "MUSSARELA",
-  //     "FRANGO DESFIADO",
-  //     "ABACAXI CARAMELIZADO",
-  //     "OREGANO",
-  //     "FOLHAS FRESCAS DE MANJERICÃO",
-  //   ],
-  //   prices: { G: 41.9 },
-  // },
   {
     id: 55,
     name: "PIZZA DE FRANGO",
@@ -218,24 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
-  },
-  {
-    id: 1222,
-    name: "SERTANEJA 220",
-    category: "PROMOÇÃO",
-    image: "/pizzas/22.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "FRANGO",
-      "LOMBINHO",
-      "BACON",
-      "CATUPIRY",
-      "OREGANO",
-      "AZEITONA",
-    ],
-    prices: { G: 41.9 },
+    prices: { G: 38.9 },
   },
   {
     id: 56,
@@ -251,25 +202,22 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 35.0 },
+    prices: { G: 38.9 },
   },
   {
-    id: 88,
-    name: "PIZZA PORTUGUESA",
+    id: 58,
+    name: "PIZZA DE BACON",
     category: "PROMOÇÃO",
-    image: "",
+    image: "/pizzas/18.jpg",
     ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
+      "MOLHO DE TOMATE",
       "MUSSARELA",
-      "PRESUNTO",
-      "OVOS",
+      "BACON",
       "CEBOLA",
-      "MILHO VERDE",
-      "PIMENTAO",
-      "AZEITONAS",
+      "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 45.9 },
   },
   {
     id: 108,
@@ -285,9 +233,90 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 41.9 },
+    prices: { G: 45.9 },
+  },
+  {
+    id: 200,
+    name: "PIZZA DE FRANGO COM CATUPIRY",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "CATUPIRY",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 45.9 },
+  },
+  {
+    id: 1346,
+    name: "FRANGO TROPICAL 220",
+    image: "/pizzas/26.jpeg",
+    category: "PROMOÇÃO",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
+      "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
+    ],
+    prices: { G: 45.9 },
+  },
+  {
+    id: 1347,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 45.9 },
   },
   // Fora da lista de promocao atual, manter comentada.
+  // {
+  //   id: 1222,
+  //   name: "SERTANEJA 220",
+  //   category: "PROMOÇÃO",
+  //   image: "/pizzas/22.webp",
+  //   ingredients: [
+  //     "MOLHO DE TOMATE",
+  //     "MUSSARELA",
+  //     "FRANGO",
+  //     "LOMBINHO",
+  //     "BACON",
+  //     "CATUPIRY",
+  //     "OREGANO",
+  //     "AZEITONA",
+  //   ],
+  //   prices: { G: 41.9 },
+  // },
+  // {
+  //   id: 88,
+  //   name: "PIZZA PORTUGUESA",
+  //   category: "PROMOÇÃO",
+  //   image: "",
+  //   ingredients: [
+  //     "MOLHO DE TOMATE ESPECIAL",
+  //     "MUSSARELA",
+  //     "PRESUNTO",
+  //     "OVOS",
+  //     "CEBOLA",
+  //     "MILHO VERDE",
+  //     "PIMENTAO",
+  //     "AZEITONAS",
+  //     "OREGANO",
+  //   ],
+  //   prices: { G: 41.9 },
+  // },
   // {
   //   id: 89,
   //   name: "PIZZA DE BIS",
@@ -649,7 +678,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 7.0 },
+    prices: { unit: 10.0 },
   },
   {
     id: 22,
@@ -2151,9 +2180,6 @@ const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
-const GUARANA_PRODUCT_ID = 21;
-const GUARANA_PRODUCT_NAME = "GUARANA ANTARTICA 1L";
-const GUARANA_COUPON_PRICE = 7.0;
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL").trim().toUpperCase();
@@ -2162,17 +2188,7 @@ const isPromotionCategory = (category) => {
   return normalizeCategory(category).startsWith("PROMO");
 };
 
-const isGuaranaProduct = (pizza) => {
-  return (
-    pizza?.id === GUARANA_PRODUCT_ID || pizza?.name === GUARANA_PRODUCT_NAME
-  );
-};
-
 const getDisplayPriority = (pizza) => {
-  if (isGuaranaProduct(pizza)) {
-    return 0;
-  }
-
   if (pizza.id === 347 || pizza.id === 1347) {
     return 1;
   }
@@ -2196,22 +2212,9 @@ const getAdditionalPriceForPizza = (additional, pizza) => {
   return additional.price;
 };
 
-const getCouponCode = () =>
-  String(appliedCoupon.value ?? "")
-    .trim()
-    .toUpperCase();
-
 const getBeveragePrice = (pizza) => {
   if (!pizza?.prices?.unit) {
     return 0;
-  }
-
-  if (
-    pizza.category === "BEBIDA" &&
-    isGuaranaProduct(pizza) &&
-    getCouponCode() === "DISABLED_COUPON"
-  ) {
-    return GUARANA_COUPON_PRICE;
   }
 
   return pizza.prices.unit;
@@ -2391,17 +2394,19 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
-      "PIZZA DE FRANGO",
-      "SERTANEJA 220",
-      "MISTA CREMOSA 220",
-      "PIZZA DE FRANBACON",
       "PIZZA DE CALABRESA",
-      "PIZZA PORTUGUESA",
+      "PIZZA DE FRANGO",
+      "PIZZA MARGUERITA",
+      "PIZZA DE BACON",
+      "PIZZA DE FRANBACON",
+      "PIZZA DE FRANGO COM CATUPIRY",
+      "FRANGO TROPICAL 220",
+      "MISTA CREMOSA 220",
       // Fora da lista de promoção atual, manter comentada.
+      // "SERTANEJA 220",
+      // "PIZZA PORTUGUESA",
       // "PIZZA A MODA 220",
-      // "FRANGO TROPICAL 220",
       // "PIZZA DE BIS",
       // "PIZZA DE DISQUETE",
       // "PIZZA PORTUGUESA DA CASA",
@@ -2434,11 +2439,7 @@ const getFilteredPizzas = () => {
           promotionPizzaNames.indexOf(b.name),
       );
 
-    const guaranaProduct = filtered.find(isGuaranaProduct);
-
-    return guaranaProduct
-      ? [guaranaProduct, ...promotionPizzas]
-      : promotionPizzas;
+    return promotionPizzas;
   }
 
   return filtered.filter(

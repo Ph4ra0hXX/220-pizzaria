@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   pizzas: {
     type: Array,
     required: true,
@@ -17,15 +17,6 @@ const isBeverage = (pizza) => {
 };
 
 const getBeveragePrice = (pizza) => {
-  if (
-    pizza.id === 21 &&
-    String(props.appliedCoupon ?? "")
-      .trim()
-      .toUpperCase() === "DISABLED_COUPON"
-  ) {
-    return 7.0;
-  }
-
   return pizza.prices.unit;
 };
 
@@ -63,7 +54,7 @@ const getPriceDisplay = (pizza) => {
   return "Preço indisponível";
 };
 
-const FEATURED_PIZZA_IDS = new Set([21, 347, 1347]);
+const FEATURED_PIZZA_IDS = new Set([347, 1347]);
 
 const isFeaturedPizza = (pizza) => {
   return FEATURED_PIZZA_IDS.has(pizza.id);

@@ -67,15 +67,6 @@ const isPromotionCategory = (category) => {
 };
 
 const getBeveragePrice = (pizza) => {
-  if (
-    pizza.id === 21 &&
-    String(props.appliedCoupon ?? "")
-      .trim()
-      .toUpperCase() === "DISABLED_COUPON"
-  ) {
-    return 7.0;
-  }
-
   return pizza.prices?.unit ?? 0;
 };
 

@@ -66,14 +66,6 @@ const discountedSubtotal = computed(() =>
 );
 
 const getItemPrice = (item) => {
-  if (
-    item?.pizza?.category === "BEBIDA" &&
-    item.pizza.id === 21 &&
-    props.appliedCoupon === "DISABLED_COUPON"
-  ) {
-    return 7.0;
-  }
-
   if (item?.drink?.price) {
     return item.drink.price;
   }
