@@ -672,6 +672,14 @@ const pizzas = ref([
     prices: { unit: 13.0 },
   },
   {
+    id: 214,
+    name: "PEPSI 2L",
+    category: "BEBIDA",
+    image: "/pizzas/bebida5.jpeg",
+    ingredients: [],
+    prices: { unit: 13.0 },
+  },
+  {
     id: 21,
     name: "GUARANA ANTARTICA 1L",
     category: "BEBIDA",
@@ -2429,12 +2437,12 @@ const getFilteredPizzas = () => {
       "PIZZA DE FRANGO COM CATUPIRY + GUARANÁ ANTÁRTICA 1L",
       "FRANGO TROPICAL 220 + GUARANÁ ANTÁRTICA 1L",
       "MISTA CREMOSA 220 + GUARANÁ ANTÁRTICA 1L",
+      "PIZZA DE BIZ",
+      "PIZZA DE DISQUETE",
       // Fora da lista de promoção atual, manter comentada.
       // "SERTANEJA 220",
       // "PIZZA PORTUGUESA",
       // "PIZZA A MODA 220",
-      // "PIZZA DE BIS",
-      // "PIZZA DE DISQUETE",
       // "PIZZA PORTUGUESA DA CASA",
       // "ARRETADA 220",
     ];
