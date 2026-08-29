@@ -333,7 +333,6 @@ const pizzas = ref([
   //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
   //   prices: { P: 29.9 },
   // },
-  /*
   {
     id: 3450,
     name: "ARRETADA 220",
@@ -358,7 +357,7 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "",
     ingredients: ["CHOCOLATE AO LEITE", "BIZ"],
-    prices: { P: 29.99 },
+    prices: { P: 29.9 },
   },
   {
     id: 206,
@@ -366,9 +365,9 @@ const pizzas = ref([
     category: "PROMOÇÃO",
     image: "/pizzas/15.webp",
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
-    prices: { P: 29.99 },
+    prices: { P: 29.9 },
   },
-  */
+
   // Versão anterior mantida comentada.
   // {
   //   id: 3450,
