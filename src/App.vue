@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 56,
@@ -202,8 +202,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
+  /*
   {
     id: 58,
     name: "PIZZA DE BACON + GUARANÁ ANTÁRTICA 1L",
@@ -265,9 +266,10 @@ const pizzas = ref([
     ],
     prices: { G: 45.9 },
   },
+  */
   {
-    id: 1347,
-    name: "MISTA CREMOSA 220 + GUARANÁ ANTÁRTICA 1L",
+    id: 57,
+    name: "MISTA CREMOSA 220",
     category: "PROMOÇÃO",
     image: "/pizzas/27.jpeg",
     ingredients: [
@@ -279,7 +281,7 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 39.99 },
   },
   // Fora da lista de promocao atual, manter comentada.
   // {
@@ -333,6 +335,7 @@ const pizzas = ref([
   //   ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
   //   prices: { P: 29.9 },
   // },
+  /*
   {
     id: 3450,
     name: "ARRETADA 220",
@@ -351,6 +354,7 @@ const pizzas = ref([
     image: "/pizzas/24.webp",
     prices: { G: 48.0 },
   },
+  */
   {
     id: 89,
     name: "PIZZA DE BIZ",
@@ -2432,11 +2436,7 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "PIZZA DE BACON + GUARANÁ ANTÁRTICA 1L",
-      "PIZZA DE FRANBACON + GUARANÁ ANTÁRTICA 1L",
-      "PIZZA DE FRANGO COM CATUPIRY + GUARANÁ ANTÁRTICA 1L",
-      "FRANGO TROPICAL 220 + GUARANÁ ANTÁRTICA 1L",
-      "MISTA CREMOSA 220 + GUARANÁ ANTÁRTICA 1L",
+      "MISTA CREMOSA 220",
       "PIZZA DE BIZ",
       "PIZZA DE DISQUETE",
       // Fora da lista de promoção atual, manter comentada.
