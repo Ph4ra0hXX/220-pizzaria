@@ -204,6 +204,34 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
+  {
+    id: 1013,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 29.9 },
+  },
+  {
+    id: 1014,
+    name: "PIZZA DE BIS",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+    prices: { P: 29.9 },
+  },
+  {
+    id: 1015,
+    name: "PIZZA DE OURO BRANCO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/17.webp",
+    ingredients: [
+      "CHOCOLATE BRANCO",
+      "BOMBONS OURO BRANCO",
+      "CHOCOLATE AO LEITE",
+    ],
+    prices: { P: 29.9 },
+  },
   /*
   {
     id: 58,
@@ -2491,9 +2519,9 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA SUPREME",
       "SERTANEJA 220",
       "PIZZA DE FRANBACON",
-      // Fora da lista de promoção atual, manter comentada.
-      // "PIZZA DE BIZ",
-      // "PIZZA DE DISQUETE",
+      "PIZZA DE DISQUETE",
+      "PIZZA DE BIS",
+      "PIZZA DE OURO BRANCO",
       // "PIZZA PORTUGUESA",
       // "PIZZA A MODA 220",
       // "PIZZA PORTUGUESA DA CASA",
