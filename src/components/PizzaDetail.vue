@@ -170,7 +170,7 @@ const isAllowedPromotionFlavor = (pizza) => {
     return flavorIsPromotion && flavorPrice === 45.9;
   }
 
-  if (basePrice === 38.9) {
+  if (basePrice === 39.99) {
     return !(flavorIsPromotion && flavorPrice === 45.9);
   }
 

@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 56,
@@ -202,7 +202,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.99 },
   },
   {
     id: 1013,
@@ -295,6 +295,8 @@ const pizzas = ref([
     prices: { G: 45.9 },
   },
   */
+  // Fora da lista de promoção atual, manter comentadas.
+  /*
   {
     id: 57,
     name: "MISTA CREMOSA 220",
@@ -360,6 +362,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.9 },
   },
+  */
   // Fora da lista de promocao atual, manter comentada.
   // {
   //   id: 1222,
@@ -2310,7 +2313,7 @@ const canUseFlavorWithPizza = (basePizza, flavorPizza) => {
     return flavorIsPromotion && flavorPrice === 45.9;
   }
 
-  if (basePrice === 38.9) {
+  if (basePrice === 39.99) {
     return !(flavorIsPromotion && flavorPrice === 45.9);
   }
 
@@ -2515,10 +2518,6 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "MISTA CREMOSA 220",
-      "PIZZA DE CALABRESA SUPREME",
-      "SERTANEJA 220",
-      "PIZZA DE FRANBACON",
       "PIZZA DE DISQUETE",
       "PIZZA DE BIS",
       "PIZZA DE OURO BRANCO",
