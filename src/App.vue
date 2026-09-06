@@ -837,7 +837,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 10.0 },
+    prices: { unit: 7.0 },
   },
   {
     id: 22,
@@ -2351,6 +2351,10 @@ const isPromotionCategory = (category) => {
 };
 
 const getDisplayPriority = (pizza) => {
+  if (pizza.id === 21) {
+    return 0;
+  }
+
   if (pizza.id === 347 || pizza.id === 1347) {
     return 1;
   }
