@@ -2610,6 +2610,7 @@ const getFilteredPizzas = () => {
       "MISTA CREMOSA 220",
       "PIZZA DE CALABRESA SUPREME",
       "PIZZA DE FRANBACON",
+      "PIZZA DE FRANGO COM CATUPIRY"
       // "PIZZA A MODA 220",
       // "PIZZA PORTUGUESA DA CASA",
       // "ARRETADA 220",
