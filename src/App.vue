@@ -833,7 +833,7 @@ const pizzas = ref([
     ingredients: [],
     prices: { unit: 10.0 },
   },
-  {
+/*  {
     id: 213,
     name: "FANTA LARANJA 2L",
     category: "BEBIDA",
@@ -841,7 +841,7 @@ const pizzas = ref([
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqoRf6vsDB9uUqppVUtd1a3oVkkF6kdWMn1_whBWdghYYtiMto_M-YPE&s=10",
     ingredients: [],
     prices: { unit: 13.0 },
-  },
+  }, */
   {
     id: 214,
     name: "PEPSI 2L",
