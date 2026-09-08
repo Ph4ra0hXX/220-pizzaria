@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.99 },
+    prices: { G: 38.9 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 42.9 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.99 },
+    prices: { G: 38.9 },
   },
   {
     id: 56,
@@ -202,9 +202,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.99 },
+    prices: { G: 38.9 },
   },
-  {
+  /*
     id: 1013,
     name: "PIZZA DE DISQUETE",
     category: "PROMOÇÃO",
@@ -232,6 +232,7 @@ const pizzas = ref([
     ],
     prices: { P: 29.9 },
   },
+  */
   {
     id: 88,
     name: "PIZZA PORTUGUESA",
@@ -248,7 +249,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 42.9 },
   },
   {
     id: 57,
@@ -264,8 +265,9 @@ const pizzas = ref([
       "OREGANO",
       "AZEITONA",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 42.9 },
   },
+  /*
   {
     id: 1010,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -313,6 +315,7 @@ const pizzas = ref([
     ],
     prices: { G: 39.99 },
   },
+  */
   /*
   {
     id: 58,
@@ -833,7 +836,7 @@ const pizzas = ref([
     ingredients: [],
     prices: { unit: 10.0 },
   },
-/*  {
+  /*  {
     id: 213,
     name: "FANTA LARANJA 2L",
     category: "BEBIDA",
@@ -2603,14 +2606,9 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "PIZZA DE DISQUETE",
-      "PIZZA DE BIS",
-      "PIZZA DE OURO BRANCO",
       "PIZZA PORTUGUESA",
       "MISTA CREMOSA 220",
-      "PIZZA DE CALABRESA SUPREME",
-      "PIZZA DE FRANBACON",
-      "PIZZA DE FRANGO COM CATUPIRY"
+
       // "PIZZA A MODA 220",
       // "PIZZA PORTUGUESA DA CASA",
       // "ARRETADA 220",
