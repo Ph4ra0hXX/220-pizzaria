@@ -204,6 +204,46 @@ const pizzas = ref([
     ],
     prices: { G: 38.9 },
   },
+  {
+    id: 1012,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "/pizzas/7.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 42.9 },
+  },
+  {
+    id: 211,
+    name: "PIZZA DE FRANGO COM CREME CHEESE",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "CREME CHEESE",
+      "MILHO VERDE",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 42.9 },
+  },
+  {
+    id: 206,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 29.9 },
+  },
   /*
     id: 1013,
     name: "PIZZA DE DISQUETE",
@@ -233,6 +273,7 @@ const pizzas = ref([
     prices: { P: 29.9 },
   },
   */
+  /*
   {
     id: 88,
     name: "PIZZA PORTUGUESA",
@@ -267,6 +308,7 @@ const pizzas = ref([
     ],
     prices: { G: 42.9 },
   },
+  */
   /*
   {
     id: 1010,
@@ -2606,12 +2648,9 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "PIZZA PORTUGUESA",
-      "MISTA CREMOSA 220",
-
-      // "PIZZA A MODA 220",
-      // "PIZZA PORTUGUESA DA CASA",
-      // "ARRETADA 220",
+      "PIZZA DE FRANBACON",
+      "PIZZA DE FRANGO COM CREME CHEESE",
+      "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
 
