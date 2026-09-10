@@ -2648,6 +2648,7 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
+      "GUARANA ANTARTICA 1L",
       "PIZZA DE MUSSARELA",
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANGO",
@@ -2660,7 +2661,7 @@ const getFilteredPizzas = () => {
 
     filtered.forEach((p) => {
       if (
-        !isPromotionCategory(p.category) ||
+        (!isPromotionCategory(p.category) && p.id !== 21) ||
         !promotionPizzaNames.includes(p.name)
       ) {
         return;
