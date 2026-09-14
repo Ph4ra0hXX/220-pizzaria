@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 34.99 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 38.99 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 38.99 },
   },
   {
     id: 56,
@@ -202,8 +202,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 34.99 },
   },
+  /*
   {
     id: 1012,
     name: "PIZZA DE FRANBACON",
@@ -244,6 +245,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 29.9 },
   },
+  */
   /*
     id: 1013,
     name: "PIZZA DE DISQUETE",
@@ -2656,14 +2658,10 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "GUARANA ANTARTICA 1L",
       "PIZZA DE MUSSARELA",
-      "PIZZA DE CALABRESA",
-      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
-      "PIZZA DE FRANBACON",
-      "PIZZA DE FRANGO COM CREME CHEESE",
-      "PIZZA DE DISQUETE",
+      "PIZZA DE FRANGO",
+      "PIZZA DE CALABRESA",
     ];
     const promotionPizzasByName = new Map();
 
