@@ -77,6 +77,10 @@ const getPizzaPrice = (pizza, size) => {
   return Number(pizza?.prices?.[size] ?? 0);
 };
 
+const isPromotionCategory = (category) => {
+  return String(category ?? "").startsWith("PROMO");
+};
+
 const emit = defineEmits(["complete-order", "back-to-cart"]);
 
 const currentStep = ref("delivery");
@@ -260,10 +264,14 @@ const formatOrderForWhatsApp = () => {
     if (item.flavors && item.flavors.length > 0) {
       message += `   Sabores:\n`;
       if (item.size === "G" && item.flavors.length === 1) {
-        const mainHalfPrice = (getPizzaPrice(item.pizza, item.size) / 2).toFixed(2);
+        const mainHalfPrice = (
+          getPizzaPrice(item.pizza, item.size) / 2
+        ).toFixed(2);
         message += `   - 1/2 ${item.pizza.name} - R$ ${mainHalfPrice}\n`;
         item.flavors.forEach((flavor) => {
-          const flavorHalfPrice = (getPizzaPrice(flavor, item.size) / 2).toFixed(2);
+          const flavorHalfPrice = (
+            getPizzaPrice(flavor, item.size) / 2
+          ).toFixed(2);
           message += `   - 1/2 ${flavor.name} - R$ ${flavorHalfPrice}\n`;
         });
       } else {
@@ -274,6 +282,10 @@ const formatOrderForWhatsApp = () => {
       }
     } else {
       message += `   Sabor: ${item.pizza.name}\n`;
+    }
+
+    if (isPromotionCategory(item.pizza.category)) {
+      message += `   Acompanha refrigerante 1L\n`;
     }
 
     message += `   Preço: R$ ${basePizzaPrice.toFixed(2)}\n`;

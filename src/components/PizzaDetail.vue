@@ -158,20 +158,10 @@ const getFlavorKey = (pizza) => {
 
 const isAllowedPromotionFlavor = (pizza) => {
   const baseIsPromotion = isPromotionCategory(props.pizza.category);
-  const basePrice = Number(props.pizza.prices?.G);
   const flavorIsPromotion = isPromotionCategory(pizza.category);
-  const flavorPrice = Number(pizza.prices?.G);
 
-  if (!baseIsPromotion) {
-    return true;
-  }
-
-  if (basePrice === 45.9) {
-    return flavorIsPromotion && flavorPrice === 45.9;
-  }
-
-  if (basePrice === 39.99) {
-    return !(flavorIsPromotion && flavorPrice === 45.9);
+  if (baseIsPromotion || flavorIsPromotion) {
+    return baseIsPromotion && flavorIsPromotion;
   }
 
   return true;
@@ -303,6 +293,9 @@ const getFilteredEdges = () => {
           </div>
         </div>
         <h2>{{ pizza.name }}</h2>
+        <p v-if="isPromotion()" class="promotion-beverage">
+          Acompanha refrigerante 1L
+        </p>
       </div>
 
       <div class="detail-body">
