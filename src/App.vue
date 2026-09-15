@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 34.99 },
+    prices: { G: 39.9 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.99 },
+    prices: { G: 39.9 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.99 },
+    prices: { G: 39.9 },
   },
   {
     id: 56,
@@ -202,7 +202,39 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 34.99 },
+    prices: { G: 39.9 },
+  },
+  {
+    id: 1012,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "/pizzas/7.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 44.9 },
+  },
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 44.9 },
   },
   /*
   {
@@ -2445,20 +2477,11 @@ const getPizzaPrices = (pizza) => {
 };
 
 const canUseFlavorWithPizza = (basePizza, flavorPizza) => {
-  if (!isPromotionCategory(basePizza.category)) {
-    return true;
-  }
-
-  const basePrice = Number(basePizza.prices?.G);
+  const baseIsPromotion = isPromotionCategory(basePizza.category);
   const flavorIsPromotion = isPromotionCategory(flavorPizza.category);
-  const flavorPrice = Number(flavorPizza.prices?.G);
 
-  if (basePrice === 45.9) {
-    return flavorIsPromotion && flavorPrice === 45.9;
-  }
-
-  if (basePrice === 39.99) {
-    return !(flavorIsPromotion && flavorPrice === 45.9);
+  if (baseIsPromotion || flavorIsPromotion) {
+    return baseIsPromotion && flavorIsPromotion;
   }
 
   return true;
@@ -2662,6 +2685,8 @@ const getFilteredPizzas = () => {
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
+      "PIZZA DE FRANBACON",
+      "MISTA CREMOSA 220",
     ];
     const promotionPizzasByName = new Map();
 
