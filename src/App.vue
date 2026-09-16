@@ -665,7 +665,6 @@ const pizzas = ref([
   //   image: "/pizzas/24.webp",
   //   prices: { G: 48.0 },
   // },
-  /*
   {
     id: 5,
     image: "/pizzas/5.webp",
@@ -682,7 +681,6 @@ const pizzas = ref([
     ],
     prices: { P: 44.0, G: 66.0 },
   },
-  */
   {
     id: 6,
     image: "/pizzas/6.webp",
@@ -739,7 +737,6 @@ const pizzas = ref([
     ],
     prices: { P: 39.0, G: 52.0 },
   },
-  /*
   {
     id: 8,
     image: "/pizzas/8.webp",
@@ -759,7 +756,6 @@ const pizzas = ref([
     ],
     prices: { P: 52.0, G: 72.0 },
   },
-  */
   {
     id: 9,
     image: "/pizzas/9.webp",
