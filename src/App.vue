@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 53,
@@ -186,8 +186,24 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
+  {
+    id: 54,
+    name: "PIZZA DE LOMBINHO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/13.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 44.9 },
+  },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 200,
     name: "FRANGO C/ CATUPIRY",
@@ -201,8 +217,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
+  */
   {
     id: 56,
     name: "PIZZA MARGUERITA",
@@ -219,6 +236,7 @@ const pizzas = ref([
     ],
     prices: { G: 39.9 },
   },
+  /*
   {
     id: 1012,
     name: "PIZZA DE FRANBACON",
@@ -235,24 +253,28 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
   {
     id: 88,
-    name: "PIZZA PORTUGUESA",
+    name: "PIZZA PORTUGUESA DA CASA",
     category: "PROMOÇÃO",
-    image: "",
+    image: "/pizzas/6.webp",
     ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
+      "MOLHO DE TOMATE",
       "MUSSARELA",
       "PRESUNTO",
-      "OVOS",
+      "CALABRESA",
+      "OVO",
       "CEBOLA",
       "MILHO VERDE",
       "PIMENTÃO",
+      "GELEIA DE PIMENTA",
       "AZEITONAS",
       "OREGANO",
     ],
     prices: { G: 44.9 },
   },
+  /*
   {
     id: 1346,
     name: "FRANGO TROPICAL 220",
@@ -268,6 +290,7 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
   /*
   {
     id: 1012,
@@ -2712,11 +2735,9 @@ const getFilteredPizzas = () => {
       "PIZZA DE MUSSARELA",
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
-      "FRANGO C/ CATUPIRY",
       "PIZZA DE CALABRESA",
-      "PIZZA DE FRANBACON",
-      "PIZZA PORTUGUESA",
-      "FRANGO TROPICAL 220",
+      "PIZZA DE LOMBINHO",
+      "PIZZA PORTUGUESA DA CASA",
     ];
     const promotionPizzasByName = new Map();
 
@@ -2807,9 +2828,7 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'"
-                  >PIZZA 🍕 + REFRI 1L 🥤</span
-                >
+                <span v-if="category === 'PROMOÇÃO'">PROMOÇÃO 🍕</span>
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
