@@ -2528,13 +2528,6 @@ const getPizzaPrices = (pizza) => {
 };
 
 const canUseFlavorWithPizza = (basePizza, flavorPizza) => {
-  const baseIsPromotion = isPromotionCategory(basePizza.category);
-  const flavorIsPromotion = isPromotionCategory(flavorPizza.category);
-
-  if (baseIsPromotion || flavorIsPromotion) {
-    return baseIsPromotion && flavorIsPromotion;
-  }
-
   return true;
 };
 

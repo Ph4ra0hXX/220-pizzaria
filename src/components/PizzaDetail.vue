@@ -157,13 +157,6 @@ const getFlavorKey = (pizza) => {
 };
 
 const isAllowedPromotionFlavor = (pizza) => {
-  const baseIsPromotion = isPromotionCategory(props.pizza.category);
-  const flavorIsPromotion = isPromotionCategory(pizza.category);
-
-  if (baseIsPromotion || flavorIsPromotion) {
-    return baseIsPromotion && flavorIsPromotion;
-  }
-
   return true;
 };
 
