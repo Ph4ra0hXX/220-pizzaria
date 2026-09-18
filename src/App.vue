@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 44.9 },
   },
   {
     id: 53,
@@ -186,8 +186,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 44.9 },
   },
+  /* Fora da lista de promoção atual, manter comentada.
   {
     id: 54,
     name: "PIZZA DE LOMBINHO",
@@ -203,6 +204,7 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
   /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 200,
@@ -217,7 +219,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 44.9 },
   },
   */
   {
@@ -234,9 +236,24 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 37.9 },
+    prices: { G: 44.9 },
   },
-  /*
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 49.9 },
+  },
   {
     id: 1012,
     name: "PIZZA DE FRANBACON",
@@ -251,9 +268,8 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 49.9 },
   },
-  */
   {
     id: 88,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -272,7 +288,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 49.9 },
   },
   /*
   {
@@ -2729,7 +2745,8 @@ const getFilteredPizzas = () => {
       "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA DE LOMBINHO",
+      "MISTA CREMOSA 220",
+      "PIZZA DE FRANBACON",
       "PIZZA PORTUGUESA DA CASA",
     ];
     const promotionPizzasByName = new Map();
