@@ -980,7 +980,7 @@ const pizzas = ref([
     ingredients: [],
     prices: { unit: 13.0 },
   },
-/*  {
+  /*  {
     id: 215,
     name: "PEPSI BLACK 1L",
     category: "BEBIDA",
@@ -994,7 +994,7 @@ const pizzas = ref([
     category: "BEBIDA",
     image: "/pizzas/bebida3.jpg",
     ingredients: [],
-    prices: { unit: 7.0 },
+    prices: { unit: 10.0 },
   },
   {
     id: 22,
@@ -2508,7 +2508,7 @@ const isPromotionCategory = (category) => {
 };
 
 const getDisplayPriority = (pizza) => {
-  if (pizza.id === 21 || pizza.id === 215) {
+  if (pizza.id === 215) {
     return 0;
   }
 
