@@ -157,7 +157,10 @@ const getFlavorKey = (pizza) => {
 };
 
 const isAllowedPromotionFlavor = (pizza) => {
-  return true;
+  const baseIsPromotion = isPromotionCategory(props.pizza.category);
+  const flavorIsPromotion = isPromotionCategory(pizza.category);
+
+  return baseIsPromotion === flavorIsPromotion;
 };
 
 const canUseAsFlavor = (pizza) => {
@@ -287,7 +290,7 @@ const getFilteredEdges = () => {
         </div>
         <h2>{{ pizza.name }}</h2>
         <p v-if="isPromotion()" class="promotion-beverage">
-          Acompanha refrigerante 1L
+          Acompanha Guaraná 1L
         </p>
       </div>
 
