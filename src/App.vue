@@ -980,14 +980,14 @@ const pizzas = ref([
     ingredients: [],
     prices: { unit: 13.0 },
   },
-  {
+/*  {
     id: 215,
     name: "PEPSI BLACK 1L",
     category: "BEBIDA",
     image: "/pizzas/bebida6.jpeg",
     ingredients: [],
     prices: { unit: 7.0 },
-  },
+  },*/
   {
     id: 21,
     name: "GUARANA ANTARTICA 1L",
