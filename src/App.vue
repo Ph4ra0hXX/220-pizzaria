@@ -3079,7 +3079,7 @@ const getPaymentMethodLabel = (method) => {
     <footer class="pizzaria-footer">
       <div class="footer-content">
         <p class="footer-title">Horário de Funcionamento</p>
-        <p class="footer-text">SÁBADOS E DOMINGOS</p>
+        <p class="footer-text">SEXTAS, SÁBADOS E DOMINGOS</p>
         <p class="footer-text">DE 18HS ÀS 22:30HS</p>
 
         <p class="footer-title">Endereço</p>
