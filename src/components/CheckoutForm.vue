@@ -89,6 +89,19 @@ const paymentMethod = ref("pix");
 const pixKey = "65.332.524/0001-25";
 const copyingPix = ref(false);
 
+const orderAvailability = computed(() => {
+  const now = new Date();
+  const day = now.getDay();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  const isOperatingDay = day >= 5 || day === 0;
+  const isOperatingTime = minutes >= 8 * 60 && minutes <= 22 * 60 + 40;
+
+  return {
+    isAvailable: isOperatingDay && isOperatingTime,
+    message: "Pedidos disponíveis de sexta a domingo, das 08:00 às 22:40.",
+  };
+});
+
 const copyPix = async () => {
   try {
     await navigator.clipboard.writeText(pixKey);
@@ -382,6 +395,11 @@ const sendToWhatsApp = () => {
 };
 
 const completeOrder = () => {
+  if (!orderAvailability.value.isAvailable) {
+    alert(orderAvailability.value.message);
+    return;
+  }
+
   const deliveryFee = getDeliveryFee();
   const order = {
     deliveryInfo: deliveryInfo.value,
@@ -685,7 +703,14 @@ const getTotalWithDelivery = () => {
         <button @click="goBackToDelivery" class="btn-secondary">
           ← Voltar
         </button>
-        <button @click="completeOrder" class="btn-primary btn-complete">
+        <p v-if="!orderAvailability.isAvailable" class="order-unavailable">
+          {{ orderAvailability.message }}
+        </p>
+        <button
+          @click="completeOrder"
+          class="btn-primary btn-complete"
+          :disabled="!orderAvailability.isAvailable"
+        >
           Confirmar Pedido
         </button>
       </div>
@@ -1161,6 +1186,19 @@ const getTotalWithDelivery = () => {
   background: #e8383f;
   color: white;
   box-shadow: 0 4px 15px rgba(198, 24, 24, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #9a9a9a;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.order-unavailable {
+  color: #b42318;
+  font-size: 0.9rem;
+  margin: 0;
+  align-self: center;
 }
 
 .btn-primary:hover {
