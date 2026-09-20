@@ -89,18 +89,18 @@ const paymentMethod = ref("pix");
 const pixKey = "65.332.524/0001-25";
 const copyingPix = ref(false);
 
-const orderAvailability = computed(() => {
+const getOrderAvailability = () => {
   const now = new Date();
   const day = now.getDay();
   const minutes = now.getHours() * 60 + now.getMinutes();
   const isOperatingDay = day >= 5 || day === 0;
-  const isOperatingTime = minutes >= 8 * 60 && minutes <= 22 * 60 + 40;
+  const isOperatingTime = minutes >= 12 * 60 && minutes <= 22 * 60 + 40;
 
   return {
     isAvailable: isOperatingDay && isOperatingTime,
-    message: "Pedidos disponíveis de sexta a domingo, das 08:00 às 22:40.",
+    message: "Pedidos disponíveis de sexta a domingo, das 12:00 às 22:40.",
   };
-});
+};
 
 const copyPix = async () => {
   try {
@@ -395,8 +395,9 @@ const sendToWhatsApp = () => {
 };
 
 const completeOrder = () => {
-  if (!orderAvailability.value.isAvailable) {
-    alert(orderAvailability.value.message);
+  const orderAvailability = getOrderAvailability();
+  if (!orderAvailability.isAvailable) {
+    alert(orderAvailability.message);
     return;
   }
 
@@ -703,13 +704,16 @@ const getTotalWithDelivery = () => {
         <button @click="goBackToDelivery" class="btn-secondary">
           ← Voltar
         </button>
-        <p v-if="!orderAvailability.isAvailable" class="order-unavailable">
-          {{ orderAvailability.message }}
+        <p
+          v-if="!getOrderAvailability().isAvailable"
+          class="order-unavailable"
+        >
+          {{ getOrderAvailability().message }}
         </p>
         <button
           @click="completeOrder"
           class="btn-primary btn-complete"
-          :disabled="!orderAvailability.isAvailable"
+          :disabled="!getOrderAvailability().isAvailable"
         >
           Confirmar Pedido
         </button>
