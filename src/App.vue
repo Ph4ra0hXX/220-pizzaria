@@ -2879,7 +2879,7 @@ const getPaymentMethodLabel = (method) => {
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
                 <span v-if="category === 'PROMOÇÃO'"
-                  >🍕 PIZZA + GUARANÁ 🥤</span
+                  >PROMOÇÃO 🍕</span
                 >
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
