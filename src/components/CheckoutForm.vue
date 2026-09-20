@@ -284,9 +284,9 @@ const formatOrderForWhatsApp = () => {
       message += `   Sabor: ${item.pizza.name}\n`;
     }
 
-    if (isPromotionCategory(item.pizza.category)) {
+  /*  if (isPromotionCategory(item.pizza.category)) {
       message += `   Acompanha Guaraná 1L\n`;
-    }
+    } */
 
     message += `   Preço: R$ ${basePizzaPrice.toFixed(2)}\n`;
 
