@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import PizzaList from "./components/PizzaList.vue";
 import PizzaDetail from "./components/PizzaDetail.vue";
 import CheckoutForm from "./components/CheckoutForm.vue";
@@ -2560,6 +2560,16 @@ const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
+const currentTime = ref(new Date());
+let availabilityTimer;
+
+const isOrderingAvailable = computed(() => {
+  const day = currentTime.value.getDay();
+  const minutes =
+    currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
+
+  return (day >= 5 || day === 0) && minutes >= 12 * 60 && minutes <= 22 * 60 + 40;
+});
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL")
@@ -2656,6 +2666,14 @@ onMounted(() => {
   if (coupon) {
     appliedCoupon.value = coupon.toUpperCase();
   }
+
+  availabilityTimer = window.setInterval(() => {
+    currentTime.value = new Date();
+  }, 60000);
+});
+
+onUnmounted(() => {
+  window.clearInterval(availabilityTimer);
 });
 
 const selectPizza = (pizza) => {
@@ -2857,6 +2875,13 @@ const getPaymentMethodLabel = (method) => {
 
 <template>
   <div class="pizzaria-app">
+    <div v-if="!isOrderingAvailable" class="ordering-closed-overlay">
+      <div class="ordering-closed-message" role="alert">
+        <h1>Pedidos indisponíveis no momento</h1>
+        <p>Atendemos de sexta a domingo, das 12:00 às 22:40.</p>
+        <p>Volte dentro desse período para fazer seu pedido.</p>
+      </div>
+    </div>
     <img src="/logo.png" alt="" />
     <div class="container">
       <div class="main-content">
@@ -3109,6 +3134,35 @@ const getPaymentMethodLabel = (method) => {
 .pizzaria-app {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ordering-closed-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(41, 10, 10, 0.94);
+}
+
+.ordering-closed-message {
+  max-width: 480px;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  background: #e8383f;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+.ordering-closed-message h1 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.ordering-closed-message p + p {
+  margin-top: 0.75rem;
 }
 
 .pizzaria-app img {
