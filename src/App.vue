@@ -2590,13 +2590,6 @@ const getPizzaPrices = (pizza) => {
   return pizza.prices;
 };
 
-const canUseFlavorWithPizza = (basePizza, flavorPizza) => {
-  const baseIsPromotion = isPromotionCategory(basePizza?.category);
-  const flavorIsPromotion = isPromotionCategory(flavorPizza?.category);
-
-  return baseIsPromotion === flavorIsPromotion;
-};
-
 const getAdditionalPriceForPizza = (additional, pizza) => {
   if (!additional) {
     return 0;
@@ -2696,10 +2689,6 @@ const addToCart = () => {
     if (selectedSize.value === "P" && selectedFlavors.value.length > 0) {
       selectedFlavors.value = [];
     }
-
-    selectedFlavors.value = selectedFlavors.value.filter((flavor) =>
-      canUseFlavorWithPizza(selectedPizza.value, flavor),
-    );
 
     const isBeverage = selectedPizza.value.category === "BEBIDA";
     const isCombo = selectedPizza.value.category === "COMBOS";

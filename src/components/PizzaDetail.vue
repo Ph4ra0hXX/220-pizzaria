@@ -156,20 +156,12 @@ const getFlavorKey = (pizza) => {
   return getFlavorDisplayName(pizza);
 };
 
-const isAllowedPromotionFlavor = (pizza) => {
-  const baseIsPromotion = isPromotionCategory(props.pizza.category);
-  const flavorIsPromotion = isPromotionCategory(pizza.category);
-
-  return baseIsPromotion === flavorIsPromotion;
-};
-
 const canUseAsFlavor = (pizza) => {
   return (
     pizza.id !== props.pizza.id &&
     getFlavorDisplayName(pizza) !== getFlavorDisplayName(props.pizza) &&
     pizza.category !== "BEBIDA" &&
     pizza.category !== "COMBOS" &&
-    isAllowedPromotionFlavor(pizza) &&
     props.selectedSize === "G" &&
     pizza.prices?.G
   );
