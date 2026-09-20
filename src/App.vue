@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 53,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 39.9 },
   },
   /* Fora da lista de promoção atual, manter comentada.
   {
@@ -236,8 +236,9 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 39.9 },
   },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 57,
     name: "MISTA CREMOSA 220",
@@ -270,6 +271,7 @@ const pizzas = ref([
     ],
     prices: { G: 49.9 },
   },
+  */
   {
     id: 88,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -288,7 +290,52 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 49.9 },
+    prices: { G: 44.9 },
+  },
+  {
+    id: 54,
+    name: "PIZZA DE LOMBINHO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/13.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "LOMBINHO",
+      "CEBOLA",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 44.9 },
+  },
+  {
+    id: 200,
+    name: "PIZZA DE FRANGO COM CATUPIRY",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "CATUPIRY",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 44.9 },
+  },
+  {
+    id: 1346,
+    name: "FRANGO TROPICAL 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/26.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
+      "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
+    ],
+    prices: { G: 44.9 },
   },
   /*
   {
@@ -2744,13 +2791,14 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE MUSSARELA",
-      "PIZZA MARGUERITA",
       "PIZZA DE FRANGO",
+      "PIZZA MARGUERITA",
+      "PIZZA DE MUSSARELA",
       "PIZZA DE CALABRESA",
-      "MISTA CREMOSA 220",
-      "PIZZA DE FRANBACON",
+      "PIZZA DE LOMBINHO",
       "PIZZA PORTUGUESA DA CASA",
+      "PIZZA DE FRANGO COM CATUPIRY",
+      "FRANGO TROPICAL 220",
     ];
     const promotionPizzasByName = new Map();
 
