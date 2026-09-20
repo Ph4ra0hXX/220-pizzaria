@@ -2568,7 +2568,7 @@ const isOrderingAvailable = computed(() => {
   const minutes =
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
 
-  return (day >= 5 || day === 0) && minutes >= 12 * 60 && minutes <= 22 * 60 + 40;
+  return (day >= 5 || day === 0) && minutes >= 13 * 60 && minutes <= 22 * 60 + 40;
 });
 
 const normalizeCategory = (category) =>
@@ -2878,7 +2878,7 @@ const getPaymentMethodLabel = (method) => {
     <div v-if="!isOrderingAvailable" class="ordering-closed-overlay">
       <div class="ordering-closed-message" role="alert">
         <h1>Pedidos indisponíveis no momento</h1>
-        <p>Atendemos de sexta a domingo, das 12:00 às 22:40.</p>
+        <p>Atendemos de sexta a domingo, das 13:00 às 22:40.</p>
         <p>Volte dentro desse período para fazer seu pedido.</p>
       </div>
     </div>
@@ -3105,7 +3105,7 @@ const getPaymentMethodLabel = (method) => {
       <div class="footer-content">
         <p class="footer-title">Horário de Funcionamento</p>
         <p class="footer-text">SEXTAS, SÁBADOS E DOMINGOS</p>
-        <p class="footer-text">DE 12HS ÀS 22:40HS</p>
+        <p class="footer-text">DE 13HS ÀS 22:40HS</p>
 
         <p class="footer-title">Endereço</p>
         <p class="footer-text">
