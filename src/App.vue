@@ -2922,12 +2922,13 @@ const getPaymentMethodLabel = (method) => {
 
 <template>
   <div class="pizzaria-app">
-    <div v-if="!isOrderingAvailable" class="ordering-closed-overlay">
-      <div class="ordering-closed-message" role="alert">
-        <h1>Pedidos indisponíveis no momento</h1>
-        <p>Atendemos de sexta a domingo, das 18:00 às 22:30.</p>
-        <p>Volte dentro desse período para fazer seu pedido.</p>
-      </div>
+    <div
+      v-if="!isOrderingAvailable"
+      class="ordering-closed-notice"
+      role="alert"
+    >
+      <strong>Pedidos indisponíveis no momento.</strong>
+      <span>Atendemos de sexta a domingo, das 18:00 às 22:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
@@ -3182,33 +3183,16 @@ const getPaymentMethodLabel = (method) => {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.ordering-closed-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  padding: 1.5rem;
-  background: rgba(41, 10, 10, 0.94);
-}
-
-.ordering-closed-message {
-  max-width: 480px;
-  padding: 2rem;
-  border-radius: 16px;
+.ordering-closed-notice {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  color: #7f1d1d;
+  background: #fee2e2;
+  border-bottom: 2px solid #fca5a5;
   text-align: center;
-  color: #fff;
-  background: #e8383f;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
-}
-
-.ordering-closed-message h1 {
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-}
-
-.ordering-closed-message p + p {
-  margin-top: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .pizzaria-app img {
