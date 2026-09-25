@@ -156,7 +156,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
   },
   {
     id: 53,
@@ -171,7 +171,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 42.9 },
   },
   {
     id: 55,
@@ -186,7 +186,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
   },
   /* Fora da lista de promoção atual, manter comentada.
   {
@@ -236,7 +236,39 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
+  },
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 42.9 },
+  },
+  {
+    id: 1012,
+    name: "PIZZA DE FRANBACON",
+    category: "PROMOÇÃO",
+    image: "/pizzas/7.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 42.9 },
   },
   /* Fora da lista de promoção atual, manter comentadas.
   {
@@ -272,6 +304,7 @@ const pizzas = ref([
     prices: { G: 49.9 },
   },
   */
+  /*
   {
     id: 88,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -292,6 +325,8 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
+  /*
   {
     id: 54,
     name: "PIZZA DE LOMBINHO",
@@ -307,6 +342,8 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
+  /*
   {
     id: 200,
     name: "PIZZA DE FRANGO COM CATUPIRY",
@@ -322,6 +359,8 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
+  /*
   {
     id: 1346,
     name: "FRANGO TROPICAL 220",
@@ -337,6 +376,7 @@ const pizzas = ref([
     ],
     prices: { G: 44.9 },
   },
+  */
   /*
   {
     id: 1346,
@@ -2568,7 +2608,9 @@ const isOrderingAvailable = computed(() => {
   const minutes =
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
 
-  return (day >= 5 || day === 0) && minutes >= 8 * 60 && minutes <= 22 * 60 + 30;
+  return (
+    (day >= 5 || day === 0) && minutes >= 8 * 60 && minutes <= 22 * 60 + 30
+  );
 });
 
 const normalizeCategory = (category) =>
@@ -2798,14 +2840,12 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
+      "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA DE LOMBINHO",
-      "PIZZA PORTUGUESA DA CASA",
-      "PIZZA DE FRANGO COM CATUPIRY",
-      "FRANGO TROPICAL 220",
+      "PIZZA DE FRANBACON",
+      "MISTA CREMOSA 220",
     ];
     const promotionPizzasByName = new Map();
 
@@ -2903,9 +2943,7 @@ const getPaymentMethodLabel = (method) => {
                 @click="categoryFilter = category"
               >
                 <span v-if="category === 'COMBOS'" class="combo-icon">🎁 </span>
-                <span v-if="category === 'PROMOÇÃO'"
-                  >PROMOÇÃO 🍕</span
-                >
+                <span v-if="category === 'PROMOÇÃO'">PROMOÇÃO 🍕</span>
                 <span v-else-if="category === 'COMBOS'"
                   >COMBO COM DESCONTO</span
                 >
