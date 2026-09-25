@@ -2602,8 +2602,15 @@ const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const currentTime = ref(new Date());
 let availabilityTimer;
+const hasUnrestrictedOrderLink = ["1", "true"].includes(
+  new URLSearchParams(window.location.search).get("pedidoLivre"),
+);
 
 const isOrderingAvailable = computed(() => {
+  if (hasUnrestrictedOrderLink) {
+    return true;
+  }
+
   const day = currentTime.value.getDay();
   const minutes =
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
@@ -3129,6 +3136,7 @@ const getPaymentMethodLabel = (method) => {
           :totalPrice="getTotalPrice"
           :cartItems="cartItemsForCheckout"
           :appliedCoupon="appliedCoupon"
+          :unrestricted-ordering="hasUnrestrictedOrderLink"
           @complete-order="handleCompleteOrder"
           @back-to-cart="
             isCheckoutOpen = false;

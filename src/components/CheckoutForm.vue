@@ -50,6 +50,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  unrestrictedOrdering: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const subtotalPrice = computed(() => Number(props.totalPrice ?? 0));
@@ -90,6 +94,13 @@ const pixKey = "65.332.524/0001-25";
 const copyingPix = ref(false);
 
 const getOrderAvailability = () => {
+  if (props.unrestrictedOrdering) {
+    return {
+      isAvailable: true,
+      message: "Pedidos disponíveis a qualquer hora por este link.",
+    };
+  }
+
   const now = new Date();
   const day = now.getDay();
   const minutes = now.getHours() * 60 + now.getMinutes();
@@ -297,7 +308,7 @@ const formatOrderForWhatsApp = () => {
       message += `   Sabor: ${item.pizza.name}\n`;
     }
 
-  /*  if (isPromotionCategory(item.pizza.category)) {
+    /*  if (isPromotionCategory(item.pizza.category)) {
       message += `   Acompanha Guaraná 1L\n`;
     } */
 
@@ -704,10 +715,7 @@ const getTotalWithDelivery = () => {
         <button @click="goBackToDelivery" class="btn-secondary">
           ← Voltar
         </button>
-        <p
-          v-if="!getOrderAvailability().isAvailable"
-          class="order-unavailable"
-        >
+        <p v-if="!getOrderAvailability().isAvailable" class="order-unavailable">
           {{ getOrderAvailability().message }}
         </p>
         <button
