@@ -99,6 +99,7 @@ const pizzas = ref([
     ],
     prices: { P: 42.0, G: 56.0 },
   },
+  /*
   {
     id: 99,
     name: "FILÉ MIGNON",
@@ -114,6 +115,7 @@ const pizzas = ref([
     ],
     prices: { P: 50.0, G: 72.0 },
   },
+  */
   {
     id: 4,
     image: "/pizzas/12.webp",
