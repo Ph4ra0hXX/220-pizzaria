@@ -2603,6 +2603,7 @@ const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const currentTime = ref(new Date());
+const isTemporarilyDisabled = true;
 let availabilityTimer;
 const hasUnrestrictedOrderLink = ["1", "true"].includes(
   new URLSearchParams(window.location.search).get("pedidoLivre"),
@@ -2923,7 +2924,14 @@ const getPaymentMethodLabel = (method) => {
 </script>
 
 <template>
-  <div class="pizzaria-app">
+  <div v-if="isTemporarilyDisabled" class="maintenance-screen" role="status">
+    <div class="maintenance-content">
+      <img src="/logo.png" alt="220 Pizzaria" />
+      <h1>Estamos temporariamente fechados</h1>
+      <p>Voltaremos em breve. Obrigado pela compreensão.</p>
+    </div>
+  </div>
+  <div v-else class="pizzaria-app">
     <div
       v-if="!isOrderingAvailable"
       class="ordering-closed-notice"
@@ -3178,6 +3186,42 @@ const getPaymentMethodLabel = (method) => {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.maintenance-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: #f7efe5;
+  color: #3d2116;
+  text-align: center;
+}
+
+.maintenance-content {
+  width: min(100%, 32rem);
+  padding: 3rem 2rem;
+  border: 1px solid #e6cdb8;
+  border-radius: 16px;
+  background: #fffaf5;
+  box-shadow: 0 16px 40px #6f35141c;
+}
+
+.maintenance-content img {
+  width: min(100%, 14rem);
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.maintenance-content h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.maintenance-content p {
+  color: #765545;
+  font-size: 1.05rem;
 }
 
 .pizzaria-app {
