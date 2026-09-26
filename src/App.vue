@@ -2603,7 +2603,7 @@ const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
 const currentTime = ref(new Date());
-const isTemporarilyDisabled = true;
+const isTemporarilyDisabled = false;
 let availabilityTimer;
 const hasUnrestrictedOrderLink = ["1", "true"].includes(
   new URLSearchParams(window.location.search).get("pedidoLivre"),
