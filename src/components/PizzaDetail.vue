@@ -281,9 +281,11 @@ const getFilteredEdges = () => {
           </div>
         </div>
         <h2>{{ pizza.name }}</h2>
+        <!--   
         <p v-if="isPromotion()" class="promotion-beverage">
           Acompanha Guaraná 1L
         </p>
+        -->
       </div>
 
       <div class="detail-body">
