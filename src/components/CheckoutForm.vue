@@ -109,7 +109,7 @@ const getOrderAvailability = () => {
 
   return {
     isAvailable: isOperatingDay && isOperatingTime,
-    message: "Pedidos disponíveis de sexta a domingo, das 18:00 às 22:30.",
+    message: "Pedidos disponíveis no sábado e domingo, das 18:00 às 22:30.",
   };
 };
 
