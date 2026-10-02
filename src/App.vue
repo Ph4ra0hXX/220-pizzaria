@@ -2996,7 +2996,7 @@ const getPaymentMethodLabel = (method) => {
       role="alert"
     >
       <strong>Pedidos indisponíveis no momento.</strong>
-      <span>Atendemos de sexta a domingo, das 18:00 às 22:30.</span>
+      <span>Atendemos sábado e domingo, das 18:00 às 22:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
