@@ -2673,7 +2673,7 @@ const isOrderingAvailable = computed(() => {
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
 
   return (
-    (day >= 5 || day === 0) && minutes >= 18 * 60 && minutes <= 22 * 60 + 30
+    (day >= 6 || day === 0) && minutes >= 18 * 60 && minutes <= 22 * 60 + 30
   );
 });
 
