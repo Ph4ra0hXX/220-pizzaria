@@ -254,8 +254,41 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 46.9 },
+    prices: { G: 45.9 },
   },
+  {
+    id: 1010,
+    name: "PIZZA DE CALABRESA SUPREME",
+    category: "PROMOÇÃO",
+    image: "/pizzas/1.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "CALABRESA",
+      "BACON",
+      "CEBOLA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 45.9 },
+  },
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 45.9 },
+  },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 88,
     name: "PIZZA PORTUGUESA DA CASA",
@@ -318,6 +351,8 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 29.9 },
   },
+  */
+  /* Fora da lista de promoção atual, manter comentada.
   {
     id: 1015,
     name: "PIZZA DE BIZ",
@@ -326,6 +361,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
     prices: { P: 29.9 },
   },
+  */
   /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 57,
@@ -2909,11 +2945,8 @@ const getFilteredPizzas = () => {
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANBACON",
-      "PIZZA PORTUGUESA DA CASA",
-      "SERTANEJA 220",
-      "PIZZA DE BACON CHEDDAR",
-      "PIZZA DE DISQUETE",
-      "PIZZA DE BIZ",
+      "PIZZA DE CALABRESA SUPREME",
+      "MISTA CREMOSA 220",
     ];
     const promotionPizzasByName = new Map();
 
