@@ -2990,7 +2990,6 @@ const getFilteredPizzas = () => {
 
     filtered.forEach((p) => {
       if (
-        !isPromotionCategory(p.category) ||
         !promotionPizzaNames.includes(p.name)
       ) {
         return;
