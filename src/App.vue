@@ -158,7 +158,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 53,
@@ -173,7 +173,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 44.9 },
   },
   {
     id: 55,
@@ -188,7 +188,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 42.9 },
+    prices: { G: 39.9 },
   },
   /* Fora da lista de promoção atual, manter comentada.
   {
@@ -238,7 +238,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 1012,
@@ -254,8 +254,41 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 44.9 },
   },
+  {
+    id: 1054,
+    name: "PIZZA DE LOMBINHO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/13.webp",
+    ingredients: ["MOLHO DE TOMATE ESPECIAL", "MUSSARELA", "LOMBINHO", "CEBOLA", "AZEITONAS", "OREGANO"],
+    prices: { G: 48.9 },
+  },
+  {
+    id: 1088,
+    name: "PIZZA PORTUGUESA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/6.webp",
+    ingredients: ["MOLHO DE TOMATE", "MUSSARELA", "PRESUNTO", "CALABRESA", "OVO", "CEBOLA", "MILHO VERDE", "PIMENTÃO", "AZEITONAS", "OREGANO"],
+    prices: { G: 44.9 },
+  },
+  {
+    id: 1345,
+    name: "ARRETADA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/24.webp",
+    ingredients: ["MOLHO DE TOMATE ESPECIAL", "MUSSARELA", "CARNE DE SOL", "QUEIJO COALHO", "CEBOLA", "OREGANO", "BACON", "AZEITONA", "MOLHO BARBECUE"],
+    prices: { G: 48.9 },
+  },
+  {
+    id: 1220,
+    name: "PIZZA A MODA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/21.jpg",
+    ingredients: ["MOLHO DE TOMATE", "MUSSARELA", "CARNE DE SOL", "CALABRESA", "BACON", "MILHO VERDE", "CEBOLA", "PIMENTÃO", "TOMATE CEREJA", "OREGANO", "AZEITONA"],
+    prices: { G: 48.9 },
+  },
+  /*
   {
     id: 1010,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -288,6 +321,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.9 },
   },
+  */
   /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 88,
@@ -352,7 +386,7 @@ const pizzas = ref([
     prices: { P: 29.9 },
   },
   */
-  /* Fora da lista de promoção atual, manter comentada.
+  /*
   {
     id: 1015,
     name: "PIZZA DE BIZ",
@@ -415,9 +449,9 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 48.9 },
   },
-  */
+  /* Fora da lista de promoção atual, manter comentada.
   /*
   {
     id: 54,
@@ -594,6 +628,7 @@ const pizzas = ref([
   },
   */
   /*
+  /* Fora da lista de promoção atual, manter comentada.
   {
     id: 1010,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -658,6 +693,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.9 },
   },
+  */
   {
     id: 108,
     image: "/pizzas/7.webp",
@@ -2940,13 +2976,15 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
+      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
-      "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
       "PIZZA DE FRANBACON",
-      "PIZZA DE CALABRESA SUPREME",
-      "MISTA CREMOSA 220",
+      "PIZZA PORTUGUESA",
+      "ARRETADA 220",
+      "PIZZA A MODA 220",
+      "PIZZA DE LOMBINHO",
     ];
     const promotionPizzasByName = new Map();
 
