@@ -694,6 +694,7 @@ const pizzas = ref([
     prices: { G: 45.9 },
   },
   */
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 108,
     image: "/pizzas/7.webp",
