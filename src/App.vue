@@ -158,7 +158,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 53,
@@ -188,7 +188,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.9 },
   },
   /* Fora da lista de promoção atual, manter comentada.
   {
@@ -238,7 +238,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 38.9 },
+    prices: { G: 39.9 },
   },
   {
     id: 1012,
@@ -3033,12 +3033,12 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
-      "PIZZA DE CALABRESA",
-      "PIZZA DE FRANBACON",
+      "PIZZA DE FRANGO",
       "PIZZA DE BACON CHEDDAR",
+      "PIZZA DE FRANBACON",
+      "PIZZA DE CALABRESA",
       "ARRETADA 220",
       "MISTA CREMOSA 220",
       "SERTANEJA 220",
