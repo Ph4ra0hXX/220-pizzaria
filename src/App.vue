@@ -147,6 +147,23 @@ const pizzas = ref([
     ],
     prices: { P: 37.0, G: 48.0 },
   },
+  // Promoções tamanho G, na ordem informada.
+  {
+    id: 56,
+    name: "PIZZA MARGUERITA",
+    category: "PROMOÇÃO",
+    image: "/pizzas/16.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "TOMATE",
+      "MANJERICÃO",
+      "AZEITE DE OLIVA",
+      "AZEITONA",
+      "OREGANO",
+    ],
+    prices: { G: 38.9 },
+  },
   {
     id: 52,
     name: "PIZZA DE MUSSARELA",
@@ -158,7 +175,22 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
+  },
+  {
+    id: 55,
+    name: "PIZZA DE FRANGO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/2.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 44.9 },
   },
   {
     id: 53,
@@ -176,19 +208,36 @@ const pizzas = ref([
     prices: { G: 44.9 },
   },
   {
-    id: 55,
-    name: "PIZZA DE FRANGO",
+    id: 1346,
+    name: "FRANGO TROPICAL 220",
     category: "PROMOÇÃO",
-    image: "/pizzas/2.webp",
+    image: "/pizzas/26.jpeg",
     ingredients: [
       "MOLHO DE TOMATE ESPECIAL",
       "MUSSARELA",
-      "FRANGO",
-      "MILHO VERDE",
-      "AZEITONAS",
+      "FRANGO DESFIADO",
+      "ABACAXI CARAMELIZADO",
       "OREGANO",
+      "FOLHAS FRESCAS DE MANJERICÃO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 48.9 },
+  },
+  {
+    id: 1011,
+    name: "SERTANEJA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/22.webp",
+    ingredients: [
+      "MOLHO DE TOMATE",
+      "MUSSARELA",
+      "FRANGO",
+      "LOMBINHO",
+      "BACON",
+      "CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 48.9 },
   },
   /* Fora da lista de promoção atual, manter comentada.
   {
@@ -224,22 +273,7 @@ const pizzas = ref([
     prices: { G: 44.9 },
   },
   */
-  {
-    id: 56,
-    name: "PIZZA MARGUERITA",
-    category: "PROMOÇÃO",
-    image: "/pizzas/16.webp",
-    ingredients: [
-      "MOLHO DE TOMATE",
-      "MUSSARELA",
-      "TOMATE",
-      "MANJERICÃO",
-      "AZEITE DE OLIVA",
-      "AZEITONA",
-      "OREGANO",
-    ],
-    prices: { G: 39.9 },
-  },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 1012,
     name: "PIZZA DE FRANBACON",
@@ -276,6 +310,7 @@ const pizzas = ref([
     ],
     prices: { G: 48.9 },
   },
+  */
   /*
   {
     id: 1013,
@@ -3066,13 +3101,14 @@ const getFilteredPizzas = () => {
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA DE FRANBACON",
-      "PIZZA PORTUGUESA DA CASA",
+      "FRANGO TROPICAL 220",
+      "SERTANEJA 220",
     ];
     const promotionPizzasByName = new Map();
 
     filtered.forEach((p) => {
       if (
+        !isPromotionCategory(p.category) ||
         !promotionPizzaNames.includes(p.name)
       ) {
         return;
