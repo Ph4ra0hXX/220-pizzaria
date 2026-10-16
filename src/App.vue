@@ -2786,6 +2786,7 @@ const edges = ref([
   { id: 4, name: "BORDA DE CHOCOLATE AO LEITE", price: 15.0 },
   { id: 5, name: "BORDA DE CHOCOLATE BRANCO", price: 15.0 },
   { id: 6, name: "BORDA DE DOCE DE LEITE", price: 15.0 },
+  { id: 7, name: "BORDA DE CHOCOLATE COM AVELÃ", price: 15.0 },
 ]);
 
 const additionals = ref([
