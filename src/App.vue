@@ -162,7 +162,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 52,
@@ -175,7 +175,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 55,
@@ -190,7 +190,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 43.9 },
   },
   {
     id: 53,
@@ -205,7 +205,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 43.9 },
   },
   {
     id: 1012,
@@ -237,8 +237,25 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 47.9 },
   },
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 47.9 },
+  },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 1345,
     name: "ARRETADA 220",
@@ -294,6 +311,7 @@ const pizzas = ref([
     ],
     prices: { G: 49.9 },
   },
+  */
   /* Fora da lista de promoção atual, manter comentada.
   {
     id: 54,
@@ -3152,15 +3170,12 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
+      "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA DE FRANBACON",
       "PIZZA DE CALABRESA SUPREME",
-      "ARRETADA 220",
-      "PIZZA PORTUGUESA DA CASA",
-      "SERTANEJA 220",
+      "MISTA CREMOSA 220",
     ];
     const promotionPizzasByName = new Map();
 
