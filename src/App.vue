@@ -207,6 +207,7 @@ const pizzas = ref([
     ],
     prices: { G: 43.9 },
   },
+  /* Fora da lista de promoção atual, manter comentada.
   {
     id: 1012,
     name: "PIZZA DE FRANBACON",
@@ -223,6 +224,7 @@ const pizzas = ref([
     ],
     prices: { G: 45.9 },
   },
+  */
   {
     id: 1010,
     name: "PIZZA DE CALABRESA SUPREME",
@@ -238,6 +240,22 @@ const pizzas = ref([
       "OREGANO",
     ],
     prices: { G: 47.9 },
+  },
+  {
+    id: 1015,
+    name: "PIZZA DE BIS",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+    prices: { P: 32.9 },
+  },
+  {
+    id: 1014,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 32.9 },
   },
   {
     id: 57,
@@ -3176,6 +3194,8 @@ const getFilteredPizzas = () => {
       "PIZZA DE CALABRESA",
       "PIZZA DE CALABRESA SUPREME",
       "MISTA CREMOSA 220",
+      "PIZZA DE BIS",
+      "PIZZA DE DISQUETE",
     ];
     const promotionPizzasByName = new Map();
 
