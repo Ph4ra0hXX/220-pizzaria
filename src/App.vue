@@ -3245,8 +3245,11 @@ const getFilteredPizzas = () => {
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "PIZZA DE CALABRESA SUPREME",
-      "MISTA CREMOSA 220",
+      "PIZZA DE FRANBACON",
+      "PIZZA PORTUGUESA",
+      "PIZZA DE CARNE DE SOL",
+      "SERTANEJA 220",
+      "PIZZA A MODA 220",
       "PIZZA DE BIS",
       "PIZZA DE DISQUETE",
     ];
