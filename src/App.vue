@@ -3010,7 +3010,7 @@ const isOrderingAvailable = computed(() => {
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
 
   return (
-    (day >= 6 || day === 0) && minutes >= 15 * 60 && minutes <= 22 * 60 + 30
+    (day >= 6 || day === 0) && minutes >= 15 * 60 && minutes <= 21 * 60 + 30
   );
 });
 
@@ -3334,7 +3334,7 @@ const getPaymentMethodLabel = (method) => {
       role="alert"
     >
       <strong>Pedidos indisponíveis no momento.</strong>
-      <span>Atendemos sábado e domingo, das 18:00 às 22:30.</span>
+      <span>Atendemos sábado e domingo, das 18:00 às 21:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
@@ -3558,7 +3558,7 @@ const getPaymentMethodLabel = (method) => {
       <div class="footer-content">
         <p class="footer-title">Horário de Funcionamento</p>
         <p class="footer-text">SÁBADOS E DOMINGOS</p>
-        <p class="footer-text">DE 18HS ÀS 22:30HS</p>
+        <p class="footer-text">DE 18HS ÀS 21:30HS</p>
 
         <p class="footer-title">Endereço</p>
         <p class="footer-text">
