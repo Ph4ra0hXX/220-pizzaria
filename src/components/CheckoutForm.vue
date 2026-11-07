@@ -104,8 +104,8 @@ const getOrderAvailability = () => {
   const now = new Date();
   const day = now.getDay();
   const minutes = now.getHours() * 60 + now.getMinutes();
-  const isOperatingDay = day >= 5 || day === 0;
-  const isOperatingTime = minutes >= 15 * 60 && minutes <= 22 * 60 + 30;
+  const isOperatingDay = day >= 6 || day === 0;
+  const isOperatingTime = minutes >= 18 * 60 && minutes <= 22 * 60 + 30;
 
   return {
     isAvailable: isOperatingDay && isOperatingTime,
@@ -114,6 +114,10 @@ const getOrderAvailability = () => {
 };
 
 const copyPix = async () => {
+  if (!getOrderAvailability().isAvailable) {
+    return;
+  }
+
   try {
     await navigator.clipboard.writeText(pixKey);
     copyingPix.value = true;
@@ -619,7 +623,11 @@ const getTotalWithDelivery = () => {
             <p><strong>Banco:</strong> Pagbank</p>
           </div>
         </div>
-        <button @click="copyPix" class="btn-secondary pix-copy-btn">
+        <button
+          @click="copyPix"
+          class="btn-secondary pix-copy-btn"
+          :disabled="!getOrderAvailability().isAvailable"
+        >
           {{ copyingPix ? "Copiado!" : "Copiar PIX" }}
         </button>
       </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import PizzaList from "./components/PizzaList.vue";
 import PizzaDetail from "./components/PizzaDetail.vue";
 import CheckoutForm from "./components/CheckoutForm.vue";
@@ -3011,26 +3011,10 @@ const categoryFilter = ref("TODAS");
 const isCartOpen = ref(false);
 const isCheckoutOpen = ref(false);
 const appliedCoupon = ref("");
-const currentTime = ref(new Date());
 const isTemporarilyDisabled = false;
-let availabilityTimer;
 const hasUnrestrictedOrderLink = ["1", "true"].includes(
   new URLSearchParams(window.location.search).get("pedidoLivre"),
 );
-
-const isOrderingAvailable = computed(() => {
-  if (hasUnrestrictedOrderLink) {
-    return true;
-  }
-
-  const day = currentTime.value.getDay();
-  const minutes =
-    currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
-
-  return (
-    (day >= 6 || day === 0) && minutes >= 15 * 60 && minutes <= 22 * 60 + 30
-  );
-});
 
 const normalizeCategory = (category) =>
   String(category ?? "TRADICIONAL")
@@ -3127,14 +3111,6 @@ onMounted(() => {
   if (coupon) {
     appliedCoupon.value = coupon.toUpperCase();
   }
-
-  availabilityTimer = window.setInterval(() => {
-    currentTime.value = new Date();
-  }, 60000);
-});
-
-onUnmounted(() => {
-  window.clearInterval(availabilityTimer);
 });
 
 const selectPizza = (pizza) => {
@@ -3346,14 +3322,6 @@ const getPaymentMethodLabel = (method) => {
     <div class="opening-hours-notice" role="status">
       <strong>Funcionamento somente a partir das 18:00.</strong>
       <span>Pedidos disponíveis aos sábados e domingos, das 18:00 às 22:30.</span>
-    </div>
-    <div
-      v-if="!isOrderingAvailable"
-      class="ordering-closed-notice"
-      role="alert"
-    >
-      <strong>Pedidos indisponíveis no momento.</strong>
-      <span>Atendemos sábado e domingo, das 18:00 às 22:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
@@ -3642,18 +3610,6 @@ const getPaymentMethodLabel = (method) => {
 .pizzaria-app {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.ordering-closed-notice {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1rem;
-  color: #7f1d1d;
-  background: #fee2e2;
-  border-bottom: 2px solid #fca5a5;
-  text-align: center;
-  flex-wrap: wrap;
 }
 
 .opening-hours-notice {
