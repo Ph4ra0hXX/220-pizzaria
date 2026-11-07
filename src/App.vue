@@ -3028,7 +3028,7 @@ const isOrderingAvailable = computed(() => {
     currentTime.value.getHours() * 60 + currentTime.value.getMinutes();
 
   return (
-    (day >= 6 || day === 0) && minutes >= 15 * 60 && minutes <= 21 * 60 + 30
+    (day >= 6 || day === 0) && minutes >= 15 * 60 && minutes <= 22 * 60 + 30
   );
 });
 
@@ -3343,13 +3343,17 @@ const getPaymentMethodLabel = (method) => {
     </div>
   </div>
   <div v-else class="pizzaria-app">
+    <div class="opening-hours-notice" role="status">
+      <strong>Funcionamento somente a partir das 18:00.</strong>
+      <span>Pedidos disponíveis aos sábados e domingos, das 18:00 às 22:30.</span>
+    </div>
     <div
       v-if="!isOrderingAvailable"
       class="ordering-closed-notice"
       role="alert"
     >
       <strong>Pedidos indisponíveis no momento.</strong>
-      <span>Atendemos sábado e domingo, das 18:00 às 21:30.</span>
+      <span>Atendemos sábado e domingo, das 18:00 às 22:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
@@ -3573,7 +3577,7 @@ const getPaymentMethodLabel = (method) => {
       <div class="footer-content">
         <p class="footer-title">Horário de Funcionamento</p>
         <p class="footer-text">SÁBADOS E DOMINGOS</p>
-        <p class="footer-text">DE 18HS ÀS 21:30HS</p>
+        <p class="footer-text">DE 18HS ÀS 22:30HS</p>
 
         <p class="footer-title">Endereço</p>
         <p class="footer-text">
@@ -3652,10 +3656,26 @@ const getPaymentMethodLabel = (method) => {
   flex-wrap: wrap;
 }
 
+.opening-hours-notice {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  color: #713f12;
+  background: #fef3c7;
+  border-bottom: 2px solid #f59e0b;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
 .pizzaria-app img {
   width: 200px;
   display: block;
   margin: 0 auto;
+}
+
+.pizzaria-app > img {
+  margin-top: 1.5rem;
 }
 
 .header {
