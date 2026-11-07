@@ -162,7 +162,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
   },
   {
     id: 52,
@@ -175,7 +175,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 38.9 },
   },
   {
     id: 55,
@@ -190,7 +190,7 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 43.9 },
   },
   {
     id: 53,
@@ -205,7 +205,23 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 43.9 },
+  },
+  {
+    id: 57,
+    name: "MISTA CREMOSA 220",
+    category: "PROMOÇÃO",
+    image: "/pizzas/27.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "PRESUNTO",
+      "CREME CHEESE",
+      "MUSSARELA",
+      "TOMATE",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 48.9 },
   },
   {
     id: 1012,
@@ -221,8 +237,25 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 45.9 },
+    prices: { G: 48.9 },
   },
+  {
+    id: 1015,
+    name: "PIZZA DE BIS",
+    category: "PROMOÇÃO",
+    image: "",
+    ingredients: ["CHOCOLATE AO LEITE", "BIS PICADO"],
+    prices: { P: 32.9 },
+  },
+  {
+    id: 1014,
+    name: "PIZZA DE DISQUETE",
+    category: "PROMOÇÃO",
+    image: "/pizzas/15.webp",
+    ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
+    prices: { P: 32.9 },
+  },
+  /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 88,
     name: "PIZZA PORTUGUESA",
@@ -310,22 +343,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 32.9 },
   },
-  {
-    id: 57,
-    name: "MISTA CREMOSA 220",
-    category: "PROMOÇÃO",
-    image: "/pizzas/27.jpeg",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "PRESUNTO",
-      "CREME CHEESE",
-      "MUSSARELA",
-      "TOMATE",
-      "OREGANO",
-      "AZEITONA",
-    ],
-    prices: { G: 47.9 },
-  },
+  */
   /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 1345,
@@ -3245,11 +3263,8 @@ const getFilteredPizzas = () => {
       "PIZZA DE MUSSARELA",
       "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
+      "MISTA CREMOSA 220",
       "PIZZA DE FRANBACON",
-      "PIZZA PORTUGUESA",
-      "PIZZA DE CARNE DE SOL",
-      "SERTANEJA 220",
-      "PIZZA A MODA 220",
       "PIZZA DE BIS",
       "PIZZA DE DISQUETE",
     ];
