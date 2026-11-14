@@ -6,6 +6,25 @@ import CheckoutForm from "./components/CheckoutForm.vue";
 
 const pizzas = ref([
   {
+    id: 1347,
+    name: "CALABRESA GOURMET",
+    image: "/pizzas/28.jpeg",
+    category: "ESPECIAL",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA PICADA",
+      "TOMATE",
+      "CEBOLA",
+      "PIMENTÃO",
+      "MILHO VERDE",
+      "GOTAS DE CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { P: 39.0, G: 52.0 },
+  },
+  {
     id: 346,
     name: "FRANGO TROPICAL 220",
     image: "/pizzas/26.jpeg",
