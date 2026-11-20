@@ -168,21 +168,6 @@ const pizzas = ref([
   },
   // Promocoes, na ordem e nos tamanhos informados.
   {
-    id: 56,
-    name: "PIZZA DE FRANGO",
-    category: "PROMOÇÃO",
-    image: "/pizzas/2.webp",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "FRANGO",
-      "MILHO VERDE",
-      "AZEITONAS",
-      "OREGANO",
-    ],
-    prices: { G: 39.9 },
-  },
-  {
     id: 52,
     name: "PIZZA MARGUERITA",
     category: "PROMOÇÃO",
@@ -196,7 +181,7 @@ const pizzas = ref([
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
   },
   {
     id: 55,
@@ -209,7 +194,22 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 39.9 },
+    prices: { G: 37.9 },
+  },
+  {
+    id: 56,
+    name: "PIZZA DE FRANGO",
+    category: "PROMOÇÃO",
+    image: "/pizzas/2.webp",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "FRANGO",
+      "MILHO VERDE",
+      "AZEITONAS",
+      "OREGANO",
+    ],
+    prices: { G: 42.9 },
   },
   {
     id: 53,
@@ -224,39 +224,44 @@ const pizzas = ref([
       "AZEITONAS",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 42.9 },
   },
   {
-    id: 1346,
-    name: "FRANGO TROPICAL 220",
+    id: 1012,
+    name: "PIZZA DE FRANBACON",
     category: "PROMOÇÃO",
-    image: "/pizzas/26.jpeg",
-    ingredients: [
-      "MOLHO DE TOMATE ESPECIAL",
-      "MUSSARELA",
-      "FRANGO DESFIADO",
-      "ABACAXI CARAMELIZADO",
-      "OREGANO",
-      "FOLHAS FRESCAS DE MANJERICÃO",
-    ],
-    prices: { G: 44.9 },
-  },
-  {
-    id: 1010,
-    name: "PIZZA DE CALABRESA SUPREME",
-    category: "PROMOÇÃO",
-    image: "/pizzas/1.webp",
+    image: "/pizzas/7.webp",
     ingredients: [
       "MOLHO DE TOMATE",
       "MUSSARELA",
-      "CALABRESA",
+      "FRANGO",
       "BACON",
       "CEBOLA",
       "AZEITONA",
       "OREGANO",
     ],
-    prices: { G: 44.9 },
+    prices: { G: 47.9 },
   },
+  {
+    id: 1347,
+    name: "CALABRESA GOURMET",
+    category: "PROMOÇÃO",
+    image: "/pizzas/28.jpeg",
+    ingredients: [
+      "MOLHO DE TOMATE ESPECIAL",
+      "MUSSARELA",
+      "CALABRESA PICADA",
+      "TOMATE",
+      "CEBOLA",
+      "PIMENTÃO",
+      "MILHO VERDE",
+      "GOTAS DE CATUPIRY",
+      "OREGANO",
+      "AZEITONA",
+    ],
+    prices: { G: 47.9 },
+  },
+  /*
   {
     id: 1011,
     name: "SERTANEJA 220",
@@ -321,6 +326,7 @@ const pizzas = ref([
     ingredients: ["CHOCOLATE AO LEITE", "DISQUETES"],
     prices: { P: 32.9 },
   },
+  */
   /* Fora da lista de promoção atual, manter comentadas.
   {
     id: 88,
@@ -3301,17 +3307,12 @@ const getFilteredPizzas = () => {
 
   if (isPromotionCategory(selectedCategory)) {
     const promotionPizzaNames = [
-      "PIZZA DE FRANGO",
       "PIZZA MARGUERITA",
       "PIZZA DE MUSSARELA",
+      "PIZZA DE FRANGO",
       "PIZZA DE CALABRESA",
-      "FRANGO TROPICAL 220",
-      "PIZZA DE CALABRESA SUPREME",
-      "SERTANEJA 220",
-      "PIZZA DE CARNE DE SOL",
-      "MISTA CREMOSA 220",
-      "PIZZA DE BIS",
-      "PIZZA DE DISQUETE",
+      "PIZZA DE FRANBACON",
+      "CALABRESA GOURMET",
     ];
     const promotionPizzasByName = new Map();
 
