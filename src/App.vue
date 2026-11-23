@@ -3375,8 +3375,8 @@ const getPaymentMethodLabel = (method) => {
   </div>
   <div v-else class="pizzaria-app">
     <div class="opening-hours-notice" role="status">
-      <strong>Funcionamento somente a partir das 18:00.</strong>
-      <span>Pedidos disponíveis aos sábados e domingos, das 18:00 às 22:30.</span>
+      <strong>Horário de funcionamento: todos os dias.</strong>
+      <span>Pedidos disponíveis das 18:00 às 22:30.</span>
     </div>
     <img src="/logo.png" alt="" />
     <div class="container">
@@ -3599,7 +3599,7 @@ const getPaymentMethodLabel = (method) => {
     <footer class="pizzaria-footer">
       <div class="footer-content">
         <p class="footer-title">Horário de Funcionamento</p>
-        <p class="footer-text">SÁBADOS E DOMINGOS</p>
+        <p class="footer-text">TODOS OS DIAS</p>
         <p class="footer-text">DE 18HS ÀS 22:30HS</p>
 
         <p class="footer-title">Endereço</p>

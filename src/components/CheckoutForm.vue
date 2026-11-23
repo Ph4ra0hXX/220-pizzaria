@@ -102,14 +102,12 @@ const getOrderAvailability = () => {
   }
 
   const now = new Date();
-  const day = now.getDay();
   const minutes = now.getHours() * 60 + now.getMinutes();
-  const isOperatingDay = day >= 6 || day === 0;
   const isOperatingTime = minutes >= 18 * 60 && minutes <= 22 * 60 + 30;
 
   return {
-    isAvailable: isOperatingDay && isOperatingTime,
-    message: "Pedidos disponíveis no sábado e domingo, das 18:00 às 22:30.",
+    isAvailable: isOperatingTime,
+    message: "Pedidos disponíveis todos os dias, das 18:00 às 22:30.",
   };
 };
 
